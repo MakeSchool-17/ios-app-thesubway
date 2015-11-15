@@ -96,9 +96,81 @@
                     <view key="view" contentMode="scaleToFill" id="6gF-dj-84c">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9du-RB-kg9">
+                                <rect key="frame" x="190" y="73" width="220" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2LT-Mc-kfJ"/>
+                                    <constraint firstAttribute="width" constant="220" id="e9l-Qc-7k9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ja-qN-wou">
+                                <rect key="frame" x="190" y="111" width="220" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Oxm-cr-prL"/>
+                                    <constraint firstAttribute="width" constant="220" id="VEL-vn-rym"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fCI-pN-g80">
+                                <rect key="frame" x="190" y="149" width="220" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DFm-NA-IDM"/>
+                                    <constraint firstAttribute="width" constant="220" id="Mzg-r1-i78"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xHC-Jb-Izd">
+                                <rect key="frame" x="190" y="187" width="220" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="YOa-xH-qWb"/>
+                                    <constraint firstAttribute="width" constant="220" id="aUg-e4-zKV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OX4-F8-S9R">
+                                <rect key="frame" x="255" y="237" width="90" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="8M3-fe-Eo4"/>
+                                    <constraint firstAttribute="height" constant="30" id="cRr-c0-w05"/>
+                                </constraints>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signupPressed:" destination="PWX-TU-og3" eventType="touchUpInside" id="x4y-RP-49i"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9du-RB-kg9" firstAttribute="top" secondItem="1K0-8y-oCn" secondAttribute="bottom" constant="53" id="0Ev-3P-Kpr"/>
+                            <constraint firstItem="fCI-pN-g80" firstAttribute="centerX" secondItem="6gF-dj-84c" secondAttribute="centerX" id="3QL-xd-hE9"/>
+                            <constraint firstItem="9du-RB-kg9" firstAttribute="centerX" secondItem="6gF-dj-84c" secondAttribute="centerX" id="73L-gk-Vd5"/>
+                            <constraint firstItem="OX4-F8-S9R" firstAttribute="centerX" secondItem="6gF-dj-84c" secondAttribute="centerX" id="CMl-Gf-XSn"/>
+                            <constraint firstItem="2ja-qN-wou" firstAttribute="centerX" secondItem="6gF-dj-84c" secondAttribute="centerX" id="MA2-01-ECX"/>
+                            <constraint firstItem="OX4-F8-S9R" firstAttribute="top" secondItem="xHC-Jb-Izd" secondAttribute="bottom" constant="20" id="RFs-wL-cZs"/>
+                            <constraint firstItem="xHC-Jb-Izd" firstAttribute="top" secondItem="fCI-pN-g80" secondAttribute="bottom" constant="8" id="SIC-iq-BWu"/>
+                            <constraint firstItem="fCI-pN-g80" firstAttribute="top" secondItem="2ja-qN-wou" secondAttribute="bottom" constant="8" id="h5S-Hp-nIn"/>
+                            <constraint firstItem="xHC-Jb-Izd" firstAttribute="centerX" secondItem="6gF-dj-84c" secondAttribute="centerX" id="hzY-ph-ZoP"/>
+                            <constraint firstItem="2ja-qN-wou" firstAttribute="top" secondItem="9du-RB-kg9" secondAttribute="bottom" constant="8" id="jHh-r0-WDy"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textFieldConfirmPass" destination="xHC-Jb-Izd" id="TQO-AV-slR"/>
+                        <outlet property="textFieldEmail" destination="2ja-qN-wou" id="eBg-GS-46A"/>
+                        <outlet property="textFieldName" destination="9du-RB-kg9" id="AOm-MA-9WQ"/>
+                        <outlet property="textFieldPassword" destination="fCI-pN-g80" id="tBH-YU-rG4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xgE-fA-ylq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
