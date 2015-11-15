@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var textFieldName: UITextField!
     @IBOutlet var textFieldEmail: UITextField!
@@ -17,6 +17,10 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.textFieldName.delegate = self
+        self.textFieldEmail.delegate = self
+        self.textFieldPassword.delegate = self
+        self.textFieldConfirmPass.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,6 +32,10 @@ class SignUpViewController: UIViewController {
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
 
 }
