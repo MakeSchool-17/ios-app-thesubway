@@ -26,7 +26,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func loginPressed(sender: AnyObject) {
-        print("login")
+        let mytournaments = self.storyboard?.instantiateViewControllerWithIdentifier("mytournaments") as! MyTournamentsViewController
+        self.navigationController?.pushViewController(mytournaments, animated: true)
     }
 
     @IBAction func signUpPressed(sender: AnyObject) {

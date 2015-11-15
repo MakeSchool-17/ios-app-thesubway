@@ -16,6 +16,7 @@
 		27A0AEB31BF814A900AA57F1 /* TournaMakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEB21BF814A900AA57F1 /* TournaMakeTests.swift */; };
 		27A0AEBE1BF814A900AA57F1 /* TournaMakeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEBD1BF814A900AA57F1 /* TournaMakeUITests.swift */; };
 		27A0AECD1BF8415500AA57F1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AECC1BF8415500AA57F1 /* SignUpViewController.swift */; };
+		27A0AECF1BF846A400AA57F1 /* MyTournamentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AECE1BF846A400AA57F1 /* MyTournamentsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		27A0AEBD1BF814A900AA57F1 /* TournaMakeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournaMakeUITests.swift; sourceTree = "<group>"; };
 		27A0AEBF1BF814A900AA57F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27A0AECC1BF8415500AA57F1 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		27A0AECE1BF846A400AA57F1 /* MyTournamentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTournamentsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			children = (
 				27A0AE9C1BF814A900AA57F1 /* LoginViewController.swift */,
 				27A0AECC1BF8415500AA57F1 /* SignUpViewController.swift */,
+				27A0AECE1BF846A400AA57F1 /* MyTournamentsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				27A0AE9D1BF814A900AA57F1 /* LoginViewController.swift in Sources */,
 				27A0AECD1BF8415500AA57F1 /* SignUpViewController.swift in Sources */,
 				27A0AE9B1BF814A900AA57F1 /* AppDelegate.swift in Sources */,
+				27A0AECF1BF846A400AA57F1 /* MyTournamentsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -85,6 +85,25 @@
             </objects>
             <point key="canvasLocation" x="1117" y="317"/>
         </scene>
+        <!--My Tournaments-->
+        <scene sceneID="qed-Di-Ip0">
+            <objects>
+                <viewController storyboardIdentifier="mytournaments" title="My Tournaments" id="SbM-2g-xPa" customClass="MyTournamentsViewController" customModule="TournaMake" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6MM-cw-4vA"/>
+                        <viewControllerLayoutGuide type="bottom" id="kjc-0h-kH3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PXl-CU-d9C">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wvq-6K-4MJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1748" y="317"/>
+        </scene>
         <!--Sign Up-->
         <scene sceneID="Vqg-vU-v7E">
             <objects>
