@@ -15,6 +15,7 @@
 		27A0AEA81BF814A900AA57F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A0AEA61BF814A900AA57F1 /* LaunchScreen.storyboard */; };
 		27A0AEB31BF814A900AA57F1 /* TournaMakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEB21BF814A900AA57F1 /* TournaMakeTests.swift */; };
 		27A0AEBE1BF814A900AA57F1 /* TournaMakeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEBD1BF814A900AA57F1 /* TournaMakeUITests.swift */; };
+		27A0AECD1BF8415500AA57F1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AECC1BF8415500AA57F1 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		27A0AEB91BF814A900AA57F1 /* TournaMakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TournaMakeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A0AEBD1BF814A900AA57F1 /* TournaMakeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournaMakeUITests.swift; sourceTree = "<group>"; };
 		27A0AEBF1BF814A900AA57F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27A0AECC1BF8415500AA57F1 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				27A0AE9A1BF814A900AA57F1 /* AppDelegate.swift */,
-				27A0AE9C1BF814A900AA57F1 /* LoginViewController.swift */,
+				27A0AECB1BF8411800AA57F1 /* ViewControllers */,
 				27A0AE9E1BF814A900AA57F1 /* Main.storyboard */,
 				27A0AEA41BF814A900AA57F1 /* Assets.xcassets */,
 				27A0AEA61BF814A900AA57F1 /* LaunchScreen.storyboard */,
@@ -126,6 +128,15 @@
 				27A0AEBF1BF814A900AA57F1 /* Info.plist */,
 			);
 			path = TournaMakeUITests;
+			sourceTree = "<group>";
+		};
+		27A0AECB1BF8411800AA57F1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				27A0AE9C1BF814A900AA57F1 /* LoginViewController.swift */,
+				27A0AECC1BF8415500AA57F1 /* SignUpViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +272,7 @@
 			files = (
 				27A0AEA31BF814A900AA57F1 /* TournaMake.xcdatamodeld in Sources */,
 				27A0AE9D1BF814A900AA57F1 /* LoginViewController.swift in Sources */,
+				27A0AECD1BF8415500AA57F1 /* SignUpViewController.swift in Sources */,
 				27A0AE9B1BF814A900AA57F1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

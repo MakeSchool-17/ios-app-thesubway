@@ -30,7 +30,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func signUpPressed(sender: AnyObject) {
-        print("signUp")
+        let signup = self.storyboard?.instantiateViewControllerWithIdentifier("signup") as! SignUpViewController
+        self.navigationController?.pushViewController(signup, animated: true)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
