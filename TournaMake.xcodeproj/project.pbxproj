@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27A0AE9B1BF814A900AA57F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AE9A1BF814A900AA57F1 /* AppDelegate.swift */; };
-		27A0AE9D1BF814A900AA57F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AE9C1BF814A900AA57F1 /* ViewController.swift */; };
+		27A0AE9D1BF814A900AA57F1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AE9C1BF814A900AA57F1 /* LoginViewController.swift */; };
 		27A0AEA01BF814A900AA57F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A0AE9E1BF814A900AA57F1 /* Main.storyboard */; };
 		27A0AEA31BF814A900AA57F1 /* TournaMake.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEA11BF814A900AA57F1 /* TournaMake.xcdatamodeld */; };
 		27A0AEA51BF814A900AA57F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27A0AEA41BF814A900AA57F1 /* Assets.xcassets */; };
@@ -37,7 +37,7 @@
 /* Begin PBXFileReference section */
 		27A0AE971BF814A900AA57F1 /* TournaMake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TournaMake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A0AE9A1BF814A900AA57F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		27A0AE9C1BF814A900AA57F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		27A0AE9C1BF814A900AA57F1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		27A0AE9F1BF814A900AA57F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		27A0AEA21BF814A900AA57F1 /* TournaMake.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TournaMake.xcdatamodel; sourceTree = "<group>"; };
 		27A0AEA41BF814A900AA57F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				27A0AE9A1BF814A900AA57F1 /* AppDelegate.swift */,
-				27A0AE9C1BF814A900AA57F1 /* ViewController.swift */,
+				27A0AE9C1BF814A900AA57F1 /* LoginViewController.swift */,
 				27A0AE9E1BF814A900AA57F1 /* Main.storyboard */,
 				27A0AEA41BF814A900AA57F1 /* Assets.xcassets */,
 				27A0AEA61BF814A900AA57F1 /* LaunchScreen.storyboard */,
@@ -260,7 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27A0AEA31BF814A900AA57F1 /* TournaMake.xcdatamodeld in Sources */,
-				27A0AE9D1BF814A900AA57F1 /* ViewController.swift in Sources */,
+				27A0AE9D1BF814A900AA57F1 /* LoginViewController.swift in Sources */,
 				27A0AE9B1BF814A900AA57F1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
