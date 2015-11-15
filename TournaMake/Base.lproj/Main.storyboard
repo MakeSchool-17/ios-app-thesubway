@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tpy-cm-cfY">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tpy-cm-cfY">
                                 <rect key="frame" x="190" y="82" width="220" height="30"/>
                                 <animations/>
                                 <constraints>
@@ -27,7 +27,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9E8-7p-hHl">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9E8-7p-hHl">
                                 <rect key="frame" x="190" y="125" width="220" height="30"/>
                                 <animations/>
                                 <constraints>
@@ -45,6 +45,9 @@
                                     <constraint firstAttribute="height" constant="30" id="Vp5-MB-oXY"/>
                                 </constraints>
                                 <state key="normal" title="Log In"/>
+                                <connections>
+                                    <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6T5-j1-rti"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SA8-zO-YU2">
                                 <rect key="frame" x="265" y="238" width="71" height="30"/>
@@ -54,6 +57,9 @@
                                     <constraint firstAttribute="width" constant="71" id="LKh-tA-5ga"/>
                                 </constraints>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUpPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yY1-FK-yNa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
@@ -69,6 +75,10 @@
                             <constraint firstItem="SA8-zO-YU2" firstAttribute="top" secondItem="Wwa-QH-TjK" secondAttribute="bottom" constant="35" id="uvC-KQ-DkQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textFieldEmail" destination="tpy-cm-cfY" id="s5i-HV-bqR"/>
+                        <outlet property="textFieldPassword" destination="9E8-7p-hHl" id="Ur6-9x-ZtR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

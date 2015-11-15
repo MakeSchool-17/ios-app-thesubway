@@ -8,11 +8,16 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet var textFieldEmail: UITextField!
+    @IBOutlet var textFieldPassword: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.textFieldEmail.delegate = self
+        self.textFieldPassword.delegate = self
+        self.textFieldPassword.secureTextEntry = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +25,20 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func loginPressed(sender: AnyObject) {
+        print("login")
+    }
 
+    @IBAction func signUpPressed(sender: AnyObject) {
+        print("signUp")
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
 }
 
