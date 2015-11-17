@@ -33,6 +33,17 @@ These can be anyone who likes to organize events. It does not matter what their 
 	6c.Once knockout stage is editable, user may update the scores of those matches.
 	6d.Once all knockout stage scores are updated, the tournament will be complete, and a results tab will appear, to show final rankings.
 ####Views / View Controllers/ Classes
+	UI items:
+	Login (vc)
+	SignUp (vc)
+	Tournaments (vc)
+		Tournaments List (tableView of cells each containing tournament name, and timestamp of creation. If tournament is completed)
+	CreateTournament (pop-up view)
+	CreateGroupStage (vc)
+	CreateKnockout (vc)
+
+	classes:
+	
 
 ####Data Models
 
