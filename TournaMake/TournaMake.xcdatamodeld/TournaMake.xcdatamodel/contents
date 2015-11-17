@@ -1,4 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
+    <entity name="Entrant" representedClassName=".Entrant" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="matches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="entrants" inverseEntity="Match" syncable="YES"/>
+        <relationship name="tournament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tournament" inverseName="entrants" inverseEntity="Tournament" syncable="YES"/>
+    </entity>
+    <entity name="Match" representedClassName=".Match" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isFinished" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="leftId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="leftScore" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="rightId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rightScore" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="entrants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entrant" inverseName="matches" inverseEntity="Entrant" syncable="YES"/>
+        <relationship name="tournament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tournament" inverseName="matches" inverseEntity="Tournament" syncable="YES"/>
+    </entity>
+    <entity name="Tournament" representedClassName=".Tournament" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="entrants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entrant" inverseName="tournament" inverseEntity="Entrant" syncable="YES"/>
+        <relationship name="matches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="tournament" inverseEntity="Match" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Tournament" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Entrant" positionX="-54" positionY="9" width="128" height="105"/>
+        <element name="Match" positionX="-36" positionY="27" width="128" height="165"/>
+    </elements>
 </model>
