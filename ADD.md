@@ -9,7 +9,29 @@ This can apply to any kind of competition. Whether it's Smash, Football, Chess, 
 This app is for people who want to create and host tournaments.
 These can be anyone who likes to organize events. It does not matter what their income is.
 ##Experience
+A user wants to create a tournament. They plan to make it group stage + knockout stage format. They open the app, and sign-up with their name, email, and password.
+-Afterward, they receive a confirmation email.
+-Then they log in using their email address, and password.
+-They create a tournament pressing the plus button.
+-They select group stage + knockout from the dropdown menu.
+-They name it "MyTournament1", and add 15 entrants into tournament.
+-The tournament generates 4 groups-of-4. However, since there are only 15 teams, marks one of the slots as "--leave empty--", then fills each remaining slot with one randomly chosen entrant.
+-The user decides to change the entrants around a little, before completing the groupStage setup.
+-The user is then taken to the knockout stage setup page. The default is:
+A1 vs B2, C1 vs D2, A2 vs B1, C2 vs D1.
+-User wants only 7 teams to qualify for this stage. So they change:
+C1 vs D2
+to
+C1 vs --bye--
+-The user wants a 3rd place match, so they will leave the "3rd place consolation?" box checked.
+-The user is now finished, and the tournament is successfully created.
 
+-The user is now taken back to the tournaments page, where the list now contains their newly created tournament. They tap that tournament.
+-The group stage of the tournament is opened. The user may now enter the scores for the round 1 games. If any team is on bye, their scores won't get entered.
+As the scores get entered, the standings update according to the scores.
+-Once the user finishes entering all scores for group stage, the knockout stage begins.
+-As usual, the user will update knockout stage scores. The winner of each game advances to the next round. The semi-final losers will have a match against each other to determine 3rd place.
+Once the user updates all scores, the tournament is finished, and the final rankings are displayed.
 
 ##Technical
 
@@ -85,17 +107,17 @@ These can be anyone who likes to organize events. It does not matter what their 
 	Week 1 (11/16-11/20):
 		-Implement mock design into storyboard.
 		-Hard-code entrants.
-		-Allow user to manually change hardcoded schedules.
+		-Pre-hardcode schedules, but allow user to manually change assignments.
 		-Allow user to manually update knockout stage.
 	Week 2 (11/23-11/25):
-		-Set up backend for user, tournament, entrants.
+		-Set up backend for user, tournament, entrants, matches (schedule).
 		-Implement user authentication.
-		-Implement core data models for user, tournament, entrants.
+		-Implement core data models for user, tournament, entrants, matches (schedule).
 	Week 3 (11/30-12/04):
 		-Add MDSpreadView for hardcoded standings.
 		-Add functionality for default tournament schedules.
 		-Add functionality for brackets (based off current standings).
 	Week 4 (12/07-12/11):
-		-Set up backend for matches (schedule), standings, and bracket.
-		-Implement core data models for matches (schedule), standings, and bracket.
+		-Set up backend for standings and bracket.
+		-Implement core data models for standings and bracket.
 		-Add functionality to calculate final rankings.
