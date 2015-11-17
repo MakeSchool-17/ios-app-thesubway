@@ -26,7 +26,8 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
         // Dispose of any resources that can be recreated.
     }
     @IBAction func addPressed(sender: AnyObject) {
-        print("add")
+        let createTournamentVc = self.storyboard?.instantiateViewControllerWithIdentifier("createtournament") as! CreateTournamentViewController
+        self.navigationController?.pushViewController(createTournamentVc, animated: true)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

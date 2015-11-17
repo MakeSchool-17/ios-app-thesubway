@@ -23,6 +23,7 @@
 		27A0AEE81BFBF30B00AA57F1 /* Match+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEE51BFBF30B00AA57F1 /* Match+CoreDataProperties.swift */; };
 		27A0AEE91BFBF30B00AA57F1 /* Tournament+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEE61BFBF30B00AA57F1 /* Tournament+CoreDataProperties.swift */; };
 		27A0AEEA1BFBF30B00AA57F1 /* Entrant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEE71BFBF30B00AA57F1 /* Entrant+CoreDataProperties.swift */; };
+		27A0AEEC1BFBF4A800AA57F1 /* CreateTournamentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEEB1BFBF4A800AA57F1 /* CreateTournamentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		27A0AEE51BFBF30B00AA57F1 /* Match+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Match+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27A0AEE61BFBF30B00AA57F1 /* Tournament+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tournament+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27A0AEE71BFBF30B00AA57F1 /* Entrant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Entrant+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		27A0AEEB1BFBF4A800AA57F1 /* CreateTournamentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTournamentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				27A0AE9C1BF814A900AA57F1 /* LoginViewController.swift */,
 				27A0AECC1BF8415500AA57F1 /* SignUpViewController.swift */,
 				27A0AECE1BF846A400AA57F1 /* MyTournamentsViewController.swift */,
+				27A0AEEB1BFBF4A800AA57F1 /* CreateTournamentViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				27A0AEE81BFBF30B00AA57F1 /* Match+CoreDataProperties.swift in Sources */,
 				27A0AED41BFBF00D00AA57F1 /* Tournament.swift in Sources */,
 				27A0AEA31BF814A900AA57F1 /* TournaMake.xcdatamodeld in Sources */,
+				27A0AEEC1BFBF4A800AA57F1 /* CreateTournamentViewController.swift in Sources */,
 				27A0AE9D1BF814A900AA57F1 /* LoginViewController.swift in Sources */,
 				27A0AEE91BFBF30B00AA57F1 /* Tournament+CoreDataProperties.swift in Sources */,
 				27A0AECD1BF8415500AA57F1 /* SignUpViewController.swift in Sources */,
