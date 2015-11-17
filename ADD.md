@@ -43,6 +43,11 @@ These can be anyone who likes to organize events. It does not matter what their 
 	CreateKnockout (vc)
 
 	classes:
+	User
+		-name
+		-email address
+		-hashed password
+		-tournaments
 	Tournament
 		-id
 		-name (must contain at least 1 non-space character)
@@ -70,5 +75,10 @@ These can be anyone who likes to organize events. It does not matter what their 
 		-matches (array of all knockout matches)
 
 ####Data Models
-
+	User
+	Tournament (each tournament belongs to a user)
+	Entrant (each entrant belongs to a tournament)
+	Match (tournament has reference to match; entrant has reference to their matches)
+	Standings (property of tournament)
+	Bracket (property of tournament)
 ##MVP Milestones
