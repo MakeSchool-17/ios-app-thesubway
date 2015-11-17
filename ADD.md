@@ -82,3 +82,20 @@ These can be anyone who likes to organize events. It does not matter what their 
 	Standings (property of tournament)
 	Bracket (property of tournament)
 ##MVP Milestones
+	Week 1 (11/16-11/20):
+		-Implement mock design into storyboard.
+		-Hard-code entrants.
+		-Allow user to manually change hardcoded schedules.
+		-Allow user to manually update knockout stage.
+	Week 2 (11/23-11/25):
+		-Set up backend for user, tournament, entrants.
+		-Implement user authentication.
+		-Implement core data models for user, tournament, entrants.
+	Week 3 (11/30-12/04):
+		-Add MDSpreadView for hardcoded standings.
+		-Add functionality for default tournament schedules.
+		-Add functionality for brackets (based off current standings).
+	Week 4 (12/07-12/11):
+		-Set up backend for matches (schedule), standings, and bracket.
+		-Implement core data models for matches (schedule), standings, and bracket.
+		-Add functionality to calculate final rankings.
