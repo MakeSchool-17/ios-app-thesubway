@@ -43,7 +43,31 @@ These can be anyone who likes to organize events. It does not matter what their 
 	CreateKnockout (vc)
 
 	classes:
-	
+	Tournament
+		-id
+		-name (must contain at least 1 non-space character)
+	Match
+		-id
+		-leftScore (default "")
+		-rightScore (default "")
+		-isFinished (default false)
+		-leftId
+		-rightId
+		-result(id), which lists input team's score first, followed by opposing team's score.
+	Entrant
+		-id (starts from 0, then increments. Limit 100 entrants.)
+		-matches (array of all matches they are involved in)
+		-wins (updated after matches update)
+		-losses
+		-ties
+		-differential (all statistical variables update upon match updates)
+	Standings
+		-MDSpreadView
+			-each row is 1 entrant.
+			-each column is data (Rank, W, L, T, Pts, etc.)
+	Bracket
+		-ScrollView
+		-matches (array of all knockout matches)
 
 ####Data Models
 
