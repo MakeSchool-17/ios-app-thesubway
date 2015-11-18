@@ -26,6 +26,7 @@
 		27A0AEEC1BFBF4A800AA57F1 /* CreateTournamentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEEB1BFBF4A800AA57F1 /* CreateTournamentViewController.swift */; };
 		27A0AEF01BFC2A2900AA57F1 /* FormValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEEF1BFC2A2900AA57F1 /* FormValidation.swift */; };
 		27A0AEF21BFC429200AA57F1 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF11BFC429200AA57F1 /* UIHelper.swift */; };
+		27A0AEF41BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		27A0AEEB1BFBF4A800AA57F1 /* CreateTournamentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTournamentViewController.swift; sourceTree = "<group>"; };
 		27A0AEEF1BFC2A2900AA57F1 /* FormValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidation.swift; sourceTree = "<group>"; };
 		27A0AEF11BFC429200AA57F1 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupStageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				27A0AECC1BF8415500AA57F1 /* SignUpViewController.swift */,
 				27A0AECE1BF846A400AA57F1 /* MyTournamentsViewController.swift */,
 				27A0AEEB1BFBF4A800AA57F1 /* CreateTournamentViewController.swift */,
+				27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				27A0AECD1BF8415500AA57F1 /* SignUpViewController.swift in Sources */,
 				27A0AED81BFBF02000AA57F1 /* Entrant.swift in Sources */,
 				27A0AEEA1BFBF30B00AA57F1 /* Entrant+CoreDataProperties.swift in Sources */,
+				27A0AEF41BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift in Sources */,
 				27A0AE9B1BF814A900AA57F1 /* AppDelegate.swift in Sources */,
 				27A0AEDC1BFBF02E00AA57F1 /* Match.swift in Sources */,
 				27A0AECF1BF846A400AA57F1 /* MyTournamentsViewController.swift in Sources */,

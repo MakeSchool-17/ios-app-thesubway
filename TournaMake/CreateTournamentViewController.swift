@@ -62,7 +62,12 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
             UIHelper.showAlertOnVc(self, title: "", message: "Please enter tournament name")
             return
         }
-//        let tournamentData = NSDictionary(objects: [fullNameArr], forKeys: ["entrants"])
+        let tournamentData = NSDictionary(objects: [fullNameArr, self.textFieldTournamentName!.text!], forKeys: ["entrants", "name"])
+        if self.typePicker.text == self.groupStageKnockout {
+            let createGroupStage = self.storyboard?.instantiateViewControllerWithIdentifier("createGroupStage") as! CreateGroupStageViewController
+            createGroupStage.tournamentData = tournamentData
+            self.navigationController?.pushViewController(createGroupStage, animated: true)
+        }
     }
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         //prevent typing after character limit

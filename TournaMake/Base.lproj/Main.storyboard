@@ -268,6 +268,27 @@
             </objects>
             <point key="canvasLocation" x="2385" y="317"/>
         </scene>
+        <!--Create Group Stage-->
+        <scene sceneID="m1O-Kg-0gs">
+            <objects>
+                <viewController storyboardIdentifier="createGroupStage" id="HcX-qE-2Cf" customClass="CreateGroupStageViewController" customModule="TournaMake" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0L0-nH-7Ju"/>
+                        <viewControllerLayoutGuide type="bottom" id="Of9-Wq-dUD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A9K-PN-Mkt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create Group Stage" id="H6m-Fm-Wjv"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d6P-9w-TZI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3032" y="317"/>
+        </scene>
         <!--Sign Up-->
         <scene sceneID="Vqg-vU-v7E">
             <objects>
