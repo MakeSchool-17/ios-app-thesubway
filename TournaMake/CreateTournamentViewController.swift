@@ -8,20 +8,26 @@
 
 import UIKit
 
-class CreateTournamentViewController: UIViewController {
+class CreateTournamentViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet var typePicker: UITextField!
     @IBOutlet var textFieldTournamentName: UITextField!
     @IBOutlet var textViewEntrants: UITextView!
     @IBOutlet var labelTotalTeams: UILabel!
     let groupStageKnockout = "Group Stage + Knock-out"
+    let entrants : [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let typeButton = UIButton(frame: CGRect(x: 0, y: 0, width: typePicker.frame.width, height: typePicker.frame.height))
         self.typePicker.addSubview(typeButton)
         typePicker.text = groupStageKnockout
         typeButton.addTarget(self, action: "typePressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        
         self.textViewEntrants.layer.borderWidth = 1
+        self.textViewEntrants.delegate = self
+        self.textViewEntrants.autocorrectionType = UITextAutocorrectionType.No
+        
         self.textFieldTournamentName.autocapitalizationType = UITextAutocapitalizationType.Words
     }
 
@@ -36,7 +42,33 @@ class CreateTournamentViewController: UIViewController {
         self.view.endEditing(true)
     }
     @IBAction func submitPressed(sender: AnyObject) {
-        print("submit")
+        let fullNameArr = self.textViewEntrants.text.characters.split{$0 == "\n"}.map(String.init)
+        print(fullNameArr)
+    }
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        //prevent typing after character limit
+        let fullNameArr = self.textViewEntrants.text.characters.split{$0 == "\n"}.map(String.init)
+        //increment currentPos, until it passes current word:
+        var currentPos = 0
+        for eachName in fullNameArr {
+            let eachLength = eachName.characters.count
+            currentPos += eachLength
+            if currentPos >= range.location {
+                if eachName.characters.count > 24 {
+                    if text.characters.count == 0 {
+                        //delete was pressed
+                        return true
+                    }
+                    if text == "\n" {
+                        return true
+                    }
+                    return false
+                }
+                return true
+            }
+            currentPos += 1
+        }
+        return true
     }
 
 }
