@@ -52,14 +52,31 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
         }
         return nonEmptyNames
     }
+    func checkDuplicates(strArr : [String]) -> String! {
+        let entrantDict = NSMutableDictionary()
+        for eachEntrant in strArr {
+            if entrantDict[eachEntrant] == nil {
+                entrantDict[eachEntrant] = 0
+            }
+            else {
+                return eachEntrant
+            }
+        }
+        return nil
+    }
     @IBAction func submitPressed(sender: AnyObject) {
+        if self.textFieldTournamentName.text == "" {
+            UIHelper.showAlertOnVc(self, title: "", message: "Please enter tournament name")
+            return
+        }
         let fullNameArr = self.getEntrants()
         if fullNameArr.count < 4 {
             UIHelper.showAlertOnVc(self, title: "", message: "Please include at least 4 entrants")
             return
         }
-        if self.textFieldTournamentName.text == "" {
-            UIHelper.showAlertOnVc(self, title: "", message: "Please enter tournament name")
+        let duplicateName = self.checkDuplicates(fullNameArr)
+        if duplicateName != nil {
+            UIHelper.showAlertOnVc(self, title: "", message: "Duplicate entrant name: \(duplicateName)")
             return
         }
         let tournamentData = NSDictionary(objects: [fullNameArr, self.textFieldTournamentName!.text!], forKeys: ["entrants", "name"])
