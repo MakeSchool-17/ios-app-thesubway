@@ -54,7 +54,15 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
     }
     @IBAction func submitPressed(sender: AnyObject) {
         let fullNameArr = self.getEntrants()
-        print(fullNameArr)
+        if fullNameArr.count < 4 {
+            UIHelper.showAlertOnVc(self, title: "", message: "Please include at least 4 entrants")
+            return
+        }
+        if self.textFieldTournamentName.text == "" {
+            UIHelper.showAlertOnVc(self, title: "", message: "Please enter tournament name")
+            return
+        }
+//        let tournamentData = NSDictionary(objects: [fullNameArr], forKeys: ["entrants"])
     }
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         //prevent typing after character limit
@@ -83,7 +91,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
     }
     func textViewDidChange(textView: UITextView) {
         let teams = self.getEntrants()
-        self.labelTotalTeams.text = "Total teams: \(teams.count)"
+        self.labelTotalTeams.text = "Total entrants: \(teams.count)"
     }
     
 
