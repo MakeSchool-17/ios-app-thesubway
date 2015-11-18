@@ -279,11 +279,66 @@
                     <view key="view" contentMode="scaleToFill" id="A9K-PN-Mkt">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fpT-iq-yes">
+                                <rect key="frame" x="0.0" y="64" width="600" height="497"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="createGroupSlotCell" id="WBy-dm-pmE" customClass="CreateGroupSlotCell" customModule="TournaMake" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WBy-dm-pmE" id="Hci-hU-wiY">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aja-iN-rnY">
+                                <rect key="frame" x="0.0" y="561" width="600" height="39"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29k-xe-53J">
+                                        <rect key="frame" x="270" y="5" width="60" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="hD7-CO-HYl"/>
+                                            <constraint firstAttribute="width" constant="60" id="nde-hG-xLa"/>
+                                        </constraints>
+                                        <state key="normal" title="Submit"/>
+                                        <connections>
+                                            <action selector="submitPressed:" destination="HcX-qE-2Cf" eventType="touchUpInside" id="Mu1-LZ-ceC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.82902446549999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="29k-xe-53J" firstAttribute="centerY" secondItem="Aja-iN-rnY" secondAttribute="centerY" id="E8V-fY-RGS"/>
+                                    <constraint firstItem="29k-xe-53J" firstAttribute="centerX" secondItem="Aja-iN-rnY" secondAttribute="centerX" id="MM4-pK-XfF"/>
+                                    <constraint firstAttribute="height" constant="39" id="nGv-ki-Iyf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Aja-iN-rnY" firstAttribute="top" secondItem="fpT-iq-yes" secondAttribute="bottom" id="0Pv-Cj-7HV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fpT-iq-yes" secondAttribute="trailing" constant="-20" id="7JY-Ac-NGB"/>
+                            <constraint firstItem="fpT-iq-yes" firstAttribute="leading" secondItem="A9K-PN-Mkt" secondAttribute="leadingMargin" constant="-20" id="IdR-Hi-Vvr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Aja-iN-rnY" secondAttribute="trailing" constant="-20" id="NT9-Pk-957"/>
+                            <constraint firstItem="Of9-Wq-dUD" firstAttribute="top" secondItem="Aja-iN-rnY" secondAttribute="bottom" id="Ryf-vK-Fgf"/>
+                            <constraint firstItem="fpT-iq-yes" firstAttribute="top" secondItem="0L0-nH-7Ju" secondAttribute="bottom" id="dcW-1b-41p"/>
+                            <constraint firstItem="Aja-iN-rnY" firstAttribute="leading" secondItem="A9K-PN-Mkt" secondAttribute="leadingMargin" constant="-20" id="vYD-Ct-Qsm"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Group Stage" id="H6m-Fm-Wjv"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableViewGroups" destination="fpT-iq-yes" id="EMu-V7-o35"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6P-9w-TZI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
