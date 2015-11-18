@@ -41,8 +41,19 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
-    @IBAction func submitPressed(sender: AnyObject) {
+    func getEntrants() -> [String] {
         let fullNameArr = self.textViewEntrants.text.characters.split{$0 == "\n"}.map(String.init)
+        var nonEmptyNames : [String] = []
+        //remove empty names:
+        for eachName in fullNameArr {
+            if FormValidation.hasNonWhiteSpaceChar(eachName) == true {
+                nonEmptyNames.append(eachName)
+            }
+        }
+        return nonEmptyNames
+    }
+    @IBAction func submitPressed(sender: AnyObject) {
+        let fullNameArr = self.getEntrants()
         print(fullNameArr)
     }
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
@@ -57,18 +68,23 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
                 if eachName.characters.count > 24 {
                     if text.characters.count == 0 {
                         //delete was pressed
-                        return true
+                        break
                     }
                     if text == "\n" {
-                        return true
+                        break
                     }
                     return false
                 }
-                return true
+                break
             }
             currentPos += 1
         }
         return true
     }
+    func textViewDidChange(textView: UITextView) {
+        let teams = self.getEntrants()
+        self.labelTotalTeams.text = "Total teams: \(teams.count)"
+    }
+    
 
 }

@@ -12,8 +12,8 @@ class FormValidation {
     class func hasNonWhiteSpaceChar(str : String) -> Bool {
         let trimmedStr = str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         if trimmedStr == "" {
-            return true
+            return false
         }
-        return false
+        return true
     }
 }
