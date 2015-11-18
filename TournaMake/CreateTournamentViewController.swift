@@ -79,7 +79,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
             UIHelper.showAlertOnVc(self, title: "", message: "Duplicate entrant name: \(duplicateName)")
             return
         }
-        let tournamentData = NSDictionary(objects: [fullNameArr, self.textFieldTournamentName!.text!], forKeys: ["entrants", "name"])
+        let tournamentData = TournamentData(entrants: fullNameArr, name: self.textFieldTournamentName!.text!)
         if self.typePicker.text == self.groupStageKnockout {
             let createGroupStage = self.storyboard?.instantiateViewControllerWithIdentifier("createGroupStage") as! CreateGroupStageViewController
             createGroupStage.tournamentData = tournamentData

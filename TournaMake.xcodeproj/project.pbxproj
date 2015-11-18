@@ -28,6 +28,7 @@
 		27A0AEF21BFC429200AA57F1 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF11BFC429200AA57F1 /* UIHelper.swift */; };
 		27A0AEF41BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */; };
 		27A0AEF71BFD383400AA57F1 /* CreateGroupSlotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF61BFD383400AA57F1 /* CreateGroupSlotCell.swift */; };
+		27A0AEF91BFD3A7900AA57F1 /* TournamentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF81BFD3A7900AA57F1 /* TournamentData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		27A0AEF11BFC429200AA57F1 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupStageViewController.swift; sourceTree = "<group>"; };
 		27A0AEF61BFD383400AA57F1 /* CreateGroupSlotCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupSlotCell.swift; sourceTree = "<group>"; };
+		27A0AEF81BFD3A7900AA57F1 /* TournamentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 		27A0AED01BFBEFF100AA57F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				27A0AEF81BFD3A7900AA57F1 /* TournamentData.swift */,
 				27A0AED21BFBF00D00AA57F1 /* Tournament.swift */,
 				27A0AED61BFBF02000AA57F1 /* Entrant.swift */,
 				27A0AEDA1BFBF02E00AA57F1 /* Match.swift */,
@@ -333,6 +336,7 @@
 				27A0AEE81BFBF30B00AA57F1 /* Match+CoreDataProperties.swift in Sources */,
 				27A0AED41BFBF00D00AA57F1 /* Tournament.swift in Sources */,
 				27A0AEF01BFC2A2900AA57F1 /* FormValidation.swift in Sources */,
+				27A0AEF91BFD3A7900AA57F1 /* TournamentData.swift in Sources */,
 				27A0AEA31BF814A900AA57F1 /* TournaMake.xcdatamodeld in Sources */,
 				27A0AEEC1BFBF4A800AA57F1 /* CreateTournamentViewController.swift in Sources */,
 				27A0AE9D1BF814A900AA57F1 /* LoginViewController.swift in Sources */,
