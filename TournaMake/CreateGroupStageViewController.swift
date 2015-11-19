@@ -25,37 +25,42 @@ class CreateGroupStageViewController: UIViewController {
         let headerHeight = CGFloat(25.0)
         
         //set up groupView settings:
-        let teamHeight = 50
-        let teamWidth : CGFloat = 250
+        let entrantHeight = 50
+        let entrantWidth : CGFloat = 250
         let groupNames = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ123456".characters)
         //add groupViews:
         for var i = 0; i < self.groups.count; i++ {
             let eachGroup = self.groups[i]
             let vw = NSBundle.mainBundle().loadNibNamed("GroupView", owner: nil, options: nil)[0] as! GroupView
-            vw.heightAnchor.constraintEqualToConstant(headerHeight + CGFloat(teamHeight * eachGroup.count)).active = true
-            vw.widthAnchor.constraintEqualToConstant(teamWidth).active = true
+            vw.heightAnchor.constraintEqualToConstant(headerHeight + CGFloat(entrantHeight * eachGroup.count)).active = true
+            vw.widthAnchor.constraintEqualToConstant(entrantWidth).active = true
             vw.tag = i
             vw.layer.cornerRadius = 5.0
             vw.layer.borderWidth = 1
             
             //add group letter
-            let groupTitle = UILabel(frame: CGRect(x: 0, y: 0, width: teamWidth, height: headerHeight))
+            let groupTitle = UILabel(frame: CGRect(x: 0, y: 0, width: entrantWidth, height: headerHeight))
             groupTitle.text = "Group \(groupNames[i])"
             vw.addSubview(groupTitle)
             
             //add group entrants:
             for var j = 0; j < eachGroup.count; j++ {
-                let eachTeam = eachGroup[j]
-                let lblY = CGFloat(teamHeight) * CGFloat(j) + headerHeight
-                let lblWidth : CGFloat = 150
-                let teamLabel = UILabel(frame: CGRect(x: 0.0, y: lblY, width: lblWidth, height: CGFloat(teamHeight)))
-                teamLabel.text = "Entrant \(j+1): \(eachTeam)"
-                vw.addSubview(teamLabel)
+                let eachEntrant = eachGroup[j]
+                let lblY = CGFloat(entrantHeight) * CGFloat(j) + headerHeight
+                let lblWidth : CGFloat = 90
+                let entrantLabel = UILabel(frame: CGRect(x: 0.0, y: lblY, width: lblWidth, height: CGFloat(entrantHeight)))
+                entrantLabel.text = "Entrant \(j+1):"
+                vw.addSubview(entrantLabel)
+                
+                //add textField for current team:
+                let textFieldEntrant = UITextField()
+                textFieldEntrant.frame = CGRect(x: lblWidth, y: entrantLabel.frame.origin.y, width: entrantWidth - lblWidth, height: entrantLabel.frame.size.height)
+                textFieldEntrant.text = eachEntrant
+                vw.addSubview(textFieldEntrant)
             }
             self.stackView.addArrangedSubview(vw)
         }
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
