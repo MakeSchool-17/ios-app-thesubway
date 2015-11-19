@@ -280,23 +280,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fpT-iq-yes">
-                                <rect key="frame" x="0.0" y="64" width="600" height="497"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="createGroupSlotCell" id="WBy-dm-pmE" customClass="CreateGroupSlotCell" customModule="TournaMake" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WBy-dm-pmE" id="Hci-hU-wiY">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aja-iN-rnY">
                                 <rect key="frame" x="0.0" y="561" width="600" height="39"/>
                                 <subviews>
@@ -321,23 +304,48 @@
                                     <constraint firstAttribute="height" constant="39" id="nGv-ki-Iyf"/>
                                 </constraints>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TGC-Zq-HA8">
+                                <rect key="frame" x="0.0" y="64" width="600" height="497"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Dbd-rV-dPb">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="497"/>
+                                        <animations/>
+                                    </stackView>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstItem="Dbd-rV-dPb" firstAttribute="centerY" secondItem="TGC-Zq-HA8" secondAttribute="centerY" id="BCb-Wo-igY"/>
+                                    <constraint firstItem="Dbd-rV-dPb" firstAttribute="centerX" secondItem="TGC-Zq-HA8" secondAttribute="centerX" id="CCw-4o-LY5"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dbd-rV-dPb" secondAttribute="trailing" id="HL4-A8-nxs"/>
+                                    <constraint firstItem="Dbd-rV-dPb" firstAttribute="leading" secondItem="TGC-Zq-HA8" secondAttribute="leading" id="i7n-VJ-Znu"/>
+                                    <constraint firstItem="Dbd-rV-dPb" firstAttribute="top" secondItem="TGC-Zq-HA8" secondAttribute="top" id="isi-QT-E1f"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dbd-rV-dPb" secondAttribute="bottom" id="oFD-qh-m7v"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BCb-Wo-igY"/>
+                                        <exclude reference="CCw-4o-LY5"/>
+                                    </mask>
+                                </variation>
+                            </scrollView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Aja-iN-rnY" firstAttribute="top" secondItem="fpT-iq-yes" secondAttribute="bottom" id="0Pv-Cj-7HV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fpT-iq-yes" secondAttribute="trailing" constant="-20" id="7JY-Ac-NGB"/>
-                            <constraint firstItem="fpT-iq-yes" firstAttribute="leading" secondItem="A9K-PN-Mkt" secondAttribute="leadingMargin" constant="-20" id="IdR-Hi-Vvr"/>
+                            <constraint firstItem="Dbd-rV-dPb" firstAttribute="width" secondItem="A9K-PN-Mkt" secondAttribute="width" id="0rX-RW-tQp"/>
+                            <constraint firstItem="TGC-Zq-HA8" firstAttribute="top" secondItem="0L0-nH-7Ju" secondAttribute="bottom" id="Jpw-vc-ACd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Aja-iN-rnY" secondAttribute="trailing" constant="-20" id="NT9-Pk-957"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TGC-Zq-HA8" secondAttribute="trailing" constant="-20" id="Pnn-eD-ayP"/>
                             <constraint firstItem="Of9-Wq-dUD" firstAttribute="top" secondItem="Aja-iN-rnY" secondAttribute="bottom" id="Ryf-vK-Fgf"/>
-                            <constraint firstItem="fpT-iq-yes" firstAttribute="top" secondItem="0L0-nH-7Ju" secondAttribute="bottom" id="dcW-1b-41p"/>
+                            <constraint firstItem="TGC-Zq-HA8" firstAttribute="leading" secondItem="A9K-PN-Mkt" secondAttribute="leadingMargin" constant="-20" id="aBe-1u-6B5"/>
+                            <constraint firstItem="Aja-iN-rnY" firstAttribute="top" secondItem="TGC-Zq-HA8" secondAttribute="bottom" id="u5D-i9-9gh"/>
                             <constraint firstItem="Aja-iN-rnY" firstAttribute="leading" secondItem="A9K-PN-Mkt" secondAttribute="leadingMargin" constant="-20" id="vYD-Ct-Qsm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Group Stage" id="H6m-Fm-Wjv"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="tableViewGroups" destination="fpT-iq-yes" id="EMu-V7-o35"/>
+                        <outlet property="stackView" destination="Dbd-rV-dPb" id="DsZ-Oj-oQ2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6P-9w-TZI" userLabel="First Responder" sceneMemberID="firstResponder"/>

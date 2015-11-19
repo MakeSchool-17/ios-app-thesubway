@@ -8,15 +8,15 @@
 
 import UIKit
 
-class CreateGroupStageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CreateGroupStageViewController: UIViewController {
 
     var tournamentData : TournamentData!
-    @IBOutlet var tableViewGroups: UITableView!
     var groups : [[String]]!
+    @IBOutlet var stackView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableViewGroups.dataSource = self
-        self.tableViewGroups.delegate = self
+//        self.tableViewGroups.dataSource = self
+//        self.tableViewGroups.delegate = self
         self.groups = self.calculateNumGroups()
     }
 
@@ -60,19 +60,19 @@ class CreateGroupStageViewController: UIViewController, UITableViewDelegate, UIT
     @IBAction func submitPressed(sender : AnyObject?) {
         print("submit groups")
     }
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.groups.count
-    }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let currentGroup = self.groups[section]
-        return currentGroup.count
-    }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("createGroupSlotCell") as! CreateGroupSlotCell
-        let currentGroup = self.groups[indexPath.section]
-        let currentEntrant = currentGroup[indexPath.row]
-        cell.textLabel?.text = currentEntrant
-        return cell
-    }
+//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        return self.groups.count
+//    }
+//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        let currentGroup = self.groups[section]
+//        return currentGroup.count
+//    }
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCellWithIdentifier("createGroupSlotCell") as! CreateGroupSlotCell
+//        let currentGroup = self.groups[indexPath.section]
+//        let currentEntrant = currentGroup[indexPath.row]
+//        cell.textLabel?.text = currentEntrant
+//        return cell
+//    }
 
 }
