@@ -18,6 +18,25 @@ class CreateGroupStageViewController: UIViewController {
 //        self.tableViewGroups.dataSource = self
 //        self.tableViewGroups.delegate = self
         self.groups = self.calculateNumGroups()
+        
+        let vw2 = UIView()
+        stackView.addArrangedSubview(vw2)
+        let teamHeight = 50
+        for var i = 0; i < self.groups.count; i++ {
+            let eachGroup = self.groups[i]
+            let vw = NSBundle.mainBundle().loadNibNamed("GroupView", owner: nil, options: nil)[0] as! GroupView
+            vw.heightAnchor.constraintEqualToConstant(CGFloat(teamHeight * eachGroup.count)).active = true
+            vw.widthAnchor.constraintEqualToConstant(100).active = true
+            vw.tag = i
+            vw.layer.cornerRadius = 5.0
+            if i % 2 == 0 {
+                vw.backgroundColor = UIColor.greenColor()
+            }
+            else {
+                vw.backgroundColor = UIColor.blueColor()
+            }
+            self.stackView.addArrangedSubview(vw);
+        }
     }
 
     override func didReceiveMemoryWarning() {

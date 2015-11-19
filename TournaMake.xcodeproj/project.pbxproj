@@ -29,6 +29,8 @@
 		27A0AEF41BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */; };
 		27A0AEF71BFD383400AA57F1 /* CreateGroupSlotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF61BFD383400AA57F1 /* CreateGroupSlotCell.swift */; };
 		27A0AEF91BFD3A7900AA57F1 /* TournamentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF81BFD3A7900AA57F1 /* TournamentData.swift */; };
+		27A0AEFC1BFE58A600AA57F1 /* GroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A0AEFB1BFE58A600AA57F1 /* GroupView.xib */; };
+		27A0AEFE1BFE58E300AA57F1 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEFD1BFE58E300AA57F1 /* GroupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupStageViewController.swift; sourceTree = "<group>"; };
 		27A0AEF61BFD383400AA57F1 /* CreateGroupSlotCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupSlotCell.swift; sourceTree = "<group>"; };
 		27A0AEF81BFD3A7900AA57F1 /* TournamentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentData.swift; sourceTree = "<group>"; };
+		27A0AEFB1BFE58A600AA57F1 /* GroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupView.xib; sourceTree = "<group>"; };
+		27A0AEFD1BFE58E300AA57F1 /* GroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 				27A0AED01BFBEFF100AA57F1 /* Models */,
 				27A0AEF51BFD37E700AA57F1 /* TableViewCells */,
 				27A0AEEE1BFC2A0C00AA57F1 /* Helpers */,
+				27A0AEFA1BFE586100AA57F1 /* XIB */,
 				27A0AE9E1BF814A900AA57F1 /* Main.storyboard */,
 				27A0AEA41BF814A900AA57F1 /* Assets.xcassets */,
 				27A0AEA61BF814A900AA57F1 /* LaunchScreen.storyboard */,
@@ -200,6 +205,15 @@
 				27A0AEF61BFD383400AA57F1 /* CreateGroupSlotCell.swift */,
 			);
 			name = TableViewCells;
+			sourceTree = "<group>";
+		};
+		27A0AEFA1BFE586100AA57F1 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				27A0AEFB1BFE58A600AA57F1 /* GroupView.xib */,
+				27A0AEFD1BFE58E300AA57F1 /* GroupView.swift */,
+			);
+			name = XIB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +322,7 @@
 			files = (
 				27A0AEA81BF814A900AA57F1 /* LaunchScreen.storyboard in Resources */,
 				27A0AEA51BF814A900AA57F1 /* Assets.xcassets in Resources */,
+				27A0AEFC1BFE58A600AA57F1 /* GroupView.xib in Resources */,
 				27A0AEA01BF814A900AA57F1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +350,7 @@
 			files = (
 				27A0AEE81BFBF30B00AA57F1 /* Match+CoreDataProperties.swift in Sources */,
 				27A0AED41BFBF00D00AA57F1 /* Tournament.swift in Sources */,
+				27A0AEFE1BFE58E300AA57F1 /* GroupView.swift in Sources */,
 				27A0AEF01BFC2A2900AA57F1 /* FormValidation.swift in Sources */,
 				27A0AEF91BFD3A7900AA57F1 /* TournamentData.swift in Sources */,
 				27A0AEA31BF814A900AA57F1 /* TournaMake.xcdatamodeld in Sources */,
