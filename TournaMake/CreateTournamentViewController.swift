@@ -74,6 +74,10 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
             UIHelper.showAlertOnVc(self, title: "", message: "Please include at least 6 entrants")
             return
         }
+        if fullNameArr.count > 256 {
+            UIHelper.showAlertOnVc(self, title: "", message: "Limit number of entrants is 128")
+            return
+        }
         let duplicateName = self.checkDuplicates(fullNameArr)
         if duplicateName != nil {
             UIHelper.showAlertOnVc(self, title: "", message: "Duplicate entrant name: \(duplicateName)")

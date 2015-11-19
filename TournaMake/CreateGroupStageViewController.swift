@@ -19,23 +19,29 @@ class CreateGroupStageViewController: UIViewController {
 //        self.tableViewGroups.delegate = self
         self.groups = self.calculateNumGroups()
         
-        let vw2 = UIView()
-        stackView.addArrangedSubview(vw2)
+        stackView.spacing = 10
+        stackView.alignment = UIStackViewAlignment.Center
+        let headerHeight = CGFloat(15.0)
         let teamHeight = 50
+        let teamWidth : CGFloat = 250
         for var i = 0; i < self.groups.count; i++ {
             let eachGroup = self.groups[i]
             let vw = NSBundle.mainBundle().loadNibNamed("GroupView", owner: nil, options: nil)[0] as! GroupView
-            vw.heightAnchor.constraintEqualToConstant(CGFloat(teamHeight * eachGroup.count)).active = true
-            vw.widthAnchor.constraintEqualToConstant(100).active = true
+            vw.heightAnchor.constraintEqualToConstant(headerHeight + CGFloat(teamHeight * eachGroup.count)).active = true
+            vw.widthAnchor.constraintEqualToConstant(teamWidth).active = true
             vw.tag = i
             vw.layer.cornerRadius = 5.0
-            if i % 2 == 0 {
-                vw.backgroundColor = UIColor.greenColor()
+            vw.layer.borderWidth = 1
+            
+            for var j = 0; j < eachGroup.count; j++ {
+                let eachTeam = eachGroup[j]
+                let lblY = CGFloat(teamHeight) * CGFloat(j) + headerHeight
+                let lblWidth : CGFloat = 150
+                let teamLabel = UILabel(frame: CGRect(x: 0.0, y: lblY, width: lblWidth, height: CGFloat(teamHeight)))
+                teamLabel.text = "Entrant \(j): \(eachTeam)"
+                vw.addSubview(teamLabel)
             }
-            else {
-                vw.backgroundColor = UIColor.blueColor()
-            }
-            self.stackView.addArrangedSubview(vw);
+            self.stackView.addArrangedSubview(vw)
         }
     }
 
