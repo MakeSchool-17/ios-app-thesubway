@@ -70,8 +70,8 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
             return
         }
         let fullNameArr = self.getEntrants()
-        if fullNameArr.count < 4 {
-            UIHelper.showAlertOnVc(self, title: "", message: "Please include at least 4 entrants")
+        if fullNameArr.count < 6 {
+            UIHelper.showAlertOnVc(self, title: "", message: "Please include at least 6 entrants")
             return
         }
         let duplicateName = self.checkDuplicates(fullNameArr)
