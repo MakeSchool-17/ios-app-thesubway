@@ -12,6 +12,8 @@ class CreateGroupStageViewController: UIViewController {
 
     var tournamentData : TournamentData!
     var groups : [[String]]!
+    var entrantsNotEntered : [String]!
+    let strEmpty = "*Empty*"
     @IBOutlet var stackView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +58,12 @@ class CreateGroupStageViewController: UIViewController {
                 let textFieldEntrant = UITextField()
                 textFieldEntrant.frame = CGRect(x: lblWidth, y: entrantLabel.frame.origin.y, width: entrantWidth - lblWidth, height: entrantLabel.frame.size.height)
                 textFieldEntrant.text = eachEntrant
+                
+                //add button on top of textField:
+                let buttonEntrant = PickerButton(frame: CGRect(x: 0, y: 0, width: textFieldEntrant.frame.width, height: textFieldEntrant.frame.height))
+                textFieldEntrant.addSubview(buttonEntrant)
+                buttonEntrant.addTarget(self, action: "entrantPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+                buttonEntrant.entrantName = eachEntrant
                 vw.addSubview(textFieldEntrant)
             }
             self.stackView.addArrangedSubview(vw)
@@ -73,7 +81,7 @@ class CreateGroupStageViewController: UIViewController {
         //take ceiling of entrant count:
         numGroups = Int(CGFloat(self.tournamentData.entrants.count) / 4.0 + 1)
         numGroupsOf3 = (4 - (self.tournamentData.entrants.count % 4)) % 4
-        var entrantsCopy = self.tournamentData.entrants
+        self.entrantsNotEntered = self.tournamentData.entrants
         var finalGroups : [[String]] = []
         for (var i = 0; i < numGroups; i++) {
             //1.create group
@@ -90,13 +98,25 @@ class CreateGroupStageViewController: UIViewController {
             }
             for (var j = 0; j < n; j++) {
                 //randomly get one entrant
-                let randomIdx = Int(arc4random()) % entrantsCopy.count
-                groupOfEntrants.append(entrantsCopy[randomIdx])
-                entrantsCopy.removeAtIndex(randomIdx)
+                let randomIdx = Int(arc4random()) % entrantsNotEntered.count
+                groupOfEntrants.append(entrantsNotEntered[randomIdx])
+                entrantsNotEntered.removeAtIndex(randomIdx)
             }
             finalGroups.append(groupOfEntrants)
         }
         return finalGroups
+    }
+    func entrantPressed(sender: PickerButton) {
+        //get current string
+        
+        var entrantArr : [String] = self.entrantsNotEntered
+        entrantArr.append(strEmpty)
+        entrantArr.append(sender.entrantName!)
+        MMPickerView.showPickerViewInView(self.view, withObjects: entrantArr, withOptions: nil, objectToStringConverter: nil) { (selectedString : AnyObject!) -> Void in
+            if String(selectedString!) == self.strEmpty {
+                
+            }
+        }
     }
     @IBAction func submitPressed(sender : AnyObject?) {
         print("submit groups")

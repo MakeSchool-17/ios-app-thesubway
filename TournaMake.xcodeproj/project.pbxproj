@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		277ADAF01BFE87E000E17F0E /* MMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ADAEF1BFE87E000E17F0E /* MMPickerView.m */; };
+		277ADAF21BFE942C00E17F0E /* PickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277ADAF11BFE942C00E17F0E /* PickerButton.swift */; };
 		27A0AE9B1BF814A900AA57F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AE9A1BF814A900AA57F1 /* AppDelegate.swift */; };
 		27A0AE9D1BF814A900AA57F1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AE9C1BF814A900AA57F1 /* LoginViewController.swift */; };
 		27A0AEA01BF814A900AA57F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A0AE9E1BF814A900AA57F1 /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		277ADAED1BFE87DF00E17F0E /* TournaMake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TournaMake-Bridging-Header.h"; sourceTree = "<group>"; };
 		277ADAEE1BFE87E000E17F0E /* MMPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPickerView.h; sourceTree = "<group>"; };
 		277ADAEF1BFE87E000E17F0E /* MMPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPickerView.m; sourceTree = "<group>"; };
+		277ADAF11BFE942C00E17F0E /* PickerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerButton.swift; sourceTree = "<group>"; };
 		27A0AE971BF814A900AA57F1 /* TournaMake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TournaMake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A0AE9A1BF814A900AA57F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27A0AE9C1BF814A900AA57F1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -151,7 +153,7 @@
 				27A0AEF51BFD37E700AA57F1 /* TableViewCells */,
 				27A0AEEE1BFC2A0C00AA57F1 /* Helpers */,
 				277ADAEC1BFE871A00E17F0E /* 3rdParty */,
-				27A0AEFA1BFE586100AA57F1 /* XIB */,
+				27A0AEFA1BFE586100AA57F1 /* UI-Items */,
 				27A0AE9E1BF814A900AA57F1 /* Main.storyboard */,
 				27A0AEA41BF814A900AA57F1 /* Assets.xcassets */,
 				27A0AEA61BF814A900AA57F1 /* LaunchScreen.storyboard */,
@@ -222,13 +224,14 @@
 			name = TableViewCells;
 			sourceTree = "<group>";
 		};
-		27A0AEFA1BFE586100AA57F1 /* XIB */ = {
+		27A0AEFA1BFE586100AA57F1 /* UI-Items */ = {
 			isa = PBXGroup;
 			children = (
 				27A0AEFB1BFE58A600AA57F1 /* GroupView.xib */,
 				27A0AEFD1BFE58E300AA57F1 /* GroupView.swift */,
+				277ADAF11BFE942C00E17F0E /* PickerButton.swift */,
 			);
-			name = XIB;
+			name = "UI-Items";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,6 +377,7 @@
 				27A0AE9D1BF814A900AA57F1 /* LoginViewController.swift in Sources */,
 				27A0AEE91BFBF30B00AA57F1 /* Tournament+CoreDataProperties.swift in Sources */,
 				27A0AEF71BFD383400AA57F1 /* CreateGroupSlotCell.swift in Sources */,
+				277ADAF21BFE942C00E17F0E /* PickerButton.swift in Sources */,
 				27A0AECD1BF8415500AA57F1 /* SignUpViewController.swift in Sources */,
 				27A0AED81BFBF02000AA57F1 /* Entrant.swift in Sources */,
 				27A0AEEA1BFBF30B00AA57F1 /* Entrant+CoreDataProperties.swift in Sources */,
