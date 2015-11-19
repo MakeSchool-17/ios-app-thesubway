@@ -19,11 +19,16 @@ class CreateGroupStageViewController: UIViewController {
 //        self.tableViewGroups.delegate = self
         self.groups = self.calculateNumGroups()
         
+        //set up stackView settings:
         stackView.spacing = 10
         stackView.alignment = UIStackViewAlignment.Center
-        let headerHeight = CGFloat(15.0)
+        let headerHeight = CGFloat(25.0)
+        
+        //set up groupView settings:
         let teamHeight = 50
         let teamWidth : CGFloat = 250
+        let groupNames = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ123456".characters)
+        //add groupViews:
         for var i = 0; i < self.groups.count; i++ {
             let eachGroup = self.groups[i]
             let vw = NSBundle.mainBundle().loadNibNamed("GroupView", owner: nil, options: nil)[0] as! GroupView
@@ -33,12 +38,18 @@ class CreateGroupStageViewController: UIViewController {
             vw.layer.cornerRadius = 5.0
             vw.layer.borderWidth = 1
             
+            //add group letter
+            let groupTitle = UILabel(frame: CGRect(x: 0, y: 0, width: teamWidth, height: headerHeight))
+            groupTitle.text = "Group \(groupNames[i])"
+            vw.addSubview(groupTitle)
+            
+            //add group entrants:
             for var j = 0; j < eachGroup.count; j++ {
                 let eachTeam = eachGroup[j]
                 let lblY = CGFloat(teamHeight) * CGFloat(j) + headerHeight
                 let lblWidth : CGFloat = 150
                 let teamLabel = UILabel(frame: CGRect(x: 0.0, y: lblY, width: lblWidth, height: CGFloat(teamHeight)))
-                teamLabel.text = "Entrant \(j): \(eachTeam)"
+                teamLabel.text = "Entrant \(j+1): \(eachTeam)"
                 vw.addSubview(teamLabel)
             }
             self.stackView.addArrangedSubview(vw)
