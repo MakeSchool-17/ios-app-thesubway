@@ -12,18 +12,19 @@ class CreateGroupStageViewController: UIViewController, UITableViewDelegate, UIT
 
     var tournamentData : TournamentData!
     @IBOutlet var tableViewGroups: UITableView!
+    var groups : [[String]]!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableViewGroups.dataSource = self
         self.tableViewGroups.delegate = self
-        self.calculateNumGroups()
+        self.groups = self.calculateNumGroups()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func calculateNumGroups() {
+    func calculateNumGroups() -> [[String]] {
         //this algorithm works best with 6-16 teams in tournament:
         var numGroups = 0
         var numGroupsOf3 = 0
@@ -54,16 +55,23 @@ class CreateGroupStageViewController: UIViewController, UITableViewDelegate, UIT
             }
             finalGroups.append(groupOfEntrants)
         }
-        print(finalGroups)
+        return finalGroups
     }
     @IBAction func submitPressed(sender : AnyObject?) {
         print("submit groups")
     }
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return self.groups.count
+    }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        let currentGroup = self.groups[section]
+        return currentGroup.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("createGroupSlotCell") as! CreateGroupSlotCell
+        let currentGroup = self.groups[indexPath.section]
+        let currentEntrant = currentGroup[indexPath.row]
+        cell.textLabel?.text = currentEntrant
         return cell
     }
 
