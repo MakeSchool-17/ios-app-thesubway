@@ -36,7 +36,10 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     func typePressed(sender: UIButton) {
-//        let typeArr : [String] = [groupStageKnockout]
+        let typeArr : [String] = [groupStageKnockout]
+        MMPickerView.showPickerViewInView(self.view, withObjects: typeArr, withOptions: nil, objectToStringConverter: nil) { (selectedString : AnyObject!) -> Void in
+            print(selectedString!)
+        }
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
