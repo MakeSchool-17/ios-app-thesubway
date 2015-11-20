@@ -21,6 +21,53 @@ class CreateGroupStageViewController: UIViewController {
 //        self.tableViewGroups.delegate = self
         self.groups = self.calculateNumGroups()
         
+        self.reloadStackView()
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    func calculateNumGroups() -> [[String]] {
+        //this algorithm works best with 6-16 teams in tournament:
+        var numGroups = 0
+        var numGroupsOf3 = 0
+        
+        //take ceiling of entrant count:
+        numGroups = Int(CGFloat(self.tournamentData.entrants.count) / 4.0 + 1)
+        numGroupsOf3 = (4 - (self.tournamentData.entrants.count % 4)) % 4
+        self.entrantsNotEntered = self.tournamentData.entrants
+        var finalGroups : [[String]] = []
+        for (var i = 0; i < numGroups; i++) {
+            //1.create group
+            var groupOfEntrants : [String] = []
+            //2.add n group members to it randomly
+            var n : Int!
+            //find n.
+            if i < numGroupsOf3 {
+                //this is a group of 3
+                n = 3
+            }
+            else {
+                n = 4
+            }
+            for (var j = 0; j < n; j++) {
+                //randomly get one entrant
+                let randomIdx = Int(arc4random()) % entrantsNotEntered.count
+                groupOfEntrants.append(entrantsNotEntered[randomIdx])
+                entrantsNotEntered.removeAtIndex(randomIdx)
+            }
+            finalGroups.append(groupOfEntrants)
+        }
+        return finalGroups
+    }
+    func reloadStackView() {
+        //clear previous data
+        for var i = 0; i < self.stackView.arrangedSubviews.count; i++ {
+            let eachSubview = self.stackView.arrangedSubviews[i]
+            eachSubview.removeFromSuperview()
+            self.stackView.removeArrangedSubview(eachSubview)
+            i--
+        }
         //set up stackView settings:
         stackView.spacing = 10
         stackView.alignment = UIStackViewAlignment.Center
@@ -64,59 +111,38 @@ class CreateGroupStageViewController: UIViewController {
                 textFieldEntrant.addSubview(buttonEntrant)
                 buttonEntrant.addTarget(self, action: "entrantPressed:", forControlEvents: UIControlEvents.TouchUpInside)
                 buttonEntrant.entrantName = eachEntrant
+                buttonEntrant.groupIdx = i
+                buttonEntrant.entrantIdx = j
                 vw.addSubview(textFieldEntrant)
             }
             self.stackView.addArrangedSubview(vw)
         }
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    func calculateNumGroups() -> [[String]] {
-        //this algorithm works best with 6-16 teams in tournament:
-        var numGroups = 0
-        var numGroupsOf3 = 0
-        
-        //take ceiling of entrant count:
-        numGroups = Int(CGFloat(self.tournamentData.entrants.count) / 4.0 + 1)
-        numGroupsOf3 = (4 - (self.tournamentData.entrants.count % 4)) % 4
-        self.entrantsNotEntered = self.tournamentData.entrants
-        var finalGroups : [[String]] = []
-        for (var i = 0; i < numGroups; i++) {
-            //1.create group
-            var groupOfEntrants : [String] = []
-            //2.add n group members to it randomly
-            var n : Int!
-            //find n.
-            if i < numGroupsOf3 {
-                //this is a group of 3
-                n = 3
-            }
-            else {
-                n = 4
-            }
-            for (var j = 0; j < n; j++) {
-                //randomly get one entrant
-                let randomIdx = Int(arc4random()) % entrantsNotEntered.count
-                groupOfEntrants.append(entrantsNotEntered[randomIdx])
-                entrantsNotEntered.removeAtIndex(randomIdx)
-            }
-            finalGroups.append(groupOfEntrants)
-        }
-        return finalGroups
-    }
     func entrantPressed(sender: PickerButton) {
-        //get current string
-        
         var entrantArr : [String] = self.entrantsNotEntered
-        entrantArr.append(strEmpty)
+        entrantArr.append(self.strEmpty)
         entrantArr.append(sender.entrantName!)
         MMPickerView.showPickerViewInView(self.view, withObjects: entrantArr, withOptions: nil, objectToStringConverter: nil) { (selectedString : AnyObject!) -> Void in
-            if String(selectedString!) == self.strEmpty {
-                
+            if String(selectedString!) == sender.entrantName {
+                //cancel:
+                self.groups[sender.groupIdx][sender.entrantIdx] = sender.entrantName
+                self.entrantsNotEntered = self.removedFromArr(self.entrantsNotEntered, element: selectedString as! String)
             }
+            else if String(selectedString!) == self.strEmpty {
+                //set current entrant from array to empty.
+                self.groups[sender.groupIdx][sender.entrantIdx] = self.strEmpty
+                self.entrantsNotEntered.append(sender.entrantName)
+            }
+            else {
+                self.groups[sender.groupIdx][sender.entrantIdx] = selectedString as! String
+                self.entrantsNotEntered = self.removedFromArr(self.entrantsNotEntered, element: selectedString as! String)
+            }
+            self.reloadStackView()
         }
+    }
+    func removedFromArr(inArr : [String], element : String) -> [String] {
+        let outArr = inArr.filter() { $0 != element }
+        return outArr
     }
     @IBAction func submitPressed(sender : AnyObject?) {
         print("submit groups")

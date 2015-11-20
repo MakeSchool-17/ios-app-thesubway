@@ -41,9 +41,11 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
             print(selectedString!)
         }
     }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
     func getEntrants() -> [String] {
         let fullNameArr = self.textViewEntrants.text.characters.split{$0 == "\n"}.map(String.init)
         var nonEmptyNames : [String] = []
@@ -55,6 +57,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
         }
         return nonEmptyNames
     }
+    
     func checkDuplicates(strArr : [String]) -> String! {
         let entrantDict = NSMutableDictionary()
         for eachEntrant in strArr {
@@ -67,6 +70,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
         }
         return nil
     }
+    
     @IBAction func submitPressed(sender: AnyObject) {
         if self.textFieldTournamentName.text == "" {
             UIHelper.showAlertOnVc(self, title: "", message: "Please enter tournament name")
@@ -93,7 +97,9 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
             self.navigationController?.pushViewController(createGroupStage, animated: true)
         }
     }
+    
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        //NOTE: does not account for copy-pasting characters.
         //prevent typing after character limit
         let fullNameArr = self.textViewEntrants.text.characters.split{$0 == "\n"}.map(String.init)
         //increment currentPos, until it passes current word:
@@ -118,10 +124,10 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
         }
         return true
     }
+    
     func textViewDidChange(textView: UITextView) {
         let teams = self.getEntrants()
         self.labelTotalTeams.text = "Total entrants: \(teams.count)"
     }
-    
 
 }

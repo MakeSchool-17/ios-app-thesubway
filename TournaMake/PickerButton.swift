@@ -10,4 +10,6 @@ import UIKit
 
 class PickerButton: UIButton {
     var entrantName : String!
+    var entrantIdx : Int!
+    var groupIdx : Int!
 }
