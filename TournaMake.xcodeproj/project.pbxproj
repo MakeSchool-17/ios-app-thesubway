@@ -10,6 +10,7 @@
 		277ADAF01BFE87E000E17F0E /* MMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ADAEF1BFE87E000E17F0E /* MMPickerView.m */; };
 		277ADAF21BFE942C00E17F0E /* PickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277ADAF11BFE942C00E17F0E /* PickerButton.swift */; };
 		277ADAF41BFECED500E17F0E /* CreateKnockoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277ADAF31BFECED500E17F0E /* CreateKnockoutViewController.swift */; };
+		277ADAF61BFEF3C600E17F0E /* BracketMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277ADAF51BFEF3C600E17F0E /* BracketMatch.swift */; };
 		27A0AE9B1BF814A900AA57F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AE9A1BF814A900AA57F1 /* AppDelegate.swift */; };
 		27A0AE9D1BF814A900AA57F1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AE9C1BF814A900AA57F1 /* LoginViewController.swift */; };
 		27A0AEA01BF814A900AA57F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A0AE9E1BF814A900AA57F1 /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		277ADAEF1BFE87E000E17F0E /* MMPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPickerView.m; sourceTree = "<group>"; };
 		277ADAF11BFE942C00E17F0E /* PickerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerButton.swift; sourceTree = "<group>"; };
 		277ADAF31BFECED500E17F0E /* CreateKnockoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateKnockoutViewController.swift; sourceTree = "<group>"; };
+		277ADAF51BFEF3C600E17F0E /* BracketMatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketMatch.swift; sourceTree = "<group>"; };
 		27A0AE971BF814A900AA57F1 /* TournaMake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TournaMake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A0AE9A1BF814A900AA57F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27A0AE9C1BF814A900AA57F1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 		27A0AED01BFBEFF100AA57F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				277ADAF51BFEF3C600E17F0E /* BracketMatch.swift */,
 				27A0AEF81BFD3A7900AA57F1 /* TournamentData.swift */,
 				27A0AED21BFBF00D00AA57F1 /* Tournament.swift */,
 				27A0AED61BFBF02000AA57F1 /* Entrant.swift */,
@@ -369,6 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				277ADAF61BFEF3C600E17F0E /* BracketMatch.swift in Sources */,
 				27A0AEE81BFBF30B00AA57F1 /* Match+CoreDataProperties.swift in Sources */,
 				27A0AED41BFBF00D00AA57F1 /* Tournament.swift in Sources */,
 				277ADAF41BFECED500E17F0E /* CreateKnockoutViewController.swift in Sources */,
