@@ -151,6 +151,13 @@ class CreateGroupStageViewController: UIViewController {
         return outArr
     }
     @IBAction func submitPressed(sender : AnyObject?) {
+        if self.entrantsNotEntered.count > 0 {
+            var strMissing = "\nEntrants missing:"
+            for eachMissing in self.entrantsNotEntered {
+                strMissing += "\n\(eachMissing)"
+            }
+            UIHelper.showAlertOnVc(self, title: "", message: strMissing)
+        }
         print("submit groups")
     }
 //    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
