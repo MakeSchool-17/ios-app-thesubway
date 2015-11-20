@@ -161,6 +161,8 @@ class CreateGroupStageViewController: UIViewController {
         }
         //go to knockout stage:
         let createKnockout = self.storyboard?.instantiateViewControllerWithIdentifier("createKnockout") as! CreateKnockoutViewController
+        createKnockout.groups = self.groups
+        createKnockout.tournamentData = self.tournamentData
         self.navigationController?.pushViewController(createKnockout, animated: true)
     }
 //    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
