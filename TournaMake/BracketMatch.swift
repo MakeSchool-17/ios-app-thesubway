@@ -13,6 +13,7 @@ class BracketMatch {
     let groupWinner = "Winner"
     let groupRunnerUp = "Runner-up"
     let group3rd = "3rd Place"
+    let bye = "BYE"
     let undecided = "-"
     
     //properties:

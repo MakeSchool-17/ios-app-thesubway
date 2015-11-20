@@ -35,6 +35,8 @@
 		27A0AEF91BFD3A7900AA57F1 /* TournamentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF81BFD3A7900AA57F1 /* TournamentData.swift */; };
 		27A0AEFC1BFE58A600AA57F1 /* GroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A0AEFB1BFE58A600AA57F1 /* GroupView.xib */; };
 		27A0AEFE1BFE58E300AA57F1 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEFD1BFE58E300AA57F1 /* GroupView.swift */; };
+		27E82E8A1BFFA13B00C879AF /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E891BFFA13B00C879AF /* MathHelper.swift */; };
+		27E82E8C1BFFCCC200C879AF /* BracketCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		27A0AEF81BFD3A7900AA57F1 /* TournamentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentData.swift; sourceTree = "<group>"; };
 		27A0AEFB1BFE58A600AA57F1 /* GroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupView.xib; sourceTree = "<group>"; };
 		27A0AEFD1BFE58E300AA57F1 /* GroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
+		27E82E891BFFA13B00C879AF /* MathHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
+		27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketCalculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +222,8 @@
 			children = (
 				27A0AEEF1BFC2A2900AA57F1 /* FormValidation.swift */,
 				27A0AEF11BFC429200AA57F1 /* UIHelper.swift */,
+				27E82E891BFFA13B00C879AF /* MathHelper.swift */,
+				27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -372,12 +378,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27E82E8C1BFFCCC200C879AF /* BracketCalculator.swift in Sources */,
 				277ADAF61BFEF3C600E17F0E /* BracketMatch.swift in Sources */,
 				27A0AEE81BFBF30B00AA57F1 /* Match+CoreDataProperties.swift in Sources */,
 				27A0AED41BFBF00D00AA57F1 /* Tournament.swift in Sources */,
 				277ADAF41BFECED500E17F0E /* CreateKnockoutViewController.swift in Sources */,
 				27A0AEFE1BFE58E300AA57F1 /* GroupView.swift in Sources */,
 				27A0AEF01BFC2A2900AA57F1 /* FormValidation.swift in Sources */,
+				27E82E8A1BFFA13B00C879AF /* MathHelper.swift in Sources */,
 				277ADAF01BFE87E000E17F0E /* MMPickerView.m in Sources */,
 				27A0AEF91BFD3A7900AA57F1 /* TournamentData.swift in Sources */,
 				27A0AEA31BF814A900AA57F1 /* TournaMake.xcdatamodeld in Sources */,
