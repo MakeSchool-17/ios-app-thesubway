@@ -164,7 +164,7 @@
                                             <constraint firstAttribute="height" constant="21" id="81f-wd-XpU"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="a8M-aS-6OV">
@@ -191,7 +191,7 @@
                                             <constraint firstAttribute="height" constant="21" id="XHE-pL-N6Z"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -351,6 +351,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6P-9w-TZI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3032" y="317"/>
+        </scene>
+        <!--Create Knockout Stage-->
+        <scene sceneID="POz-yv-RFW">
+            <objects>
+                <viewController storyboardIdentifier="createKnockout" id="bJ5-RI-VKW" customClass="CreateKnockoutViewController" customModule="TournaMake" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5um-Zo-iiX"/>
+                        <viewControllerLayoutGuide type="bottom" id="pDs-bc-jCh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PB3-Y7-Zlr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create Knockout Stage" id="KSD-j1-DEH"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qea-cW-XzX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3665" y="317"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="Vqg-vU-v7E">

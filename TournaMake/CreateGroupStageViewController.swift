@@ -157,8 +157,11 @@ class CreateGroupStageViewController: UIViewController {
                 strMissing += "\n\(eachMissing)"
             }
             UIHelper.showAlertOnVc(self, title: "", message: strMissing)
+            return
         }
-        print("submit groups")
+        //go to knockout stage:
+        let createKnockout = self.storyboard?.instantiateViewControllerWithIdentifier("createKnockout") as! CreateKnockoutViewController
+        self.navigationController?.pushViewController(createKnockout, animated: true)
     }
 //    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 //        return self.groups.count
