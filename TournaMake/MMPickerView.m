@@ -39,6 +39,7 @@ NSString * const MMshowsSelectionIndicator = @"showsSelectionIndicator";
 @property (nonatomic, assign) BOOL pickerViewShowsSelectionIndicator;
 @property (copy) void (^onDismissCompletion)(NSString *);
 @property (copy) NSString *(^objectToStringConverter)(id object);
+@property (nonatomic) NSInteger currentlySelectedRow;
 
 @end
 
@@ -94,6 +95,12 @@ NSString * const MMshowsSelectionIndicator = @"showsSelectionIndicator";
 }
 
 -(void)dismiss{
+    /* Dan Hoang modified */
+    if (self.objectToStringConverter == nil) {
+        self.onDismissCompletion ([_pickerViewArray objectAtIndex:self.currentlySelectedRow]);
+    } else{
+        self.onDismissCompletion (self.objectToStringConverter ([self selectedObject]));
+    }
  [MMPickerView dismissWithCompletion:self.onDismissCompletion];
 }
 
@@ -309,11 +316,8 @@ NSString * const MMshowsSelectionIndicator = @"showsSelectionIndicator";
 #pragma mark - UIPickerViewDelegate
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-  if (self.objectToStringConverter == nil) {
-    self.onDismissCompletion ([_pickerViewArray objectAtIndex:row]);
-  } else{
-    self.onDismissCompletion (self.objectToStringConverter ([self selectedObject]));
-  }
+    /* Dan Hoang modified */
+    self.currentlySelectedRow = row;
 }
 
 - (id)selectedObject {
