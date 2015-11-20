@@ -121,12 +121,13 @@ class CreateGroupStageViewController: UIViewController {
     func entrantPressed(sender: PickerButton) {
         var entrantArr : [String] = self.entrantsNotEntered
         entrantArr.append(self.strEmpty)
-        entrantArr.append(sender.entrantName!)
+        if sender.entrantName != self.strEmpty {
+            entrantArr.append(sender.entrantName!)
+        }
         MMPickerView.showPickerViewInView(self.view, withObjects: entrantArr, withOptions: nil, objectToStringConverter: nil) { (selectedString : AnyObject!) -> Void in
             if String(selectedString!) == sender.entrantName {
                 //cancel:
-                self.groups[sender.groupIdx][sender.entrantIdx] = sender.entrantName
-                self.entrantsNotEntered = self.removedFromArr(self.entrantsNotEntered, element: selectedString as! String)
+                return
             }
             else if String(selectedString!) == self.strEmpty {
                 //set current entrant from array to empty.
@@ -134,8 +135,13 @@ class CreateGroupStageViewController: UIViewController {
                 self.entrantsNotEntered.append(sender.entrantName)
             }
             else {
+                //replace previous name with new name
                 self.groups[sender.groupIdx][sender.entrantIdx] = selectedString as! String
                 self.entrantsNotEntered = self.removedFromArr(self.entrantsNotEntered, element: selectedString as! String)
+                //if previous name was an existing name:
+                if sender.entrantName != self.strEmpty {
+                    self.entrantsNotEntered.append(sender.entrantName)
+                }
             }
             self.reloadStackView()
         }
