@@ -29,6 +29,7 @@ NSString * const MMshowsSelectionIndicator = @"showsSelectionIndicator";
 @property (nonatomic, strong) UIImageView *pickerTopBarImageView;
 @property (nonatomic, strong) UIToolbar *pickerViewToolBar;
 @property (nonatomic, strong) UIBarButtonItem *pickerViewBarButtonItem;
+@property (nonatomic, strong) UIBarButtonItem *pickerViewCancelItem;
 @property (nonatomic, strong) UIButton *pickerDoneButton;
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) NSArray *pickerViewArray;
@@ -96,12 +97,17 @@ NSString * const MMshowsSelectionIndicator = @"showsSelectionIndicator";
 
 -(void)dismiss{
     /* Dan Hoang modified */
-    if (self.objectToStringConverter == nil) {
-        self.onDismissCompletion ([_pickerViewArray objectAtIndex:self.currentlySelectedRow]);
-    } else{
-        self.onDismissCompletion (self.objectToStringConverter ([self selectedObject]));
-    }
+//    if (self.objectToStringConverter == nil) {
+//        self.onDismissCompletion ([_pickerViewArray objectAtIndex:self.currentlySelectedRow]);
+//    } else{
+//        self.onDismissCompletion (self.objectToStringConverter ([self selectedObject]));
+//    }
  [MMPickerView dismissWithCompletion:self.onDismissCompletion];
+}
+
+/* Dan Hoang added */
+-(void)dismissCancel {
+    [MMPickerView dismissWithCompletion:nil];
 }
 
 +(void)removePickerView{
@@ -128,7 +134,9 @@ NSString * const MMshowsSelectionIndicator = @"showsSelectionIndicator";
                    } completion:^(BOOL completed) {
                      if(completed && hidden){
                        [MMPickerView removePickerView];
-                       callBack([self selectedObject]);
+                         if (callBack != nil) {
+                            callBack([self selectedObject]);
+                         }
                      }
                    }];
   
@@ -267,7 +275,8 @@ NSString * const MMshowsSelectionIndicator = @"showsSelectionIndicator";
   UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
   
   _pickerViewBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismiss)];
-  _pickerViewToolBar.items = @[flexibleSpace, _pickerViewBarButtonItem];
+    _pickerViewCancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissCancel)];
+  _pickerViewToolBar.items = @[_pickerViewCancelItem, flexibleSpace, _pickerViewBarButtonItem];
   [_pickerViewBarButtonItem setTintColor:buttonTextColor];
   
   //[_pickerViewBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Helvetica-Neue" size:23.0], UITextAttributeFont,nil] forState:UIControlStateNormal];
