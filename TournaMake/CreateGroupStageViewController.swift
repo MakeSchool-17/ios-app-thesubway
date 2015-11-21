@@ -33,15 +33,15 @@ class CreateGroupStageViewController: UIViewController {
         if self.tournamentData.entrants.count <= 32 {
             finalGroups = GroupCalculator.getGroupsOf4Or3(self.tournamentData.entrants)
         }
-        else if self.tournamentData.entrants.count <= 44 {
+        else if self.tournamentData.entrants.count <= 42 {
             finalGroups = GroupCalculator.getGroupsOf5Or6(self.tournamentData.entrants)
         }
         else if self.tournamentData.entrants.count <= 48 {
-            finalGroups = GroupCalculator.getGroupsOf4Or3(self.tournamentData.entrants)
+            finalGroups = GroupCalculator.getnGroups(12, entrants: self.tournamentData.entrants)
         }
         else {
             //so 49-64 teams
-            finalGroups = GroupCalculator.get16Groups(self.tournamentData.entrants)
+            finalGroups = GroupCalculator.getnGroups(16, entrants: self.tournamentData.entrants)
         }
         return finalGroups
     }

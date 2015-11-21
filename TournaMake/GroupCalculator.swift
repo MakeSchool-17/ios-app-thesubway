@@ -74,11 +74,10 @@ class GroupCalculator {
         }
         return finalGroups
     }
-    class func get16Groups(entrants : [String]) -> [[String]] {
+    class func getnGroups(numGroups : Int, entrants : [String]) -> [[String]] {
         var finalGroups : [[String]] = []
         //this algorithm works best with 49-64 teams in tournament:
-        let numGroups = 16
-        let numGroupsOf4 = entrants.count - 48
+        let numGroupsOf4 = entrants.count - numGroups * 3
         var entrantsNotEntered = entrants
         for (var i = 0; i < numGroups; i++) {
             //1.create group
