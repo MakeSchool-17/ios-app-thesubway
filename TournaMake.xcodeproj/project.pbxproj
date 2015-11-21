@@ -37,6 +37,7 @@
 		27A0AEFE1BFE58E300AA57F1 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEFD1BFE58E300AA57F1 /* GroupView.swift */; };
 		27E82E8A1BFFA13B00C879AF /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E891BFFA13B00C879AF /* MathHelper.swift */; };
 		27E82E8C1BFFCCC200C879AF /* BracketCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */; };
+		27E82E8E1BFFF82700C879AF /* GroupCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		27A0AEFD1BFE58E300AA57F1 /* GroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		27E82E891BFFA13B00C879AF /* MathHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketCalculator.swift; sourceTree = "<group>"; };
+		27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 				27A0AEF11BFC429200AA57F1 /* UIHelper.swift */,
 				27E82E891BFFA13B00C879AF /* MathHelper.swift */,
 				27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */,
+				27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				27A0AE9B1BF814A900AA57F1 /* AppDelegate.swift in Sources */,
 				27A0AEDC1BFBF02E00AA57F1 /* Match.swift in Sources */,
 				27A0AECF1BF846A400AA57F1 /* MyTournamentsViewController.swift in Sources */,
+				27E82E8E1BFFF82700C879AF /* GroupCalculator.swift in Sources */,
 				27A0AEF21BFC429200AA57F1 /* UIHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

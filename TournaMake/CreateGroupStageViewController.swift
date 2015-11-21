@@ -12,7 +12,7 @@ class CreateGroupStageViewController: UIViewController {
 
     var tournamentData : TournamentData!
     var groups : [[String]]!
-    var entrantsNotEntered : [String]!
+    var entrantsNotEntered : [String] = []
     let strEmpty = "*Empty*"
     @IBOutlet var stackView: UIStackView!
     override func viewDidLoad() {
@@ -28,36 +28,10 @@ class CreateGroupStageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     func calculateNumGroups() -> [[String]] {
-        //this algorithm works best with 6-32 teams in tournament:
-        var numGroups = 0
-        var numGroupsOf3 = 0
-        
-        //take ceiling of entrant count:
-        numGroups = Int(ceil(Float(self.tournamentData.entrants.count) / 4.0))
-        numGroupsOf3 = (4 - (self.tournamentData.entrants.count % 4)) % 4
-        let numGroupsOf4 = numGroups - numGroupsOf3
-        self.entrantsNotEntered = self.tournamentData.entrants
         var finalGroups : [[String]] = []
-        for (var i = 0; i < numGroups; i++) {
-            //1.create group
-            var groupOfEntrants : [String] = []
-            //2.add n group members to it randomly
-            var n : Int!
-            //find n.
-            if i < numGroupsOf4 {
-                //this is a group of 3
-                n = 4
-            }
-            else {
-                n = 3
-            }
-            for (var j = 0; j < n; j++) {
-                //randomly get one entrant
-                let randomIdx = Int(arc4random()) % entrantsNotEntered.count
-                groupOfEntrants.append(entrantsNotEntered[randomIdx])
-                entrantsNotEntered.removeAtIndex(randomIdx)
-            }
-            finalGroups.append(groupOfEntrants)
+        
+        if self.tournamentData.entrants.count <= 32 {
+            finalGroups = GroupCalculator.getGroupsOf4Or3(self.tournamentData.entrants)
         }
         return finalGroups
     }
