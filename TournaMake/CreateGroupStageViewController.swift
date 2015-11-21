@@ -33,6 +33,9 @@ class CreateGroupStageViewController: UIViewController {
         if self.tournamentData.entrants.count <= 32 {
             finalGroups = GroupCalculator.getGroupsOf4Or3(self.tournamentData.entrants)
         }
+        else if self.tournamentData.entrants.count <= 44 {
+            finalGroups = GroupCalculator.getGroupsOf5Or6(self.tournamentData.entrants)
+        }
         return finalGroups
     }
     func reloadStackView() {

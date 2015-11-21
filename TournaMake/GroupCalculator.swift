@@ -43,4 +43,35 @@ class GroupCalculator {
         }
         return finalGroups
     }
+    class func getGroupsOf5Or6(entrants : [String]) -> [[String]] {
+        //for cases where entrants.count is between 33 and 44 inclusive.
+        var finalGroups : [[String]] = []
+        var numGroups = 0
+        var numGroupsOf5 = 0
+        numGroups = Int(ceil(Float(entrants.count) / 6.0))
+        numGroupsOf5 = (6 - (entrants.count % 6)) % 6
+        let numGroupsOf6 = numGroups - numGroupsOf5
+        var entrantsNotEntered = entrants
+        for (var i = 0; i < numGroups; i++) {
+            //1.create group
+            var groupOfEntrants : [String] = []
+            //2.add n group members to it randomly
+            var n : Int!
+            //find n.
+            if i < numGroupsOf6 {
+                n = 6
+            }
+            else {
+                n = 5
+            }
+            for (var j = 0; j < n; j++) {
+                //randomly get one entrant
+                let randomIdx = Int(arc4random()) % entrantsNotEntered.count
+                groupOfEntrants.append(entrantsNotEntered[randomIdx])
+                entrantsNotEntered.removeAtIndex(randomIdx)
+            }
+            finalGroups.append(groupOfEntrants)
+        }
+        return finalGroups
+    }
 }
