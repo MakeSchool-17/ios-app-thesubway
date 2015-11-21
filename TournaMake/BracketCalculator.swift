@@ -31,6 +31,7 @@ class BracketCalculator {
         var bracketTop : [BracketMatch] = []
         var bracketBottom : [BracketMatch] = []
         
+
         if num3rdPlace == 0 {
             //since num3rdPlace == 0, we know numTeamsAdvance == numTopTwo,
             //but in tournaments of 9, we get numTeamsAdvance == 6.
