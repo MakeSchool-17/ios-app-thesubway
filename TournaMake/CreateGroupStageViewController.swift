@@ -28,7 +28,7 @@ class CreateGroupStageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     func calculateNumGroups() -> [[String]] {
-        //this algorithm works best with 6-16 teams in tournament:
+        //this algorithm works best with 6-32 teams in tournament:
         var numGroups = 0
         var numGroupsOf3 = 0
         
