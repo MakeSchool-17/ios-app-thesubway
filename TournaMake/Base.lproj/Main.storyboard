@@ -363,11 +363,73 @@
                     <view key="view" contentMode="scaleToFill" id="PB3-Y7-Zlr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wN0-42-VlI">
+                                <rect key="frame" x="0.0" y="561" width="600" height="39"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0DR-7r-hgE">
+                                        <rect key="frame" x="270" y="5" width="60" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="OZn-av-FZW"/>
+                                            <constraint firstAttribute="height" constant="30" id="cLz-nv-SLd"/>
+                                        </constraints>
+                                        <state key="normal" title="Submit"/>
+                                        <connections>
+                                            <action selector="submitPressed:" destination="bJ5-RI-VKW" eventType="touchUpInside" id="T6B-i7-0a7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.82902446549999997" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="2OJ-NM-45g"/>
+                                    <constraint firstItem="0DR-7r-hgE" firstAttribute="centerY" secondItem="wN0-42-VlI" secondAttribute="centerY" id="CrD-TR-NWc"/>
+                                    <constraint firstItem="0DR-7r-hgE" firstAttribute="centerX" secondItem="wN0-42-VlI" secondAttribute="centerX" id="mfb-iH-NkS"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ihy-tZ-1Bw">
+                                <rect key="frame" x="0.0" y="64" width="600" height="497"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KaO-UZ-jzj">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="497"/>
+                                        <animations/>
+                                    </stackView>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="KaO-UZ-jzj" secondAttribute="bottom" id="43F-3W-cb1"/>
+                                    <constraint firstItem="KaO-UZ-jzj" firstAttribute="centerX" secondItem="Ihy-tZ-1Bw" secondAttribute="centerX" id="4tV-mX-rUI"/>
+                                    <constraint firstItem="KaO-UZ-jzj" firstAttribute="leading" secondItem="Ihy-tZ-1Bw" secondAttribute="leading" id="Opu-Kq-Bl0"/>
+                                    <constraint firstItem="KaO-UZ-jzj" firstAttribute="centerY" secondItem="Ihy-tZ-1Bw" secondAttribute="centerY" id="P7B-mR-3Sh"/>
+                                    <constraint firstItem="KaO-UZ-jzj" firstAttribute="top" secondItem="Ihy-tZ-1Bw" secondAttribute="top" id="eFQ-dg-62T"/>
+                                    <constraint firstAttribute="trailing" secondItem="KaO-UZ-jzj" secondAttribute="trailing" id="znE-eW-qsF"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="P7B-mR-3Sh"/>
+                                        <exclude reference="4tV-mX-rUI"/>
+                                    </mask>
+                                </variation>
+                            </scrollView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ihy-tZ-1Bw" firstAttribute="leading" secondItem="PB3-Y7-Zlr" secondAttribute="leadingMargin" constant="-20" id="KjL-gd-3Ww"/>
+                            <constraint firstItem="pDs-bc-jCh" firstAttribute="top" secondItem="wN0-42-VlI" secondAttribute="bottom" id="R3k-DY-xQO"/>
+                            <constraint firstItem="wN0-42-VlI" firstAttribute="leading" secondItem="PB3-Y7-Zlr" secondAttribute="leadingMargin" constant="-20" id="RxQ-ot-yp1"/>
+                            <constraint firstItem="Ihy-tZ-1Bw" firstAttribute="top" secondItem="5um-Zo-iiX" secondAttribute="bottom" id="T74-FX-VZa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ihy-tZ-1Bw" secondAttribute="trailing" constant="-20" id="ZYE-bD-Kxm"/>
+                            <constraint firstItem="wN0-42-VlI" firstAttribute="top" secondItem="Ihy-tZ-1Bw" secondAttribute="bottom" id="bSH-UT-gKB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wN0-42-VlI" secondAttribute="trailing" constant="-20" id="xZ2-9Y-KYS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Knockout Stage" id="KSD-j1-DEH"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="stackViewBracket" destination="KaO-UZ-jzj" id="GbU-cR-0Gf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qea-cW-XzX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

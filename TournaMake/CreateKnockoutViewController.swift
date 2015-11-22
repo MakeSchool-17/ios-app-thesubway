@@ -13,6 +13,8 @@ class CreateKnockoutViewController: UIViewController {
     var groups : [[String]]!
     var tournamentData : TournamentData!
     var advancingSlots : [String]!
+    @IBOutlet var stackViewBracket: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         BracketCalculator.calculateBrackets(groups, tournamentData: tournamentData)
@@ -23,4 +25,7 @@ class CreateKnockoutViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func submitPressed(sender: AnyObject) {
+        print("submit")
+    }
 }
