@@ -19,9 +19,7 @@ class CreateKnockoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bracketMatches = BracketCalculator.calculateBrackets(groups, tournamentData: tournamentData)
-        for eachBracket in self.bracketMatches {
-            eachBracket.printMatch()
-        }
+        self.reloadStackViewBracket()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +38,23 @@ class CreateKnockoutViewController: UIViewController {
         
         stackViewBracket.spacing = 10
         stackViewBracket.alignment = UIStackViewAlignment.Center
+        
+        let matchHeight : CGFloat = 100
+        let matchWidth : CGFloat = 250
+        
+        for eachBracket in self.bracketMatches {
+            let vw = UIView()
+            vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true
+            vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
+            vw.layer.cornerRadius = 5.0
+            vw.layer.borderWidth = 1
+            
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: matchWidth, height: matchHeight / 2))
+            label.text = eachBracket.getMatchStr()
+            vw.addSubview(label)
+            
+            stackViewBracket.addArrangedSubview(vw)
+        }
     }
 
     @IBAction func submitPressed(sender: AnyObject) {
