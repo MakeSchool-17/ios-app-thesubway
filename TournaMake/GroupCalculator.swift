@@ -35,7 +35,7 @@ class GroupCalculator {
             }
             for (var j = 0; j < n; j++) {
                 //randomly get one entrant
-                let randomIdx = Int(arc4random()) % entrantsNotEntered.count
+                let randomIdx = Int(arc4random_uniform(UInt32(entrantsNotEntered.count)))
                 groupOfEntrants.append(entrantsNotEntered[randomIdx])
                 entrantsNotEntered.removeAtIndex(randomIdx)
             }
