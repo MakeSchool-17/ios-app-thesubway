@@ -65,7 +65,7 @@ class CreateGroupStageViewController: UIViewController {
         //add groupViews:
         for var i = 0; i < self.groups.count; i++ {
             let eachGroup = self.groups[i]
-            let vw = NSBundle.mainBundle().loadNibNamed("GroupView", owner: nil, options: nil)[0] as! GroupView
+            let vw = UIView()
             vw.heightAnchor.constraintEqualToConstant(headerHeight + CGFloat(entrantHeight * eachGroup.count)).active = true
             vw.widthAnchor.constraintEqualToConstant(entrantWidth).active = true
             vw.tag = i

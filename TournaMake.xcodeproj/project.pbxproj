@@ -33,8 +33,6 @@
 		27A0AEF41BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */; };
 		27A0AEF71BFD383400AA57F1 /* CreateGroupSlotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF61BFD383400AA57F1 /* CreateGroupSlotCell.swift */; };
 		27A0AEF91BFD3A7900AA57F1 /* TournamentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF81BFD3A7900AA57F1 /* TournamentData.swift */; };
-		27A0AEFC1BFE58A600AA57F1 /* GroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A0AEFB1BFE58A600AA57F1 /* GroupView.xib */; };
-		27A0AEFE1BFE58E300AA57F1 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEFD1BFE58E300AA57F1 /* GroupView.swift */; };
 		27E82E8A1BFFA13B00C879AF /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E891BFFA13B00C879AF /* MathHelper.swift */; };
 		27E82E8C1BFFCCC200C879AF /* BracketCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */; };
 		27E82E8E1BFFF82700C879AF /* GroupCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */; };
@@ -92,8 +90,6 @@
 		27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupStageViewController.swift; sourceTree = "<group>"; };
 		27A0AEF61BFD383400AA57F1 /* CreateGroupSlotCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupSlotCell.swift; sourceTree = "<group>"; };
 		27A0AEF81BFD3A7900AA57F1 /* TournamentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentData.swift; sourceTree = "<group>"; };
-		27A0AEFB1BFE58A600AA57F1 /* GroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupView.xib; sourceTree = "<group>"; };
-		27A0AEFD1BFE58E300AA57F1 /* GroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		27E82E891BFFA13B00C879AF /* MathHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketCalculator.swift; sourceTree = "<group>"; };
 		27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalculator.swift; sourceTree = "<group>"; };
@@ -242,8 +238,6 @@
 		27A0AEFA1BFE586100AA57F1 /* UI-Items */ = {
 			isa = PBXGroup;
 			children = (
-				27A0AEFB1BFE58A600AA57F1 /* GroupView.xib */,
-				27A0AEFD1BFE58E300AA57F1 /* GroupView.swift */,
 				277ADAF11BFE942C00E17F0E /* PickerButton.swift */,
 			);
 			name = "UI-Items";
@@ -355,7 +349,6 @@
 			files = (
 				27A0AEA81BF814A900AA57F1 /* LaunchScreen.storyboard in Resources */,
 				27A0AEA51BF814A900AA57F1 /* Assets.xcassets in Resources */,
-				27A0AEFC1BFE58A600AA57F1 /* GroupView.xib in Resources */,
 				27A0AEA01BF814A900AA57F1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,7 +379,6 @@
 				27A0AEE81BFBF30B00AA57F1 /* Match+CoreDataProperties.swift in Sources */,
 				27A0AED41BFBF00D00AA57F1 /* Tournament.swift in Sources */,
 				277ADAF41BFECED500E17F0E /* CreateKnockoutViewController.swift in Sources */,
-				27A0AEFE1BFE58E300AA57F1 /* GroupView.swift in Sources */,
 				27A0AEF01BFC2A2900AA57F1 /* FormValidation.swift in Sources */,
 				27E82E8A1BFFA13B00C879AF /* MathHelper.swift in Sources */,
 				277ADAF01BFE87E000E17F0E /* MMPickerView.m in Sources */,
