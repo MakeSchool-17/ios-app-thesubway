@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PickerButton: UIButton {
+class PickerGroupButton: UIButton {
     var entrantName : String!
     var entrantIdx : Int!
     var groupIdx : Int!

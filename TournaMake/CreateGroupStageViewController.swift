@@ -92,7 +92,7 @@ class CreateGroupStageViewController: UIViewController {
                 textFieldEntrant.text = eachEntrant
                 
                 //add button on top of textField:
-                let buttonEntrant = PickerButton(frame: CGRect(x: 0, y: 0, width: textFieldEntrant.frame.width, height: textFieldEntrant.frame.height))
+                let buttonEntrant = PickerGroupButton(frame: CGRect(x: 0, y: 0, width: textFieldEntrant.frame.width, height: textFieldEntrant.frame.height))
                 textFieldEntrant.addSubview(buttonEntrant)
                 buttonEntrant.addTarget(self, action: "entrantPressed:", forControlEvents: UIControlEvents.TouchUpInside)
                 buttonEntrant.entrantName = eachEntrant
@@ -103,7 +103,7 @@ class CreateGroupStageViewController: UIViewController {
             self.stackView.addArrangedSubview(vw)
         }
     }
-    func entrantPressed(sender: PickerButton) {
+    func entrantPressed(sender: PickerGroupButton) {
         var entrantArr : [String] = self.entrantsNotEntered
         entrantArr.append(self.strEmpty)
         if sender.entrantName != self.strEmpty {
