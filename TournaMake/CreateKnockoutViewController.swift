@@ -53,16 +53,30 @@ class CreateKnockoutViewController: UIViewController {
             var teamAway = ""
             (teamHome, teamAway) = eachBracket.getMatchStr()
             
-            let labelTop = UILabel(frame: CGRect(x: 0, y: 0, width: matchWidth, height: matchHeight / 2))
+            let labelTop = UITextField(frame: CGRect(x: 0, y: 0, width: matchWidth, height: matchHeight / 2))
             labelTop.text = teamHome
             vw.addSubview(labelTop)
+            let buttonBracketHome = PickerBracketButton(frame: CGRect(x: 0, y: 0, width: labelTop.frame.size.width, height: labelTop.frame.size.height))
+            buttonBracketHome.addTarget(self, action: "bracketSlotPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+            labelTop.addSubview(buttonBracketHome)
             
-            let labelBottom = UILabel(frame: CGRect(x: 0, y: matchHeight / 2, width: matchWidth, height: matchHeight / 2))
+            let labelBottom = UITextField(frame: CGRect(x: 0, y: matchHeight / 2, width: matchWidth, height: matchHeight / 2))
             labelBottom.text = teamAway
             vw.addSubview(labelBottom)
+            let buttonBracketAway = PickerBracketButton(frame: CGRect(x: 0, y: 0, width: labelBottom.frame.size.width, height: labelBottom.frame.size.height))
+            buttonBracketAway.addTarget(self, action: "bracketSlotPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+            labelBottom.addSubview(buttonBracketAway)
             
             stackViewBracket.addArrangedSubview(vw)
         }
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func bracketSlotPressed(sender: PickerGroupButton) {
+        print("press bracket slot")
     }
 
     @IBAction func submitPressed(sender: AnyObject) {

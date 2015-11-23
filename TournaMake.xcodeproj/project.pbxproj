@@ -36,6 +36,7 @@
 		27E82E8A1BFFA13B00C879AF /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E891BFFA13B00C879AF /* MathHelper.swift */; };
 		27E82E8C1BFFCCC200C879AF /* BracketCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */; };
 		27E82E8E1BFFF82700C879AF /* GroupCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */; };
+		27E82E921C03D5BC00C879AF /* PickerBracketButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E911C03D5BC00C879AF /* PickerBracketButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		27E82E891BFFA13B00C879AF /* MathHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketCalculator.swift; sourceTree = "<group>"; };
 		27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalculator.swift; sourceTree = "<group>"; };
+		27E82E911C03D5BC00C879AF /* PickerBracketButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerBracketButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				277ADAF11BFE942C00E17F0E /* PickerGroupButton.swift */,
+				27E82E911C03D5BC00C879AF /* PickerBracketButton.swift */,
 			);
 			name = "UI-Items";
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				27A0AEF71BFD383400AA57F1 /* CreateGroupSlotCell.swift in Sources */,
 				277ADAF21BFE942C00E17F0E /* PickerGroupButton.swift in Sources */,
 				27A0AECD1BF8415500AA57F1 /* SignUpViewController.swift in Sources */,
+				27E82E921C03D5BC00C879AF /* PickerBracketButton.swift in Sources */,
 				27A0AED81BFBF02000AA57F1 /* Entrant.swift in Sources */,
 				27A0AEEA1BFBF30B00AA57F1 /* Entrant+CoreDataProperties.swift in Sources */,
 				27A0AEF41BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift in Sources */,
