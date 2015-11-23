@@ -9,7 +9,7 @@
 import UIKit
 
 class BracketCalculator {
-    class func calculateBrackets(groups : [[String]]!, tournamentData : TournamentData!) {
+    class func calculateBrackets(groups : [[String]]!, tournamentData : TournamentData!) -> [BracketMatch] {
         //assuming 6-16 teams in tournament:
         let numTeamsAdvance = self.getNumTeamsAdvancing(tournamentData)
         var numRounds = 1.0
@@ -262,13 +262,7 @@ class BracketCalculator {
                 bracketBottom.append(match8)
             }
         }
-        //print out brackets:
-        for eachBracket in bracketTop {
-            eachBracket.printMatch()
-        }
-        for eachBracket in bracketBottom {
-            eachBracket.printMatch()
-        }
+        return bracketTop + bracketBottom
     }
     class func getNumTeamsAdvancing(tournamentData : TournamentData) -> Double {
         if tournamentData.entrants.count <= 8 {
