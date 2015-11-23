@@ -23,7 +23,7 @@ class BracketMatch {
     var groupPlacingRightTeam : String!
     var groupLetterRightTeam : String!
     
-    func getMatchStr() -> String {
-        return "\(self.groupPlacingLeftTeam) \(self.groupLetterLeftTeam) vs \(self.groupPlacingRightTeam) \(self.groupLetterRightTeam)"
+    func getMatchStr() -> (String, String) {
+        return ("\(self.groupPlacingLeftTeam) \(self.groupLetterLeftTeam)", "\(self.groupPlacingRightTeam) \(self.groupLetterRightTeam)")
     }
 }

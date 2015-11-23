@@ -49,9 +49,17 @@ class CreateKnockoutViewController: UIViewController {
             vw.layer.cornerRadius = 5.0
             vw.layer.borderWidth = 1
             
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: matchWidth, height: matchHeight / 2))
-            label.text = eachBracket.getMatchStr()
-            vw.addSubview(label)
+            var teamHome = ""
+            var teamAway = ""
+            (teamHome, teamAway) = eachBracket.getMatchStr()
+            
+            let labelTop = UILabel(frame: CGRect(x: 0, y: 0, width: matchWidth, height: matchHeight / 2))
+            labelTop.text = teamHome
+            vw.addSubview(labelTop)
+            
+            let labelBottom = UILabel(frame: CGRect(x: 0, y: matchHeight / 2, width: matchWidth, height: matchHeight / 2))
+            labelBottom.text = teamAway
+            vw.addSubview(labelBottom)
             
             stackViewBracket.addArrangedSubview(vw)
         }
