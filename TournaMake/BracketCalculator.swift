@@ -40,16 +40,16 @@ class BracketCalculator {
                 for var i = 0; i < groups.count; i += 2 {
                     let match1 = BracketMatch()
                     match1.groupLetterLeftTeam = "\(groupNames[i])"
-                    match1.groupPlacingLeftTeam = match1.groupWinner
+                    match1.groupPlacingLeftTeam = GlobalConstants.groupWinner
                     match1.groupLetterRightTeam = "\(groupNames[i+1])"
-                    match1.groupPlacingRightTeam = match1.groupRunnerUp
+                    match1.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                     bracketTop.append(match1)
                     
                     let match2 = BracketMatch()
                     match2.groupLetterLeftTeam = "\(groupNames[i+1])"
-                    match2.groupPlacingLeftTeam = match2.groupWinner
+                    match2.groupPlacingLeftTeam = GlobalConstants.groupWinner
                     match2.groupLetterRightTeam = "\(groupNames[i])"
-                    match2.groupPlacingRightTeam = match2.groupRunnerUp
+                    match2.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                     bracketBottom.append(match2)
                 }
             }
@@ -57,30 +57,30 @@ class BracketCalculator {
                 //this means there are 6 teams, but no 3rd-place teams.
                 let match1 = BracketMatch()
                 match1.groupLetterLeftTeam = "\(groupNames[0])"
-                match1.groupPlacingLeftTeam = match1.groupWinner
-                match1.groupLetterRightTeam = match1.undecided
-                match1.groupPlacingRightTeam = match1.bye
+                match1.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                match1.groupLetterRightTeam = GlobalConstants.undecided
+                match1.groupPlacingRightTeam = GlobalConstants.bye
                 bracketTop.append(match1)
                 
                 let match2 = BracketMatch()
                 match2.groupLetterLeftTeam = "\(groupNames[0])"
-                match2.groupPlacingLeftTeam = match2.groupRunnerUp
+                match2.groupPlacingLeftTeam = GlobalConstants.groupRunnerUp
                 match2.groupLetterRightTeam = "\(groupNames[2])"
-                match2.groupPlacingRightTeam = match2.groupRunnerUp
+                match2.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                 bracketBottom.append(match2)
                 
                 let match3 = BracketMatch()
                 match3.groupLetterLeftTeam = "\(groupNames[2])"
-                match3.groupPlacingLeftTeam = match3.groupWinner
+                match3.groupPlacingLeftTeam = GlobalConstants.groupWinner
                 match3.groupLetterRightTeam = "\(groupNames[1])"
-                match3.groupPlacingRightTeam = match3.groupRunnerUp
+                match3.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                 bracketTop.append(match3)
                 
                 let match4 = BracketMatch()
                 match4.groupLetterLeftTeam = "\(groupNames[1])"
-                match4.groupPlacingLeftTeam = match4.groupWinner
-                match4.groupLetterRightTeam = match4.undecided
-                match4.groupPlacingRightTeam = match4.bye
+                match4.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                match4.groupLetterRightTeam = GlobalConstants.undecided
+                match4.groupPlacingRightTeam = GlobalConstants.bye
                 bracketBottom.append(match4)
             }
         }
@@ -89,58 +89,58 @@ class BracketCalculator {
             if groups.count == 5 {
                 let match1 = BracketMatch()
                 match1.groupLetterLeftTeam = "\(groupNames[0])"
-                match1.groupPlacingLeftTeam = match1.groupWinner
-                match1.groupLetterRightTeam = match1.undecided
-                match1.groupPlacingRightTeam = match1.bye
+                match1.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                match1.groupLetterRightTeam = GlobalConstants.undecided
+                match1.groupPlacingRightTeam = GlobalConstants.bye
                 bracketTop.append(match1)
                 
                 let match2 = BracketMatch()
                 match2.groupLetterLeftTeam = "\(groupNames[0])"
-                match2.groupPlacingLeftTeam = match2.groupRunnerUp
-                match2.groupLetterRightTeam = match2.undecided
-                match2.groupPlacingRightTeam = match2.group3rd
+                match2.groupPlacingLeftTeam = GlobalConstants.groupRunnerUp
+                match2.groupLetterRightTeam = GlobalConstants.undecided
+                match2.groupPlacingRightTeam = GlobalConstants.group3rd
                 bracketBottom.append(match2)
                 
                 let match3 = BracketMatch()
                 match3.groupLetterLeftTeam = "\(groupNames[1])"
-                match3.groupPlacingLeftTeam = match3.groupRunnerUp
+                match3.groupPlacingLeftTeam = GlobalConstants.groupRunnerUp
                 match3.groupLetterRightTeam = "\(groupNames[3])"
-                match3.groupPlacingRightTeam = match3.groupRunnerUp
+                match3.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                 bracketTop.append(match3)
                 
                 let match4 = BracketMatch()
                 match4.groupLetterLeftTeam = "\(groupNames[1])"
-                match4.groupPlacingLeftTeam = match4.groupWinner
-                match4.groupLetterRightTeam = match4.undecided
-                match4.groupPlacingRightTeam = match4.bye
+                match4.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                match4.groupLetterRightTeam = GlobalConstants.undecided
+                match4.groupPlacingRightTeam = GlobalConstants.bye
                 bracketBottom.append(match4)
                 
                 let match5 = BracketMatch()
                 match5.groupLetterLeftTeam = "\(groupNames[2])"
-                match5.groupPlacingLeftTeam = match5.groupWinner
-                match5.groupLetterRightTeam = match5.undecided
-                match5.groupPlacingRightTeam = match5.bye
+                match5.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                match5.groupLetterRightTeam = GlobalConstants.undecided
+                match5.groupPlacingRightTeam = GlobalConstants.bye
                 bracketTop.append(match5)
                 
                 let match6 = BracketMatch()
                 match6.groupLetterLeftTeam = "\(groupNames[2])"
-                match6.groupPlacingLeftTeam = match6.groupRunnerUp
+                match6.groupPlacingLeftTeam = GlobalConstants.groupRunnerUp
                 match6.groupLetterRightTeam = "\(groupNames[4])"
-                match6.groupPlacingRightTeam = match6.groupRunnerUp
+                match6.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                 bracketBottom.append(match6)
                 
                 let match7 = BracketMatch()
                 match7.groupLetterLeftTeam = "\(groupNames[4])"
-                match7.groupPlacingLeftTeam = match7.groupWinner
-                match7.groupLetterRightTeam = match7.undecided
-                match7.groupPlacingRightTeam = match7.group3rd
+                match7.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                match7.groupLetterRightTeam = GlobalConstants.undecided
+                match7.groupPlacingRightTeam = GlobalConstants.group3rd
                 bracketTop.append(match7)
                 
                 let match8 = BracketMatch()
                 match8.groupLetterLeftTeam = "\(groupNames[3])"
-                match8.groupPlacingLeftTeam = match8.groupWinner
-                match8.groupLetterRightTeam = match8.undecided
-                match8.groupPlacingRightTeam = match8.bye
+                match8.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                match8.groupLetterRightTeam = GlobalConstants.undecided
+                match8.groupPlacingRightTeam = GlobalConstants.bye
                 bracketBottom.append(match8)
             }
             else if groups.count == 6 || groups.count == 12 {
@@ -148,58 +148,58 @@ class BracketCalculator {
                 for var i = 0; i < groups.count; i += 6 {
                     let match1 = BracketMatch()
                     match1.groupLetterLeftTeam = "\(groupNames[0+i])"
-                    match1.groupPlacingLeftTeam = match1.groupWinner
-                    match1.groupLetterRightTeam = match1.undecided
-                    match1.groupPlacingRightTeam = match1.group3rd
+                    match1.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                    match1.groupLetterRightTeam = GlobalConstants.undecided
+                    match1.groupPlacingRightTeam = GlobalConstants.group3rd
                     bracketTop.append(match1)
                     
                     let match2 = BracketMatch()
                     match2.groupLetterLeftTeam = "\(groupNames[1+i])"
-                    match2.groupPlacingLeftTeam = match2.groupRunnerUp
+                    match2.groupPlacingLeftTeam = GlobalConstants.groupRunnerUp
                     match2.groupLetterRightTeam = "\(groupNames[5+i])"
-                    match2.groupPlacingRightTeam = match2.groupRunnerUp
+                    match2.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                     bracketTop.append(match2)
                     
                     let match3 = BracketMatch()
                     match3.groupLetterLeftTeam = "\(groupNames[2+i])"
-                    match3.groupPlacingLeftTeam = match3.groupWinner
-                    match3.groupLetterRightTeam = match3.undecided
-                    match3.groupPlacingRightTeam = match3.group3rd
+                    match3.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                    match3.groupLetterRightTeam = GlobalConstants.undecided
+                    match3.groupPlacingRightTeam = GlobalConstants.group3rd
                     bracketTop.append(match3)
                     
                     let match4 = BracketMatch()
                     match4.groupLetterLeftTeam = "\(groupNames[4+i])"
-                    match4.groupPlacingLeftTeam = match4.groupWinner
+                    match4.groupPlacingLeftTeam = GlobalConstants.groupWinner
                     match4.groupLetterRightTeam = "\(groupNames[3+i])"
-                    match4.groupPlacingRightTeam = match4.groupRunnerUp
+                    match4.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                     bracketTop.append(match4)
                     
                     let match5 = BracketMatch()
                     match5.groupLetterLeftTeam = "\(groupNames[5+i])"
-                    match5.groupPlacingLeftTeam = match5.groupWinner
+                    match5.groupPlacingLeftTeam = GlobalConstants.groupWinner
                     match5.groupLetterRightTeam = "\(groupNames[4+i])"
-                    match5.groupPlacingRightTeam = match5.groupRunnerUp
+                    match5.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                     bracketBottom.append(match5)
                     
                     let match6 = BracketMatch()
                     match6.groupLetterLeftTeam = "\(groupNames[1+i])"
-                    match6.groupPlacingLeftTeam = match6.groupWinner
-                    match6.groupLetterRightTeam = match6.undecided
-                    match6.groupPlacingRightTeam = match6.group3rd
+                    match6.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                    match6.groupLetterRightTeam = GlobalConstants.undecided
+                    match6.groupPlacingRightTeam = GlobalConstants.group3rd
                     bracketBottom.append(match6)
                     
                     let match7 = BracketMatch()
                     match7.groupLetterLeftTeam = "\(groupNames[3+i])"
-                    match7.groupPlacingLeftTeam = match7.groupWinner
-                    match7.groupLetterRightTeam = match7.undecided
-                    match7.groupPlacingRightTeam = match7.group3rd
+                    match7.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                    match7.groupLetterRightTeam = GlobalConstants.undecided
+                    match7.groupPlacingRightTeam = GlobalConstants.group3rd
                     bracketBottom.append(match7)
                     
                     let match8 = BracketMatch()
                     match8.groupLetterLeftTeam = "\(groupNames[0+i])"
-                    match8.groupPlacingLeftTeam = match8.groupRunnerUp
+                    match8.groupPlacingLeftTeam = GlobalConstants.groupRunnerUp
                     match8.groupLetterRightTeam = "\(groupNames[2+i])"
-                    match8.groupPlacingRightTeam = match8.groupRunnerUp
+                    match8.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                     bracketBottom.append(match8)
                 }
 
@@ -207,58 +207,58 @@ class BracketCalculator {
             else if groups.count == 7 {
                 let match1 = BracketMatch()
                 match1.groupLetterLeftTeam = "\(groupNames[0])"
-                match1.groupPlacingLeftTeam = match1.groupWinner
-                match1.groupLetterRightTeam = match1.undecided
-                match1.groupPlacingRightTeam = match1.group3rd
+                match1.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                match1.groupLetterRightTeam = GlobalConstants.undecided
+                match1.groupPlacingRightTeam = GlobalConstants.group3rd
                 bracketTop.append(match1)
                 
                 let match2 = BracketMatch()
                 match2.groupLetterLeftTeam = "\(groupNames[1])"
-                match2.groupPlacingLeftTeam = match2.groupRunnerUp
+                match2.groupPlacingLeftTeam = GlobalConstants.groupRunnerUp
                 match2.groupLetterRightTeam = "\(groupNames[2])"
-                match2.groupPlacingRightTeam = match2.groupRunnerUp
+                match2.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                 bracketTop.append(match2)
                 
                 let match3 = BracketMatch()
                 match3.groupLetterLeftTeam = "\(groupNames[3])"
-                match3.groupPlacingLeftTeam = match3.groupWinner
+                match3.groupPlacingLeftTeam = GlobalConstants.groupWinner
                 match3.groupLetterRightTeam = "\(groupNames[4])"
-                match3.groupPlacingRightTeam = match3.groupRunnerUp
+                match3.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                 bracketTop.append(match3)
                 
                 let match4 = BracketMatch()
                 match4.groupLetterLeftTeam = "\(groupNames[5])"
-                match4.groupPlacingLeftTeam = match4.groupWinner
+                match4.groupPlacingLeftTeam = GlobalConstants.groupWinner
                 match4.groupLetterRightTeam = "\(groupNames[6])"
-                match4.groupPlacingRightTeam = match4.groupRunnerUp
+                match4.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                 bracketTop.append(match4)
                 
                 let match5 = BracketMatch()
                 match5.groupLetterLeftTeam = "\(groupNames[1])"
-                match5.groupPlacingLeftTeam = match5.groupWinner
-                match5.groupLetterRightTeam = match5.undecided
-                match5.groupPlacingRightTeam = match5.group3rd
+                match5.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                match5.groupLetterRightTeam = GlobalConstants.undecided
+                match5.groupPlacingRightTeam = GlobalConstants.group3rd
                 bracketBottom.append(match5)
                 
                 let match6 = BracketMatch()
                 match6.groupLetterLeftTeam = "\(groupNames[7])"
-                match6.groupPlacingLeftTeam = match6.groupWinner
+                match6.groupPlacingLeftTeam = GlobalConstants.groupWinner
                 match6.groupLetterRightTeam = "\(groupNames[0])"
-                match6.groupPlacingRightTeam = match6.groupRunnerUp
+                match6.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                 bracketBottom.append(match6)
                 
                 let match7 = BracketMatch()
                 match7.groupLetterLeftTeam = "\(groupNames[2])"
-                match7.groupPlacingLeftTeam = match7.groupWinner
+                match7.groupPlacingLeftTeam = GlobalConstants.groupWinner
                 match7.groupLetterRightTeam = "\(groupNames[3])"
-                match7.groupPlacingRightTeam = match7.groupRunnerUp
+                match7.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                 bracketBottom.append(match7)
                 
                 let match8 = BracketMatch()
                 match8.groupLetterLeftTeam = "\(groupNames[4])"
-                match8.groupPlacingLeftTeam = match8.groupWinner
+                match8.groupPlacingLeftTeam = GlobalConstants.groupWinner
                 match8.groupLetterRightTeam = "\(groupNames[5])"
-                match8.groupPlacingRightTeam = match8.groupRunnerUp
+                match8.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
                 bracketBottom.append(match8)
             }
         }

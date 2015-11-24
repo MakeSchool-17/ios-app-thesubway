@@ -13,7 +13,6 @@ class CreateGroupStageViewController: UIViewController {
     var tournamentData : TournamentData!
     var groups : [[String]]!
     var entrantsNotEntered : [String] = []
-    let strEmpty = "*Empty*"
     @IBOutlet var stackView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,8 +104,8 @@ class CreateGroupStageViewController: UIViewController {
     }
     func entrantPressed(sender: PickerGroupButton) {
         var entrantArr : [String] = self.entrantsNotEntered
-        entrantArr.append(self.strEmpty)
-        if sender.entrantName != self.strEmpty {
+        entrantArr.append(GlobalConstants.strEmpty)
+        if sender.entrantName != GlobalConstants.strEmpty {
             entrantArr.append(sender.entrantName!)
         }
         MMPickerView.showPickerViewInView(self.view, withObjects: entrantArr, withOptions: nil, objectToStringConverter: nil) { (selectedString : AnyObject!) -> Void in
@@ -114,9 +113,9 @@ class CreateGroupStageViewController: UIViewController {
                 //cancel:
                 return
             }
-            else if String(selectedString!) == self.strEmpty {
+            else if String(selectedString!) == GlobalConstants.strEmpty {
                 //set current entrant from array to empty.
-                self.groups[sender.groupIdx][sender.entrantIdx] = self.strEmpty
+                self.groups[sender.groupIdx][sender.entrantIdx] = GlobalConstants.strEmpty
                 self.entrantsNotEntered.append(sender.entrantName)
             }
             else {
@@ -124,7 +123,7 @@ class CreateGroupStageViewController: UIViewController {
                 self.groups[sender.groupIdx][sender.entrantIdx] = selectedString as! String
                 self.entrantsNotEntered = self.removedFromArr(self.entrantsNotEntered, element: selectedString as! String)
                 //if previous name was an existing name:
-                if sender.entrantName != self.strEmpty {
+                if sender.entrantName != GlobalConstants.strEmpty {
                     self.entrantsNotEntered.append(sender.entrantName)
                 }
             }

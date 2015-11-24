@@ -10,11 +10,6 @@ import UIKit
 
 class BracketMatch {
     //constants:
-    let groupWinner = "Winner"
-    let groupRunnerUp = "Runner-up"
-    let group3rd = "3rd-place Wild-Card"
-    let bye = "BYE"
-    let undecided = "-"
     
     var homeTeamStr = ""
     var awayTeamStr = ""

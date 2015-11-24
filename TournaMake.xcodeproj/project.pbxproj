@@ -37,6 +37,7 @@
 		27E82E8C1BFFCCC200C879AF /* BracketCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */; };
 		27E82E8E1BFFF82700C879AF /* GroupCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */; };
 		27E82E921C03D5BC00C879AF /* PickerBracketButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E911C03D5BC00C879AF /* PickerBracketButton.swift */; };
+		27E82E941C03EA4000C879AF /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E931C03EA4000C879AF /* GlobalConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketCalculator.swift; sourceTree = "<group>"; };
 		27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalculator.swift; sourceTree = "<group>"; };
 		27E82E911C03D5BC00C879AF /* PickerBracketButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerBracketButton.swift; sourceTree = "<group>"; };
+		27E82E931C03EA4000C879AF /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +222,7 @@
 		27A0AEEE1BFC2A0C00AA57F1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				27E82E931C03EA4000C879AF /* GlobalConstants.swift */,
 				27A0AEEF1BFC2A2900AA57F1 /* FormValidation.swift */,
 				27A0AEF11BFC429200AA57F1 /* UIHelper.swift */,
 				27E82E891BFFA13B00C879AF /* MathHelper.swift */,
@@ -395,6 +398,7 @@
 				27A0AECD1BF8415500AA57F1 /* SignUpViewController.swift in Sources */,
 				27E82E921C03D5BC00C879AF /* PickerBracketButton.swift in Sources */,
 				27A0AED81BFBF02000AA57F1 /* Entrant.swift in Sources */,
+				27E82E941C03EA4000C879AF /* GlobalConstants.swift in Sources */,
 				27A0AEEA1BFBF30B00AA57F1 /* Entrant+CoreDataProperties.swift in Sources */,
 				27A0AEF41BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift in Sources */,
 				27A0AE9B1BF814A900AA57F1 /* AppDelegate.swift in Sources */,
