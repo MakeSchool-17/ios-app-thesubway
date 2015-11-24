@@ -79,6 +79,19 @@ class CreateKnockoutViewController: UIViewController {
             if String(selectedString!) == sender.slotName {
                 return
             }
+            else if String(selectedString!) == GlobalConstants.strEmpty {
+                //set current entrant from array to empty.
+                self.bracketSlots[sender.slotIdx] = GlobalConstants.strEmpty
+                self.slotsNotEntered.append(sender.slotName)
+            }
+            else {
+                self.bracketSlots[sender.slotIdx] = selectedString as! String
+                self.slotsNotEntered = AlgorithmUtil.removedFromArr(self.slotsNotEntered, element: selectedString as! String)
+                if sender.slotName != GlobalConstants.strEmpty {
+                    self.slotsNotEntered.append(sender.slotName)
+                }
+            }
+            self.reloadStackViewBracket()
         }
     }
 
