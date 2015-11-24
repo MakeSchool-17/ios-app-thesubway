@@ -53,20 +53,15 @@ class CreateKnockoutViewController: UIViewController {
             var teamHome = ""
             var teamAway = ""
             (teamHome, teamAway) = eachBracket.getMatchStr()
-            
-            let labelTop = UITextField(frame: CGRect(x: 0, y: 0, width: matchWidth, height: matchHeight / 2))
-            labelTop.text = teamHome
-            vw.addSubview(labelTop)
-            let buttonBracketHome = PickerBracketButton(frame: CGRect(x: 0, y: 0, width: labelTop.frame.size.width, height: labelTop.frame.size.height))
-            buttonBracketHome.addTarget(self, action: "bracketSlotPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-            labelTop.addSubview(buttonBracketHome)
-            
-            let labelBottom = UITextField(frame: CGRect(x: 0, y: matchHeight / 2, width: matchWidth, height: matchHeight / 2))
-            labelBottom.text = teamAway
-            vw.addSubview(labelBottom)
-            let buttonBracketAway = PickerBracketButton(frame: CGRect(x: 0, y: 0, width: labelBottom.frame.size.width, height: labelBottom.frame.size.height))
-            buttonBracketAway.addTarget(self, action: "bracketSlotPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-            labelBottom.addSubview(buttonBracketAway)
+            let tupleTeams = [teamHome, teamAway]
+            for var j = 0; j < 2; j++ {
+                let labelTop = UITextField(frame: CGRect(x: 0, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
+                labelTop.text = tupleTeams[j]
+                vw.addSubview(labelTop)
+                let buttonBracket = PickerBracketButton(frame: CGRect(x: 0, y: 0, width: labelTop.frame.size.width, height: labelTop.frame.size.height))
+                buttonBracket.addTarget(self, action: "bracketSlotPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+                labelTop.addSubview(buttonBracket)
+            }
             
             stackViewBracket.addArrangedSubview(vw)
         }
@@ -78,6 +73,11 @@ class CreateKnockoutViewController: UIViewController {
     
     func bracketSlotPressed(sender: PickerGroupButton) {
         print("press bracket slot")
+        var slotArr : [String] = self.slotsNotEntered
+        slotArr.append(GlobalConstants.strEmpty)
+        MMPickerView.showPickerViewInView(self.view, withObjects: slotArr, withOptions: nil, objectToStringConverter: nil) { (selectedString : AnyObject!) -> Void in
+            print(selectedString!)
+        }
     }
 
     @IBAction func submitPressed(sender: AnyObject) {
