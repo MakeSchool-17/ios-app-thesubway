@@ -51,7 +51,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
         var nonEmptyNames : [String] = []
         //remove empty names:
         for eachName in fullNameArr {
-            if FormValidation.hasNonWhiteSpaceChar(eachName) == true {
+            if AlgorithmUtil.hasNonWhiteSpaceChar(eachName) == true {
                 nonEmptyNames.append(eachName)
             }
         }

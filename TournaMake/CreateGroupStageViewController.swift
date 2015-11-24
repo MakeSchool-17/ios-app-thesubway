@@ -121,7 +121,7 @@ class CreateGroupStageViewController: UIViewController {
             else {
                 //replace previous name with new name
                 self.groups[sender.groupIdx][sender.entrantIdx] = selectedString as! String
-                self.entrantsNotEntered = self.removedFromArr(self.entrantsNotEntered, element: selectedString as! String)
+                self.entrantsNotEntered = AlgorithmUtil.removedFromArr(self.entrantsNotEntered, element: selectedString as! String)
                 //if previous name was an existing name:
                 if sender.entrantName != GlobalConstants.strEmpty {
                     self.entrantsNotEntered.append(sender.entrantName)
@@ -130,10 +130,7 @@ class CreateGroupStageViewController: UIViewController {
             self.reloadStackView()
         }
     }
-    func removedFromArr(inArr : [String], element : String) -> [String] {
-        let outArr = inArr.filter() { $0 != element }
-        return outArr
-    }
+
     @IBAction func submitPressed(sender : AnyObject?) {
         if self.entrantsNotEntered.count > 0 {
             var strMissing = "\nEntrants missing:"

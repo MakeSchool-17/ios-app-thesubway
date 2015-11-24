@@ -28,7 +28,7 @@
 		27A0AEE91BFBF30B00AA57F1 /* Tournament+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEE61BFBF30B00AA57F1 /* Tournament+CoreDataProperties.swift */; };
 		27A0AEEA1BFBF30B00AA57F1 /* Entrant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEE71BFBF30B00AA57F1 /* Entrant+CoreDataProperties.swift */; };
 		27A0AEEC1BFBF4A800AA57F1 /* CreateTournamentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEEB1BFBF4A800AA57F1 /* CreateTournamentViewController.swift */; };
-		27A0AEF01BFC2A2900AA57F1 /* FormValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEEF1BFC2A2900AA57F1 /* FormValidation.swift */; };
+		27A0AEF01BFC2A2900AA57F1 /* AlgorithmUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEEF1BFC2A2900AA57F1 /* AlgorithmUtil.swift */; };
 		27A0AEF21BFC429200AA57F1 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF11BFC429200AA57F1 /* UIHelper.swift */; };
 		27A0AEF41BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */; };
 		27A0AEF71BFD383400AA57F1 /* CreateGroupSlotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF61BFD383400AA57F1 /* CreateGroupSlotCell.swift */; };
@@ -87,7 +87,7 @@
 		27A0AEE61BFBF30B00AA57F1 /* Tournament+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tournament+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27A0AEE71BFBF30B00AA57F1 /* Entrant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Entrant+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27A0AEEB1BFBF4A800AA57F1 /* CreateTournamentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTournamentViewController.swift; sourceTree = "<group>"; };
-		27A0AEEF1BFC2A2900AA57F1 /* FormValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValidation.swift; sourceTree = "<group>"; };
+		27A0AEEF1BFC2A2900AA57F1 /* AlgorithmUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmUtil.swift; sourceTree = "<group>"; };
 		27A0AEF11BFC429200AA57F1 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupStageViewController.swift; sourceTree = "<group>"; };
 		27A0AEF61BFD383400AA57F1 /* CreateGroupSlotCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupSlotCell.swift; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				27E82E931C03EA4000C879AF /* GlobalConstants.swift */,
-				27A0AEEF1BFC2A2900AA57F1 /* FormValidation.swift */,
+				27A0AEEF1BFC2A2900AA57F1 /* AlgorithmUtil.swift */,
 				27A0AEF11BFC429200AA57F1 /* UIHelper.swift */,
 				27E82E891BFFA13B00C879AF /* MathHelper.swift */,
 				27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */,
@@ -385,7 +385,7 @@
 				27A0AEE81BFBF30B00AA57F1 /* Match+CoreDataProperties.swift in Sources */,
 				27A0AED41BFBF00D00AA57F1 /* Tournament.swift in Sources */,
 				277ADAF41BFECED500E17F0E /* CreateKnockoutViewController.swift in Sources */,
-				27A0AEF01BFC2A2900AA57F1 /* FormValidation.swift in Sources */,
+				27A0AEF01BFC2A2900AA57F1 /* AlgorithmUtil.swift in Sources */,
 				27E82E8A1BFFA13B00C879AF /* MathHelper.swift in Sources */,
 				277ADAF01BFE87E000E17F0E /* MMPickerView.m in Sources */,
 				27A0AEF91BFD3A7900AA57F1 /* TournamentData.swift in Sources */,

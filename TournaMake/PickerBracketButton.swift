@@ -10,4 +10,5 @@ import UIKit
 
 class PickerBracketButton: UIButton {
     var slotName : String!
+    var slotIdx : Int!
 }
