@@ -9,5 +9,5 @@
 import UIKit
 
 class PickerBracketButton: UIButton {
-
+    var slotName : String!
 }
