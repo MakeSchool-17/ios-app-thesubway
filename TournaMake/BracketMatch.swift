@@ -17,26 +17,43 @@ class BracketMatch {
     //properties:
     var groupPlacingLeftTeam : String! {
         didSet {
-            self.homeTeamStr = "\(self.groupPlacingLeftTeam) \(self.groupLetterLeftTeam)"
+            self.homeTeamStr = self.getTeamStr(true)
         }
     }
     var groupLetterLeftTeam : String! {
         didSet {
-            self.homeTeamStr = "\(self.groupPlacingLeftTeam) \(self.groupLetterLeftTeam)"
+            self.homeTeamStr = self.getTeamStr(true)
         }
     }
     var groupPlacingRightTeam : String! {
         didSet {
-            self.awayTeamStr = "\(self.groupPlacingRightTeam) \(self.groupLetterRightTeam)"
+            self.awayTeamStr = self.getTeamStr(false)
         }
     }
     var groupLetterRightTeam : String! {
         didSet {
-            self.awayTeamStr = "\(self.groupPlacingRightTeam) \(self.groupLetterRightTeam)"
+            self.awayTeamStr = self.getTeamStr(false)
         }
     }
     
     func getMatchStr() -> (String, String) {
         return (self.homeTeamStr, self.awayTeamStr)
+    }
+    
+    func getTeamStr(isHome : Bool) -> String {
+        var finalStr = ""
+        var groupLetter = ""
+        if isHome == true {
+            finalStr += "\(self.groupPlacingLeftTeam)"
+            groupLetter = self.groupLetterLeftTeam
+        }
+        else {
+            finalStr += "\(self.groupPlacingRightTeam)"
+            groupLetter = self.groupLetterRightTeam
+        }
+        if groupLetter != GlobalConstants.undecided {
+            finalStr += " \(groupLetter)"
+        }
+        return finalStr
     }
 }
