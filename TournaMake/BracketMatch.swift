@@ -16,14 +16,32 @@ class BracketMatch {
     let bye = "BYE"
     let undecided = "-"
     
-    //properties:
-    var groupPlacingLeftTeam : String!
-    var groupLetterLeftTeam : String!
+    var homeTeamStr = ""
+    var awayTeamStr = ""
     
-    var groupPlacingRightTeam : String!
-    var groupLetterRightTeam : String!
+    //properties:
+    var groupPlacingLeftTeam : String! {
+        didSet {
+            self.homeTeamStr = "\(self.groupPlacingLeftTeam) \(self.groupLetterLeftTeam)"
+        }
+    }
+    var groupLetterLeftTeam : String! {
+        didSet {
+            self.homeTeamStr = "\(self.groupPlacingLeftTeam) \(self.groupLetterLeftTeam)"
+        }
+    }
+    var groupPlacingRightTeam : String! {
+        didSet {
+            self.awayTeamStr = "\(self.groupPlacingRightTeam) \(self.groupLetterRightTeam)"
+        }
+    }
+    var groupLetterRightTeam : String! {
+        didSet {
+            self.awayTeamStr = "\(self.groupPlacingRightTeam) \(self.groupLetterRightTeam)"
+        }
+    }
     
     func getMatchStr() -> (String, String) {
-        return ("\(self.groupPlacingLeftTeam) \(self.groupLetterLeftTeam)", "\(self.groupPlacingRightTeam) \(self.groupLetterRightTeam)")
+        return (self.homeTeamStr, self.awayTeamStr)
     }
 }

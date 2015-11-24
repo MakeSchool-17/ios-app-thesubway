@@ -15,6 +15,7 @@ class CreateKnockoutViewController: UIViewController {
     var advancingSlots : [String]!
     @IBOutlet var stackViewBracket: UIStackView!
     var bracketMatches : [BracketMatch]!
+    var slotsNotEntered : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
