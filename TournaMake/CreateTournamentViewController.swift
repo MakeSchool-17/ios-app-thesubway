@@ -29,6 +29,8 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
         self.textViewEntrants.autocorrectionType = UITextAutocorrectionType.No
         
         self.textFieldTournamentName.autocapitalizationType = UITextAutocapitalizationType.Words
+        
+        self.textFieldTournamentName.text = "Tournament 1"
     }
 
     override func didReceiveMemoryWarning() {
