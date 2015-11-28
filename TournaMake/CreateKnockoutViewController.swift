@@ -96,6 +96,9 @@ class CreateKnockoutViewController: UIViewController {
     }
 
     @IBAction func submitPressed(sender: AnyObject) {
-        print("submit")
+        //save tournament to core data.
+        CoreDataUtil.addTournament(tournamentData)
+        //save tournament's matches to core data.
+        //save tournament's participants to core data.
     }
 }

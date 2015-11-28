@@ -11,7 +11,7 @@ import CoreData
 
 class CoreDataUtil {
     
-    class func addTournament() -> Tournament! {
+    class func addTournament(data: TournamentData) -> Tournament! {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext
         let newTournament : Tournament = NSEntityDescription.insertNewObjectForEntityForName("Tournament", inManagedObjectContext: context) as! Tournament
@@ -20,9 +20,13 @@ class CoreDataUtil {
         var existingTournament : [Tournament]!
         repeat {
             existingTournament = CoreDataUtil.searchTournament("id", value: "-\(tournamentId)")
-            tournamentId++
+            //repetition of same condition:
+            if existingTournament.count != 0 {
+                tournamentId++
+            }
         } while existingTournament.count != 0
         newTournament.id = "-\(tournamentId)"
+        newTournament.name = data.name
         do {
             try context.save()
         } catch {
