@@ -10,6 +10,7 @@ import UIKit
 
 class TournamentData {
     var entrants : [String]
+    var groups : [[String]]!
     var name : String
     
     init(entrants : [String], name : String) {

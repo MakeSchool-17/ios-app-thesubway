@@ -27,6 +27,10 @@ class CoreDataUtil {
         } while existingTournament.count != 0
         newTournament.id = "-\(tournamentId)"
         newTournament.name = data.name
+        //use tournamentData.groups to add players
+        for eachGroup in data.groups {
+            
+        }
         do {
             try context.save()
         } catch {
