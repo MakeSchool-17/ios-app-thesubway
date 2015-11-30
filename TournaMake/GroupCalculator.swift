@@ -43,6 +43,7 @@ class GroupCalculator {
         }
         return finalGroups
     }
+    
     class func getGroupsOf5Or6(entrants : [String]) -> [[String]] {
         //for cases where entrants.count is between 33 and 44 inclusive.
         var finalGroups : [[String]] = []
@@ -74,6 +75,7 @@ class GroupCalculator {
         }
         return finalGroups
     }
+    
     class func getnGroups(numGroups : Int, entrants : [String]) -> [[String]] {
         var finalGroups : [[String]] = []
         //this algorithm works best with 49-64 teams in tournament:
@@ -101,5 +103,27 @@ class GroupCalculator {
             finalGroups.append(groupOfEntrants)
         }
         return finalGroups
+    }
+    
+    class func getRoundRobinSchedule(var group : [String]) -> [String] {
+        var schedule : [String] = []
+        if group.count % 2 != 0 {
+            group.append(GlobalConstants.bye)
+        }
+        var numRounds = 0
+        while numRounds < group.count - 1 {
+            //beginning of array faces last in array
+            for var i = 0; i < group.count / 2; i++ {
+                schedule.append("\(group[i]) vs. \(group[group.count - i - 1])")
+            }
+            //rotate everything to the right except first element.
+            var newRound = [group[0], group[group.count - 1]]
+            for var i = 1; i < group.count - 1; i++ {
+                newRound.append(group[i])
+            }
+            group = newRound
+            numRounds++
+        }
+        return schedule
     }
 }

@@ -13,6 +13,6 @@ struct GlobalConstants {
     static let groupWinner = "Winner"
     static let groupRunnerUp = "Runner-up"
     static let group3rd = "3rd-place Wild-Card"
-    static let bye = "BYE"
+    static let bye = "*BYE*"
     static let undecided = "-"
 }
