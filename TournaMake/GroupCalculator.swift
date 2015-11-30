@@ -105,8 +105,8 @@ class GroupCalculator {
         return finalGroups
     }
     
-    class func getRoundRobinSchedule(var group : [String]) -> [String] {
-        var schedule : [String] = []
+    class func getRoundRobinSchedule(var group : [String]) -> [[String]] {
+        var schedule : [[String]] = []
         if group.count % 2 != 0 {
             group.append(GlobalConstants.bye)
         }
@@ -114,7 +114,7 @@ class GroupCalculator {
         while numRounds < group.count - 1 {
             //beginning of array faces last in array
             for var i = 0; i < group.count / 2; i++ {
-                schedule.append("\(group[i]) vs. \(group[group.count - i - 1])")
+                schedule.append([group[i], group[group.count - i - 1]])
             }
             //rotate everything to the right except first element.
             var newRound = [group[0], group[group.count - 1]]
