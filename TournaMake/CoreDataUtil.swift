@@ -27,10 +27,18 @@ class CoreDataUtil {
         } while existingTournament.count != 0
         newTournament.id = "-\(tournamentId)"
         newTournament.name = data.name
-        //use tournamentData.groups to add players
+        //create dictionary for entrant id's:
+        let entrantDict = NSMutableDictionary()
+        var id = 0
         for eachGroup in data.groups {
-            
+            for eachEntrant in eachGroup {
+                entrantDict.setValue(id, forKey: eachEntrant)
+                //save all entrant to core data:
+                print(self.addEntrant(eachEntrant, id: id, tournament: newTournament))
+                id++
+            }
         }
+        //create round robin matches, using player id's.
         do {
             try context.save()
         } catch {
@@ -56,6 +64,7 @@ class CoreDataUtil {
         }
         return results
     }
+    
     class func searchTournament(key : String, value : String) -> [Tournament]? {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext
@@ -71,5 +80,21 @@ class CoreDataUtil {
             return nil
         }
         return results
+    }
+    
+    class func addEntrant(name: String, id: Int, tournament: Tournament) -> Entrant? {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let newEntrant : Entrant = NSEntityDescription.insertNewObjectForEntityForName("Entrant", inManagedObjectContext: context) as! Entrant
+        newEntrant.id = "\(id)"
+        newEntrant.name = name
+        newEntrant.tournament = tournament
+        do {
+            try context.save()
+        } catch {
+            print("could not save")
+            return nil
+        }
+        return newEntrant
     }
 }
