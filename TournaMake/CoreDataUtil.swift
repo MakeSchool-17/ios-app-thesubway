@@ -30,6 +30,7 @@ class CoreDataUtil {
         //create dictionary for entrant id's:
         let entrantDict = NSMutableDictionary()
         var id = 0
+        var matchId = 0
         for eachGroup in data.groups {
             for eachEntrant in eachGroup {
                 entrantDict.setValue(id, forKey: eachEntrant)
@@ -43,7 +44,9 @@ class CoreDataUtil {
             for var j = 0; j < roundRobin.count; j++ {
                 let eachMatch = roundRobin[j]
                 //create a core data match, save its 2 players' id's.
-                
+                self.addMatch(id: "\(matchId)", leftId: eachMatch[0], rightId: eachMatch[1], tournament: newTournament)
+                //my template has it set so that
+                matchId++
             }
             print(roundRobin)
         }
@@ -115,7 +118,7 @@ class CoreDataUtil {
         return self.getEntrant(key: "name", value: name, tournament: tournament)
     }
     
-    class func getEntrant(key key : String, value: String, tournament: Tournament) -> [Entrant]? {
+    private class func getEntrant(key key : String, value: String, tournament: Tournament) -> [Entrant]? {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext
         let request = NSFetchRequest(entityName: "Entrant")
@@ -143,5 +146,43 @@ class CoreDataUtil {
             newNames.append(entrant!.id!)
         }
         return newNames
+    }
+    
+    class func addMatch(id matchId: String, leftId : String, rightId : String, tournament : Tournament) -> Match? {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let match : Match = NSEntityDescription.insertNewObjectForEntityForName("Match", inManagedObjectContext: context) as! Match
+        match.id = matchId
+        match.leftId = leftId
+        match.rightId = rightId
+        match.leftScore = nil
+        match.rightScore = nil
+        match.isFinished = NSNumber(bool: false)
+        match.tournament = tournament
+        match.tournamentId = tournament.id
+        do {
+            try context.save()
+        }
+        catch {
+            print("Could not save")
+            return nil
+        }
+        return match
+    }
+    
+    class func getMatchesForTournament(tournament : Tournament) -> [Match]? {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "Match")
+        request.predicate = NSPredicate(format: "tournamentId = \(tournament.id!)")
+        var results : [Match]?
+        do {
+            results = try context.executeFetchRequest(request) as? [Match]
+        }
+        catch {
+            print("could not fetch")
+            return nil
+        }
+        return results
     }
 }
