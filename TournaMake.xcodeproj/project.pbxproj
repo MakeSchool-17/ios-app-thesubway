@@ -26,7 +26,6 @@
 		27A0AEDC1BFBF02E00AA57F1 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEDA1BFBF02E00AA57F1 /* Match.swift */; };
 		27A0AEE81BFBF30B00AA57F1 /* Match+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEE51BFBF30B00AA57F1 /* Match+CoreDataProperties.swift */; };
 		27A0AEE91BFBF30B00AA57F1 /* Tournament+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEE61BFBF30B00AA57F1 /* Tournament+CoreDataProperties.swift */; };
-		27A0AEEA1BFBF30B00AA57F1 /* Entrant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEE71BFBF30B00AA57F1 /* Entrant+CoreDataProperties.swift */; };
 		27A0AEEC1BFBF4A800AA57F1 /* CreateTournamentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEEB1BFBF4A800AA57F1 /* CreateTournamentViewController.swift */; };
 		27A0AEF01BFC2A2900AA57F1 /* AlgorithmUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEEF1BFC2A2900AA57F1 /* AlgorithmUtil.swift */; };
 		27A0AEF21BFC429200AA57F1 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF11BFC429200AA57F1 /* UIHelper.swift */; };
@@ -39,6 +38,7 @@
 		27E82E921C03D5BC00C879AF /* PickerBracketButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E911C03D5BC00C879AF /* PickerBracketButton.swift */; };
 		27E82E941C03EA4000C879AF /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E931C03EA4000C879AF /* GlobalConstants.swift */; };
 		27E82E961C051A5A00C879AF /* CoreDataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E951C051A5A00C879AF /* CoreDataUtil.swift */; };
+		27E82E981C0D16EF00C879AF /* Entrant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E971C0D16EF00C879AF /* Entrant+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +86,6 @@
 		27A0AEDA1BFBF02E00AA57F1 /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		27A0AEE51BFBF30B00AA57F1 /* Match+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Match+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27A0AEE61BFBF30B00AA57F1 /* Tournament+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tournament+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		27A0AEE71BFBF30B00AA57F1 /* Entrant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Entrant+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27A0AEEB1BFBF4A800AA57F1 /* CreateTournamentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTournamentViewController.swift; sourceTree = "<group>"; };
 		27A0AEEF1BFC2A2900AA57F1 /* AlgorithmUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmUtil.swift; sourceTree = "<group>"; };
 		27A0AEF11BFC429200AA57F1 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
@@ -99,6 +98,7 @@
 		27E82E911C03D5BC00C879AF /* PickerBracketButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerBracketButton.swift; sourceTree = "<group>"; };
 		27E82E931C03EA4000C879AF /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		27E82E951C051A5A00C879AF /* CoreDataUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataUtil.swift; sourceTree = "<group>"; };
+		27E82E971C0D16EF00C879AF /* Entrant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Entrant+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,7 +216,7 @@
 				27A0AEDA1BFBF02E00AA57F1 /* Match.swift */,
 				27A0AEE51BFBF30B00AA57F1 /* Match+CoreDataProperties.swift */,
 				27A0AEE61BFBF30B00AA57F1 /* Tournament+CoreDataProperties.swift */,
-				27A0AEE71BFBF30B00AA57F1 /* Entrant+CoreDataProperties.swift */,
+				27E82E971C0D16EF00C879AF /* Entrant+CoreDataProperties.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -395,6 +395,7 @@
 				27A0AEA31BF814A900AA57F1 /* TournaMake.xcdatamodeld in Sources */,
 				27A0AEEC1BFBF4A800AA57F1 /* CreateTournamentViewController.swift in Sources */,
 				27A0AE9D1BF814A900AA57F1 /* LoginViewController.swift in Sources */,
+				27E82E981C0D16EF00C879AF /* Entrant+CoreDataProperties.swift in Sources */,
 				27A0AEE91BFBF30B00AA57F1 /* Tournament+CoreDataProperties.swift in Sources */,
 				27A0AEF71BFD383400AA57F1 /* CreateGroupSlotCell.swift in Sources */,
 				277ADAF21BFE942C00E17F0E /* PickerGroupButton.swift in Sources */,
@@ -403,7 +404,6 @@
 				27A0AED81BFBF02000AA57F1 /* Entrant.swift in Sources */,
 				27E82E941C03EA4000C879AF /* GlobalConstants.swift in Sources */,
 				27E82E961C051A5A00C879AF /* CoreDataUtil.swift in Sources */,
-				27A0AEEA1BFBF30B00AA57F1 /* Entrant+CoreDataProperties.swift in Sources */,
 				27A0AEF41BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift in Sources */,
 				27A0AE9B1BF814A900AA57F1 /* AppDelegate.swift in Sources */,
 				27A0AEDC1BFBF02E00AA57F1 /* Match.swift in Sources */,

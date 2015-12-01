@@ -105,8 +105,9 @@ class GroupCalculator {
         return finalGroups
     }
     
-    class func getRoundRobinSchedule(var group : [String]) -> [[String]] {
+    class func getRoundRobinSchedule(inGroup : [String]) -> [[String]] {
         var schedule : [[String]] = []
+        var group = inGroup
         if group.count % 2 != 0 {
             group.append(GlobalConstants.bye)
         }

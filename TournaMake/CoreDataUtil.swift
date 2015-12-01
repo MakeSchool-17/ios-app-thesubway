@@ -34,11 +34,19 @@ class CoreDataUtil {
             for eachEntrant in eachGroup {
                 entrantDict.setValue(id, forKey: eachEntrant)
                 //save all entrant to core data:
-                print(self.addEntrant(eachEntrant, id: id, tournament: newTournament))
+                self.addEntrant(eachEntrant, id: id, tournament: newTournament)
                 id++
             }
+            //create round robin within each group, and associate using player id's:
+            let eachIdGroup = self.entrantNamesToIds(eachGroup, tournament: newTournament)
+            let roundRobin = GroupCalculator.getRoundRobinSchedule(eachIdGroup)
+            for var j = 0; j < roundRobin.count; j++ {
+                let eachMatch = roundRobin[j]
+                //create a core data match, save its 2 players' id's.
+                
+            }
+            print(roundRobin)
         }
-        //create round robin matches, using player id's.
         do {
             try context.save()
         } catch {
@@ -89,6 +97,7 @@ class CoreDataUtil {
         newEntrant.id = "\(id)"
         newEntrant.name = name
         newEntrant.tournament = tournament
+        newEntrant.tournamentId = tournament.id
         do {
             try context.save()
         } catch {
@@ -96,5 +105,43 @@ class CoreDataUtil {
             return nil
         }
         return newEntrant
+    }
+    
+    class func getEntrantById(id : Int, tournament: Tournament) -> [Entrant]? {
+        return self.getEntrant(key: "id", value: "\(id)", tournament: tournament)
+    }
+    
+    class func getEntrantByName(name : String, tournament: Tournament) -> [Entrant]? {
+        return self.getEntrant(key: "name", value: name, tournament: tournament)
+    }
+    
+    class func getEntrant(key key : String, value: String, tournament: Tournament) -> [Entrant]? {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "Entrant")
+        let myFormat = "\(key) LIKE '\(value)' AND tournamentId = \(tournament.id!)"
+        request.predicate = NSPredicate(format: myFormat)
+        var results : [Entrant]?
+        do {
+            results = try context.executeFetchRequest(request) as? [Entrant]
+        }
+        catch {
+            print("could not fetch")
+            return nil
+        }
+        return results
+    }
+    
+    class func entrantNamesToIds(names : [String], tournament: Tournament) -> [String] {
+        var newNames : [String] = []
+        for eachName in names {
+            let entrantResults = self.getEntrantByName(eachName, tournament: tournament)
+            var entrant : Entrant?
+            if entrantResults?.count > 0 {
+                entrant = entrantResults![0]
+            }
+            newNames.append(entrant!.id!)
+        }
+        return newNames
     }
 }

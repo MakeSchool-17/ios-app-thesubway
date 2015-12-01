@@ -3,6 +3,7 @@
     <entity name="Entrant" representedClassName=".Entrant" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tournamentId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="matches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="entrants" inverseEntity="Match" syncable="YES"/>
         <relationship name="tournament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tournament" inverseName="entrants" inverseEntity="Tournament" syncable="YES"/>
     </entity>
@@ -23,8 +24,8 @@
         <relationship name="matches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="tournament" inverseEntity="Match" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Tournament" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="Entrant" positionX="-54" positionY="9" width="128" height="105"/>
+        <element name="Entrant" positionX="-54" positionY="9" width="128" height="120"/>
         <element name="Match" positionX="-36" positionY="27" width="128" height="165"/>
+        <element name="Tournament" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>
