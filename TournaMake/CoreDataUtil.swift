@@ -52,8 +52,8 @@ class CoreDataUtil {
                 //my template has it set so that
                 matchId++
             }
-            print(roundRobin)
         }
+        let newBracket = self.addBracket(newTournament)
         do {
             try context.save()
         } catch {
@@ -126,6 +126,22 @@ class CoreDataUtil {
             return nil
         }
         return results
+    }
+    
+    class func addBracket(tournament: Tournament) -> Bracket? {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let newBracket : Bracket = NSEntityDescription.insertNewObjectForEntityForName("Bracket", inManagedObjectContext: context) as! Bracket
+        newBracket.tournament = tournament
+        newBracket.tournamentId = tournament.id
+        newBracket.reseed = NSNumber(bool: false)
+        do {
+            try context.save()
+        } catch {
+            print("could not save")
+            return nil
+        }
+        return newBracket
     }
     
     class func addEntrantToTournament(tournament: Tournament, name: String, id: Int) -> Entrant? {

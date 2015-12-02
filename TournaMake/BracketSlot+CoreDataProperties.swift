@@ -1,5 +1,5 @@
 //
-//  Tournament+CoreDataProperties.swift
+//  BracketSlot+CoreDataProperties.swift
 //  TournaMake
 //
 //  Created by Dan Hoang on 12/1/15.
@@ -12,14 +12,10 @@
 import Foundation
 import CoreData
 
-extension Tournament {
+extension BracketSlot {
 
-    @NSManaged var id: String?
-    @NSManaged var name: String?
-    @NSManaged var type: String?
-    @NSManaged var bracket: Bracket?
-    @NSManaged var entrants: NSSet?
-    @NSManaged var groupStage: NSSet?
-    @NSManaged var matches: NSSet?
+    @NSManaged var seedLeft: String?
+    @NSManaged var seedRight: String?
+    @NSManaged var bracket: NSManagedObject?
 
 }
