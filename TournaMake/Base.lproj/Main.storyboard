@@ -164,7 +164,7 @@
         <!--Item 1-->
         <scene sceneID="kbF-Fu-ixd">
             <objects>
-                <viewController id="Ip8-ds-64d" sceneMemberID="viewController">
+                <viewController id="Ip8-ds-64d" customClass="GroupStageViewController" customModule="TournaMake" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jYE-fX-Tg9"/>
                         <viewControllerLayoutGuide type="bottom" id="kDG-tx-fqM"/>
@@ -172,10 +172,45 @@
                     <view key="view" contentMode="scaleToFill" id="Pbs-a9-RBo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v4z-Wk-xsI">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="547"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vsz-MT-R0O">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="547"/>
+                                        <animations/>
+                                    </stackView>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstItem="Vsz-MT-R0O" firstAttribute="leading" secondItem="v4z-Wk-xsI" secondAttribute="leading" id="3yO-Q3-EOV"/>
+                                    <constraint firstItem="Vsz-MT-R0O" firstAttribute="centerX" secondItem="v4z-Wk-xsI" secondAttribute="centerX" id="Fqo-Q3-1ee"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vsz-MT-R0O" secondAttribute="trailing" id="cKs-Xc-HmB"/>
+                                    <constraint firstItem="Vsz-MT-R0O" firstAttribute="top" secondItem="v4z-Wk-xsI" secondAttribute="top" id="eXk-mI-OTk"/>
+                                    <constraint firstItem="Vsz-MT-R0O" firstAttribute="centerY" secondItem="v4z-Wk-xsI" secondAttribute="centerY" id="hsb-YO-jgq"/>
+                                    <constraint firstAttribute="bottom" secondItem="Vsz-MT-R0O" secondAttribute="bottom" id="vQS-yC-ibm"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="hsb-YO-jgq"/>
+                                        <exclude reference="Fqo-Q3-1ee"/>
+                                    </mask>
+                                </variation>
+                            </scrollView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kDG-tx-fqM" firstAttribute="top" secondItem="v4z-Wk-xsI" secondAttribute="bottom" id="EmS-0J-c9T"/>
+                            <constraint firstItem="v4z-Wk-xsI" firstAttribute="leading" secondItem="Pbs-a9-RBo" secondAttribute="leadingMargin" constant="-20" id="hxv-WJ-zj5"/>
+                            <constraint firstItem="v4z-Wk-xsI" firstAttribute="top" secondItem="jYE-fX-Tg9" secondAttribute="bottom" id="mE0-Uw-j4T"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="v4z-Wk-xsI" secondAttribute="trailing" constant="-20" id="mdR-4M-wvq"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="NdG-Ay-8fJ"/>
+                    <connections>
+                        <outlet property="matchStackView" destination="Vsz-MT-R0O" id="MJa-78-xmI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDr-mU-2at" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

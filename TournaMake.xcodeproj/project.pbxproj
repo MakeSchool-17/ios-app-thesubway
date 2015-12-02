@@ -46,6 +46,7 @@
 		27E82EB41C0EC91F00C879AF /* Bracket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EB31C0EC91F00C879AF /* Bracket.swift */; };
 		27E82EB61C0F620200C879AF /* BracketSlot+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EB51C0F620200C879AF /* BracketSlot+CoreDataProperties.swift */; };
 		27E82EB81C0F7C9900C879AF /* TournamentTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EB71C0F7C9900C879AF /* TournamentTabBarController.swift */; };
+		27E82EBA1C0F830400C879AF /* GroupStageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EB91C0F830400C879AF /* GroupStageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		27E82EB31C0EC91F00C879AF /* Bracket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bracket.swift; sourceTree = "<group>"; };
 		27E82EB51C0F620200C879AF /* BracketSlot+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BracketSlot+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27E82EB71C0F7C9900C879AF /* TournamentTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentTabBarController.swift; sourceTree = "<group>"; };
+		27E82EB91C0F830400C879AF /* GroupStageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupStageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 				27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */,
 				277ADAF31BFECED500E17F0E /* CreateKnockoutViewController.swift */,
 				27E82EB71C0F7C9900C879AF /* TournamentTabBarController.swift */,
+				27E82EB91C0F830400C879AF /* GroupStageViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				27E82EB81C0F7C9900C879AF /* TournamentTabBarController.swift in Sources */,
 				27A0AEF01BFC2A2900AA57F1 /* AlgorithmUtil.swift in Sources */,
 				27E82E8A1BFFA13B00C879AF /* MathHelper.swift in Sources */,
+				27E82EBA1C0F830400C879AF /* GroupStageViewController.swift in Sources */,
 				277ADAF01BFE87E000E17F0E /* MMPickerView.m in Sources */,
 				27E82EB21C0EC72D00C879AF /* Tournament+CoreDataProperties.swift in Sources */,
 				27A0AEF91BFD3A7900AA57F1 /* TournamentData.swift in Sources */,
