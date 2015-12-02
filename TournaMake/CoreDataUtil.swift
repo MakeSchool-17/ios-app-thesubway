@@ -38,7 +38,7 @@ class CoreDataUtil {
             for eachEntrant in eachGroup {
                 entrantDict.setValue(id, forKey: eachEntrant)
                 //save all entrant to core data:
-                self.addEntrant(eachEntrant, id: id, tournament: newTournament)
+                let newEntrant = self.addEntrantToTournament(newTournament, name: eachEntrant, id: id)
                 id++
             }
             //create round robin within each group, and associate using player id's:
@@ -127,7 +127,7 @@ class CoreDataUtil {
         return results
     }
     
-    class func addEntrant(name: String, id: Int, tournament: Tournament) -> Entrant? {
+    class func addEntrantToTournament(tournament: Tournament, name: String, id: Int) -> Entrant? {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext
         let newEntrant : Entrant = NSEntityDescription.insertNewObjectForEntityForName("Entrant", inManagedObjectContext: context) as! Entrant
