@@ -53,7 +53,8 @@ class CoreDataUtil {
                 matchId++
             }
         }
-        let newBracket = self.addBracket(newTournament)
+        let newBracket = self.addBracket(newTournament, data: data)
+        print(newBracket!)
         do {
             try context.save()
         } catch {
@@ -128,13 +129,17 @@ class CoreDataUtil {
         return results
     }
     
-    class func addBracket(tournament: Tournament) -> Bracket? {
+    class func addBracket(tournament: Tournament, data: TournamentData) -> Bracket? {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext
         let newBracket : Bracket = NSEntityDescription.insertNewObjectForEntityForName("Bracket", inManagedObjectContext: context) as! Bracket
         newBracket.tournament = tournament
         newBracket.tournamentId = tournament.id
         newBracket.reseed = NSNumber(bool: false)
+        for var i = 0; i < data.bracketSlots.count; i += 2 {
+            let slotTeams = [data.bracketSlots[i], data.bracketSlots[i + 1]]
+            self.addSlotToBracket(newBracket, slotTeams: slotTeams)
+        }
         do {
             try context.save()
         } catch {
@@ -142,6 +147,22 @@ class CoreDataUtil {
             return nil
         }
         return newBracket
+    }
+    
+    class func addSlotToBracket(bracket: Bracket, slotTeams: [String]) -> BracketSlot! {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let newSlot : BracketSlot = NSEntityDescription.insertNewObjectForEntityForName("BracketSlot", inManagedObjectContext: context) as! BracketSlot
+        newSlot.seedLeft = slotTeams[0]
+        newSlot.seedRight = slotTeams[1]
+        newSlot.bracket = bracket
+        do {
+            try context.save()
+        } catch {
+            print("could not save")
+            return nil
+        }
+        return newSlot
     }
     
     class func addEntrantToTournament(tournament: Tournament, name: String, id: Int) -> Entrant? {

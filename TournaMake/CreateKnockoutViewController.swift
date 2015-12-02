@@ -12,7 +12,6 @@ class CreateKnockoutViewController: UIViewController {
 
     var groups : [[String]]!
     var tournamentData : TournamentData!
-    var advancingSlots : [String]!
     @IBOutlet var stackViewBracket: UIStackView!
     var bracketSlots : [String]!
     var slotsNotEntered : [String] = []
@@ -99,11 +98,11 @@ class CreateKnockoutViewController: UIViewController {
         //save tournament to core data.
         //save tournament's matches to tournamentData object.
         tournamentData.groups = self.groups
+        tournamentData.bracketSlots = self.bracketSlots
         let tournament = CoreDataUtil.addTournament(tournamentData)
 //        print(CoreDataUtil.getMatchesForTournament(tournament))
         print("Getting bracket:")
 //        print(CoreDataUtil.getGroups(tournament)!)
-        print(tournament.bracket!)
         //save tournament's participants to core data.
     }
 }
