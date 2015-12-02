@@ -34,6 +34,10 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //push to tab bar controller here.
+        let selectedTournament = self.tournaments[indexPath.row]
+        let tournamentTab = self.storyboard?.instantiateViewControllerWithIdentifier("tournamentTabBar") as! TournamentTabBarController
+        tournamentTab.tournament = selectedTournament
+        self.navigationController?.pushViewController(tournamentTab, animated: true)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

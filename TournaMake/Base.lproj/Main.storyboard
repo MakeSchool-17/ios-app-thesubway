@@ -141,6 +141,65 @@
             </objects>
             <point key="canvasLocation" x="1748" y="317"/>
         </scene>
+        <!--Item 2-->
+        <scene sceneID="kaG-DV-cTx">
+            <objects>
+                <viewController id="EMS-Yo-Rha" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WKU-pF-HJF"/>
+                        <viewControllerLayoutGuide type="bottom" id="xeY-2K-DTL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="n3G-J9-oQz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="NxM-DZ-5gk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IqQ-eT-AFz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2385" y="1651"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="kbF-Fu-ixd">
+            <objects>
+                <viewController id="Ip8-ds-64d" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jYE-fX-Tg9"/>
+                        <viewControllerLayoutGuide type="bottom" id="kDG-tx-fqM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pbs-a9-RBo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="NdG-Ay-8fJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pDr-mU-2at" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2385" y="990"/>
+        </scene>
+        <!--Tournament Tab Bar Controller-->
+        <scene sceneID="I6m-z3-qVU">
+            <objects>
+                <tabBarController storyboardIdentifier="tournamentTabBar" id="QlK-CS-j7Z" customClass="TournamentTabBarController" customModule="TournaMake" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="dlJ-D4-DDP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Ip8-ds-64d" kind="relationship" relationship="viewControllers" id="jCR-ZC-NOR"/>
+                        <segue destination="EMS-Yo-Rha" kind="relationship" relationship="viewControllers" id="PPX-0o-az8"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fVI-fO-2pl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1565" y="1321"/>
+        </scene>
         <!--Create Tournament-->
         <scene sceneID="1qB-Y3-4wy">
             <objects>
@@ -407,8 +466,8 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="P7B-mR-3Sh"/>
                                         <exclude reference="4tV-mX-rUI"/>
+                                        <exclude reference="P7B-mR-3Sh"/>
                                     </mask>
                                 </variation>
                             </scrollView>
