@@ -53,8 +53,7 @@ class CoreDataUtil {
                 matchId++
             }
         }
-        let newBracket = self.addBracket(newTournament, data: data)
-        print(newBracket!)
+        self.addBracket(newTournament, data: data)
         do {
             try context.save()
         } catch {
@@ -138,7 +137,7 @@ class CoreDataUtil {
         newBracket.reseed = NSNumber(bool: false)
         for var i = 0; i < data.bracketSlots.count; i += 2 {
             let slotTeams = [data.bracketSlots[i], data.bracketSlots[i + 1]]
-            self.addSlotToBracket(newBracket, slotTeams: slotTeams)
+            self.addSlotToBracket(newBracket, slotTeams: slotTeams, idx: i / 2)
         }
         do {
             try context.save()
@@ -149,13 +148,15 @@ class CoreDataUtil {
         return newBracket
     }
     
-    class func addSlotToBracket(bracket: Bracket, slotTeams: [String]) -> BracketSlot! {
+    class func addSlotToBracket(bracket: Bracket, slotTeams: [String], idx: Int) -> BracketSlot! {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext
         let newSlot : BracketSlot = NSEntityDescription.insertNewObjectForEntityForName("BracketSlot", inManagedObjectContext: context) as! BracketSlot
         newSlot.seedLeft = slotTeams[0]
         newSlot.seedRight = slotTeams[1]
         newSlot.bracket = bracket
+        newSlot.tournamentId = bracket.tournamentId
+        newSlot.slotNum = "\(idx)"
         do {
             try context.save()
         } catch {

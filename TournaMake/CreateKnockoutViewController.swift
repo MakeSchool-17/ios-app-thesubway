@@ -102,7 +102,7 @@ class CreateKnockoutViewController: UIViewController {
         let tournament = CoreDataUtil.addTournament(tournamentData)
 //        print(CoreDataUtil.getMatchesForTournament(tournament))
         print("Getting bracket:")
-//        print(CoreDataUtil.getGroups(tournament)!)
+        print(tournament.bracket?.slots!)
         //save tournament's participants to core data.
     }
 }

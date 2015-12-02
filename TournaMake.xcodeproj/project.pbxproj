@@ -40,11 +40,11 @@
 		27E82EA31C0E6FF700C879AF /* Entrant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E9E1C0E6FF700C879AF /* Entrant+CoreDataProperties.swift */; };
 		27E82EA41C0E6FF700C879AF /* Match+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E9F1C0E6FF700C879AF /* Match+CoreDataProperties.swift */; };
 		27E82EA61C0E70BF00C879AF /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EA51C0E70BF00C879AF /* Group+CoreDataProperties.swift */; };
-		27E82EAE1C0EC72D00C879AF /* BracketSlot+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EA91C0EC72D00C879AF /* BracketSlot+CoreDataProperties.swift */; };
 		27E82EAF1C0EC72D00C879AF /* BracketSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EAA1C0EC72D00C879AF /* BracketSlot.swift */; };
 		27E82EB01C0EC72D00C879AF /* Bracket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EAB1C0EC72D00C879AF /* Bracket+CoreDataProperties.swift */; };
 		27E82EB21C0EC72D00C879AF /* Tournament+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EAD1C0EC72D00C879AF /* Tournament+CoreDataProperties.swift */; };
 		27E82EB41C0EC91F00C879AF /* Bracket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EB31C0EC91F00C879AF /* Bracket.swift */; };
+		27E82EB61C0F620200C879AF /* BracketSlot+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EB51C0F620200C879AF /* BracketSlot+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,11 +106,11 @@
 		27E82E9E1C0E6FF700C879AF /* Entrant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Entrant+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27E82E9F1C0E6FF700C879AF /* Match+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Match+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27E82EA51C0E70BF00C879AF /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		27E82EA91C0EC72D00C879AF /* BracketSlot+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BracketSlot+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27E82EAA1C0EC72D00C879AF /* BracketSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketSlot.swift; sourceTree = "<group>"; };
 		27E82EAB1C0EC72D00C879AF /* Bracket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bracket+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27E82EAD1C0EC72D00C879AF /* Tournament+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tournament+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27E82EB31C0EC91F00C879AF /* Bracket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bracket.swift; sourceTree = "<group>"; };
+		27E82EB51C0F620200C879AF /* BracketSlot+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BracketSlot+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,11 +230,11 @@
 				27E82E9E1C0E6FF700C879AF /* Entrant+CoreDataProperties.swift */,
 				27E82E9F1C0E6FF700C879AF /* Match+CoreDataProperties.swift */,
 				27E82EA51C0E70BF00C879AF /* Group+CoreDataProperties.swift */,
-				27E82EA91C0EC72D00C879AF /* BracketSlot+CoreDataProperties.swift */,
 				27E82EAA1C0EC72D00C879AF /* BracketSlot.swift */,
 				27E82EAB1C0EC72D00C879AF /* Bracket+CoreDataProperties.swift */,
 				27E82EAD1C0EC72D00C879AF /* Tournament+CoreDataProperties.swift */,
 				27E82EB31C0EC91F00C879AF /* Bracket.swift */,
+				27E82EB51C0F620200C879AF /* BracketSlot+CoreDataProperties.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -430,10 +430,10 @@
 				27A0AE9B1BF814A900AA57F1 /* AppDelegate.swift in Sources */,
 				27A0AEDC1BFBF02E00AA57F1 /* Match.swift in Sources */,
 				27A0AECF1BF846A400AA57F1 /* MyTournamentsViewController.swift in Sources */,
+				27E82EB61C0F620200C879AF /* BracketSlot+CoreDataProperties.swift in Sources */,
 				27E82E8E1BFFF82700C879AF /* GroupCalculator.swift in Sources */,
 				27E82EB01C0EC72D00C879AF /* Bracket+CoreDataProperties.swift in Sources */,
 				27A0AEF21BFC429200AA57F1 /* UIHelper.swift in Sources */,
-				27E82EAE1C0EC72D00C879AF /* BracketSlot+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

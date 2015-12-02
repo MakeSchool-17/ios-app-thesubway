@@ -9,6 +9,8 @@
     <entity name="BracketSlot" representedClassName=".BracketSlot" syncable="YES">
         <attribute name="seedLeft" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="seedRight" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="slotNum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tournamentId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="bracket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bracket" inverseName="slots" inverseEntity="Bracket" syncable="YES"/>
     </entity>
     <entity name="Entrant" representedClassName=".Entrant" syncable="YES">
@@ -48,7 +50,7 @@
     </entity>
     <elements>
         <element name="Bracket" positionX="-18" positionY="117" width="128" height="105"/>
-        <element name="BracketSlot" positionX="-9" positionY="126" width="128" height="90"/>
+        <element name="BracketSlot" positionX="-9" positionY="126" width="128" height="120"/>
         <element name="Entrant" positionX="-54" positionY="9" width="128" height="135"/>
         <element name="Group" positionX="-36" positionY="99" width="128" height="105"/>
         <element name="Match" positionX="-36" positionY="27" width="128" height="195"/>
