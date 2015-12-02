@@ -11,13 +11,15 @@ import UIKit
 class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableViewTournaments: UITableView!
-    var tournaments : [String] = []
+    var tournaments : [Tournament] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tournaments.append("tournament1")
-        self.tournaments.append("tournament2")
         self.tableViewTournaments.delegate = self
         self.tableViewTournaments.dataSource = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.tournaments = CoreDataUtil.getTournaments()
         self.tableViewTournaments.reloadData()
     }
 
@@ -30,6 +32,10 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
         self.navigationController?.pushViewController(createTournamentVc, animated: true)
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //push to tab bar controller here.
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tournaments.count
     }
@@ -37,7 +43,7 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tournamentCell")! as UITableViewCell
         let tournament = self.tournaments[indexPath.row]
-        cell.textLabel?.text = tournament
+        cell.textLabel?.text = tournament.name!
         return cell
     }
 
