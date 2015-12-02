@@ -2,7 +2,7 @@
 //  Tournament+CoreDataProperties.swift
 //  TournaMake
 //
-//  Created by Dan Hoang on 12/1/15.
+//  Created by Dan Hoang on 12/2/15.
 //  Copyright © 2015 Dan Hoang. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,7 +14,7 @@ import CoreData
 
 extension Tournament {
 
-    @NSManaged var id: String?
+    @NSManaged var id: NSNumber?
     @NSManaged var name: String?
     @NSManaged var type: String?
     @NSManaged var bracket: Bracket?

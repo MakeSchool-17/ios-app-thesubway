@@ -20,13 +20,13 @@ class CoreDataUtil {
         var tournamentId = tournaments.count
         var existingTournament : [Tournament]!
         repeat {
-            existingTournament = CoreDataUtil.searchTournament("id", value: "-\(tournamentId)")
+            existingTournament = CoreDataUtil.searchTournament("id", value: "\(tournamentId)")
             //repetition of same condition:
             if existingTournament.count != 0 {
                 tournamentId++
             }
         } while existingTournament.count != 0
-        newTournament.id = "-\(tournamentId)"
+        newTournament.id = tournamentId //"-\(tournamentId)"
         newTournament.name = data.name
         //create dictionary for entrant id's:
         let entrantDict = NSMutableDictionary()
@@ -48,7 +48,7 @@ class CoreDataUtil {
             for var j = 0; j < roundRobin.count; j++ {
                 let eachMatch = roundRobin[j]
                 //create a core data match, save its 2 players' id's.
-                self.addMatch(id: "\(matchId)", leftId: eachMatch[0], rightId: eachMatch[1], group: coreDataGroup!)
+                self.addMatch(id: matchId, leftId: eachMatch[0], rightId: eachMatch[1], group: coreDataGroup!)
                 //my template has it set so that
                 matchId++
             }
@@ -156,7 +156,7 @@ class CoreDataUtil {
         newSlot.seedRight = slotTeams[1]
         newSlot.bracket = bracket
         newSlot.tournamentId = bracket.tournamentId
-        newSlot.slotNum = "\(idx)"
+        newSlot.slotNum = idx
         do {
             try context.save()
         } catch {
@@ -170,7 +170,7 @@ class CoreDataUtil {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext
         let newEntrant : Entrant = NSEntityDescription.insertNewObjectForEntityForName("Entrant", inManagedObjectContext: context) as! Entrant
-        newEntrant.id = "\(id)"
+        newEntrant.id = id
         newEntrant.name = name
         newEntrant.tournament = tournament
         newEntrant.tournamentId = tournament.id
@@ -240,12 +240,12 @@ class CoreDataUtil {
             if entrantResults?.count > 0 {
                 entrant = entrantResults![0]
             }
-            newNames.append(entrant!.id!)
+            newNames.append("\(entrant!.id!)")
         }
         return newNames
     }
     
-    class func addMatch(id matchId: String, leftId : String, rightId : String, group : Group) -> Match? {
+    class func addMatch(id matchId: Int, leftId : String, rightId : String, group : Group) -> Match? {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext
         let match : Match = NSEntityDescription.insertNewObjectForEntityForName("Match", inManagedObjectContext: context) as! Match

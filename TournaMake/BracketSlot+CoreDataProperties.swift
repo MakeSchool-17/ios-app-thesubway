@@ -16,8 +16,8 @@ extension BracketSlot {
 
     @NSManaged var seedLeft: String?
     @NSManaged var seedRight: String?
-    @NSManaged var tournamentId: String?
-    @NSManaged var slotNum: String?
+    @NSManaged var tournamentId: NSNumber?
+    @NSManaged var slotNum: NSNumber?
     @NSManaged var bracket: Bracket?
 
 }
