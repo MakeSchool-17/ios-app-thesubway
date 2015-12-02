@@ -11,6 +11,7 @@ import CoreData
 
 class CoreDataUtil {
     
+    //assumes group stage + knockout format:
     class func addTournament(data: TournamentData) -> Tournament! {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext
@@ -32,6 +33,8 @@ class CoreDataUtil {
         var id = 0
         var matchId = 0
         for eachGroup in data.groups {
+            //add group to core data:
+            let coreDataGroup = self.addGroup(newTournament)
             for eachEntrant in eachGroup {
                 entrantDict.setValue(id, forKey: eachEntrant)
                 //save all entrant to core data:
@@ -85,6 +88,37 @@ class CoreDataUtil {
         var results : [Tournament]?
         do {
             results = try context.executeFetchRequest(request) as? [Tournament]
+        }
+        catch {
+            print("could not fetch")
+            return nil
+        }
+        return results
+    }
+    
+    class func addGroup(tournament: Tournament) -> Group? {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let newGroup : Group = NSEntityDescription.insertNewObjectForEntityForName("Group", inManagedObjectContext: context) as! Group
+        newGroup.tournament = tournament
+        newGroup.tournamentId = tournament.id
+        do {
+            try context.save()
+        } catch {
+            print("could not save")
+            return nil
+        }
+        return newGroup
+    }
+    
+    class func getGroups(tournament: Tournament) -> [Group]? {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "Group")
+        request.predicate = NSPredicate(format: "tournamentId = \(tournament.id!)")
+        var results : [Group]?
+        do {
+            results = try context.executeFetchRequest(request) as? [Group]
         }
         catch {
             print("could not fetch")

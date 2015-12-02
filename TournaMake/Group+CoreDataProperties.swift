@@ -1,5 +1,5 @@
 //
-//  Entrant+CoreDataProperties.swift
+//  Group+CoreDataProperties.swift
 //  TournaMake
 //
 //  Created by Dan Hoang on 12/1/15.
@@ -12,13 +12,11 @@
 import Foundation
 import CoreData
 
-extension Entrant {
+extension Group {
 
-    @NSManaged var id: String?
-    @NSManaged var name: String?
     @NSManaged var tournamentId: String?
-    @NSManaged var matches: NSSet?
     @NSManaged var tournament: Tournament?
-    @NSManaged var group: Group?
+    @NSManaged var entrants: NSSet?
+    @NSManaged var schedule: NSSet?
 
 }

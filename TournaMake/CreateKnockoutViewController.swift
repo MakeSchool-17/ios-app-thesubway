@@ -100,7 +100,9 @@ class CreateKnockoutViewController: UIViewController {
         //save tournament's matches to tournamentData object.
         tournamentData.groups = self.groups
         let tournament = CoreDataUtil.addTournament(tournamentData)
-        print(CoreDataUtil.getMatchesForTournament(tournament))
+//        print(CoreDataUtil.getMatchesForTournament(tournament))
+        print("Getting groups1:")
+        print(CoreDataUtil.getGroups(tournament))
         //save tournament's participants to core data.
     }
 }

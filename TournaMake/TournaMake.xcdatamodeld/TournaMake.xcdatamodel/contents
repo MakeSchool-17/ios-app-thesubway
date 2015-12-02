@@ -4,8 +4,15 @@
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tournamentId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="entrants" inverseEntity="Group" syncable="YES"/>
         <relationship name="matches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="entrants" inverseEntity="Match" syncable="YES"/>
         <relationship name="tournament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tournament" inverseName="entrants" inverseEntity="Tournament" syncable="YES"/>
+    </entity>
+    <entity name="Group" representedClassName=".Group" syncable="YES">
+        <attribute name="tournamentId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="entrants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entrant" inverseName="group" inverseEntity="Entrant" syncable="YES"/>
+        <relationship name="schedule" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="group" inverseEntity="Match" syncable="YES"/>
+        <relationship name="tournament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tournament" inverseName="groupStage" inverseEntity="Tournament" syncable="YES"/>
     </entity>
     <entity name="Match" representedClassName=".Match" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,17 +23,21 @@
         <attribute name="rightScore" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="tournamentId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="entrants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entrant" inverseName="matches" inverseEntity="Entrant" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="schedule" inverseEntity="Group" syncable="YES"/>
         <relationship name="tournament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tournament" inverseName="matches" inverseEntity="Tournament" syncable="YES"/>
     </entity>
     <entity name="Tournament" representedClassName=".Tournament" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="entrants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entrant" inverseName="tournament" inverseEntity="Entrant" syncable="YES"/>
+        <relationship name="groupStage" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="tournament" inverseEntity="Group" syncable="YES"/>
         <relationship name="matches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="tournament" inverseEntity="Match" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Entrant" positionX="-54" positionY="9" width="128" height="120"/>
-        <element name="Match" positionX="-36" positionY="27" width="128" height="180"/>
-        <element name="Tournament" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Entrant" positionX="-54" positionY="9" width="128" height="135"/>
+        <element name="Match" positionX="-36" positionY="27" width="128" height="195"/>
+        <element name="Tournament" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Group" positionX="-36" positionY="99" width="128" height="105"/>
     </elements>
 </model>
