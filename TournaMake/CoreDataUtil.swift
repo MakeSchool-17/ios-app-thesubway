@@ -39,6 +39,7 @@ class CoreDataUtil {
                 entrantDict.setValue(id, forKey: eachEntrant)
                 //save all entrant to core data:
                 let newEntrant = self.addEntrantToTournament(newTournament, name: eachEntrant, id: id)
+                self.addEntrantExistingToGroup(newEntrant!, group: coreDataGroup!)
                 id++
             }
             //create round robin within each group, and associate using player id's:
@@ -47,7 +48,7 @@ class CoreDataUtil {
             for var j = 0; j < roundRobin.count; j++ {
                 let eachMatch = roundRobin[j]
                 //create a core data match, save its 2 players' id's.
-                self.addMatch(id: "\(matchId)", leftId: eachMatch[0], rightId: eachMatch[1], tournament: newTournament)
+                self.addMatch(id: "\(matchId)", leftId: eachMatch[0], rightId: eachMatch[1], group: coreDataGroup!)
                 //my template has it set so that
                 matchId++
             }
@@ -144,6 +145,30 @@ class CoreDataUtil {
         return newEntrant
     }
     
+    class func addEntrantExistingToGroup(entrant: Entrant, group : Group) {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "Entrant")
+        let myFormat = "id = \(entrant.id!) AND tournamentId = \(entrant.tournamentId!)"
+        request.predicate = NSPredicate(format: myFormat)
+        var results : [Entrant]?
+        do {
+            results = try context.executeFetchRequest(request) as? [Entrant]
+        }
+        catch {
+            print("could not fetch")
+            return
+        }
+        let entrantUpdate = results![0]
+        entrantUpdate.group = group
+        do {
+            try context.save()
+        } catch {
+            print("could not save")
+            return
+        }
+    }
+    
     class func getEntrantById(id : Int, tournament: Tournament) -> [Entrant]? {
         return self.getEntrant(key: "id", value: "\(id)", tournament: tournament)
     }
@@ -182,7 +207,7 @@ class CoreDataUtil {
         return newNames
     }
     
-    class func addMatch(id matchId: String, leftId : String, rightId : String, tournament : Tournament) -> Match? {
+    class func addMatch(id matchId: String, leftId : String, rightId : String, group : Group) -> Match? {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext
         let match : Match = NSEntityDescription.insertNewObjectForEntityForName("Match", inManagedObjectContext: context) as! Match
@@ -192,8 +217,9 @@ class CoreDataUtil {
         match.leftScore = nil
         match.rightScore = nil
         match.isFinished = NSNumber(bool: false)
-        match.tournament = tournament
-        match.tournamentId = tournament.id
+        match.group = group
+        match.tournament = group.tournament
+        match.tournamentId = group.tournament!.id
         do {
             try context.save()
         }
