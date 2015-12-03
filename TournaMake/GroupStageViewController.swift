@@ -108,7 +108,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         //NOTE: added floatValue property in Extension String in AlgorithmUtil.swift file
         if let textScore = textField.text?.floatValue {
-            if textScore - floor(textScore) > 0.000001 {
+            if AlgorithmUtil.isInteger(textScore) {
                 //this is an integer
             }
             //store to core data match:

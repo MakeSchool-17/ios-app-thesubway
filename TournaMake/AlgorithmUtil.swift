@@ -21,6 +21,10 @@ class AlgorithmUtil {
         let outArr = inArr.filter() { $0 != element }
         return outArr
     }
+    
+    class func isInteger(num : Float) -> Bool {
+        return  num - floor(num) > 0.000001
+    }
 }
 
 extension String {
