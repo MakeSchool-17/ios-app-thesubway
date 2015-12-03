@@ -15,43 +15,8 @@ class StandingsCalculator {
     //or I can store to core data every update of match.
     //also store id of each entrant
     class func getGroupRecordForEntrant(entrant: Entrant) -> EntrantRecord {
-        var groupMatches = CoreDataUtil.getMatchesForEntrant(entrant)!
-        groupMatches = groupMatches.filter({ $0.group != nil && $0.isFinished == true})
-        var wins = 0
-        var losses = 0
-        var ties = 0
-        var points = 0
-        var pointsFor: Float = 0
-        var pointsAgainst: Float = 0
-        var diff : Float = 0
-        for var i = 0; i < groupMatches.count; i++ {
-            let groupMatch = groupMatches[i]
-            //figure out whether left or right player.
-            var ownScore : Float = 0
-            var opponentScore : Float = 0
-            if groupMatch.leftId == "\(entrant.id!)" {
-                ownScore = (groupMatch.leftScore?.floatValue)!
-                opponentScore = (groupMatch.rightScore?.floatValue)!
-            }
-            else {
-                ownScore = (groupMatch.rightScore?.floatValue)!
-                opponentScore = (groupMatch.leftScore?.floatValue)!
-            }
-            pointsFor += ownScore
-            pointsAgainst += opponentScore
-            diff = pointsFor - pointsAgainst
-            if ownScore > opponentScore {
-                wins++
-            }
-            else if ownScore < opponentScore {
-                losses++
-            }
-            else if ownScore == opponentScore {
-                ties++
-            }
-            points = ties + 3 * wins
-        }
-        let entrantRecord = EntrantRecord(wins: wins, ties: ties, losses: losses, points: points, pointsFor: pointsFor, pointsAgainst: pointsAgainst, diff: diff)
+        let matches = CoreDataUtil.getMatchesForEntrant(entrant)!
+        let entrantRecord = self.getRecordFromMatches(matches, ownId: "\(entrant.id!)")
         entrantRecord.entrant = entrant
         return entrantRecord
     }
