@@ -28,23 +28,23 @@ class EntrantRecord {
         self.diff = diff
     }
     
-    func compareTo(entrantRecord : EntrantRecord) -> Int {
-        if self.points < entrantRecord.points{
+    func compareTo(opponentRecord : EntrantRecord) -> Int {
+        if self.points < opponentRecord.points{
             return -1
         }
-        else if self.points > entrantRecord.points {
+        else if self.points > opponentRecord.points {
             return 1
         }
         //go to head-to-head tiebreaker:
-        let headToHeadResult = self.headToHeadGroup(entrantRecord)
+        let headToHeadResult = self.headToHeadGroup(opponentRecord)
         if headToHeadResult != 0 {
             return headToHeadResult
         }
         //go to differential tiebreaker
-        if self.diff < entrantRecord.diff {
+        if self.diff < opponentRecord.diff {
             return -1
         }
-        else if self.diff > entrantRecord.diff {
+        else if self.diff > opponentRecord.diff {
             return 1
         }
         return 0
@@ -56,6 +56,7 @@ class EntrantRecord {
         matches = matches!.filter({$0.group != nil && $0.isFinished == true})
         matches = matches!.filter({$0.leftId == "\(opponent.entrant.id!)" || $0.rightId == "\(opponent.entrant.id!)"})
         let headToHeadRecord = StandingsCalculator.getRecordFromMatches(matches!, ownId: "\(self.entrant.id!)")
+        //do NOT save headToHeadRecord, this is intentionally temporary
         if headToHeadRecord.wins < headToHeadRecord.losses {
             return -1
         }

@@ -25,7 +25,7 @@ class GroupStandingsViewController: UIViewController {
                 entrantRecords.append(eachRecord)
             }
         }
-        entrantRecords.sortInPlace({$0.compareTo($1) > $1.compareTo($0)})
+        entrantRecords.sortInPlace({$0.compareTo($1) > 0})
         for eachRecord in entrantRecords {
             eachRecord.printSelf()
         }
