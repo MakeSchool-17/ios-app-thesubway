@@ -285,4 +285,37 @@ class CoreDataUtil {
         }
         return results
     }
+    
+    class func updateMatchScore(matchScore: Float, matchId: Int, entrantPos: Int, tournament: Tournament) -> Match? {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "Match")
+        request.predicate = NSPredicate(format: "id = \(matchId) AND tournamentId = \(tournament.id!)")
+        var results : [Match]?
+        do {
+            results = try context.executeFetchRequest(request) as? [Match]
+        }
+        catch {
+            print("could not fetch")
+            return nil
+        }
+        let match = results![0]
+        if entrantPos == 0 {
+            match.leftScore = matchScore
+        }
+        else {
+            match.rightScore = matchScore
+        }
+        if match.leftScore != nil && match.rightScore != nil {
+            match.isFinished = true
+        }
+        do {
+            try context.save()
+        }
+        catch {
+            print("Could not save")
+            return nil
+        }
+        return match
+    }
 }

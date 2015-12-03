@@ -55,7 +55,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
             
             for eachMatch in schedule {
                 let vw = UIView()
-                vw.tag = (eachMatch.tournamentId?.integerValue)!
+                vw.tag = (eachMatch.id?.integerValue)!
                 vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true
                 vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
                 vw.layer.cornerRadius = 5.0
@@ -85,6 +85,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
                     vw.addSubview(labelName)
                     
                     var textFieldScore : UITextField!
+                    let scores = [eachMatch.leftScore, eachMatch.rightScore]
                     if eachMatch.leftId != GlobalConstants.bye && eachMatch.rightId != GlobalConstants.bye {
                         textFieldScore = UITextField(frame: CGRect(x: matchWidth * 4 / 5, y: CGFloat(j) * matchHeight / 2 - CGFloat(j), width: matchWidth * 1 / 5, height: matchHeight / 2 + CGFloat(j)))
                         textFieldScore.delegate = self
@@ -93,6 +94,9 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
                         textFieldScore.keyboardType = UIKeyboardType.NumbersAndPunctuation
                         textFieldScore.autocorrectionType = UITextAutocorrectionType.No
                         textFieldScore.tag = j
+                        if scores[j] != nil {
+                            textFieldScore.text = "\(scores[j]!)"
+                        }
                         vw.addSubview(textFieldScore)
                     }
                 }
@@ -107,6 +111,9 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
             if textScore - floor(textScore) > 0.000001 {
                 //this is an integer
             }
+            //store to core data match:
+            let updatedMatch = CoreDataUtil.updateMatchScore(textScore, matchId: (textField.superview?.tag)!, entrantPos: textField.tag, tournament: self.tournament)
+            print(updatedMatch)
         }
     }
     
