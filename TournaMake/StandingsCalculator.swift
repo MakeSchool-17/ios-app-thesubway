@@ -23,6 +23,7 @@ class StandingsCalculator {
         var points = 0
         var pointsFor: Float = 0
         var pointsAgainst: Float = 0
+        var diff : Float = 0
         for var i = 0; i < groupMatches.count; i++ {
             let groupMatch = groupMatches[i]
             //figure out whether left or right player.
@@ -38,6 +39,7 @@ class StandingsCalculator {
             }
             pointsFor += ownScore
             pointsAgainst += opponentScore
+            diff = pointsFor - pointsAgainst
             if ownScore > opponentScore {
                 wins++
             }
@@ -49,8 +51,50 @@ class StandingsCalculator {
             }
             points = ties + 3 * wins
         }
-        let entrantRecord = EntrantRecord(wins: wins, ties: ties, losses: losses, points: points, pointsFor: pointsFor, pointsAgainst: pointsAgainst)
+        let entrantRecord = EntrantRecord(wins: wins, ties: ties, losses: losses, points: points, pointsFor: pointsFor, pointsAgainst: pointsAgainst, diff: diff)
         entrantRecord.entrant = entrant
+        return entrantRecord
+    }
+    
+    class func getRecordFromMatches(matches: [Match], ownId: String) -> EntrantRecord {
+        var wins = 0
+        var losses = 0
+        var ties = 0
+        var points = 0
+        var pointsFor: Float = 0
+        var pointsAgainst: Float = 0
+        var diff : Float = 0
+        for var i = 0; i < matches.count; i++ {
+            let groupMatch = matches[i]
+            if groupMatch.isFinished != true {
+                continue
+            }
+            //figure out whether left or right player.
+            var ownScore : Float = 0
+            var opponentScore : Float = 0
+            if groupMatch.leftId == ownId {
+                ownScore = (groupMatch.leftScore?.floatValue)!
+                opponentScore = (groupMatch.rightScore?.floatValue)!
+            }
+            else {
+                ownScore = (groupMatch.rightScore?.floatValue)!
+                opponentScore = (groupMatch.leftScore?.floatValue)!
+            }
+            pointsFor += ownScore
+            pointsAgainst += opponentScore
+            diff = pointsFor - pointsAgainst
+            if ownScore > opponentScore {
+                wins++
+            }
+            else if ownScore < opponentScore {
+                losses++
+            }
+            else if ownScore == opponentScore {
+                ties++
+            }
+            points = ties + 3 * wins
+        }
+        let entrantRecord = EntrantRecord(wins: wins, ties: ties, losses: losses, points: points, pointsFor: pointsFor, pointsAgainst: pointsAgainst, diff: diff)
         return entrantRecord
     }
     
