@@ -69,15 +69,23 @@ class GroupStageViewController: UIViewController {
                     if entrantId != GlobalConstants.bye {
                         entrant = CoreDataUtil.getEntrantById(Int(entrantId)!, tournament: self.tournament)![0]
                     }
-                    let labelTop = UITextField(frame: CGRect(x: 0, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
+                    let labelName = UILabel(frame: CGRect(x: 0, y: CGFloat(j) * matchHeight / 2, width: matchWidth * 4 / 5, height: matchHeight / 2))
                     if let anEntrant = entrant {
-                        labelTop.text = anEntrant.name!
+                        labelName.text = anEntrant.name!
                     }
                     else {
-                        labelTop.text = entrantId
+                        labelName.text = entrantId
                     }
-                    //labelTop.text =
-                    vw.addSubview(labelTop)
+                    labelName.tag = j
+                    vw.addSubview(labelName)
+                    
+                    var textFieldScore : UITextField!
+                    if eachMatch.leftId != GlobalConstants.bye && eachMatch.rightId != GlobalConstants.bye {
+                        textFieldScore = UITextField(frame: CGRect(x: matchWidth * 4 / 5, y: CGFloat(j) * matchHeight / 2, width: matchWidth * 1 / 5, height: matchHeight / 2))
+                        textFieldScore.layer.borderWidth = 1
+                        textFieldScore.tag = j
+                        vw.addSubview(textFieldScore)
+                    }
                 }
                 self.stackViewMatch.addArrangedSubview(vw)
             }
