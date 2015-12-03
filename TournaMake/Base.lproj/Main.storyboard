@@ -144,7 +144,7 @@
         <!--Item 2-->
         <scene sceneID="kaG-DV-cTx">
             <objects>
-                <viewController id="EMS-Yo-Rha" sceneMemberID="viewController">
+                <viewController id="EMS-Yo-Rha" customClass="GroupStandingsViewController" customModule="TournaMake" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WKU-pF-HJF"/>
                         <viewControllerLayoutGuide type="bottom" id="xeY-2K-DTL"/>
