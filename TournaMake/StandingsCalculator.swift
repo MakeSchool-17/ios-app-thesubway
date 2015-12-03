@@ -14,7 +14,7 @@ class StandingsCalculator {
     // somehow store head-to-head.
     //or I can store to core data every update of match.
     //also store id of each entrant
-    class func getGroupRecordForEntrant(entrant: Entrant) {
+    class func getGroupRecordForEntrant(entrant: Entrant) -> EntrantRecord {
         var groupMatches = CoreDataUtil.getMatchesForEntrant(entrant)!
         groupMatches = groupMatches.filter({ $0.group != nil && $0.isFinished == true})
         var wins = 0
@@ -49,7 +49,9 @@ class StandingsCalculator {
             }
             points = ties + 3 * wins
         }
-        print("wins: \(wins), losses: \(losses), ties: \(ties), pt: \(points) PF: \(pointsFor), PA: \(pointsAgainst)")
+        let entrantRecord = EntrantRecord(wins: wins, ties: ties, losses: losses, points: points, pointsFor: pointsFor, pointsAgainst: pointsAgainst)
+        entrantRecord.entrant = entrant
+        return entrantRecord
     }
     
 }

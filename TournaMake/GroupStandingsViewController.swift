@@ -11,6 +11,7 @@ import UIKit
 class GroupStandingsViewController: UIViewController {
 
     var tournament : Tournament!
+    var entrantRecords : [EntrantRecord] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
@@ -20,8 +21,13 @@ class GroupStandingsViewController: UIViewController {
             var entrants = eachGroup.entrants?.allObjects as! [Entrant]
             entrants.sortInPlace({$0.id?.integerValue < $1.id?.integerValue})
             for eachEntrant in entrants {
-                GroupCalculator.getGroupRecordForEntrant(eachEntrant)
+                let eachRecord = StandingsCalculator.getGroupRecordForEntrant(eachEntrant)
+                entrantRecords.append(eachRecord)
             }
+        }
+        entrantRecords.sortInPlace({$0.compareTo($1) > $1.compareTo($0)})
+        for eachRecord in entrantRecords {
+            eachRecord.printSelf()
         }
     }
 
