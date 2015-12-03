@@ -32,9 +32,10 @@ class CoreDataUtil {
         let entrantDict = NSMutableDictionary()
         var id = 0
         var matchId = 0
-        for eachGroup in data.groups {
+        for var i = 0; i < data.groups.count; i++ {
+            let eachGroup = data.groups[i]
             //add group to core data:
-            let coreDataGroup = self.addGroup(newTournament)
+            let coreDataGroup = self.addGroup(newTournament, idx: i)
             for eachEntrant in eachGroup {
                 entrantDict.setValue(id, forKey: eachEntrant)
                 //save all entrant to core data:
@@ -97,12 +98,13 @@ class CoreDataUtil {
         return results
     }
     
-    class func addGroup(tournament: Tournament) -> Group? {
+    class func addGroup(tournament: Tournament, idx : Int) -> Group? {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext
         let newGroup : Group = NSEntityDescription.insertNewObjectForEntityForName("Group", inManagedObjectContext: context) as! Group
         newGroup.tournament = tournament
         newGroup.tournamentId = tournament.id
+        newGroup.id = idx
         do {
             try context.save()
         } catch {

@@ -35,6 +35,7 @@ class GroupStageViewController: UIViewController {
         var allGroups = self.tournament.groupStage?.allObjects as! [Group]
         allGroups.sortInPlace({ $0.id?.integerValue < $1.id?.integerValue})
         
+        
         stackViewMatch.spacing = 10
         stackViewMatch.alignment = UIStackViewAlignment.Center
         
@@ -44,6 +45,11 @@ class GroupStageViewController: UIViewController {
         for eachGroup in allGroups {
             var schedule = eachGroup.schedule?.allObjects as! [Match]
             schedule.sortInPlace({ $0.id?.integerValue < $1.id?.integerValue})
+            
+            let lbl = UILabel()
+            lbl.text = "Group \(GlobalConstants.groupNames[eachGroup.id!.integerValue])"
+            self.stackViewMatch.addArrangedSubview(lbl)
+            
             for eachMatch in schedule {
                 let vw = UIView()
                 vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true

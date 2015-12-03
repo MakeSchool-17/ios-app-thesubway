@@ -15,4 +15,5 @@ struct GlobalConstants {
     static let group3rd = "3rd-place Wild-Card"
     static let bye = "*BYE*"
     static let undecided = "-"
+    static let groupNames = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ123456".characters)
 }
