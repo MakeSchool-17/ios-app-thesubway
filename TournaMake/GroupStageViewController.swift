@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupStageViewController: UIViewController {
+class GroupStageViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var stackViewMatch: UIStackView!
     var tournament : Tournament!
@@ -42,6 +42,9 @@ class GroupStageViewController: UIViewController {
         let matchHeight : CGFloat = 100
         let matchWidth : CGFloat = 250
         
+        let tap = UITapGestureRecognizer(target: self, action: "stackViewTapped")
+        stackViewMatch.addGestureRecognizer(tap)
+        
         for eachGroup in allGroups {
             var schedule = eachGroup.schedule?.allObjects as! [Match]
             schedule.sortInPlace({ $0.id?.integerValue < $1.id?.integerValue})
@@ -52,6 +55,7 @@ class GroupStageViewController: UIViewController {
             
             for eachMatch in schedule {
                 let vw = UIView()
+                vw.tag = (eachMatch.tournamentId?.integerValue)!
                 vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true
                 vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
                 vw.layer.cornerRadius = 5.0
@@ -83,8 +87,11 @@ class GroupStageViewController: UIViewController {
                     var textFieldScore : UITextField!
                     if eachMatch.leftId != GlobalConstants.bye && eachMatch.rightId != GlobalConstants.bye {
                         textFieldScore = UITextField(frame: CGRect(x: matchWidth * 4 / 5, y: CGFloat(j) * matchHeight / 2 - CGFloat(j), width: matchWidth * 1 / 5, height: matchHeight / 2 + CGFloat(j)))
+                        textFieldScore.delegate = self
                         textFieldScore.layer.borderWidth = 1
                         textFieldScore.textAlignment = NSTextAlignment.Center
+                        textFieldScore.keyboardType = UIKeyboardType.NumbersAndPunctuation
+                        textFieldScore.autocorrectionType = UITextAutocorrectionType.No
                         textFieldScore.tag = j
                         vw.addSubview(textFieldScore)
                     }
@@ -94,7 +101,20 @@ class GroupStageViewController: UIViewController {
         }
     }
     
+    func textFieldDidEndEditing(textField: UITextField) {
+        //NOTE: added floatValue property in Extension String in AlgorithmUtil.swift file
+        if let textScore = textField.text?.floatValue {
+            if textScore - floor(textScore) > 0.000001 {
+                //this is an integer
+            }
+        }
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func stackViewTapped() {
         self.view.endEditing(true)
     }
 
