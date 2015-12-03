@@ -16,4 +16,6 @@ struct GlobalConstants {
     static let bye = "*BYE*"
     static let undecided = "-"
     static let groupNames = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ123456".characters)
+    static let headToHeadTiebreak = "headToHeadTieBreak"
+    static let entrants = "entrants"
 }

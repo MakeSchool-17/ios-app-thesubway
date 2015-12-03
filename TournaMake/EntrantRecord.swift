@@ -51,6 +51,8 @@ class EntrantRecord {
     }
     
     func headToHeadGroup(opponent: EntrantRecord) -> Int {
+        let tiebreakDict = NSMutableDictionary(object: [self, opponent], forKey: GlobalConstants.entrants)
+        NSNotificationCenter.defaultCenter().postNotificationName(GlobalConstants.headToHeadTiebreak, object: nil, userInfo: tiebreakDict as [NSObject : AnyObject])
         var matches = CoreDataUtil.getMatchesForEntrant(self.entrant)
         //double filter:
         matches = matches!.filter({$0.group != nil && $0.isFinished == true})
