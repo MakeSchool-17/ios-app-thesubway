@@ -56,6 +56,7 @@ class GroupStageViewController: UIViewController {
                 vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
                 vw.layer.cornerRadius = 5.0
                 vw.layer.borderWidth = 1
+                vw.clipsToBounds = true
                 
                 for var j = 0; j < 2; j++ {
                     var entrantId = ""
@@ -81,8 +82,9 @@ class GroupStageViewController: UIViewController {
                     
                     var textFieldScore : UITextField!
                     if eachMatch.leftId != GlobalConstants.bye && eachMatch.rightId != GlobalConstants.bye {
-                        textFieldScore = UITextField(frame: CGRect(x: matchWidth * 4 / 5, y: CGFloat(j) * matchHeight / 2, width: matchWidth * 1 / 5, height: matchHeight / 2))
+                        textFieldScore = UITextField(frame: CGRect(x: matchWidth * 4 / 5, y: CGFloat(j) * matchHeight / 2 - CGFloat(j), width: matchWidth * 1 / 5, height: matchHeight / 2 + CGFloat(j)))
                         textFieldScore.layer.borderWidth = 1
+                        textFieldScore.textAlignment = NSTextAlignment.Center
                         textFieldScore.tag = j
                         vw.addSubview(textFieldScore)
                     }
@@ -90,6 +92,10 @@ class GroupStageViewController: UIViewController {
                 self.stackViewMatch.addArrangedSubview(vw)
             }
         }
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
 }
