@@ -10,7 +10,7 @@ import UIKit
 
 class GroupStageViewController: UIViewController {
 
-    @IBOutlet var matchStackView: UIStackView!
+    @IBOutlet var stackViewMatch: UIStackView!
     var tournament : Tournament!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +25,57 @@ class GroupStageViewController: UIViewController {
     }
     
     func reloadStackView() {
+        for var i = 0; i < self.stackViewMatch.arrangedSubviews.count; i++ {
+            let eachSubview = self.stackViewMatch.arrangedSubviews[i]
+            eachSubview.removeFromSuperview()
+            self.stackViewMatch.removeArrangedSubview(eachSubview)
+            i--
+        }
+        
         var allGroups = self.tournament.groupStage?.allObjects as! [Group]
-//        allGroups.sort({ $0.id})
-        print(allGroups)
+        allGroups.sortInPlace({ $0.id?.integerValue < $1.id?.integerValue})
+        
+        stackViewMatch.spacing = 10
+        stackViewMatch.alignment = UIStackViewAlignment.Center
+        
+        let matchHeight : CGFloat = 100
+        let matchWidth : CGFloat = 250
+        
+        for eachGroup in allGroups {
+            var schedule = eachGroup.schedule?.allObjects as! [Match]
+            schedule.sortInPlace({ $0.id?.integerValue < $1.id?.integerValue})
+            for eachMatch in schedule {
+                let vw = UIView()
+                vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true
+                vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
+                vw.layer.cornerRadius = 5.0
+                vw.layer.borderWidth = 1
+                
+                for var j = 0; j < 2; j++ {
+                    var entrantId = ""
+                    var entrant : Entrant!
+                    if j == 0 {
+                        entrantId = eachMatch.leftId!
+                    }
+                    else {
+                        entrantId = eachMatch.rightId!
+                    }
+                    if entrantId != GlobalConstants.bye {
+                        entrant = CoreDataUtil.getEntrantById(Int(entrantId)!, tournament: self.tournament)![0]
+                    }
+                    let labelTop = UITextField(frame: CGRect(x: 0, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
+                    if let anEntrant = entrant {
+                        labelTop.text = anEntrant.name!
+                    }
+                    else {
+                        labelTop.text = entrantId
+                    }
+                    //labelTop.text =
+                    vw.addSubview(labelTop)
+                }
+                self.stackViewMatch.addArrangedSubview(vw)
+            }
+        }
     }
 
 }
