@@ -12,7 +12,6 @@ class GroupStandingsViewController: UIViewController {
 
     var tournament : Tournament!
     var entrantRecords : [EntrantRecord] = []
-    var compareDict = Dictionary<String, Int>()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
@@ -26,32 +25,30 @@ class GroupStandingsViewController: UIViewController {
                 entrantRecords.append(eachRecord)
             }
         }
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateDict:", name: GlobalConstants.headToHeadTiebreak, object: nil)
-        self.compareDict = Dictionary<String, Int>()
-        entrantRecords.sortInPlace({$0.compareTo($1) > 0})
-        for eachRecord in entrantRecords {
-            eachRecord.printSelf()
+        //compare array
+        let tiebreakArr = [TieBreakerType.Points]
+        var twoDimensionalArr = [entrantRecords]
+        for var i = 0; i < tiebreakArr.count; i++ {
+            var new2DArr : [[EntrantRecord]] = []
+            for var j = 0; j < twoDimensionalArr.count; j++ {
+                var eachGroup = twoDimensionalArr[j]
+                eachGroup.sortInPlace({$0.compareTo($1, tiebreakerType: tiebreakArr[i]) > 0})
+                //next, split arrays by tiebreaking factor, use StandingsCalculator
+                new2DArr += StandingsCalculator.splitArr(eachGroup, tiebreakerType: tiebreakArr[i])
+            }
+            twoDimensionalArr = new2DArr
         }
-        //now check if any of the compareDict had a result of 2 or more.
-        print(self.compareDict)
+        for eachArr in twoDimensionalArr {
+            print("arr")
+            for eachRecord in eachArr {
+                eachRecord.printSelf()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func updateDict(notification : NSNotification) {
-        let info = notification.userInfo! as! [String : [EntrantRecord]]
-        let entrants = info[GlobalConstants.entrants]
-        for eachEntrant in entrants! {
-            if self.compareDict[eachEntrant.entrant.name!] == nil {
-                self.compareDict[eachEntrant.entrant.name!] = 1
-            }
-            else {
-                self.compareDict[eachEntrant.entrant.name!]! += 1
-            }
-        }
     }
 
 }

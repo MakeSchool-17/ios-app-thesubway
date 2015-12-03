@@ -63,4 +63,35 @@ class StandingsCalculator {
         return entrantRecord
     }
     
+    class func splitArr(inputArr: [EntrantRecord], tiebreakerType: TieBreakerType) -> [[EntrantRecord]] {
+        var resultArrs : [[EntrantRecord]] = []
+        switch tiebreakerType {
+        case TieBreakerType.Points:
+            var tiedArr : [EntrantRecord] = []
+            for var i = 0; i < inputArr.count; i++ {
+                let eachRecord = inputArr[i]
+                if tiedArr.count <= 0 {
+                    tiedArr.append(eachRecord)
+                }
+                else if eachRecord.points == tiedArr[0].points {
+                    tiedArr.append(eachRecord)
+                }
+                else if eachRecord.points != tiedArr[0].points {
+                    //end of array.
+                    resultArrs.append(tiedArr)
+                    //reset tiedArr
+                    tiedArr = []
+                    i--
+                }
+            }
+            //if for-loop is finished, append final array.
+            resultArrs.append(tiedArr)
+        case TieBreakerType.HeadToHead:
+            print("")
+        case TieBreakerType.ScoringDifferential:
+            print("")
+        }
+        return resultArrs
+    }
+    
 }

@@ -18,6 +18,8 @@ class EntrantRecord {
     var diff : Float = 0
     var entrant : Entrant!
     
+    var headToHeadTiebreakerOpponents = Dictionary<String, EntrantRecord>()
+    
     init(wins: Int, ties: Int, losses: Int, points: Int, pointsFor : Float = 0, pointsAgainst: Float = 0.0, diff: Float = 0.0) {
         self.wins = wins
         self.ties = ties
@@ -28,29 +30,33 @@ class EntrantRecord {
         self.diff = diff
     }
     
-    func compareTo(opponentRecord : EntrantRecord) -> Int {
-        if self.points < opponentRecord.points{
-            return -1
-        }
-        else if self.points > opponentRecord.points {
-            return 1
-        }
-        //go to head-to-head tiebreaker:
-        let headToHeadResult = self.headToHeadGroup(opponentRecord)
-        if headToHeadResult != 0 {
-            return headToHeadResult
-        }
-        //go to differential tiebreaker
-        if self.diff < opponentRecord.diff {
-            return -1
-        }
-        else if self.diff > opponentRecord.diff {
-            return 1
+    func compareTo(opponentRecord : EntrantRecord, tiebreakerType: TieBreakerType) -> Int {
+        switch tiebreakerType {
+        case .Points:
+            if self.points < opponentRecord.points{
+                return -1
+            }
+            else if self.points > opponentRecord.points {
+                return 1
+            }
+        case .HeadToHead:
+            //go to head-to-head tiebreaker:
+            let headToHeadResult = self.headToHeadGroupStage(opponentRecord)
+            if headToHeadResult != 0 {
+                return headToHeadResult
+            }
+        case .ScoringDifferential :
+            if self.diff < opponentRecord.diff {
+                return -1
+            }
+            else if self.diff > opponentRecord.diff {
+                return 1
+            }
         }
         return 0
     }
     
-    func headToHeadGroup(opponent: EntrantRecord) -> Int {
+    func headToHeadGroupStage(opponent: EntrantRecord) -> Int {
         let tiebreakDict = NSMutableDictionary(object: [self, opponent], forKey: GlobalConstants.entrants)
         NSNotificationCenter.defaultCenter().postNotificationName(GlobalConstants.headToHeadTiebreak, object: nil, userInfo: tiebreakDict as [NSObject : AnyObject])
         var matches = CoreDataUtil.getMatchesForEntrant(self.entrant)
@@ -71,4 +77,10 @@ class EntrantRecord {
     func printSelf() {
         print("\(self.entrant.name!) wins: \(wins), losses: \(losses), ties: \(ties), pt: \(points) PF: \(pointsFor), PA: \(pointsAgainst), Diff: \(diff)")
     }
+}
+
+enum TieBreakerType {
+    case Points
+    case HeadToHead
+    case ScoringDifferential
 }
