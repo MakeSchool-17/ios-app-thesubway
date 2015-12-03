@@ -17,6 +17,7 @@ class EntrantRecord {
     var pointsAgainst: Float = 0
     var diff : Float = 0
     var entrant : Entrant!
+    var opponentDict = Dictionary<String, Dictionary<String, Float>>()
     
     var headToHeadTiebreakerOpponents = Dictionary<String, EntrantRecord>()
     

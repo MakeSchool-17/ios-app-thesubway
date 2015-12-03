@@ -18,4 +18,6 @@ struct GlobalConstants {
     static let groupNames = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ123456".characters)
     static let headToHeadTiebreak = "headToHeadTieBreak"
     static let entrants = "entrants"
+    static let wins = "wins"
+    static let losses = "losses"
 }

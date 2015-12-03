@@ -29,6 +29,7 @@ class StandingsCalculator {
         var pointsFor: Float = 0
         var pointsAgainst: Float = 0
         var diff : Float = 0
+        var opponentDict = Dictionary<String, Dictionary<String, Float>>()
         for var i = 0; i < matches.count; i++ {
             let groupMatch = matches[i]
             if groupMatch.isFinished != true {
@@ -37,29 +38,43 @@ class StandingsCalculator {
             //figure out whether left or right player.
             var ownScore : Float = 0
             var opponentScore : Float = 0
+            var opponentId : String!
             if groupMatch.leftId == ownId {
                 ownScore = (groupMatch.leftScore?.floatValue)!
                 opponentScore = (groupMatch.rightScore?.floatValue)!
+                opponentId = groupMatch.rightId
             }
             else {
                 ownScore = (groupMatch.rightScore?.floatValue)!
                 opponentScore = (groupMatch.leftScore?.floatValue)!
+                opponentId = groupMatch.leftId
+            }
+            var headToHeadDict = Dictionary<String, Float>()
+            if opponentDict[opponentId!] == nil {
+                headToHeadDict = [GlobalConstants.wins: 0, GlobalConstants.losses: 0]
+            }
+            else {
+                headToHeadDict = opponentDict[opponentId!]!
             }
             pointsFor += ownScore
             pointsAgainst += opponentScore
             diff = pointsFor - pointsAgainst
             if ownScore > opponentScore {
                 wins++
+                headToHeadDict[GlobalConstants.wins]!++
             }
             else if ownScore < opponentScore {
                 losses++
+                headToHeadDict[GlobalConstants.losses]!++
             }
             else if ownScore == opponentScore {
                 ties++
             }
             points = ties + 3 * wins
+            opponentDict[opponentId!] = headToHeadDict
         }
         let entrantRecord = EntrantRecord(wins: wins, ties: ties, losses: losses, points: points, pointsFor: pointsFor, pointsAgainst: pointsAgainst, diff: diff)
+        entrantRecord.opponentDict = opponentDict
         return entrantRecord
     }
     
