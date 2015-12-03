@@ -128,39 +128,4 @@ class GroupCalculator {
         return schedule
     }
     
-    class func getGroupRecordForEntrant(entrant: Entrant) {
-        var groupMatches = CoreDataUtil.getMatchesForEntrant(entrant)!
-        groupMatches = groupMatches.filter({ $0.group != nil && $0.isFinished == true})
-        var wins = 0
-        var losses = 0
-        var ties = 0
-        var pointsFor: Float = 0
-        var pointsAgainst: Float = 0
-        for var i = 0; i < groupMatches.count; i++ {
-            let groupMatch = groupMatches[i]
-            //figure out whether left or right player.
-            var ownScore : Float = 0
-            var opponentScore : Float = 0
-            if groupMatch.leftId == "\(entrant.id!)" {
-                ownScore = (groupMatch.leftScore?.floatValue)!
-                opponentScore = (groupMatch.rightScore?.floatValue)!
-            }
-            else {
-                ownScore = (groupMatch.rightScore?.floatValue)!
-                opponentScore = (groupMatch.leftScore?.floatValue)!
-            }
-            pointsFor += ownScore
-            pointsAgainst += opponentScore
-            if ownScore > opponentScore {
-                wins++
-            }
-            else if ownScore < opponentScore {
-                losses++
-            }
-            else if ownScore == opponentScore {
-                ties++
-            }
-        }
-        print("wins: \(wins), losses: \(losses), ties: \(ties), PF: \(pointsFor), PA: \(pointsAgainst)")
-    }
 }
