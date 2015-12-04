@@ -102,11 +102,53 @@ class StandingsCalculator {
             //if for-loop is finished, append final array.
             resultArrs.append(tiedArr)
         case TieBreakerType.HeadToHead:
-            print("")
+            var tiedArr : [EntrantRecord] = []
+            for var i = 0; i < inputArr.count; i++ {
+                let eachRecord = inputArr[i]
+                if tiedArr.count <= 0 {
+                    tiedArr.append(eachRecord)
+                }
+                else if eachRecord.headToHeadTiebreak == tiedArr[0].headToHeadTiebreak {
+                    tiedArr.append(eachRecord)
+                }
+                else if eachRecord.headToHeadTiebreak != tiedArr[0].headToHeadTiebreak {
+                    //end of array.
+                    resultArrs.append(tiedArr)
+                    //reset tiedArr
+                    tiedArr = []
+                    i--
+                }
+            }
+            //if for-loop is finished, append final array.
+            resultArrs.append(tiedArr)
         case TieBreakerType.ScoringDifferential:
             print("")
         }
         return resultArrs
+    }
+    
+    class func sortHeadToHead(inputRecords: [EntrantRecord]) -> [EntrantRecord] {
+        //make sure this ideally does not get called if wins = 0 and losses = 0
+        var records = inputRecords
+        //create 2 dictionaries to retrieve eachRecord, by id or name
+        for var i = 0; i < records.count; i++ {
+            let eachRecord = records[i]
+            for var j = 0; j < records.count; j++ {
+                if i == j {
+                    continue
+                }
+                let opponentId = "\(records[j].entrant.id!)"
+                if eachRecord.opponentDict[opponentId] != nil {
+                    let headToHeadDict = eachRecord.opponentDict[opponentId]
+                    //assign headToHead points:
+                    eachRecord.headToHeadTiebreak += Int(headToHeadDict![GlobalConstants.wins]!)
+                    eachRecord.headToHeadTiebreak -= Int(headToHeadDict![GlobalConstants.losses]!)
+                }
+            }
+        }
+        records.sortInPlace({$0.headToHeadTiebreak > $1.headToHeadTiebreak})
+        //sort by that.
+        return records
     }
     
 }

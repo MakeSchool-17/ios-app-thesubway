@@ -26,13 +26,18 @@ class GroupStandingsViewController: UIViewController {
             }
         }
         //compare array
-        let tiebreakArr = [TieBreakerType.Points]
+        let tiebreakArr = [TieBreakerType.Points, TieBreakerType.HeadToHead]
         var twoDimensionalArr = [entrantRecords]
         for var i = 0; i < tiebreakArr.count; i++ {
             var new2DArr : [[EntrantRecord]] = []
             for var j = 0; j < twoDimensionalArr.count; j++ {
                 var eachGroup = twoDimensionalArr[j]
-                eachGroup.sortInPlace({$0.compareTo($1, tiebreakerType: tiebreakArr[i]) > 0})
+                if tiebreakArr[i] == TieBreakerType.HeadToHead {
+                    eachGroup = StandingsCalculator.sortHeadToHead(eachGroup)
+                }
+                else {
+                    eachGroup.sortInPlace({$0.compareTo($1, tiebreakerType: tiebreakArr[i]) > 0})
+                }
                 //next, split arrays by tiebreaking factor, use StandingsCalculator
                 new2DArr += StandingsCalculator.splitArr(eachGroup, tiebreakerType: tiebreakArr[i])
             }
