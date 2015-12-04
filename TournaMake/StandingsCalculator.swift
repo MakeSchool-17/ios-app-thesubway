@@ -80,50 +80,41 @@ class StandingsCalculator {
     
     class func splitArr(inputArr: [EntrantRecord], tiebreakerType: TieBreakerType) -> [[EntrantRecord]] {
         var resultArrs : [[EntrantRecord]] = []
-        switch tiebreakerType {
-        case TieBreakerType.Points:
-            var tiedArr : [EntrantRecord] = []
-            for var i = 0; i < inputArr.count; i++ {
-                let eachRecord = inputArr[i]
-                if tiedArr.count <= 0 {
-                    tiedArr.append(eachRecord)
-                }
-                else if eachRecord.points == tiedArr[0].points {
-                    tiedArr.append(eachRecord)
-                }
-                else if eachRecord.points != tiedArr[0].points {
-                    //end of array.
-                    resultArrs.append(tiedArr)
-                    //reset tiedArr
-                    tiedArr = []
-                    i--
-                }
+        var ownProperty : AnyObject!
+        var otherProperty : AnyObject!
+        var tiedArr : [EntrantRecord] = []
+        for var i = 0; i < inputArr.count; i++ {
+            let eachRecord = inputArr[i]
+            if tiedArr.count <= 0 {
+                //then there is nothing to compare to. Add to new arr.
+                tiedArr.append(eachRecord)
+                continue
             }
-            //if for-loop is finished, append final array.
-            resultArrs.append(tiedArr)
-        case TieBreakerType.HeadToHead:
-            var tiedArr : [EntrantRecord] = []
-            for var i = 0; i < inputArr.count; i++ {
-                let eachRecord = inputArr[i]
-                if tiedArr.count <= 0 {
-                    tiedArr.append(eachRecord)
-                }
-                else if eachRecord.headToHeadTiebreak == tiedArr[0].headToHeadTiebreak {
-                    tiedArr.append(eachRecord)
-                }
-                else if eachRecord.headToHeadTiebreak != tiedArr[0].headToHeadTiebreak {
-                    //end of array.
-                    resultArrs.append(tiedArr)
-                    //reset tiedArr
-                    tiedArr = []
-                    i--
-                }
+            switch tiebreakerType {
+            case TieBreakerType.Points:
+                ownProperty = eachRecord.points
+                otherProperty = tiedArr[0].points
+            case TieBreakerType.HeadToHead:
+                ownProperty = eachRecord.headToHeadTiebreak
+                otherProperty = tiedArr[0].headToHeadTiebreak
+            case TieBreakerType.ScoringDifferential:
+                ownProperty = eachRecord.diff
+                otherProperty = tiedArr[0].diff
             }
-            //if for-loop is finished, append final array.
-            resultArrs.append(tiedArr)
-        case TieBreakerType.ScoringDifferential:
-            print("")
+            if AlgorithmUtil.compareAnyObjectType(ownProperty, b: otherProperty) {
+                //same value, store in same array
+                tiedArr.append(eachRecord)
+            }
+            else if !AlgorithmUtil.compareAnyObjectType(ownProperty, b: otherProperty) {
+                //end of array.
+                resultArrs.append(tiedArr)
+                //reset tiedArr
+                tiedArr = []
+                i--
+            }
         }
+        //if for-loop is finished, append final array.
+        resultArrs.append(tiedArr)
         return resultArrs
     }
     

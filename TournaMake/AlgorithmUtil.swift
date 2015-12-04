@@ -25,6 +25,27 @@ class AlgorithmUtil {
     class func isInteger(num : Float) -> Bool {
         return  num - floor(num) > 0.000001
     }
+    
+    //stack overflow helper:
+    class func compareAnyObjectType(a: AnyObject?, b: AnyObject?) -> Bool {
+        if let va = a as? Int, vb = b as? Int {
+            if va == vb {
+                return true
+            }
+        }
+        else if let va = a as? Float, vb = b as? Float {
+            if va == vb {
+                return true
+            }
+        }
+        else if let va = a as? Bool, vb = b as? Bool {
+            if va == vb {
+                return true
+            }
+        }
+        // not a type we expected
+        return false
+    }
 }
 
 extension String {
