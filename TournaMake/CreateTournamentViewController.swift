@@ -29,7 +29,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
         self.textViewEntrants.autocorrectionType = UITextAutocorrectionType.No
         
         self.textFieldTournamentName.autocapitalizationType = UITextAutocapitalizationType.Words
-        
+        self.labelTotalTeams.text = "Total entrants: 0\n(Must be between 6-64 entrants)"
         //self.textFieldTournamentName.text = "Tournament 1"
     }
 
@@ -129,7 +129,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
     
     func textViewDidChange(textView: UITextView) {
         let teams = self.getEntrants()
-        self.labelTotalTeams.text = "Total entrants: \(teams.count)"
+        self.labelTotalTeams.text = "Total entrants: \(teams.count)\n(Must be between 6-64 entrants)"
     }
 
 }
