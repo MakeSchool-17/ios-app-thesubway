@@ -76,8 +76,8 @@ class EntrantRecord {
         return 0
     }
     
-    func printSelf() {
-        print("\(self.entrant.name!) wins: \(wins), losses: \(losses), ties: \(ties), pt: \(points) PF: \(pointsFor), PA: \(pointsAgainst), Diff: \(diff)")
+    func printSelf() -> String {
+        return "\(self.entrant.name!) wins: \(wins), losses: \(losses), ties: \(ties), pt: \(points) PF: \(pointsFor), PA: \(pointsAgainst), Diff: \(diff)"
     }
 }
 
