@@ -12,9 +12,15 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var stackViewMatch: UIStackView!
     var tournament : Tournament!
+    var keyboardHeight : CGFloat = 0
+    var keyboardWidth : CGFloat = 0
+    var originalFrame : CGRect!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
         self.reloadStackView()
     }
@@ -123,6 +129,28 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
     
     func stackViewTapped() {
         self.view.endEditing(true)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if self.originalFrame != nil {
+            self.view.frame = self.originalFrame
+        }
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            var newFrame = self.view.frame
+            self.keyboardWidth = self.view.frame.size.width
+            self.keyboardHeight = self.view.frame.size.height
+            if self.originalFrame == nil {
+                self.originalFrame = self.view.frame
+            }
+            if self.view.frame == self.originalFrame {
+                newFrame.origin.y -= keyboardSize.height
+            }
+            self.view.frame = newFrame
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        self.view.frame = self.originalFrame
     }
 
 }
