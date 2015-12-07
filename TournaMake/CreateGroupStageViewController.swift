@@ -18,15 +18,15 @@ class CreateGroupStageViewController: UIViewController {
         super.viewDidLoad()
 //        self.tableViewGroups.dataSource = self
 //        self.tableViewGroups.delegate = self
-        self.groups = self.calculateNumGroups()
-        
+        self.calculateNumGroups()
+        self.clearGroups()
         self.reloadStackView()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func calculateNumGroups() -> [[String]] {
+    func calculateNumGroups() {
         var finalGroups : [[String]] = []
         
         if self.tournamentData.entrants.count <= 32 {
@@ -42,7 +42,8 @@ class CreateGroupStageViewController: UIViewController {
             //so 49-64 teams
             finalGroups = GroupCalculator.getnGroups(16, entrants: self.tournamentData.entrants)
         }
-        return finalGroups
+        self.entrantsNotEntered = []
+        self.groups = finalGroups
     }
     func reloadStackView() {
         //clear previous data
@@ -147,7 +148,16 @@ class CreateGroupStageViewController: UIViewController {
         self.navigationController?.pushViewController(createKnockout, animated: true)
     }
     
+    @IBAction func randomizePressed(sender: AnyObject) {
+        self.calculateNumGroups()
+        self.reloadStackView()
+    }
+    
     @IBAction func clearPressed(sender: AnyObject) {
+        self.clearGroups()
+    }
+    
+    func clearGroups() {
         for var i = 0; i < self.groups.count; i++ {
             let eachGroup = self.groups[i]
             for var j = 0; j < eachGroup.count; j++ {

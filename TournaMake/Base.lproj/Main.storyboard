@@ -497,18 +497,38 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AWr-aH-3Nr">
                                 <rect key="frame" x="0.0" y="64" width="600" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJC-33-mvd">
-                                        <rect key="frame" x="277" y="0.0" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJC-33-mvd">
+                                        <rect key="frame" x="277" y="30" width="46" height="30"/>
                                         <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="NaE-j3-ptJ"/>
+                                            <constraint firstAttribute="height" constant="30" id="YGt-n9-g4l"/>
+                                        </constraints>
                                         <state key="normal" title="Clear"/>
                                         <connections>
                                             <action selector="clearPressed:" destination="HcX-qE-2Cf" eventType="touchUpInside" id="lj2-UW-ic2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Glu-C0-Tvp">
+                                        <rect key="frame" x="249" y="0.0" width="102" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="EGd-Lj-Oqx"/>
+                                            <constraint firstAttribute="width" constant="102" id="sbC-3J-L2s"/>
+                                        </constraints>
+                                        <state key="normal" title="Randomize"/>
+                                        <connections>
+                                            <action selector="randomizePressed:" destination="HcX-qE-2Cf" eventType="touchUpInside" id="YrT-Wc-lv3"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="mJC-33-mvd" firstAttribute="centerX" secondItem="AWr-aH-3Nr" secondAttribute="centerX" id="VpK-Zh-MfS"/>
+                                    <constraint firstItem="Glu-C0-Tvp" firstAttribute="centerX" secondItem="AWr-aH-3Nr" secondAttribute="centerX" id="VyQ-Oh-IoV"/>
+                                    <constraint firstItem="Glu-C0-Tvp" firstAttribute="top" secondItem="AWr-aH-3Nr" secondAttribute="top" id="Wgy-lc-UlD"/>
+                                    <constraint firstItem="mJC-33-mvd" firstAttribute="top" secondItem="Glu-C0-Tvp" secondAttribute="bottom" id="gyu-hU-4cG"/>
                                     <constraint firstAttribute="height" constant="60" id="qaF-H8-7ss"/>
                                 </constraints>
                             </view>
