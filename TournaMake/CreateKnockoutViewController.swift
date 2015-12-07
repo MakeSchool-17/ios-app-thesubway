@@ -93,6 +93,16 @@ class CreateKnockoutViewController: UIViewController {
             self.reloadStackViewBracket()
         }
     }
+    
+    func clearGroups() {
+        for var i = 0; i < self.bracketSlots.count; i++ {
+            if self.bracketSlots[i] != GlobalConstants.strEmpty {
+                self.slotsNotEntered.append(self.bracketSlots[i])
+            }
+            self.bracketSlots[i] = GlobalConstants.strEmpty
+        }
+        self.reloadStackViewBracket()
+    }
 
     @IBAction func submitPressed(sender: AnyObject) {
         //save tournament to core data.
@@ -105,4 +115,15 @@ class CreateKnockoutViewController: UIViewController {
 //        print(tournament.bracket?.slots!)
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
+    
+    @IBAction func defaultPressed(sender: AnyObject) {
+        self.slotsNotEntered = []
+        self.bracketSlots = BracketCalculator.calculateBrackets(groups, tournamentData: tournamentData)
+        self.reloadStackViewBracket()
+    }
+    
+    @IBAction func clearPressed(sender: AnyObject) {
+        self.clearGroups()
+    }
+    
 }
