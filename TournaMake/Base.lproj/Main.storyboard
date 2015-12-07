@@ -470,8 +470,8 @@
                                     <constraint firstAttribute="height" constant="39" id="nGv-ki-Iyf"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TGC-Zq-HA8">
-                                <rect key="frame" x="0.0" y="64" width="600" height="497"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TGC-Zq-HA8">
+                                <rect key="frame" x="0.0" y="114" width="600" height="447"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Dbd-rV-dPb">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="497"/>
@@ -494,19 +494,46 @@
                                     </mask>
                                 </variation>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AWr-aH-3Nr">
+                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJC-33-mvd">
+                                        <rect key="frame" x="277" y="0.0" width="46" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="Clear"/>
+                                        <connections>
+                                            <action selector="clearPressed:" destination="HcX-qE-2Cf" eventType="touchUpInside" id="lj2-UW-ic2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="qaF-H8-7ss"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Dbd-rV-dPb" firstAttribute="width" secondItem="A9K-PN-Mkt" secondAttribute="width" id="0rX-RW-tQp"/>
-                            <constraint firstItem="TGC-Zq-HA8" firstAttribute="top" secondItem="0L0-nH-7Ju" secondAttribute="bottom" id="Jpw-vc-ACd"/>
+                            <constraint firstItem="TGC-Zq-HA8" firstAttribute="top" secondItem="AWr-aH-3Nr" secondAttribute="bottom" id="16n-YV-TTg"/>
+                            <constraint firstItem="AWr-aH-3Nr" firstAttribute="top" secondItem="0L0-nH-7Ju" secondAttribute="bottom" id="IiJ-gf-DY6"/>
+                            <constraint firstItem="TGC-Zq-HA8" firstAttribute="top" secondItem="0L0-nH-7Ju" secondAttribute="bottom" constant="50" id="Jpw-vc-ACd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Aja-iN-rnY" secondAttribute="trailing" constant="-20" id="NT9-Pk-957"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TGC-Zq-HA8" secondAttribute="trailing" constant="-20" id="Pnn-eD-ayP"/>
                             <constraint firstItem="Of9-Wq-dUD" firstAttribute="top" secondItem="Aja-iN-rnY" secondAttribute="bottom" id="Ryf-vK-Fgf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AWr-aH-3Nr" secondAttribute="trailing" constant="-20" id="XYH-KV-NYF"/>
                             <constraint firstItem="TGC-Zq-HA8" firstAttribute="leading" secondItem="A9K-PN-Mkt" secondAttribute="leadingMargin" constant="-20" id="aBe-1u-6B5"/>
+                            <constraint firstItem="AWr-aH-3Nr" firstAttribute="leading" secondItem="A9K-PN-Mkt" secondAttribute="leadingMargin" constant="-20" id="qpD-4t-5Sn"/>
                             <constraint firstItem="Aja-iN-rnY" firstAttribute="top" secondItem="TGC-Zq-HA8" secondAttribute="bottom" id="u5D-i9-9gh"/>
                             <constraint firstItem="Aja-iN-rnY" firstAttribute="leading" secondItem="A9K-PN-Mkt" secondAttribute="leadingMargin" constant="-20" id="vYD-Ct-Qsm"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Jpw-vc-ACd"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Create Group Stage" id="H6m-Fm-Wjv"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

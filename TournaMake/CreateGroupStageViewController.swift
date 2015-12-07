@@ -146,6 +146,20 @@ class CreateGroupStageViewController: UIViewController {
         createKnockout.tournamentData = self.tournamentData
         self.navigationController?.pushViewController(createKnockout, animated: true)
     }
+    
+    @IBAction func clearPressed(sender: AnyObject) {
+        for var i = 0; i < self.groups.count; i++ {
+            let eachGroup = self.groups[i]
+            for var j = 0; j < eachGroup.count; j++ {
+                if self.groups[i][j] != GlobalConstants.strEmpty {
+                    self.entrantsNotEntered.append(self.groups[i][j])
+                    self.groups[i][j] = GlobalConstants.strEmpty
+                }
+            }
+        }
+        self.reloadStackView()
+    }
+    
 //    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 //        return self.groups.count
 //    }
