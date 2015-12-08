@@ -31,31 +31,7 @@ class GroupStandingsViewController: UIViewController {
                 entrantRecords.append(eachRecord)
             }
         }
-        //compare array
-        let tiebreakArr = [TieBreakerType.Points, TieBreakerType.HeadToHead]
-        var twoDimensionalArr = [entrantRecords]
-        for var i = 0; i < tiebreakArr.count; i++ {
-            var new2DArr : [[EntrantRecord]] = []
-            for var j = 0; j < twoDimensionalArr.count; j++ {
-                var eachGroup = twoDimensionalArr[j]
-                if tiebreakArr[i] == TieBreakerType.HeadToHead {
-                    eachGroup = StandingsCalculator.sortHeadToHead(eachGroup)
-                }
-                else {
-                    eachGroup.sortInPlace({$0.compareTo($1, tiebreakerType: tiebreakArr[i]) > 0})
-                }
-                //next, split arrays by tiebreaking factor, use StandingsCalculator
-                new2DArr += StandingsCalculator.splitArr(eachGroup, tiebreakerType: tiebreakArr[i])
-            }
-            twoDimensionalArr = new2DArr
-        }
-        for eachArr in twoDimensionalArr {
-            print("arr")
-            for eachRecord in eachArr {
-                eachRecord.printSelf()
-            }
-        }
-        self.standingsArr = twoDimensionalArr
+        self.standingsArr = StandingsCalculator.computeStandings(self.entrantRecords)
         self.reloadStackView()
     }
     
