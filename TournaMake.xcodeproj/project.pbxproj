@@ -33,6 +33,7 @@
 		27A0AEF41BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */; };
 		27A0AEF71BFD383400AA57F1 /* CreateGroupSlotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF61BFD383400AA57F1 /* CreateGroupSlotCell.swift */; };
 		27A0AEF91BFD3A7900AA57F1 /* TournamentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF81BFD3A7900AA57F1 /* TournamentData.swift */; };
+		27B4F7001C178E1300019D3B /* BracketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B4F6FF1C178E1300019D3B /* BracketViewController.swift */; };
 		27E82E8A1BFFA13B00C879AF /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E891BFFA13B00C879AF /* MathHelper.swift */; };
 		27E82E8C1BFFCCC200C879AF /* BracketCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */; };
 		27E82E8E1BFFF82700C879AF /* GroupCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */; };
@@ -104,6 +105,7 @@
 		27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupStageViewController.swift; sourceTree = "<group>"; };
 		27A0AEF61BFD383400AA57F1 /* CreateGroupSlotCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupSlotCell.swift; sourceTree = "<group>"; };
 		27A0AEF81BFD3A7900AA57F1 /* TournamentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentData.swift; sourceTree = "<group>"; };
+		27B4F6FF1C178E1300019D3B /* BracketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketViewController.swift; sourceTree = "<group>"; };
 		27E82E891BFFA13B00C879AF /* MathHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketCalculator.swift; sourceTree = "<group>"; };
 		27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalculator.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				27E82EB71C0F7C9900C879AF /* TournamentTabBarController.swift */,
 				27E82EB91C0F830400C879AF /* GroupStageViewController.swift */,
 				272E9E561C0FDC200043E433 /* GroupStandingsViewController.swift */,
+				27B4F6FF1C178E1300019D3B /* BracketViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				27A0AED41BFBF00D00AA57F1 /* Tournament.swift in Sources */,
 				277ADAF41BFECED500E17F0E /* CreateKnockoutViewController.swift in Sources */,
 				27E82EC81C0FAFB800C879AF /* Match+CoreDataProperties.swift in Sources */,
+				27B4F7001C178E1300019D3B /* BracketViewController.swift in Sources */,
 				27E82EB81C0F7C9900C879AF /* TournamentTabBarController.swift in Sources */,
 				27A0AEF01BFC2A2900AA57F1 /* AlgorithmUtil.swift in Sources */,
 				272E9E591C100BFD0043E433 /* StandingsCalculator.swift in Sources */,
