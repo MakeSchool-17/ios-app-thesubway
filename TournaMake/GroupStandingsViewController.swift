@@ -21,25 +21,7 @@ class GroupStandingsViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
-        self.groupRecordsArr = []
-        self.thirdPlaceArr = []
-        var groupStage = self.tournament.groupStage?.allObjects as! [Group]
-        groupStage.sortInPlace({$0.id?.integerValue < $1.id?.integerValue})
-        for eachGroup in groupStage {
-            let entrants = eachGroup.entrants?.allObjects as! [Entrant]
-            var entrantsInGroup : [EntrantRecord] = []
-            for eachEntrant in entrants {
-                let eachRecord = StandingsCalculator.getGroupRecordForEntrant(eachEntrant)
-                entrantsInGroup.append(eachRecord)
-            }
-            let groupRecord = StandingsCalculator.computeStandings(entrantsInGroup)
-            //get third place team from each group
-            if groupRecord.count > 2 {
-                self.thirdPlaceArr.append(groupRecord[2])
-            }
-            self.groupRecordsArr.append(groupRecord)
-        }
-        self.thirdPlaceArr = StandingsCalculator.computeStandings(self.thirdPlaceArr)
+        (self.groupRecordsArr, self.thirdPlaceArr) = StandingsCalculator.getStandingsFromTournament(self.tournament)
         self.reloadStackView()
     }
     

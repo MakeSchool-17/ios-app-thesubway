@@ -171,4 +171,27 @@ class StandingsCalculator {
         return records
     }
     
+    class func getStandingsFromTournament(tournament : Tournament) -> ([[EntrantRecord]], [EntrantRecord]) {
+        var groupRecordsArr : [[EntrantRecord]] = []
+        var thirdPlaceArr : [EntrantRecord] = []
+        var groupStage = tournament.groupStage?.allObjects as! [Group]
+        groupStage.sortInPlace({$0.id?.integerValue < $1.id?.integerValue})
+        for eachGroup in groupStage {
+            let entrants = eachGroup.entrants?.allObjects as! [Entrant]
+            var entrantsInGroup : [EntrantRecord] = []
+            for eachEntrant in entrants {
+                let eachRecord = self.getGroupRecordForEntrant(eachEntrant)
+                entrantsInGroup.append(eachRecord)
+            }
+            let groupRecord = self.computeStandings(entrantsInGroup)
+            //get third place team from each group
+            if groupRecord.count > 2 {
+                thirdPlaceArr.append(groupRecord[2])
+            }
+            groupRecordsArr.append(groupRecord)
+        }
+        thirdPlaceArr = self.computeStandings(thirdPlaceArr)
+        return (groupRecordsArr, thirdPlaceArr)
+    }
+    
 }
