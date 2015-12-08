@@ -11,10 +11,8 @@ import UIKit
 class GroupStandingsViewController: UIViewController {
 
     var tournament : Tournament!
-    var entrantRecords : [EntrantRecord] = []
     var groupRecordsArr : [[EntrantRecord]] = []
     var thirdPlaceArr : [EntrantRecord] = []
-    var standingsArr : [[EntrantRecord]] = []
     @IBOutlet var stackViewStandings: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +23,6 @@ class GroupStandingsViewController: UIViewController {
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
         self.groupRecordsArr = []
         self.thirdPlaceArr = []
-        self.standingsArr = []
         var groupStage = self.tournament.groupStage?.allObjects as! [Group]
         groupStage.sortInPlace({$0.id?.integerValue < $1.id?.integerValue})
         for eachGroup in groupStage {
@@ -34,7 +31,6 @@ class GroupStandingsViewController: UIViewController {
             for eachEntrant in entrants {
                 let eachRecord = StandingsCalculator.getGroupRecordForEntrant(eachEntrant)
                 entrantsInGroup.append(eachRecord)
-                entrantRecords.append(eachRecord)
             }
             let groupRecord = StandingsCalculator.computeStandings(entrantsInGroup)
             //get third place team from each group
@@ -44,7 +40,6 @@ class GroupStandingsViewController: UIViewController {
             self.groupRecordsArr.append(groupRecord)
         }
         self.thirdPlaceArr = StandingsCalculator.computeStandings(self.thirdPlaceArr)
-        //self.standingsArr = StandingsCalculator.computeStandings(self.entrantRecords)
         self.reloadStackView()
     }
     
