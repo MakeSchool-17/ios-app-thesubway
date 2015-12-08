@@ -21,7 +21,7 @@ class StandingsCalculator {
         return entrantRecord
     }
     
-    class func computeStandings(entrantRecords : [EntrantRecord]) -> [[EntrantRecord]] {
+    class func computeStandings(entrantRecords : [EntrantRecord]) -> [EntrantRecord] {
         //compare array
         let tiebreakArr = [TieBreakerType.Points, TieBreakerType.HeadToHead]
         var twoDimensionalArr = [entrantRecords]
@@ -40,13 +40,14 @@ class StandingsCalculator {
             }
             twoDimensionalArr = new2DArr
         }
+        //separate back into single arr
+        var oneDimensionalArr : [EntrantRecord] = []
         for eachArr in twoDimensionalArr {
-            print("arr")
             for eachRecord in eachArr {
-                eachRecord.printSelf()
+                oneDimensionalArr.append(eachRecord)
             }
         }
-        return twoDimensionalArr
+        return oneDimensionalArr
     }
     
     class func getRecordFromMatches(matches: [Match], ownId: String) -> EntrantRecord {

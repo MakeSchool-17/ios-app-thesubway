@@ -12,6 +12,7 @@ class GroupStandingsViewController: UIViewController {
 
     var tournament : Tournament!
     var entrantRecords : [EntrantRecord] = []
+    var groupRecordsArr : [[EntrantRecord]] = []
     var standingsArr : [[EntrantRecord]] = []
     @IBOutlet var stackViewStandings: UIStackView!
     override func viewDidLoad() {
@@ -21,17 +22,22 @@ class GroupStandingsViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
+        self.groupRecordsArr = []
+        self.standingsArr = []
         var groupStage = self.tournament.groupStage?.allObjects as! [Group]
         groupStage.sortInPlace({$0.id?.integerValue < $1.id?.integerValue})
         for eachGroup in groupStage {
-            var entrants = eachGroup.entrants?.allObjects as! [Entrant]
-            entrants.sortInPlace({$0.id?.integerValue < $1.id?.integerValue})
+            let entrants = eachGroup.entrants?.allObjects as! [Entrant]
+            var entrantsInGroup : [EntrantRecord] = []
             for eachEntrant in entrants {
                 let eachRecord = StandingsCalculator.getGroupRecordForEntrant(eachEntrant)
+                entrantsInGroup.append(eachRecord)
                 entrantRecords.append(eachRecord)
             }
+            let groupRecord = StandingsCalculator.computeStandings(entrantsInGroup)
+            self.groupRecordsArr.append(groupRecord)
         }
-        self.standingsArr = StandingsCalculator.computeStandings(self.entrantRecords)
+        //self.standingsArr = StandingsCalculator.computeStandings(self.entrantRecords)
         self.reloadStackView()
     }
     
@@ -42,8 +48,13 @@ class GroupStandingsViewController: UIViewController {
             self.stackViewStandings.removeArrangedSubview(eachSubview)
             i--
         }
-        for eachArr in self.standingsArr {
-            for eachRecord in eachArr {
+        for var i = 0; i < self.groupRecordsArr.count; i++ {
+            let eachGroupRecord = self.groupRecordsArr[i]
+            let lbl = UILabel()
+            lbl.numberOfLines = 0
+            lbl.text = "\nGroup \(GlobalConstants.groupNames[i])"
+            self.stackViewStandings.addArrangedSubview(lbl)
+            for eachRecord in eachGroupRecord {
                 let lbl = UILabel()
                 lbl.text = "\(eachRecord.printSelf())"
                 self.stackViewStandings.addArrangedSubview(lbl)
