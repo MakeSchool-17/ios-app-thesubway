@@ -450,13 +450,18 @@
                                 <rect key="frame" x="0.0" y="561" width="600" height="39"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29k-xe-53J">
-                                        <rect key="frame" x="270" y="5" width="60" height="30"/>
+                                        <rect key="frame" x="0.0" y="5" width="600" height="30"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="hD7-CO-HYl"/>
                                             <constraint firstAttribute="width" constant="60" id="nde-hG-xLa"/>
                                         </constraints>
                                         <state key="normal" title="Submit"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="nde-hG-xLa"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="submitPressed:" destination="HcX-qE-2Cf" eventType="touchUpInside" id="Mu1-LZ-ceC"/>
                                         </connections>
@@ -467,8 +472,15 @@
                                 <constraints>
                                     <constraint firstItem="29k-xe-53J" firstAttribute="centerY" secondItem="Aja-iN-rnY" secondAttribute="centerY" id="E8V-fY-RGS"/>
                                     <constraint firstItem="29k-xe-53J" firstAttribute="centerX" secondItem="Aja-iN-rnY" secondAttribute="centerX" id="MM4-pK-XfF"/>
+                                    <constraint firstAttribute="trailing" secondItem="29k-xe-53J" secondAttribute="trailing" id="eKe-4f-6jz"/>
+                                    <constraint firstItem="29k-xe-53J" firstAttribute="leading" secondItem="Aja-iN-rnY" secondAttribute="leading" id="ljy-ng-hlc"/>
                                     <constraint firstAttribute="height" constant="39" id="nGv-ki-Iyf"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="MM4-pK-XfF"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TGC-Zq-HA8">
                                 <rect key="frame" x="0.0" y="114" width="600" height="447"/>
@@ -581,13 +593,18 @@
                                 <rect key="frame" x="0.0" y="561" width="600" height="39"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0DR-7r-hgE">
-                                        <rect key="frame" x="270" y="5" width="60" height="30"/>
+                                        <rect key="frame" x="0.0" y="5" width="600" height="30"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="OZn-av-FZW"/>
                                             <constraint firstAttribute="height" constant="30" id="cLz-nv-SLd"/>
                                         </constraints>
                                         <state key="normal" title="Submit"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="OZn-av-FZW"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="submitPressed:" destination="bJ5-RI-VKW" eventType="touchUpInside" id="T6B-i7-0a7"/>
                                         </connections>
@@ -599,7 +616,14 @@
                                     <constraint firstAttribute="height" constant="39" id="2OJ-NM-45g"/>
                                     <constraint firstItem="0DR-7r-hgE" firstAttribute="centerY" secondItem="wN0-42-VlI" secondAttribute="centerY" id="CrD-TR-NWc"/>
                                     <constraint firstItem="0DR-7r-hgE" firstAttribute="centerX" secondItem="wN0-42-VlI" secondAttribute="centerX" id="mfb-iH-NkS"/>
+                                    <constraint firstAttribute="trailing" secondItem="0DR-7r-hgE" secondAttribute="trailing" id="tQ7-nc-eNq"/>
+                                    <constraint firstItem="0DR-7r-hgE" firstAttribute="leading" secondItem="wN0-42-VlI" secondAttribute="leading" id="uRd-0B-nKd"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="mfb-iH-NkS"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ihy-tZ-1Bw">
                                 <rect key="frame" x="0.0" y="124" width="600" height="437"/>
