@@ -55,6 +55,12 @@ class CoreDataUtil {
             }
         }
         self.addBracket(newTournament, data: data)
+        //add bracketMatches to tournament, based off Bracket data.
+        let numBracketMatches = (newTournament.bracket?.slots?.count)! * 2 //because third-place match is included
+        for var i = 0; i < numBracketMatches; i++ {
+            self.addMatchToBracket(newTournament.bracket!, matchId: matchId)
+            matchId++
+        }
         do {
             try context.save()
         } catch {
@@ -260,6 +266,27 @@ class CoreDataUtil {
         match.group = group
         match.tournament = group.tournament
         match.tournamentId = group.tournament!.id
+        do {
+            try context.save()
+        }
+        catch {
+            print("Could not save")
+            return nil
+        }
+        return match
+    }
+    
+    class func addMatchToBracket(bracket: Bracket, matchId: Int) -> Match? {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let match : Match = NSEntityDescription.insertNewObjectForEntityForName("Match", inManagedObjectContext: context) as! Match
+        match.id = matchId
+        match.leftId = nil
+        match.rightId = nil
+        match.isFinished = NSNumber(bool: false)
+        match.group = nil
+        match.tournament = bracket.tournament
+        match.tournamentId = bracket.tournamentId
         do {
             try context.save()
         }

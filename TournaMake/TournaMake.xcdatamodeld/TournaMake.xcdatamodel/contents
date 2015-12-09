@@ -3,6 +3,7 @@
     <entity name="Bracket" representedClassName=".Bracket" syncable="YES">
         <attribute name="reseed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="tournamentId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="matches" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Match" inverseName="bracket" inverseEntity="Match" syncable="YES"/>
         <relationship name="slots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BracketSlot" inverseName="bracket" inverseEntity="BracketSlot" syncable="YES"/>
         <relationship name="tournament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tournament" inverseName="bracket" inverseEntity="Tournament" syncable="YES"/>
     </entity>
@@ -36,6 +37,7 @@
         <attribute name="rightId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rightScore" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="tournamentId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="bracket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bracket" inverseName="matches" inverseEntity="Bracket" syncable="YES"/>
         <relationship name="entrants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entrant" inverseName="matches" inverseEntity="Entrant" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="schedule" inverseEntity="Group" syncable="YES"/>
         <relationship name="tournament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tournament" inverseName="matches" inverseEntity="Tournament" syncable="YES"/>
@@ -50,11 +52,11 @@
         <relationship name="matches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="tournament" inverseEntity="Match" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Bracket" positionX="-18" positionY="117" width="128" height="105"/>
+        <element name="Bracket" positionX="-18" positionY="117" width="128" height="120"/>
         <element name="BracketSlot" positionX="-9" positionY="126" width="128" height="120"/>
         <element name="Entrant" positionX="-54" positionY="9" width="128" height="135"/>
         <element name="Group" positionX="-36" positionY="99" width="128" height="120"/>
-        <element name="Match" positionX="-36" positionY="27" width="128" height="195"/>
+        <element name="Match" positionX="-36" positionY="27" width="128" height="210"/>
         <element name="Tournament" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>
