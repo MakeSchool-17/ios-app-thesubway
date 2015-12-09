@@ -3,7 +3,7 @@
     <entity name="Bracket" representedClassName=".Bracket" syncable="YES">
         <attribute name="reseed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="tournamentId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <relationship name="matches" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Match" inverseName="bracket" inverseEntity="Match" syncable="YES"/>
+        <relationship name="matches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="bracket" inverseEntity="Match" syncable="YES"/>
         <relationship name="slots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BracketSlot" inverseName="bracket" inverseEntity="BracketSlot" syncable="YES"/>
         <relationship name="tournament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tournament" inverseName="bracket" inverseEntity="Tournament" syncable="YES"/>
     </entity>

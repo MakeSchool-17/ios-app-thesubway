@@ -18,6 +18,6 @@ extension Bracket {
     @NSManaged var tournamentId: NSNumber?
     @NSManaged var slots: NSSet?
     @NSManaged var tournament: Tournament?
-    @NSManaged var matches: Match?
+    @NSManaged var matches: NSSet?
 
 }
