@@ -57,7 +57,7 @@ class BracketViewController: UIViewController {
             let ids : [String?] = [idLeft, idRight]
             for var j = 0; j < 2; j++ {
                 let eachId = ids[j]
-                let labelTop = UITextField(frame: CGRect(x: 0, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
+                let labelTop = UILabel(frame: CGRect(x: 0, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
                 if eachId != nil {
                     let eachEntrant = CoreDataUtil.getEntrantById(Int(eachId!)!, tournament: eachMatch.tournament!)![0]
                     labelTop.text = eachEntrant.name!
