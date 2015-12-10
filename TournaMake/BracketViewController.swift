@@ -11,7 +11,6 @@ import UIKit
 class BracketViewController: UIViewController {
 
     var tournament : Tournament!
-    @IBOutlet var stackViewBracket: UIStackView!
     @IBOutlet var scrollViewBracket: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +28,15 @@ class BracketViewController: UIViewController {
     }
     
     func reloadStackViewBracket() {
-        for var i = 0; i < self.stackViewBracket.arrangedSubviews.count; i++ {
-            let eachSubview = self.stackViewBracket.arrangedSubviews[i]
+        for var i = 0; i < self.scrollViewBracket.subviews.count; i++ {
+            let eachSubview = self.scrollViewBracket.subviews[i]
             eachSubview.removeFromSuperview()
-            self.stackViewBracket.removeArrangedSubview(eachSubview)
             i--
         }
         let spacing : CGFloat = 10
-        stackViewBracket.spacing = spacing
-        stackViewBracket.alignment = UIStackViewAlignment.Center
+        var currentY : CGFloat = 0.0
+        //stackViewBracket.spacing = spacing
+        //stackViewBracket.alignment = UIStackViewAlignment.Center
         
         let matchHeight : CGFloat = 100
         let matchWidth : CGFloat = 250
@@ -45,12 +44,17 @@ class BracketViewController: UIViewController {
         //get matches directly from tournament.
         var bracketMatches = tournament.bracket?.matches?.allObjects as! [Match]
         bracketMatches.sortInPlace({$0.id?.integerValue < $1.id?.integerValue})
+        
+        let numFirstRoundMatches = CGFloat(bracketMatches.count) / 2 //for height
+        let numRounds = MathHelper.numRoundsForEntrantCount(bracketMatches.count / 2) //for width
+        self.scrollViewBracket.contentSize = CGSizeMake(matchWidth * CGFloat(numRounds), numFirstRoundMatches * (matchHeight + 10))
+        
         for var i = 0; i < bracketMatches.count; i++ {
             let eachMatch = bracketMatches[i]
             
-            let vw = UIView()
-            vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true
-            vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
+            let vw = UIView(frame: CGRect(x: 0, y: currentY, width: matchWidth, height: matchHeight))
+            //vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true
+            //vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
             vw.layer.cornerRadius = 5.0
             vw.layer.borderWidth = 1
             
@@ -75,7 +79,8 @@ class BracketViewController: UIViewController {
             }
             //constraint may not be helpful here.
             //what I want is a subview
-            stackViewBracket.addArrangedSubview(vw)
+            self.scrollViewBracket.addSubview(vw)
+            currentY += matchHeight + spacing
         }
     }
 

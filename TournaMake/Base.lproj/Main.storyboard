@@ -153,29 +153,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2BF-Ch-R0l">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2BF-Ch-R0l">
                                 <rect key="frame" x="0.0" y="80" width="600" height="471"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6pb-YV-I6o">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="497"/>
-                                        <animations/>
-                                    </stackView>
-                                </subviews>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="6pb-YV-I6o" secondAttribute="bottom" id="2Lo-sg-zD6"/>
-                                    <constraint firstItem="6pb-YV-I6o" firstAttribute="top" secondItem="2BF-Ch-R0l" secondAttribute="top" id="83X-wm-X0x"/>
-                                    <constraint firstAttribute="trailing" secondItem="6pb-YV-I6o" secondAttribute="trailing" id="87E-Gc-q4l"/>
-                                    <constraint firstItem="6pb-YV-I6o" firstAttribute="centerX" secondItem="2BF-Ch-R0l" secondAttribute="centerX" id="OSs-Qr-CeM"/>
-                                    <constraint firstItem="6pb-YV-I6o" firstAttribute="centerY" secondItem="2BF-Ch-R0l" secondAttribute="centerY" id="fse-wD-pbI"/>
-                                    <constraint firstItem="6pb-YV-I6o" firstAttribute="leading" secondItem="2BF-Ch-R0l" secondAttribute="leading" id="s9B-XU-M3a"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="OSs-Qr-CeM"/>
-                                        <exclude reference="fse-wD-pbI"/>
-                                    </mask>
-                                </variation>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKO-aR-eHV">
                                 <rect key="frame" x="0.0" y="20" width="600" height="60"/>
@@ -193,7 +173,6 @@
                             <constraint firstItem="cKO-aR-eHV" firstAttribute="leading" secondItem="haC-Y5-vIw" secondAttribute="leadingMargin" constant="-20" id="8Qd-3X-Y5C"/>
                             <constraint firstItem="2BF-Ch-R0l" firstAttribute="top" secondItem="cKO-aR-eHV" secondAttribute="bottom" id="8sI-b1-QaS"/>
                             <constraint firstItem="mW9-zN-lb5" firstAttribute="top" secondItem="2BF-Ch-R0l" secondAttribute="bottom" id="Oq2-go-vMG"/>
-                            <constraint firstItem="6pb-YV-I6o" firstAttribute="width" secondItem="cKO-aR-eHV" secondAttribute="width" id="PpE-Y9-Mkv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cKO-aR-eHV" secondAttribute="trailing" constant="-20" id="ogV-hg-uCM"/>
                             <constraint firstItem="cKO-aR-eHV" firstAttribute="top" secondItem="paA-qY-9fb" secondAttribute="bottom" id="r6C-sk-efk"/>
                             <constraint firstItem="2BF-Ch-R0l" firstAttribute="leading" secondItem="haC-Y5-vIw" secondAttribute="leadingMargin" constant="-20" id="vtc-zF-YEQ"/>
@@ -202,7 +181,6 @@
                     <tabBarItem key="tabBarItem" title="Item" id="jjd-4L-egx"/>
                     <connections>
                         <outlet property="scrollViewBracket" destination="2BF-Ch-R0l" id="yT5-RW-1S7"/>
-                        <outlet property="stackViewBracket" destination="6pb-YV-I6o" id="Ssz-8X-lPr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hd7-Fg-XcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
