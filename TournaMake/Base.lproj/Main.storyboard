@@ -201,7 +201,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="jjd-4L-egx"/>
                     <connections>
-                        <outlet property="scrollViewBracket" destination="6pb-YV-I6o" id="sNW-mM-jRu"/>
+                        <outlet property="scrollViewBracket" destination="2BF-Ch-R0l" id="yT5-RW-1S7"/>
                         <outlet property="stackViewBracket" destination="6pb-YV-I6o" id="Ssz-8X-lPr"/>
                     </connections>
                 </viewController>
