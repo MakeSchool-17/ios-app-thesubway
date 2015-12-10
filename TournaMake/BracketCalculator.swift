@@ -365,7 +365,8 @@ class BracketCalculator {
     //should return (Int groupLetter, String groupPlace)
     private class func decodeSeed(bracketSeed: String) -> (Int!, String!) {
         if bracketSeed == GlobalConstants.group3rd {
-            return (3, nil)
+            //3rd-place means index 2 in array.
+            return (2, nil)
         }
         if bracketSeed == GlobalConstants.bye {
             return (nil, nil)
