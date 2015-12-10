@@ -34,7 +34,8 @@ class BracketViewController: UIViewController {
             self.stackViewBracket.removeArrangedSubview(eachSubview)
             i--
         }
-        stackViewBracket.spacing = 10
+        let spacing : CGFloat = 10
+        stackViewBracket.spacing = spacing
         stackViewBracket.alignment = UIStackViewAlignment.Center
         
         let matchHeight : CGFloat = 100
@@ -55,6 +56,7 @@ class BracketViewController: UIViewController {
             let idLeft : String? = eachMatch.leftId
             let idRight : String? = eachMatch.rightId
             let ids : [String?] = [idLeft, idRight]
+            
             for var j = 0; j < 2; j++ {
                 let eachId = ids[j]
                 let labelTop = UILabel(frame: CGRect(x: 0, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
@@ -64,6 +66,14 @@ class BracketViewController: UIViewController {
                 }
                 vw.addSubview(labelTop)
             }
+            //if i is even, add a vertical line that extends to next box.
+            if i % 2 == 0 {
+                let verticalLine = UILabel(frame: CGRect(x: matchWidth - 1, y: 0, width: 1, height: matchHeight * 2 + spacing))
+                verticalLine.backgroundColor = UIColor.blackColor()
+                vw.addSubview(verticalLine)
+            }
+            //constraint may not be helpful here.
+            //what I want is a subview
             stackViewBracket.addArrangedSubview(vw)
         }
     }
