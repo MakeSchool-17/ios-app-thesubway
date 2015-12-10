@@ -285,6 +285,7 @@ class CoreDataUtil {
         match.rightId = nil
         match.isFinished = NSNumber(bool: false)
         match.group = nil
+        match.bracket = bracket
         match.tournament = bracket.tournament
         match.tournamentId = bracket.tournamentId
         do {
@@ -351,6 +352,42 @@ class CoreDataUtil {
         }
         if match.leftScore != nil && match.rightScore != nil {
             match.isFinished = true
+        }
+        do {
+            try context.save()
+        }
+        catch {
+            print("Could not save")
+            return nil
+        }
+        return match
+    }
+    
+    class func updateEntrantsInMatch(inputMatch: Match, leftId: NSNumber!, rightId: NSNumber!) -> Match? {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "Match")
+        request.predicate = NSPredicate(format: "id = \(inputMatch.id!) AND tournamentId = \(inputMatch.tournament!.id!)")
+        var results : [Match]?
+        do {
+            results = try context.executeFetchRequest(request) as? [Match]
+        }
+        catch {
+            print("could not fetch")
+            return nil
+        }
+        let match = results![0]
+        if leftId != nil {
+            match.leftId = "\(leftId!)"
+        }
+        else {
+            match.leftId = nil
+        }
+        if rightId != nil {
+            match.rightId = "\(rightId)"
+        }
+        else {
+            match.rightId = nil
         }
         do {
             try context.save()

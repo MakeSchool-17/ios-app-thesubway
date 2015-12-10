@@ -273,6 +273,7 @@ class BracketCalculator {
         }
         return finalStr
     }
+    
     class func getNumTeamsAdvancing(tournamentData : TournamentData) -> Double {
         if tournamentData.entrants.count <= 8 {
             return 4
@@ -296,5 +297,87 @@ class BracketCalculator {
             return 32
         }
         return 0
+    }
+    
+    //this displays who would face who, if play-offs started now (based on current standings).
+    class func getMatchupsFromBracket(tournament: Tournament) {
+        //assume bracket is from group-stage format.
+        //get the standings.
+        var groupRecordsArr : [[EntrantRecord]] = []
+        var thirdPlaceArr : [EntrantRecord] = []
+        (groupRecordsArr, thirdPlaceArr) = StandingsCalculator.getStandingsFromTournament(tournament)
+        //get the Bracket from tournament.
+        var bracketMatches = tournament.bracket?.matches?.allObjects as! [Match]
+        var bracketSlots = tournament.bracket?.slots?.allObjects as! [BracketSlot]
+        bracketMatches.sortInPlace({$0.id?.integerValue < $1.id?.integerValue})
+        bracketSlots.sortInPlace({$0.slotNum?.integerValue < $1.slotNum?.integerValue})
+        for var i = 0; i < bracketSlots.count; i++ {
+            let eachSlot = bracketSlots[i]
+            let eachMatch = bracketMatches[i]
+            let slotSeeds = [eachSlot.seedLeft!, eachSlot.seedRight!]
+            var entrantIds : [NSNumber!] = []
+            var thirdIdx = 0
+            for var j = 0; j < slotSeeds.count; j++ {
+                let eachSeed = slotSeeds[j]
+                //decode the string
+                var seedPlace : Int!
+                var seedLetter  : String!
+                (seedPlace, seedLetter) = self.decodeSeed(eachSeed)
+                let seedLetterObjC : NSString! = seedLetter
+                //now use standings bracket to get that team.
+                var currentRecord : EntrantRecord!
+                if seedPlace == nil {
+                    //bye, so leave as nil
+                }
+                else if seedPlace <= 1 {
+                    //this means seedPlace represents group-winner or group-runner-up
+                    let letterUnichar = seedLetterObjC.characterAtIndex(0)
+                    //A becomes 0, B becomes 1.. to get the index
+                    let letterIdx = Int(letterUnichar) - 65
+                    currentRecord = groupRecordsArr[letterIdx][seedPlace]
+                }
+                else if seedPlace == 2 {
+                    //third place, so take the highest third-place, then increment thirdIdx.
+                    currentRecord = thirdPlaceArr[thirdIdx]
+                    thirdIdx++
+                }
+                if currentRecord != nil {
+                    entrantIds.append(currentRecord!.entrant!.id!)
+                }
+                else {
+                    entrantIds.append(nil)
+                }
+            }
+            let newMatch = CoreDataUtil.updateEntrantsInMatch(eachMatch, leftId: entrantIds[0], rightId: entrantIds[1])
+            print("\nMatch between:")
+            if newMatch?.leftId != nil {
+                let leftEntrant = CoreDataUtil.getEntrantById(Int(newMatch!.leftId!)!, tournament: eachMatch.tournament!)![0]
+                print(leftEntrant.name!)
+            }
+            if newMatch?.rightId != nil {
+                let rightEntrant = CoreDataUtil.getEntrantById(Int(newMatch!.rightId!)!, tournament: eachMatch.tournament!)![0]
+                print(rightEntrant.name!)
+            }
+            //retrieve entrant names from matches.
+        }
+    }
+    
+    //should return (Int groupLetter, String groupPlace)
+    private class func decodeSeed(bracketSeed: String) -> (Int!, String!) {
+        if bracketSeed == GlobalConstants.group3rd {
+            return (3, nil)
+        }
+        if bracketSeed == GlobalConstants.bye {
+            return (nil, nil)
+        }
+        //else this is a group winner/runner-up from specific group.
+        let seedArr = bracketSeed.componentsSeparatedByString(" ")
+        let seedGroupPlace = seedArr[0]
+        let seedGroupLetter = seedArr[1]
+        if seedGroupPlace == GlobalConstants.groupWinner {
+            return (0, seedGroupLetter)
+        }
+        //it should only reach this point if seedGroupPlace is runner-up.
+        return (1, seedGroupLetter)
     }
 }
