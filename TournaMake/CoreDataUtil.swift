@@ -87,6 +87,23 @@ class CoreDataUtil {
         return results
     }
     
+    class func getTournamentById(id: Int) -> Tournament? {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "Tournament")
+        request.predicate = NSPredicate(format: "id = \(id)")
+        request.returnsObjectsAsFaults = false
+        var results : [Tournament]?
+        do {
+            results = try context.executeFetchRequest(request) as? [Tournament]
+        }
+        catch {
+            print("could not fetch")
+            return nil
+        }
+        return results![0]
+    }
+    
     class func searchTournament(key : String, value : String) -> [Tournament]? {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext
