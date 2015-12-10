@@ -172,8 +172,8 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="fse-wD-pbI"/>
                                         <exclude reference="OSs-Qr-CeM"/>
+                                        <exclude reference="fse-wD-pbI"/>
                                     </mask>
                                 </variation>
                             </scrollView>
@@ -201,6 +201,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="jjd-4L-egx"/>
                     <connections>
+                        <outlet property="scrollViewBracket" destination="6pb-YV-I6o" id="sNW-mM-jRu"/>
                         <outlet property="stackViewBracket" destination="6pb-YV-I6o" id="Ssz-8X-lPr"/>
                     </connections>
                 </viewController>

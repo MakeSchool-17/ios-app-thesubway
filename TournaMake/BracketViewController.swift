@@ -12,6 +12,7 @@ class BracketViewController: UIViewController {
 
     var tournament : Tournament!
     @IBOutlet var stackViewBracket: UIStackView!
+    @IBOutlet var scrollViewBracket: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
