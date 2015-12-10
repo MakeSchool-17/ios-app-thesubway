@@ -354,9 +354,15 @@ class BracketCalculator {
                 let leftEntrant = CoreDataUtil.getEntrantById(Int(newMatch!.leftId!)!, tournament: eachMatch.tournament!)![0]
                 print(leftEntrant.name!)
             }
+            else {
+                print(GlobalConstants.bye)
+            }
             if newMatch?.rightId != nil {
                 let rightEntrant = CoreDataUtil.getEntrantById(Int(newMatch!.rightId!)!, tournament: eachMatch.tournament!)![0]
                 print(rightEntrant.name!)
+            }
+            else {
+                print(GlobalConstants.bye)
             }
             //retrieve entrant names from matches.
         }
