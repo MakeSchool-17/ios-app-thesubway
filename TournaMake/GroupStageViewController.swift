@@ -150,7 +150,9 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        self.view.frame = self.originalFrame
+        if self.originalFrame != nil {
+            self.view.frame = self.originalFrame
+        }
     }
 
 }
