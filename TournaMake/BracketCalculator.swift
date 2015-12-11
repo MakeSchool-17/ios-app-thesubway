@@ -313,6 +313,7 @@ class BracketCalculator {
         bracketSlots.sortInPlace({$0.slotNum?.integerValue < $1.slotNum?.integerValue})
         for var i = 0; i < bracketSlots.count; i++ {
             let eachSlot = bracketSlots[i]
+            let eachMatch = bracketMatches[i]
             let slotSeeds = [eachSlot.seedLeft!, eachSlot.seedRight!]
             var entrantIds : [String] = []
             var thirdIdx = 0
@@ -347,6 +348,7 @@ class BracketCalculator {
                     entrantIds.append(GlobalConstants.bye)
                 }
             }
+            CoreDataUtil.updateEntrantsInMatch(eachMatch, leftId: entrantIds[0], rightId: entrantIds[1])
         }
     }
     

@@ -109,7 +109,9 @@ class BracketViewController: UIViewController {
                     labelTop.text = eachEntrant.name!
                 }
                 else if i >= bracketMatches.count / 2 {
+                    //else, that means there is no first-round player in that slot.
                     labelTop.text = GlobalConstants.bye
+                    //if i is < half, don't add a bye, because later rounds don't have byes.
                 }
                 labelTop.tag = j
                 vw.addSubview(labelTop)
