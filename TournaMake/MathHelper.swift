@@ -34,7 +34,7 @@ class MathHelper {
         return nil
     }
     
-    //for example, 1 returns 0, 2 returns 1.
+    //so 1 returns 0, 2 returns 1, 4 returns 2, 8 returns 3, 16 returns 4.
     class func numRoundsForEntrantCount(entrantCount : Int) -> Int {
         if entrantCount <= 0 {
             return -1
@@ -44,7 +44,7 @@ class MathHelper {
         
         while i <= entrantCount {
             if i * 2 > entrantCount {
-                return numIterations
+                return numIterations + 1
             }
             i *= 2
             numIterations++
