@@ -380,7 +380,7 @@ class CoreDataUtil {
         return match
     }
     
-    class func updateEntrantsInMatch(inputMatch: Match, leftId: NSNumber!, rightId: NSNumber!) -> Match? {
+    class func updateEntrantsInMatch(inputMatch: Match, leftId: String, rightId: String) -> Match? {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext
         let request = NSFetchRequest(entityName: "Match")
@@ -394,13 +394,13 @@ class CoreDataUtil {
             return nil
         }
         let match = results![0]
-        if leftId != nil {
-            match.leftId = "\(leftId!)"
+        if leftId != GlobalConstants.bye {
+            match.leftId = "\(leftId)"
         }
         else {
             match.leftId = nil
         }
-        if rightId != nil {
+        if rightId != GlobalConstants.bye {
             match.rightId = "\(rightId)"
         }
         else {

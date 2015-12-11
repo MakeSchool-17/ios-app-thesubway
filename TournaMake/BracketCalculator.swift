@@ -313,9 +313,8 @@ class BracketCalculator {
         bracketSlots.sortInPlace({$0.slotNum?.integerValue < $1.slotNum?.integerValue})
         for var i = 0; i < bracketSlots.count; i++ {
             let eachSlot = bracketSlots[i]
-            let eachMatch = bracketMatches[i]
             let slotSeeds = [eachSlot.seedLeft!, eachSlot.seedRight!]
-            var entrantIds : [NSNumber!] = []
+            var entrantIds : [String] = []
             var thirdIdx = 0
             for var j = 0; j < slotSeeds.count; j++ {
                 let eachSeed = slotSeeds[j]
@@ -342,29 +341,12 @@ class BracketCalculator {
                     thirdIdx++
                 }
                 if currentRecord != nil {
-                    entrantIds.append(currentRecord!.entrant!.id!)
+                    entrantIds.append(String(currentRecord!.entrant!.id!))
                 }
                 else {
-                    entrantIds.append(nil)
+                    entrantIds.append(GlobalConstants.bye)
                 }
             }
-            let newMatch = CoreDataUtil.updateEntrantsInMatch(eachMatch, leftId: entrantIds[0], rightId: entrantIds[1])
-            print("\nMatch between:")
-            if newMatch?.leftId != nil {
-                let leftEntrant = CoreDataUtil.getEntrantById(Int(newMatch!.leftId!)!, tournament: eachMatch.tournament!)![0]
-                print(leftEntrant.name!)
-            }
-            else {
-                print(GlobalConstants.bye)
-            }
-            if newMatch?.rightId != nil {
-                let rightEntrant = CoreDataUtil.getEntrantById(Int(newMatch!.rightId!)!, tournament: eachMatch.tournament!)![0]
-                print(rightEntrant.name!)
-            }
-            else {
-                print(GlobalConstants.bye)
-            }
-            //retrieve entrant names from matches.
         }
     }
     

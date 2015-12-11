@@ -102,6 +102,9 @@ class BracketViewController: UIViewController {
                     let eachEntrant = CoreDataUtil.getEntrantById(Int(eachId!)!, tournament: eachMatch.tournament!)![0]
                     labelTop.text = eachEntrant.name!
                 }
+                else if i >= bracketMatches.count / 2 {
+                    labelTop.text = GlobalConstants.bye
+                }
                 labelTop.tag = j
                 vw.addSubview(labelTop)
             }
