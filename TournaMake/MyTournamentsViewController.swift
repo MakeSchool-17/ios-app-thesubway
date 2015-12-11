@@ -11,6 +11,7 @@ import UIKit
 class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableViewTournaments: UITableView!
+    @IBOutlet var lblTournamentNum: UILabel!
     var tournaments : [Tournament] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,7 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(animated: Bool) {
         self.tournaments = CoreDataUtil.getTournaments()
+        self.lblTournamentNum.text = "Number of tournaments: \(self.tournaments.count)"
         self.tableViewTournaments.reloadData()
     }
 
