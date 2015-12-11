@@ -50,11 +50,16 @@ class BracketViewController: UIViewController {
         let numFirstRoundMatches = CGFloat(bracketMatches.count) / 2 //for height
         let numRounds = MathHelper.numRoundsForEntrantCount(bracketMatches.count / 2) //for width
         self.scrollViewBracket.contentSize = CGSizeMake((matchWidth + horizontalSpacing) * CGFloat(numRounds), numFirstRoundMatches * (matchHeight + 10))
+        if numRounds <= 2 {
+            //If there are only 2 rounds, there must be enough space for 3rd-place match underneath championship match.
+            self.scrollViewBracket.contentSize.height += verticalSpacing + matchHeight
+        }
         
         var roundNum = 1
         var endIdx = bracketMatches.count / 2
         var startIdx = bracketMatches.count
         var highestViewInRound : UIView!
+        var championshipFrame : CGRect!
         for var i = startIdx - 1; i >= endIdx; i-- {
             let eachMatch = bracketMatches[i]
             
@@ -64,8 +69,8 @@ class BracketViewController: UIViewController {
             vw.layer.cornerRadius = 5.0
             vw.layer.borderWidth = 1
             vw.tag = i
-            if roundNum != 1 && roundNum != numRounds {
-                //so not the first or last round
+            if roundNum != 1 && i >= 1 {
+                //so not the first round, and not the third place match.
                 //for middle rounds, get the previous round's match, which is i * 2 + 1.
                 let previousVwTop : UIView? = self.scrollViewBracket.viewWithTag(i * 2 + 1)
                 let previousVwBottom : UIView? = self.scrollViewBracket.viewWithTag(i * 2)
@@ -73,15 +78,13 @@ class BracketViewController: UIViewController {
                 if previousVwTop != nil && previousVwBottom != nil {
                     vw.frame.origin.y = (previousVwTop!.center.y + previousVwBottom!.center.y) / 2 - (matchHeight / 2)
                 }
-            }
-            else if i == 0 {
-                if bracketMatches.count >= 4 {
-                    let previousVwTop : UIView? = self.scrollViewBracket.viewWithTag((i + 1) * 2 + 1)
-                    let previousVwBottom : UIView? = self.scrollViewBracket.viewWithTag((i + 1) * 2)
-                    if previousVwTop != nil && previousVwBottom != nil {
-                        vw.frame.origin.y = (previousVwTop!.center.y + previousVwBottom!.center.y) / 2 - (matchHeight / 2)
-                    }
+                if i == 1 {
+                    championshipFrame = vw.frame
                 }
+            }
+            //third-place match will be index 0, and championship is index 1, for math purposes
+            else if i == 0 {
+                vw.frame.origin.y = championshipFrame.origin.y + matchHeight + verticalSpacing
             }
             
             if i == (startIdx - 1) {
