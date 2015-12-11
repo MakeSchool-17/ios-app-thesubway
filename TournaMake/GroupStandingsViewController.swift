@@ -13,16 +13,18 @@ class GroupStandingsViewController: UIViewController {
     var tournament : Tournament!
     var groupRecordsArr : [[EntrantRecord]] = []
     var thirdPlaceArr : [EntrantRecord] = []
+    @IBOutlet var lblTitle: UILabel!
     @IBOutlet var stackViewStandings: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
         (self.groupRecordsArr, self.thirdPlaceArr) = StandingsCalculator.getStandingsFromTournament(self.tournament)
         self.reloadStackView()
+        self.lblTitle.text = "Standings (based on current match results):"
     }
     
     func reloadStackView() {

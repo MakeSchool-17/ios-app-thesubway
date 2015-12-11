@@ -241,10 +241,10 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gtV-8v-KaO">
-                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
+                                <rect key="frame" x="0.0" y="70" width="600" height="481"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Pic-T5-2Gg">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="547"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="481"/>
                                         <animations/>
                                     </stackView>
                                 </subviews>
@@ -264,21 +264,54 @@
                                     </mask>
                                 </variation>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCc-Pd-EYW">
+                                <rect key="frame" x="0.0" y="20" width="600" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Tx-OB-Ksb">
+                                        <rect key="frame" x="170" y="0.0" width="261" height="42"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="261" id="6tG-jG-KWP"/>
+                                            <constraint firstAttribute="height" constant="42" id="gPW-ca-0R3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="4Tx-OB-Ksb" firstAttribute="top" secondItem="uCc-Pd-EYW" secondAttribute="top" id="EXX-bF-Db2"/>
+                                    <constraint firstItem="4Tx-OB-Ksb" firstAttribute="centerX" secondItem="uCc-Pd-EYW" secondAttribute="centerX" id="X2U-cN-ByH"/>
+                                    <constraint firstAttribute="height" constant="50" id="i50-S3-UQ0"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xeY-2K-DTL" firstAttribute="top" secondItem="gtV-8v-KaO" secondAttribute="bottom" id="3oG-T0-Dy4"/>
+                            <constraint firstItem="uCc-Pd-EYW" firstAttribute="top" secondItem="WKU-pF-HJF" secondAttribute="bottom" id="5JP-Px-0yd"/>
                             <constraint firstItem="8zd-HS-AIu" firstAttribute="leading" secondItem="n3G-J9-oQz" secondAttribute="leadingMargin" constant="-20" id="8Ie-DJ-qd6"/>
                             <constraint firstItem="8zd-HS-AIu" firstAttribute="top" secondItem="WKU-pF-HJF" secondAttribute="bottom" id="KQV-17-7oy"/>
+                            <constraint firstItem="uCc-Pd-EYW" firstAttribute="leading" secondItem="n3G-J9-oQz" secondAttribute="leadingMargin" constant="-20" id="Ma8-xz-sSE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uCc-Pd-EYW" secondAttribute="trailing" constant="-20" id="SnC-Si-ttk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8zd-HS-AIu" secondAttribute="trailing" constant="-20" id="kyM-B2-9Mq"/>
+                            <constraint firstItem="gtV-8v-KaO" firstAttribute="top" secondItem="uCc-Pd-EYW" secondAttribute="bottom" id="oPH-ka-rBR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gtV-8v-KaO" secondAttribute="trailing" constant="-20" id="tDJ-Z3-ELR"/>
                             <constraint firstItem="gtV-8v-KaO" firstAttribute="leading" secondItem="n3G-J9-oQz" secondAttribute="leadingMargin" constant="-20" id="uLV-JG-o7h"/>
                             <constraint firstItem="gtV-8v-KaO" firstAttribute="top" secondItem="WKU-pF-HJF" secondAttribute="bottom" id="y7F-n0-dbK"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="y7F-n0-dbK"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="NxM-DZ-5gk"/>
                     <connections>
+                        <outlet property="lblTitle" destination="4Tx-OB-Ksb" id="C1G-ta-zsm"/>
                         <outlet property="stackViewStandings" destination="Pic-T5-2Gg" id="xfS-QJ-Fie"/>
                     </connections>
                 </viewController>
@@ -310,6 +343,7 @@
                                 <constraints>
                                     <constraint firstItem="Vsz-MT-R0O" firstAttribute="leading" secondItem="v4z-Wk-xsI" secondAttribute="leading" id="3yO-Q3-EOV"/>
                                     <constraint firstItem="Vsz-MT-R0O" firstAttribute="centerX" secondItem="v4z-Wk-xsI" secondAttribute="centerX" id="Fqo-Q3-1ee"/>
+                                    <constraint firstItem="Vsz-MT-R0O" firstAttribute="top" secondItem="v4z-Wk-xsI" secondAttribute="top" id="WAq-s8-P7R"/>
                                     <constraint firstAttribute="trailing" secondItem="Vsz-MT-R0O" secondAttribute="trailing" id="cKs-Xc-HmB"/>
                                     <constraint firstItem="Vsz-MT-R0O" firstAttribute="top" secondItem="v4z-Wk-xsI" secondAttribute="top" id="eXk-mI-OTk"/>
                                     <constraint firstItem="Vsz-MT-R0O" firstAttribute="centerY" secondItem="v4z-Wk-xsI" secondAttribute="centerY" id="hsb-YO-jgq"/>
@@ -323,11 +357,11 @@
                                 </variation>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDL-bQ-K5Y">
-                                <rect key="frame" x="0.0" y="20" width="600" height="0.0"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="50"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" id="LEq-hI-04e"/>
+                                    <constraint firstAttribute="height" constant="50" id="LEq-hI-04e"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -346,6 +380,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="lQE-lu-Lqe"/>
                                 <exclude reference="mE0-Uw-j4T"/>
                             </mask>
                         </variation>
