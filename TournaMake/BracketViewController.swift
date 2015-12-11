@@ -33,8 +33,8 @@ class BracketViewController: UIViewController {
             eachSubview.removeFromSuperview()
             i--
         }
-        //vertical spacing will change every new round.
         let verticalSpacing : CGFloat = 10
+        let horizontalSpacing : CGFloat = 15
         var currentY : CGFloat = 0.0
         //stackViewBracket.spacing = spacing
         //stackViewBracket.alignment = UIStackViewAlignment.Center
@@ -49,7 +49,7 @@ class BracketViewController: UIViewController {
         
         let numFirstRoundMatches = CGFloat(bracketMatches.count) / 2 //for height
         let numRounds = MathHelper.numRoundsForEntrantCount(bracketMatches.count / 2) //for width
-        self.scrollViewBracket.contentSize = CGSizeMake(matchWidth * CGFloat(numRounds), numFirstRoundMatches * (matchHeight + 10))
+        self.scrollViewBracket.contentSize = CGSizeMake((matchWidth + horizontalSpacing) * CGFloat(numRounds), numFirstRoundMatches * (matchHeight + 10))
         
         var roundNum : CGFloat = 1
         var endIdx = bracketMatches.count / 2
@@ -58,7 +58,7 @@ class BracketViewController: UIViewController {
         for var i = startIdx - 1; i >= endIdx; i-- {
             let eachMatch = bracketMatches[i]
             
-            let vw = UIView(frame: CGRect(x: (roundNum - 1) * matchWidth, y: currentY, width: matchWidth, height: matchHeight))
+            let vw = UIView(frame: CGRect(x: (roundNum - 1) * (matchWidth + horizontalSpacing), y: currentY, width: matchWidth, height: matchHeight))
             //vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true
             //vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
             vw.layer.cornerRadius = 5.0
@@ -82,7 +82,7 @@ class BracketViewController: UIViewController {
                 vw.addSubview(labelTop)
             }
             //if i is even, add a vertical line that extends to next box.
-            if i % 2 == 0 {
+            if i % 2 == 1 {
                 let verticalLine = UILabel(frame: CGRect(x: matchWidth - 1, y: matchHeight / 2, width: 1, height: matchHeight + verticalSpacing))
                 verticalLine.backgroundColor = UIColor.blackColor()
                 vw.addSubview(verticalLine)
