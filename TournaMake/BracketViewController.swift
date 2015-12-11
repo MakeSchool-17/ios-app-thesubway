@@ -56,7 +56,6 @@ class BracketViewController: UIViewController {
         var startIdx = bracketMatches.count
         var highestViewInRound : UIView!
         for var i = startIdx - 1; i >= endIdx; i-- {
-            print(i)
             let eachMatch = bracketMatches[i]
             
             let vw = UIView(frame: CGRect(x: CGFloat(roundNum - 1) * (matchWidth + horizontalSpacing), y: currentY, width: matchWidth, height: matchHeight))
@@ -73,6 +72,15 @@ class BracketViewController: UIViewController {
                 //this is set to the center of the previous 2 views
                 if previousVwTop != nil && previousVwBottom != nil {
                     vw.frame.origin.y = (previousVwTop!.center.y + previousVwBottom!.center.y) / 2 - (matchHeight / 2)
+                }
+            }
+            else if i == 0 {
+                if bracketMatches.count >= 4 {
+                    let previousVwTop : UIView? = self.scrollViewBracket.viewWithTag((i + 1) * 2 + 1)
+                    let previousVwBottom : UIView? = self.scrollViewBracket.viewWithTag((i + 1) * 2)
+                    if previousVwTop != nil && previousVwBottom != nil {
+                        vw.frame.origin.y = (previousVwTop!.center.y + previousVwBottom!.center.y) / 2 - (matchHeight / 2)
+                    }
                 }
             }
             
@@ -99,8 +107,14 @@ class BracketViewController: UIViewController {
                 let previousVw : UIView? = self.scrollViewBracket.viewWithTag(i + 1)
                 if let prevVw = previousVw {
                     let distanceToPrevious = vw.center.y - prevVw.center.y
-                    let verticalLine = UILabel(frame: CGRect(x: matchWidth - 1, y: matchHeight / 2, width: 1, height: 0 - distanceToPrevious))
+                    //this is a negative-y position:
+                    let verticalLine = UILabel(frame: CGRect(x: matchWidth - 1, y: matchHeight / 2 - distanceToPrevious, width: 1, height: distanceToPrevious))
                     verticalLine.backgroundColor = UIColor.blackColor()
+                    
+                    let horizontalLine = UILabel(frame: CGRect(x: 0, y: verticalLine.frame.size.height / 2, width: horizontalSpacing + 1, height: 1))
+                    horizontalLine.backgroundColor = UIColor.blackColor()
+                    verticalLine.addSubview(horizontalLine)
+                    
                     vw.addSubview(verticalLine)
                 }
             }
