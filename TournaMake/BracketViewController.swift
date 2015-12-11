@@ -11,14 +11,20 @@ import UIKit
 class BracketViewController: UIViewController {
 
     var tournament : Tournament!
+    @IBOutlet var lblTitle: UILabel!
     @IBOutlet var scrollViewBracket: UIScrollView!
+    @IBOutlet var btnBeginOrEnd: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
-//        let entrantRecords = StandingsCalculator.getStandingsFromTournament(self.tournament)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         BracketCalculator.getMatchupsFromBracket(self.tournament)
         //set tournament back again.
         self.tournament = CoreDataUtil.getTournamentById(self.tournament.id!.integerValue)
+        self.lblTitle.text = "If the bracket stage were to begin now, based on current standings:"
         self.reloadStackViewBracket()
     }
 
@@ -139,6 +145,10 @@ class BracketViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func btnPressed(sender: AnyObject) {
+        print("start")
     }
 
 }
