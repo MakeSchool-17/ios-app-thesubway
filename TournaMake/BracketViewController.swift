@@ -51,18 +51,30 @@ class BracketViewController: UIViewController {
         let numRounds = MathHelper.numRoundsForEntrantCount(bracketMatches.count / 2) //for width
         self.scrollViewBracket.contentSize = CGSizeMake((matchWidth + horizontalSpacing) * CGFloat(numRounds), numFirstRoundMatches * (matchHeight + 10))
         
-        var roundNum : CGFloat = 1
+        var roundNum = 1
         var endIdx = bracketMatches.count / 2
         var startIdx = bracketMatches.count
         var highestViewInRound : UIView!
         for var i = startIdx - 1; i >= endIdx; i-- {
+            print(i)
             let eachMatch = bracketMatches[i]
             
-            let vw = UIView(frame: CGRect(x: (roundNum - 1) * (matchWidth + horizontalSpacing), y: currentY, width: matchWidth, height: matchHeight))
+            let vw = UIView(frame: CGRect(x: CGFloat(roundNum - 1) * (matchWidth + horizontalSpacing), y: currentY, width: matchWidth, height: matchHeight))
             //vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true
             //vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
             vw.layer.cornerRadius = 5.0
             vw.layer.borderWidth = 1
+            vw.tag = i
+            if roundNum != 1 && roundNum != numRounds {
+                //so not the first or last round
+                //for middle rounds, get the previous round's match, which is i * 2 + 1.
+                let previousVwTop : UIView? = self.scrollViewBracket.viewWithTag(i * 2 + 1)
+                let previousVwBottom : UIView? = self.scrollViewBracket.viewWithTag(i * 2)
+                //this is set to the center of the previous 2 views
+                if previousVwTop != nil && previousVwBottom != nil {
+                    vw.frame.origin.y = (previousVwTop!.center.y + previousVwBottom!.center.y) / 2 - (matchHeight / 2)
+                }
+            }
             
             if i == (startIdx - 1) {
                 highestViewInRound = vw
@@ -72,20 +84,25 @@ class BracketViewController: UIViewController {
             let idRight : String? = eachMatch.rightId
             let ids : [String?] = [idLeft, idRight]
             
-            for var j = 0; j < 2; j++ {
+            for j in 0...1 {
                 let eachId = ids[j]
                 let labelTop = UILabel(frame: CGRect(x: 0, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
                 if eachId != nil {
                     let eachEntrant = CoreDataUtil.getEntrantById(Int(eachId!)!, tournament: eachMatch.tournament!)![0]
                     labelTop.text = eachEntrant.name!
                 }
+                labelTop.tag = j
                 vw.addSubview(labelTop)
             }
-            //if i is even, add a vertical line that extends to next box.
-            if i % 2 == 1 {
-                let verticalLine = UILabel(frame: CGRect(x: matchWidth - 1, y: matchHeight / 2, width: 1, height: matchHeight + verticalSpacing))
-                verticalLine.backgroundColor = UIColor.blackColor()
-                vw.addSubview(verticalLine)
+            //if i is even, add a vertical line that extends to previous box.
+            if i % 2 == 0 && (roundNum != numRounds) {
+                let previousVw : UIView? = self.scrollViewBracket.viewWithTag(i + 1)
+                if let prevVw = previousVw {
+                    let distanceToPrevious = vw.center.y - prevVw.center.y
+                    let verticalLine = UILabel(frame: CGRect(x: matchWidth - 1, y: matchHeight / 2, width: 1, height: 0 - distanceToPrevious))
+                    verticalLine.backgroundColor = UIColor.blackColor()
+                    vw.addSubview(verticalLine)
+                }
             }
             //constraint may not be helpful here.
             //what I want is a subview
