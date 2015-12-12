@@ -8,12 +8,13 @@
 
 import UIKit
 
-class BracketViewController: UIViewController {
+class BracketViewController: UIViewController, UITextFieldDelegate {
 
     var tournament : Tournament!
     @IBOutlet var lblTitle: UILabel!
     @IBOutlet var scrollViewBracket: UIScrollView!
     @IBOutlet var btnBeginOrEnd: UIButton!
+    var bracketMatches : [Match] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
@@ -48,8 +49,11 @@ class BracketViewController: UIViewController {
         let matchHeight : CGFloat = 100
         let matchWidth : CGFloat = 250
         
+        let tap = UITapGestureRecognizer(target: self, action: "scrollViewTapped")
+        scrollViewBracket.addGestureRecognizer(tap)
+        
         //get matches directly from tournament.
-        var bracketMatches = tournament.bracket?.matches?.allObjects as! [Match]
+        self.bracketMatches = tournament.bracket?.matches?.allObjects as! [Match]
         //sort BACKWARDS, to simplify math calculations.
         bracketMatches.sortInPlace({$0.id?.integerValue > $1.id?.integerValue})
         
@@ -103,26 +107,6 @@ class BracketViewController: UIViewController {
             let ids : [String?] = [idLeft, idRight]
             
             for j in 0...1 {
-                //if tournament has started, add appropriate score boxes too.
-                if self.tournament.bracket?.isStarted == true {
-                    //this entire if-statement is solely for the purpose of adding a score box.
-                    var textFieldScore : UITextField!
-                    let scores = [eachMatch.leftScore, eachMatch.rightScore]
-                    if AlgorithmUtil.isPlayerId(eachMatch.leftId) && AlgorithmUtil.isPlayerId(eachMatch.rightId) {
-                        textFieldScore = UITextField(frame: CGRect(x: matchWidth * 4 / 5, y: CGFloat(j) * matchHeight / 2 - CGFloat(j), width: matchWidth * 1 / 5, height: matchHeight / 2 + CGFloat(j)))
-                        //textFieldScore.delegate = self
-                        textFieldScore.layer.borderWidth = 1
-                        textFieldScore.textAlignment = NSTextAlignment.Center
-                        textFieldScore.keyboardType = UIKeyboardType.NumbersAndPunctuation
-                        textFieldScore.autocorrectionType = UITextAutocorrectionType.No
-                        textFieldScore.tag = j
-                        if scores[j] != nil {
-                            textFieldScore.text = "\(scores[j]!)"
-                        }
-                        vw.addSubview(textFieldScore)
-                    }
-                }
-                
                 let eachId = ids[j]
                 let labelTop = UILabel(frame: CGRect(x: 0, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
                 if eachId != nil {
@@ -135,6 +119,28 @@ class BracketViewController: UIViewController {
                     //if i is < half, don't add a bye, because later rounds don't have byes.
                 }
                 labelTop.tag = j
+                
+                //if tournament has started, add appropriate score boxes too.
+                if self.tournament.bracket?.isStarted == true {
+                    
+                    //this entire if-statement is solely for the purpose of adding a score box.
+                    
+                    var textFieldScore : UITextField!
+                    let scores = [eachMatch.leftScore, eachMatch.rightScore]
+                    if AlgorithmUtil.isPlayerId(eachMatch.leftId) && AlgorithmUtil.isPlayerId(eachMatch.rightId) {
+                        textFieldScore = UITextField(frame: CGRect(x: matchWidth * 4 / 5, y: CGFloat(j) * matchHeight / 2 - CGFloat(j), width: matchWidth * 1 / 5, height: matchHeight / 2 + CGFloat(j)))
+                        textFieldScore.delegate = self
+                        textFieldScore.layer.borderWidth = 1
+                        textFieldScore.textAlignment = NSTextAlignment.Center
+                        textFieldScore.keyboardType = UIKeyboardType.NumbersAndPunctuation
+                        textFieldScore.autocorrectionType = UITextAutocorrectionType.No
+                        textFieldScore.tag = j
+                        if scores[j] != nil {
+                            textFieldScore.text = "\(scores[j]!)"
+                        }
+                        vw.addSubview(textFieldScore)
+                    }
+                }
                 vw.addSubview(labelTop)
             }
             //if i is even, add a vertical line that extends to previous box.
@@ -168,6 +174,29 @@ class BracketViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        //NOTE: added floatValue property in Extension String in AlgorithmUtil.swift file
+        if let textScore = textField.text?.floatValue {
+            //store to core data match:
+            let matchId = self.bracketMatches[(textField.superview?.tag)!].id!.integerValue
+            let updatedMatch = CoreDataUtil.updateMatchScore(textScore, matchId: matchId, entrantPos: textField.tag, tournament: self.tournament)
+            print(updatedMatch)
+        }
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func scrollViewTapped() {
+        self.view.endEditing(true)
     }
     
     @IBAction func btnPressed(sender: AnyObject) {
