@@ -419,13 +419,13 @@ class CoreDataUtil {
             return nil
         }
         let match = results![0]
-        if AlgorithmUtil.isPlayerId(leftId) {
+        if leftId != nil {
             match.leftId = "\(leftId!)"
         }
         else {
             match.leftId = nil
         }
-        if AlgorithmUtil.isPlayerId(rightId) {
+        if rightId != nil {
             match.rightId = "\(rightId!)"
         }
         else {

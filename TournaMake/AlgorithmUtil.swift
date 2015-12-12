@@ -55,7 +55,13 @@ class AlgorithmUtil {
     }
     
     class func winnerOfMatch(match: Match) -> String? {
-        if !self.isPlayerId(match.leftId) || !self.isPlayerId(match.rightId) {
+        if match.leftId == GlobalConstants.bye && match.rightId != nil {
+            return match.rightId
+        }
+        else if match.leftId != nil && match.rightId == GlobalConstants.bye {
+            return match.leftId
+        }
+        else if !self.isPlayerId(match.leftId) || !self.isPlayerId(match.rightId) {
             return nil
         }
         if match.leftScore == nil || match.rightScore == nil {

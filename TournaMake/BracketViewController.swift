@@ -109,7 +109,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate {
             for j in 0...1 {
                 let eachId = ids[j]
                 let labelTop = UILabel(frame: CGRect(x: 0, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
-                if eachId != nil {
+                if AlgorithmUtil.isPlayerId(eachId) {
                     let eachEntrant = CoreDataUtil.getEntrantById(Int(eachId!)!, tournament: eachMatch.tournament!)![0]
                     labelTop.text = eachEntrant.name!
                 }
@@ -217,7 +217,26 @@ class BracketViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func btnPressed(sender: AnyObject) {
+        //start the tournament
         CoreDataUtil.setBracket(self.tournament.bracket!, isStarted: true)
+        //check for byes, and advance the opponents.
+        for var matchIdx = self.bracketMatches.count - 1; matchIdx >= 0; matchIdx-- {
+            let eachMatch = self.bracketMatches[matchIdx]
+            let winnerId = AlgorithmUtil.winnerOfMatch(eachMatch)
+            if winnerId != nil && matchIdx > 1 {
+                let nextId = matchIdx / 2
+                let nextMatch = self.bracketMatches[nextId]
+                //remember, matchId is the correct variable here.
+                if matchIdx % 2 != 0 {
+                    //it is the top match. update leftId
+                    CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: "\(winnerId!)", rightId: nextMatch.rightId)
+                }
+                else {
+                    //it is the bottom match. update rightId
+                    CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: nextMatch.leftId, rightId: "\(winnerId!)")
+                }
+            }
+        }
         self.reloadStackViewBracket()
     }
 
