@@ -64,6 +64,9 @@ class StandingsCalculator {
             if groupMatch.isFinished != true {
                 continue
             }
+            if groupMatch.group == nil {
+                continue
+            }
             //figure out whether left or right player.
             var ownScore : Float = 0
             var opponentScore : Float = 0
