@@ -76,8 +76,8 @@ class BracketViewController: UIViewController, UITextFieldDelegate {
             let vw = UIView(frame: CGRect(x: CGFloat(roundNum - 1) * (matchWidth + horizontalSpacing), y: currentY, width: matchWidth, height: matchHeight))
             //vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true
             //vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
-            vw.clipsToBounds = true
-            vw.layer.cornerRadius = 5.0
+            vw.clipsToBounds = false
+            //vw.layer.cornerRadius = 5.0
             vw.layer.borderWidth = 1
             vw.tag = i
             if roundNum != 1 && i >= 1 {
@@ -91,11 +91,20 @@ class BracketViewController: UIViewController, UITextFieldDelegate {
                 }
                 if i == 1 {
                     championshipFrame = vw.frame
+                    let heightOfLabel : CGFloat = 40
+                    let lblChampionship = UILabel(frame: CGRect(x: 0, y: 0 - heightOfLabel, width: matchWidth, height: heightOfLabel))
+                    lblChampionship.text = "Championship"
+                    vw.addSubview(lblChampionship)
                 }
             }
             //third-place match will be index 0, and championship is index 1, for math purposes
             else if i == 0 {
                 vw.frame.origin.y = championshipFrame.origin.y + matchHeight + verticalSpacing
+                //add label indicating 3rd-place match:
+                let heightOfLabel : CGFloat = 21
+                let lbl3rdPlace = UILabel(frame: CGRect(x: 0, y: 0 - heightOfLabel, width: matchWidth, height: heightOfLabel))
+                vw.addSubview(lbl3rdPlace)
+                lbl3rdPlace.text = "3rd-place Match"
             }
             
             if i == (startIdx - 1) {
