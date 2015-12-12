@@ -311,12 +311,12 @@ class BracketCalculator {
         var bracketSlots = tournament.bracket?.slots?.allObjects as! [BracketSlot]
         bracketMatches.sortInPlace({$0.id?.integerValue < $1.id?.integerValue})
         bracketSlots.sortInPlace({$0.slotNum?.integerValue < $1.slotNum?.integerValue})
+        var thirdIdx = 0
         for var i = 0; i < bracketSlots.count; i++ {
             let eachSlot = bracketSlots[i]
             let eachMatch = bracketMatches[i]
             let slotSeeds = [eachSlot.seedLeft!, eachSlot.seedRight!]
             var entrantIds : [String] = []
-            var thirdIdx = 0
             for var j = 0; j < slotSeeds.count; j++ {
                 let eachSeed = slotSeeds[j]
                 //decode the string
