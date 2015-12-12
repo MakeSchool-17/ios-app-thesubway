@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15C50" minimumToolsVersion="Automatic">
     <entity name="Bracket" representedClassName=".Bracket" syncable="YES">
+        <attribute name="isStarted" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="reseed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="tournamentId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="matches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="bracket" inverseEntity="Match" syncable="YES"/>
@@ -52,7 +53,7 @@
         <relationship name="matches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="tournament" inverseEntity="Match" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Bracket" positionX="-18" positionY="117" width="128" height="120"/>
+        <element name="Bracket" positionX="-18" positionY="117" width="128" height="135"/>
         <element name="BracketSlot" positionX="-9" positionY="126" width="128" height="120"/>
         <element name="Entrant" positionX="-54" positionY="9" width="128" height="135"/>
         <element name="Group" positionX="-36" positionY="99" width="128" height="120"/>

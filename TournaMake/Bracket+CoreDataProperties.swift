@@ -2,7 +2,7 @@
 //  Bracket+CoreDataProperties.swift
 //  TournaMake
 //
-//  Created by Dan Hoang on 12/8/15.
+//  Created by Dan Hoang on 12/11/15.
 //  Copyright © 2015 Dan Hoang. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,8 +16,9 @@ extension Bracket {
 
     @NSManaged var reseed: NSNumber?
     @NSManaged var tournamentId: NSNumber?
+    @NSManaged var isStarted: NSNumber?
+    @NSManaged var matches: NSSet?
     @NSManaged var slots: NSSet?
     @NSManaged var tournament: Tournament?
-    @NSManaged var matches: NSSet?
 
 }

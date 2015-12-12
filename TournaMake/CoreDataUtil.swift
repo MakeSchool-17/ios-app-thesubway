@@ -160,6 +160,7 @@ class CoreDataUtil {
         newBracket.tournament = tournament
         newBracket.tournamentId = tournament.id
         newBracket.reseed = NSNumber(bool: false)
+        newBracket.isStarted = NSNumber(bool: false)
         for var i = 0; i < data.bracketSlots.count; i += 2 {
             let slotTeams = [data.bracketSlots[i], data.bracketSlots[i + 1]]
             self.addSlotToBracket(newBracket, slotTeams: slotTeams, idx: i / 2)
@@ -171,6 +172,30 @@ class CoreDataUtil {
             return nil
         }
         return newBracket
+    }
+    
+    class func setBracket(bracket: Bracket, isStarted: Bool) -> Bracket? {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "Bracket")
+        request.predicate = NSPredicate(format: "tournamentId = \(bracket.tournamentId!)")
+        var results : [Bracket]?
+        do {
+            results = try context.executeFetchRequest(request) as? [Bracket]
+        }
+        catch {
+            print("could not fetch")
+            return nil
+        }
+        let bracket = results![0]
+        bracket.isStarted = NSNumber(bool: isStarted)
+        do {
+            try context.save()
+        } catch {
+            print("could not save")
+            return nil
+        }
+        return bracket
     }
     
     class func addSlotToBracket(bracket: Bracket, slotTeams: [String], idx: Int) -> BracketSlot! {
