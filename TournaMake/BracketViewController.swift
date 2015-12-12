@@ -72,6 +72,7 @@ class BracketViewController: UIViewController {
             let vw = UIView(frame: CGRect(x: CGFloat(roundNum - 1) * (matchWidth + horizontalSpacing), y: currentY, width: matchWidth, height: matchHeight))
             //vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true
             //vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
+            vw.clipsToBounds = true
             vw.layer.cornerRadius = 5.0
             vw.layer.borderWidth = 1
             vw.tag = i
@@ -102,6 +103,26 @@ class BracketViewController: UIViewController {
             let ids : [String?] = [idLeft, idRight]
             
             for j in 0...1 {
+                //if tournament has started, add appropriate score boxes too.
+                if self.tournament.bracket?.isStarted == true {
+                    //this entire if-statement is solely for the purpose of adding a score box.
+                    var textFieldScore : UITextField!
+                    let scores = [eachMatch.leftScore, eachMatch.rightScore]
+                    if AlgorithmUtil.isPlayerId(eachMatch.leftId) && AlgorithmUtil.isPlayerId(eachMatch.rightId) {
+                        textFieldScore = UITextField(frame: CGRect(x: matchWidth * 4 / 5, y: CGFloat(j) * matchHeight / 2 - CGFloat(j), width: matchWidth * 1 / 5, height: matchHeight / 2 + CGFloat(j)))
+                        //textFieldScore.delegate = self
+                        textFieldScore.layer.borderWidth = 1
+                        textFieldScore.textAlignment = NSTextAlignment.Center
+                        textFieldScore.keyboardType = UIKeyboardType.NumbersAndPunctuation
+                        textFieldScore.autocorrectionType = UITextAutocorrectionType.No
+                        textFieldScore.tag = j
+                        if scores[j] != nil {
+                            textFieldScore.text = "\(scores[j]!)"
+                        }
+                        vw.addSubview(textFieldScore)
+                    }
+                }
+                
                 let eachId = ids[j]
                 let labelTop = UILabel(frame: CGRect(x: 0, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
                 if eachId != nil {
@@ -150,7 +171,8 @@ class BracketViewController: UIViewController {
     }
     
     @IBAction func btnPressed(sender: AnyObject) {
-        print("start")
+        CoreDataUtil.setBracket(self.tournament.bracket!, isStarted: true)
+        self.reloadStackViewBracket()
     }
 
 }

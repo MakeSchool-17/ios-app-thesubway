@@ -26,6 +26,13 @@ class AlgorithmUtil {
         return  num - floor(num) > 0.000001
     }
     
+    class func isPlayerId(idStr: String?) -> Bool {
+        if idStr != nil && idStr != GlobalConstants.bye {
+            return true
+        }
+        return false
+    }
+    
     //stack overflow helper:
     class func compareAnyObjectType(a: AnyObject?, b: AnyObject?) -> Bool {
         if let va = a as? Int, vb = b as? Int {
