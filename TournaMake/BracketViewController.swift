@@ -185,9 +185,26 @@ class BracketViewController: UIViewController, UITextFieldDelegate {
         //NOTE: added floatValue property in Extension String in AlgorithmUtil.swift file
         if let textScore = textField.text?.floatValue {
             //store to core data match:
-            let matchId = self.bracketMatches[(textField.superview?.tag)!].id!.integerValue
+            let matchIdx = (textField.superview?.tag)!
+            let matchId = self.bracketMatches[matchIdx].id!.integerValue
             let updatedMatch = CoreDataUtil.updateMatchScore(textScore, matchId: matchId, entrantPos: textField.tag, tournament: self.tournament)
-            print(updatedMatch)
+            //check if updatedMatch has a winner.
+            let winnerId = AlgorithmUtil.winnerOfMatch(updatedMatch!)
+            if winnerId != nil && matchIdx > 1 {
+                //update next match
+                let nextId = matchIdx / 2
+                let nextMatch = self.bracketMatches[nextId]
+                //remember, matchId is the correct variable here.
+                if matchIdx % 2 != 0 {
+                    //it is the top match. update leftId
+                    CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: "\(winnerId!)", rightId: nextMatch.rightId)
+                }
+                else {
+                    //it is the bottom match. update rightId
+                    CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: nextMatch.leftId, rightId: "\(winnerId!)")
+                }
+            }
+            self.reloadStackViewBracket()
         }
     }
     

@@ -53,6 +53,22 @@ class AlgorithmUtil {
         // not a type we expected
         return false
     }
+    
+    class func winnerOfMatch(match: Match) -> String? {
+        if !self.isPlayerId(match.leftId) || !self.isPlayerId(match.rightId) {
+            return nil
+        }
+        if match.leftScore == nil || match.rightScore == nil {
+            return nil
+        }
+        if match.leftScore?.floatValue > match.rightScore?.floatValue {
+            return match.leftId
+        }
+        else if match.leftScore?.floatValue < match.rightScore?.floatValue {
+            return match.rightId
+        }
+        return nil
+    }
 }
 
 extension String {
