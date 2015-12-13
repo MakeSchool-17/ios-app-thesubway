@@ -79,7 +79,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate {
             vw.clipsToBounds = false
             //vw.layer.cornerRadius = 5.0
             vw.layer.borderWidth = 1
-            vw.backgroundColor = UIColor.greenColor()
+            vw.backgroundColor = UIColor.lightGrayColor()
             vw.tag = i
             if roundNum != 1 && i >= 1 {
                 //so not the first round, and not the third place match.
@@ -100,7 +100,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate {
             }
             //third-place match will be index 0, and championship is index 1, for math purposes
             else if i == 0 {
-                vw.frame.origin.y = championshipFrame.origin.y + matchHeight + verticalSpacing
+                vw.frame.origin.y = championshipFrame.origin.y + 3 / 2 * matchHeight + verticalSpacing
                 //add label indicating 3rd-place match:
                 let heightOfLabel : CGFloat = 21
                 let lbl3rdPlace = UILabel(frame: CGRect(x: 0, y: 0 - heightOfLabel, width: matchWidth, height: heightOfLabel))
