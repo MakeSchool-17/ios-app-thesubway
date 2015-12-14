@@ -75,6 +75,19 @@ class AlgorithmUtil {
         }
         return nil
     }
+    
+    class func loserOfMatch(match: Match) -> String? {
+        if self.winnerOfMatch(match) == nil {
+            return nil
+        }
+        if self.winnerOfMatch(match) == match.leftId {
+            return match.rightId
+        }
+        if self.winnerOfMatch(match) == match.rightId {
+            return match.leftId
+        }
+        return nil
+    }
 }
 
 extension String {
