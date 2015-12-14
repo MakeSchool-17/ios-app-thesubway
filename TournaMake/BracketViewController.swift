@@ -8,11 +8,12 @@
 
 import UIKit
 
-class BracketViewController: UIViewController, UITextFieldDelegate {
+class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
 
     var tournament : Tournament!
     @IBOutlet var lblTitle: UILabel!
     @IBOutlet var scrollViewBracket: UIScrollView!
+    var largeSubView : UIView!
     @IBOutlet var btnBeginOrEnd: UIButton!
     var bracketMatches : [Match] = []
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate {
         //set tournament back again.
         self.tournament = CoreDataUtil.getTournamentById(self.tournament.id!.integerValue)
         self.lblTitle.text = "If the bracket stage were to begin now, based on current standings:"
+        self.scrollViewBracket.delegate = self
         self.reloadStackViewBracket()
     }
 
@@ -34,12 +36,22 @@ class BracketViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func reloadStackViewBracket() {
-        for var i = 0; i < self.scrollViewBracket.subviews.count; i++ {
-            let eachSubview = self.scrollViewBracket.subviews[i]
-            eachSubview.removeFromSuperview()
-            i--
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        if scrollView.subviews.count <= 0 {
+            return nil
         }
+        return scrollView.subviews[0]
+    }
+    
+    func reloadStackViewBracket() {
+        if self.largeSubView != nil {
+            for var i = 0; i < self.largeSubView.subviews.count; i++ {
+                let eachSubview = self.largeSubView.subviews[i]
+                eachSubview.removeFromSuperview()
+                i--
+            }
+        }
+        
         let verticalSpacing : CGFloat = 10
         let horizontalSpacing : CGFloat = 15
         var currentY : CGFloat = 0.0
@@ -60,9 +72,16 @@ class BracketViewController: UIViewController, UITextFieldDelegate {
         let numFirstRoundMatches = CGFloat(bracketMatches.count) / 2 //for height
         let numRounds = MathHelper.numRoundsForEntrantCount(bracketMatches.count / 2) //for width
         self.scrollViewBracket.contentSize = CGSizeMake((matchWidth + horizontalSpacing) * CGFloat(numRounds), numFirstRoundMatches * (matchHeight + 10))
+        self.scrollViewBracket.minimumZoomScale = 0.35
+        self.scrollViewBracket.maximumZoomScale = 2.0
         if numRounds <= 2 {
             //If there are only 2 rounds, there must be enough space for 3rd-place match underneath championship match.
             self.scrollViewBracket.contentSize.height += verticalSpacing + matchHeight
+        }
+        
+        if self.largeSubView == nil {
+            self.largeSubView = UIView(frame: CGRect(x: 0, y: 0, width: self.scrollViewBracket.contentSize.width, height: self.scrollViewBracket.contentSize.height))
+            self.scrollViewBracket.addSubview(self.largeSubView)
         }
         
         var roundNum = 1
@@ -84,8 +103,8 @@ class BracketViewController: UIViewController, UITextFieldDelegate {
             if roundNum != 1 && i >= 1 {
                 //so not the first round, and not the third place match.
                 //for middle rounds, get the previous round's match, which is i * 2 + 1.
-                let previousVwTop : UIView? = self.scrollViewBracket.viewWithTag(i * 2 + 1)
-                let previousVwBottom : UIView? = self.scrollViewBracket.viewWithTag(i * 2)
+                let previousVwTop : UIView? = self.largeSubView.viewWithTag(i * 2 + 1)
+                let previousVwBottom : UIView? = self.largeSubView.viewWithTag(i * 2)
                 //this is set to the center of the previous 2 views
                 if previousVwTop != nil && previousVwBottom != nil {
                     vw.frame.origin.y = (previousVwTop!.center.y + previousVwBottom!.center.y) / 2 - (matchHeight / 2)
@@ -155,7 +174,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate {
             }
             //if i is even, add a vertical line that extends to previous box.
             if i % 2 == 0 && (roundNum != numRounds) {
-                let previousVw : UIView? = self.scrollViewBracket.viewWithTag(i + 1)
+                let previousVw : UIView? = self.largeSubView.viewWithTag(i + 1)
                 if let prevVw = previousVw {
                     let distanceToPrevious = vw.center.y - prevVw.center.y
                     //this is a negative-y position:
@@ -171,7 +190,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate {
             }
             //constraint may not be helpful here.
             //what I want is a subview
-            self.scrollViewBracket.addSubview(vw)
+            self.largeSubView.addSubview(vw)
             currentY += matchHeight + verticalSpacing
             if i == endIdx {
                 currentY = highestViewInRound.frame.origin.y + (matchHeight + verticalSpacing) / 2
