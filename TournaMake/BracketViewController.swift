@@ -200,7 +200,12 @@ class BracketViewController: UIViewController, UITextFieldDelegate {
             let updatedMatch = CoreDataUtil.updateMatchScore(textScore, matchId: matchId, entrantPos: textField.tag, tournament: self.tournament)
             //check if updatedMatch has a winner.
             let winnerId = AlgorithmUtil.winnerOfMatch(updatedMatch!)
-            self.updateLaterMatchWithWinner(winnerId, matchIdx: matchIdx)
+            self.updateLaterMatchWithWinner(winnerId, idxOfPrevMatch: matchIdx)
+            if matchIdx == 2 || matchIdx == 3 {
+                //semi-final losers must be added to 3rd-place match.
+                let loserId = AlgorithmUtil.loserOfMatch(updatedMatch!)
+                self.updateBronzeMatchWithLoser(loserId, idxOfPrevMatch: matchIdx)
+            }
             self.reloadStackViewBracket()
         }
     }
@@ -220,23 +225,35 @@ class BracketViewController: UIViewController, UITextFieldDelegate {
         for var matchIdx = self.bracketMatches.count - 1; matchIdx >= 0; matchIdx-- {
             let eachMatch = self.bracketMatches[matchIdx]
             let winnerId = AlgorithmUtil.winnerOfMatch(eachMatch)
-            self.updateLaterMatchWithWinner(winnerId, matchIdx: matchIdx)
+            self.updateLaterMatchWithWinner(winnerId, idxOfPrevMatch: matchIdx)
         }
         self.reloadStackViewBracket()
     }
     
-    func updateLaterMatchWithWinner(winnerId: String?, matchIdx: Int) {
-        if winnerId != nil && matchIdx > 1 {
-            let nextId = matchIdx / 2
+    func updateLaterMatchWithWinner(winnerId: String?, idxOfPrevMatch: Int) {
+        if winnerId != nil && idxOfPrevMatch > 1 {
+            let nextId = idxOfPrevMatch / 2
             let nextMatch = self.bracketMatches[nextId]
             //remember, matchId is the correct variable here.
-            if matchIdx % 2 != 0 {
+            if idxOfPrevMatch % 2 != 0 {
                 //it is the top match. update leftId
                 CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: "\(winnerId!)", rightId: nextMatch.rightId)
             }
             else {
                 //it is the bottom match. update rightId
                 CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: nextMatch.leftId, rightId: "\(winnerId!)")
+            }
+        }
+    }
+    
+    func updateBronzeMatchWithLoser(loserId: String?, idxOfPrevMatch: Int) {
+        if loserId != nil {
+            let bronzeMatch = self.bracketMatches[0]
+            if idxOfPrevMatch % 2 != 0 {
+                CoreDataUtil.updateEntrantsInMatch(bronzeMatch, leftId: "\(loserId!)", rightId: bronzeMatch.rightId)
+            }
+            else {
+                CoreDataUtil.updateEntrantsInMatch(bronzeMatch, leftId: bronzeMatch.leftId, rightId: "\(loserId!)")
             }
         }
     }
