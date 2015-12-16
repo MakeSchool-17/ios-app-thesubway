@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateTournamentViewController: UIViewController, UITextViewDelegate {
+class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
     @IBOutlet var typePicker: UITextField!
     @IBOutlet var textFieldTournamentName: UITextField!
@@ -29,6 +29,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
         self.textViewEntrants.autocorrectionType = UITextAutocorrectionType.No
         
         self.textFieldTournamentName.autocapitalizationType = UITextAutocapitalizationType.Words
+        self.textFieldTournamentName.delegate = self
         self.labelTotalTeams.text = "Total entrants: 0\n(Must be between 6-64 entrants)"
         //self.textFieldTournamentName.text = "Tournament 1"
     }
@@ -38,6 +39,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     func typePressed(sender: UIButton) {
+        self.view.endEditing(true)
         let typeArr : [String] = [groupStageKnockout]
         MMPickerView.showPickerViewInView(self.view, withObjects: typeArr, withOptions: nil, objectToStringConverter: nil) { (selectedString : AnyObject!) -> Void in
             print(selectedString!)
@@ -132,4 +134,12 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate {
         self.labelTotalTeams.text = "Total entrants: \(teams.count)\n(Must be between 6-64 entrants)"
     }
 
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        if textField == self.textFieldTournamentName {
+            self.textViewEntrants.becomeFirstResponder()
+        }
+        return false
+    }
+    
 }
