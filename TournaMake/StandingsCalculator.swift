@@ -23,7 +23,7 @@ class StandingsCalculator {
     
     class func computeStandings(entrantRecords : [EntrantRecord]) -> [EntrantRecord] {
         //compare array
-        let tiebreakArr = [TieBreakerType.Points, TieBreakerType.HeadToHead]
+        let tiebreakArr = [TieBreakerType.Points, TieBreakerType.ScoringDifferential, TieBreakerType.HeadToHead]
         var twoDimensionalArr = [entrantRecords]
         for var i = 0; i < tiebreakArr.count; i++ {
             var new2DArr : [[EntrantRecord]] = []
