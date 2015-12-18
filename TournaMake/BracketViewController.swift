@@ -54,6 +54,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         
         let verticalSpacing : CGFloat = 10
         let horizontalSpacing : CGFloat = 15
+        let paddingX : CGFloat = 20.0
         var currentY : CGFloat = 0.0
         //stackViewBracket.spacing = spacing
         //stackViewBracket.alignment = UIStackViewAlignment.Center
@@ -92,7 +93,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         for var i = startIdx - 1; i >= endIdx; i-- {
             let eachMatch = bracketMatches[i]
             
-            let vw = UIView(frame: CGRect(x: CGFloat(roundNum - 1) * (matchWidth + horizontalSpacing), y: currentY, width: matchWidth, height: matchHeight))
+            let vw = UIView(frame: CGRect(x: paddingX + CGFloat(roundNum - 1) * (matchWidth + horizontalSpacing), y: currentY, width: matchWidth, height: matchHeight))
             //vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true
             //vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
             vw.clipsToBounds = false

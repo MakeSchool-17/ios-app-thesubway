@@ -47,6 +47,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
         
         let matchHeight : CGFloat = 100
         let matchWidth : CGFloat = 250
+        let paddingX : CGFloat = 20.0
         
         let tap = UITapGestureRecognizer(target: self, action: "stackViewTapped")
         stackViewMatch.addGestureRecognizer(tap)
