@@ -32,26 +32,36 @@ class CoreDataUtil {
         let entrantDict = NSMutableDictionary()
         var id = 0
         var matchId = 0
-        for var i = 0; i < data.groups.count; i++ {
-            let eachGroup = data.groups[i]
-            //add group to core data:
-            let coreDataGroup = self.addGroup(newTournament, idx: i)
-            for eachEntrant in eachGroup {
-                entrantDict.setValue(id, forKey: eachEntrant)
-                //save all entrant to core data:
-                let newEntrant = self.addEntrantToTournament(newTournament, name: eachEntrant, id: id)
-                self.addEntrantExistingToGroup(newEntrant!, group: coreDataGroup!)
-                id++
+        if data.format == GlobalConstants.groupStageKnockout {
+            newTournament.type = GlobalConstants.groupStageKnockout
+            for var i = 0; i < data.groups.count; i++ {
+                let eachGroup = data.groups[i]
+                //add group to core data:
+                let coreDataGroup = self.addGroup(newTournament, idx: i)
+                for eachEntrant in eachGroup {
+                    entrantDict.setValue(id, forKey: eachEntrant)
+                    //save all entrant to core data:
+                    let newEntrant = self.addEntrantToTournament(newTournament, name: eachEntrant, id: id)
+                    self.addEntrantExistingToGroup(newEntrant!, group: coreDataGroup!)
+                    id++
+                }
+                //create round robin within each group, and associate using player id's:
+                let eachIdGroup = self.entrantNamesToIds(eachGroup, tournament: newTournament)
+                let roundRobin = GroupCalculator.getRoundRobinSchedule(eachIdGroup)
+                for var j = 0; j < roundRobin.count; j++ {
+                    let eachMatch = roundRobin[j]
+                    //create a core data match, save its 2 players' id's.
+                    self.addMatch(id: matchId, leftId: eachMatch[0], rightId: eachMatch[1], group: coreDataGroup!)
+                    //my template has it set so that
+                    matchId++
+                }
             }
-            //create round robin within each group, and associate using player id's:
-            let eachIdGroup = self.entrantNamesToIds(eachGroup, tournament: newTournament)
-            let roundRobin = GroupCalculator.getRoundRobinSchedule(eachIdGroup)
-            for var j = 0; j < roundRobin.count; j++ {
-                let eachMatch = roundRobin[j]
-                //create a core data match, save its 2 players' id's.
-                self.addMatch(id: matchId, leftId: eachMatch[0], rightId: eachMatch[1], group: coreDataGroup!)
-                //my template has it set so that
-                matchId++
+        }
+        else if data.format == GlobalConstants.knockout {
+            newTournament.type = GlobalConstants.knockout
+            for var i = 0; i < data.entrants.count; i++ {
+                let eachEntrant = data.entrants[i]
+                self.addEntrantToTournament(newTournament, name: eachEntrant, id: i)
             }
         }
         self.addBracket(newTournament, data: data)

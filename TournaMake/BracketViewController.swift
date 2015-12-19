@@ -23,10 +23,12 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        BracketCalculator.getMatchupsFromBracket(self.tournament)
-        //set tournament back again.
-        self.tournament = CoreDataUtil.getTournamentById(self.tournament.id!.integerValue)
-        self.lblTitle.text = "If the bracket stage were to begin now, based on current standings:"
+        if self.tournament.type == GlobalConstants.groupStageKnockout {
+            BracketCalculator.getMatchupsFromBracket(self.tournament)
+            //set tournament back again.
+            self.tournament = CoreDataUtil.getTournamentById(self.tournament.id!.integerValue)
+            self.lblTitle.text = "If the bracket stage were to begin now, based on current standings:"
+        }
         self.scrollViewBracket.delegate = self
         self.reloadStackViewBracket()
     }
