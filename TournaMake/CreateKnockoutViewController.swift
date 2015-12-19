@@ -18,7 +18,9 @@ class CreateKnockoutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bracketSlots = BracketCalculator.calculateBrackets(groups, tournamentData: tournamentData)
+        if self.tournamentData.format == GlobalConstants.groupStageKnockout {
+            self.bracketSlots = BracketCalculator.calculateGroupBrackets(groups, tournamentData: tournamentData)
+        }
         self.reloadStackViewBracket()
     }
 
@@ -118,7 +120,9 @@ class CreateKnockoutViewController: UIViewController {
     
     @IBAction func defaultPressed(sender: AnyObject) {
         self.slotsNotEntered = []
-        self.bracketSlots = BracketCalculator.calculateBrackets(groups, tournamentData: tournamentData)
+        if self.tournamentData.format == GlobalConstants.groupStageKnockout {
+            self.bracketSlots = BracketCalculator.calculateGroupBrackets(groups, tournamentData: tournamentData)
+        }
         self.reloadStackViewBracket()
     }
     
