@@ -15,10 +15,11 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
     var keyboardHeight : CGFloat = 0
     var keyboardWidth : CGFloat = 0
     var originalFrame : CGRect!
+    var tfPoint : CGPoint = CGPointZero
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
@@ -123,6 +124,11 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        self.tfPoint = self.scrollViewMatch.convertPoint(textField.superview!.frame.origin, fromView: self.scrollViewMatch)
+        self.tfPoint.x = 0
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -131,8 +137,9 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    func keyboardWillShow(notification: NSNotification) {
-        if self.originalFrame != nil {
+    func keyboardDidShow(notification: NSNotification) {
+        self.scrollViewMatch.setContentOffset(self.tfPoint, animated: true)
+        /*if self.originalFrame != nil {
             self.view.frame = self.originalFrame
         }
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
@@ -146,13 +153,13 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
                 newFrame.origin.y -= keyboardSize.height
             }
             self.view.frame = newFrame
-        }
+        }*/
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        if self.originalFrame != nil {
+        /*if self.originalFrame != nil {
             self.view.frame = self.originalFrame
-        }
+        }*/
     }
 
 }
