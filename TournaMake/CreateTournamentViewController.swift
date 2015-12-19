@@ -14,14 +14,13 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
     @IBOutlet var textFieldTournamentName: UITextField!
     @IBOutlet var textViewEntrants: UITextView!
     @IBOutlet var labelTotalTeams: UILabel!
-    let groupStageKnockout = "Group Stage + Knock-out"
     let entrants : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let typeButton = UIButton(frame: CGRect(x: 0, y: 0, width: typePicker.frame.width, height: typePicker.frame.height))
         self.typePicker.addSubview(typeButton)
-        typePicker.text = groupStageKnockout
+        typePicker.text = GlobalConstants.groupStageKnockout
         typeButton.addTarget(self, action: "typePressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         self.textViewEntrants.layer.borderWidth = 1
@@ -40,9 +39,9 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
     }
     func typePressed(sender: UIButton) {
         self.view.endEditing(true)
-        let typeArr : [String] = [groupStageKnockout]
+        let typeArr : [String] = [GlobalConstants.groupStageKnockout, GlobalConstants.knockout]
         MMPickerView.showPickerViewInView(self.view, withObjects: typeArr, withOptions: nil, objectToStringConverter: nil) { (selectedString : AnyObject!) -> Void in
-            print(selectedString!)
+            self.typePicker.text = selectedString as? String
         }
     }
     
@@ -80,6 +79,10 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
             UIHelper.showAlertOnVc(self, title: "", message: "Please enter tournament name")
             return
         }
+        if self.typePicker.text == nil || self.typePicker.text == "" {
+            UIHelper.showAlertOnVc(self, title: "", message: "Please select tournament type")
+            return
+        }
         let fullNameArr = self.getEntrants()
         if fullNameArr.count < 6 {
             UIHelper.showAlertOnVc(self, title: "", message: "Please include at least 6 entrants")
@@ -94,11 +97,17 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
             UIHelper.showAlertOnVc(self, title: "", message: "Duplicate entrant name: \(duplicateName)")
             return
         }
-        let tournamentData = TournamentData(entrants: fullNameArr, name: self.textFieldTournamentName!.text!)
-        if self.typePicker.text == self.groupStageKnockout {
+        let tournamentData = TournamentData(entrants: fullNameArr, name: self.textFieldTournamentName!.text!, format: self.typePicker.text!)
+        if self.typePicker.text == GlobalConstants.groupStageKnockout {
             let createGroupStage = self.storyboard?.instantiateViewControllerWithIdentifier("createGroupStage") as! CreateGroupStageViewController
             createGroupStage.tournamentData = tournamentData
             self.navigationController?.pushViewController(createGroupStage, animated: true)
+        }
+        else if self.typePicker.text == GlobalConstants.knockout {
+            let createKnockout = self.storyboard?.instantiateViewControllerWithIdentifier("createKnockout") as! CreateKnockoutViewController
+            createKnockout.groups = nil
+            createKnockout.tournamentData = tournamentData
+            self.navigationController?.pushViewController(createKnockout, animated: true)
         }
     }
     

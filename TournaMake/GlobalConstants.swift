@@ -9,6 +9,8 @@
 import UIKit
 
 struct GlobalConstants {
+    static let groupStageKnockout = "Group Stage + Knockout"
+    static let knockout = "Knockout"
     static let strEmpty = "*Empty*"
     static let groupWinner = "Winner"
     static let groupRunnerUp = "Runner-up"
