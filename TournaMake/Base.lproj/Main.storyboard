@@ -340,28 +340,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v4z-Wk-xsI">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v4z-Wk-xsI">
                                 <rect key="frame" x="0.0" y="70" width="600" height="477"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vsz-MT-R0O">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="547"/>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Vsz-MT-R0O" firstAttribute="leading" secondItem="v4z-Wk-xsI" secondAttribute="leading" id="3yO-Q3-EOV"/>
-                                    <constraint firstItem="Vsz-MT-R0O" firstAttribute="centerX" secondItem="v4z-Wk-xsI" secondAttribute="centerX" id="Fqo-Q3-1ee"/>
-                                    <constraint firstItem="Vsz-MT-R0O" firstAttribute="top" secondItem="v4z-Wk-xsI" secondAttribute="top" id="WAq-s8-P7R"/>
-                                    <constraint firstAttribute="trailing" secondItem="Vsz-MT-R0O" secondAttribute="trailing" id="cKs-Xc-HmB"/>
-                                    <constraint firstItem="Vsz-MT-R0O" firstAttribute="top" secondItem="v4z-Wk-xsI" secondAttribute="top" id="eXk-mI-OTk"/>
-                                    <constraint firstItem="Vsz-MT-R0O" firstAttribute="centerY" secondItem="v4z-Wk-xsI" secondAttribute="centerY" id="hsb-YO-jgq"/>
-                                    <constraint firstAttribute="bottom" secondItem="Vsz-MT-R0O" secondAttribute="bottom" id="vQS-yC-ibm"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Fqo-Q3-1ee"/>
-                                        <exclude reference="hsb-YO-jgq"/>
-                                    </mask>
-                                </variation>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDL-bQ-K5Y">
                                 <rect key="frame" x="0.0" y="20" width="600" height="50"/>
@@ -382,7 +362,6 @@
                             <constraint firstItem="v4z-Wk-xsI" firstAttribute="top" secondItem="jYE-fX-Tg9" secondAttribute="bottom" id="lQE-lu-Lqe"/>
                             <constraint firstItem="v4z-Wk-xsI" firstAttribute="top" secondItem="jYE-fX-Tg9" secondAttribute="bottom" id="mE0-Uw-j4T"/>
                             <constraint firstAttribute="trailingMargin" secondItem="v4z-Wk-xsI" secondAttribute="trailing" constant="-20" id="mdR-4M-wvq"/>
-                            <constraint firstItem="Vsz-MT-R0O" firstAttribute="width" secondItem="JDL-bQ-K5Y" secondAttribute="width" id="oMp-Yx-Wfj"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -393,7 +372,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="NdG-Ay-8fJ"/>
                     <connections>
-                        <outlet property="stackViewMatch" destination="Vsz-MT-R0O" id="5sU-oQ-ToH"/>
+                        <outlet property="scrollViewMatch" destination="v4z-Wk-xsI" id="ooG-18-ney"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDr-mU-2at" userLabel="First Responder" sceneMemberID="firstResponder"/>

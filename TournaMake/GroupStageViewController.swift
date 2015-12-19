@@ -10,7 +10,7 @@ import UIKit
 
 class GroupStageViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet var stackViewMatch: UIStackView!
+    @IBOutlet var scrollViewMatch: UIScrollView!
     var tournament : Tournament!
     var keyboardHeight : CGFloat = 0
     var keyboardWidth : CGFloat = 0
@@ -31,40 +31,37 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
     }
     
     func reloadStackView() {
-        for var i = 0; i < self.stackViewMatch.arrangedSubviews.count; i++ {
-            let eachSubview = self.stackViewMatch.arrangedSubviews[i]
+        for var i = 0; i < self.scrollViewMatch.subviews.count; i++ {
+            let eachSubview = self.scrollViewMatch.subviews[i]
             eachSubview.removeFromSuperview()
-            self.stackViewMatch.removeArrangedSubview(eachSubview)
             i--
         }
         
         var allGroups = self.tournament.groupStage?.allObjects as! [Group]
         allGroups.sortInPlace({ $0.id?.integerValue < $1.id?.integerValue})
         
-        
-        stackViewMatch.spacing = 10
-        stackViewMatch.alignment = UIStackViewAlignment.Center
-        
         let matchHeight : CGFloat = 100
         let matchWidth : CGFloat = 250
         let paddingX : CGFloat = 20.0
+        let verticalSpacing : CGFloat = 10.0
+        var currentY : CGFloat = 0
         
         let tap = UITapGestureRecognizer(target: self, action: "stackViewTapped")
-        stackViewMatch.addGestureRecognizer(tap)
+        scrollViewMatch.addGestureRecognizer(tap)
         
         for eachGroup in allGroups {
             var schedule = eachGroup.schedule?.allObjects as! [Match]
             schedule.sortInPlace({ $0.id?.integerValue < $1.id?.integerValue})
             
-            let lbl = UILabel()
+            let lblHeight : CGFloat = 22.0
+            let lbl = UILabel(frame: CGRect(x: paddingX, y: currentY, width: self.scrollViewMatch.frame.size.width, height: lblHeight))
             lbl.text = "Group \(GlobalConstants.groupNames[eachGroup.id!.integerValue])"
-            self.stackViewMatch.addArrangedSubview(lbl)
+            self.scrollViewMatch.addSubview(lbl)
+            currentY += lblHeight
             
             for eachMatch in schedule {
-                let vw = UIView()
+                let vw = UIView(frame: CGRect(x: paddingX, y: currentY, width: matchWidth, height: matchHeight))
                 vw.tag = (eachMatch.id?.integerValue)!
-                vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true
-                vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
                 vw.layer.cornerRadius = 5.0
                 vw.layer.borderWidth = 1
                 vw.clipsToBounds = true
@@ -107,9 +104,11 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
                         vw.addSubview(textFieldScore)
                     }
                 }
-                self.stackViewMatch.addArrangedSubview(vw)
+                self.scrollViewMatch.addSubview(vw)
+                currentY += matchHeight + verticalSpacing
             }
         }
+        self.scrollViewMatch.contentSize = CGSizeMake(self.view.frame.size.width, currentY + matchHeight)
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
