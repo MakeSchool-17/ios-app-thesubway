@@ -20,7 +20,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
         super.viewDidLoad()
         let typeButton = UIButton(frame: CGRect(x: 0, y: 0, width: typePicker.frame.width, height: typePicker.frame.height))
         self.typePicker.addSubview(typeButton)
-        typePicker.text = GlobalConstants.groupStageKnockout
+        typePicker.text = GlobalConstants.knockout
         typeButton.addTarget(self, action: "typePressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         self.textViewEntrants.layer.borderWidth = 1

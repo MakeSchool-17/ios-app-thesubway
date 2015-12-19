@@ -13,6 +13,7 @@ class CreateKnockoutViewController: UIViewController {
     var groups : [[String]]!
     var tournamentData : TournamentData!
     @IBOutlet var stackViewBracket: UIStackView!
+    @IBOutlet var defaultButton: UIButton!
     var bracketSlots : [String]!
     var slotsNotEntered : [String] = []
     
@@ -22,6 +23,7 @@ class CreateKnockoutViewController: UIViewController {
             self.bracketSlots = BracketCalculator.calculateGroupBrackets(groups, tournamentData: self.tournamentData)
         }
         else {
+            self.defaultButton.setTitle("Randomize", forState: UIControlState.Normal)
             self.bracketSlots = BracketCalculator.calculatePureBrackets(self.tournamentData)
         }
         self.reloadStackViewBracket()
