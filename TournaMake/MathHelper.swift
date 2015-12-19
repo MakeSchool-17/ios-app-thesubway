@@ -34,6 +34,20 @@ class MathHelper {
         return nil
     }
     
+    class func closestPowerOf2LargerThanOrEqualTo(num : Int) -> Int! {
+        if num < 1 {
+            return nil
+        }
+        var i = 1
+        while i <= num {
+            if i * 2 >= num {
+                return i * 2
+            }
+            i *= 2
+        }
+        return nil
+    }
+    
     //so 1 returns 0, 2 returns 1, 4 returns 2, 8 returns 3, 16 returns 4.
     class func numRoundsForEntrantCount(entrantCount : Int) -> Int {
         if entrantCount <= 0 {

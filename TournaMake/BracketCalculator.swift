@@ -9,6 +9,35 @@
 import UIKit
 
 class BracketCalculator {
+    
+    class func calculatePureBrackets(tournamentData: TournamentData) -> [String] {
+        let numSlots = MathHelper.closestPowerOf2LargerThanOrEqualTo(tournamentData.entrants.count)
+        let numByes = numSlots - tournamentData.entrants.count
+        var entrantsCopy = AlgorithmUtil.shuffleArr(tournamentData.entrants)
+        var bracketTop : [String] = []
+        var bracketBottom : [String] = []
+        var entrantNum = 0
+        while entrantNum < numSlots / 2 {
+            bracketTop.append(entrantsCopy[entrantNum])
+            entrantNum++
+        }
+        if numByes > 0 {
+            for _ in 0 ... numByes - 1 {
+                bracketBottom.append(GlobalConstants.bye)
+            }
+        }
+        while bracketBottom.count < bracketTop.count {
+            bracketBottom.append(entrantsCopy[entrantNum])
+            entrantNum++
+        }
+        var finalArr : [String] = []
+        for var i = 0; i < bracketTop.count; i++ {
+            finalArr.append(bracketTop[i])
+            finalArr.append(bracketBottom[i])
+        }
+        return finalArr
+    }
+    
     class func calculateGroupBrackets(groups : [[String]]!, tournamentData : TournamentData!) -> [String] {
         //assuming 6-16 teams in tournament:
         let numTeamsAdvance = self.getNumTeamsAdvancing(tournamentData)

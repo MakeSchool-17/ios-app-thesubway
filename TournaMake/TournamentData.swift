@@ -13,9 +13,11 @@ class TournamentData {
     var groups : [[String]]!
     var bracketSlots : [String]!
     var name : String
+    var format : String
     
-    init(entrants : [String], name : String) {
+    init(entrants : [String], name : String, format: String) {
         self.entrants = entrants
         self.name = name
+        self.format = format
     }
 }

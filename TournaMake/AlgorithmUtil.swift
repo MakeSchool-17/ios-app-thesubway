@@ -33,6 +33,17 @@ class AlgorithmUtil {
         return false
     }
     
+    class func shuffleArr(inArr: [String]) -> [String] {
+        var newArr : [String] = []
+        var copyArr = inArr
+        while copyArr.count > 0 {
+            let randomIdx = Int(arc4random_uniform(UInt32(copyArr.count)))
+            newArr.append(copyArr[randomIdx])
+            copyArr.removeAtIndex(randomIdx)
+        }
+        return newArr
+    }
+    
     //stack overflow helper:
     class func compareAnyObjectType(a: AnyObject?, b: AnyObject?) -> Bool {
         if let va = a as? Int, vb = b as? Int {
