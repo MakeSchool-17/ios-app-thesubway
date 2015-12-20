@@ -141,7 +141,10 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
             for j in 0...1 {
                 let eachId = ids[j]
                 let labelTop = UILabel(frame: CGRect(x: 0, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
-                if AlgorithmUtil.isPlayerId(eachId) {
+                if self.tournament.type == GlobalConstants.knockout && AlgorithmUtil.isPlayerId(eachId) {
+                    labelTop.text = eachId!
+                }
+                else if AlgorithmUtil.isPlayerId(eachId) {
                     let eachEntrant = CoreDataUtil.getEntrantById(Int(eachId!)!, tournament: eachMatch.tournament!)![0]
                     labelTop.text = eachEntrant.name!
                 }

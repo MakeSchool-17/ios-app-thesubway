@@ -328,6 +328,19 @@ class BracketCalculator {
         return 0
     }
     
+    class func getMatchupsFromPureBracket(tournament: Tournament) {
+        var bracketMatches = tournament.bracket?.matches?.allObjects as! [Match]
+        var bracketSlots = tournament.bracket?.slots?.allObjects as! [BracketSlot]
+        bracketMatches.sortInPlace({$0.id?.integerValue < $1.id?.integerValue})
+        bracketSlots.sortInPlace({$0.slotNum?.integerValue < $1.slotNum?.integerValue})
+        for var i = 0; i < bracketSlots.count; i++ {
+            let eachSlot = bracketSlots[i]
+            let eachMatch = bracketMatches[i]
+            CoreDataUtil.updateEntrantsInMatch(eachMatch, leftId: eachSlot.seedLeft, rightId: eachSlot.seedRight)
+            //translate slot to other number.
+        }
+    }
+    
     //this displays who would face who, if play-offs started now (based on current standings).
     class func getMatchupsFromBracket(tournament: Tournament) {
         //assume bracket is from group-stage format.

@@ -77,6 +77,10 @@ class CoreDataUtil {
             print("could not save")
             return nil
         }
+        if data.format == GlobalConstants.knockout {
+            //this should be done after the save
+            BracketCalculator.getMatchupsFromPureBracket(newTournament)
+        }
         return newTournament
         //get existing tournament counts.
     }
