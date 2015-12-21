@@ -31,6 +31,9 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         }
         self.scrollViewBracket.delegate = self
         self.reloadStackViewBracket()
+        if self.tournament.type == GlobalConstants.knockout && self.tournament!.bracket?.isStarted != true {
+            self.btnPressed(nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -243,7 +246,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         self.view.endEditing(true)
     }
     
-    @IBAction func btnPressed(sender: AnyObject) {
+    @IBAction func btnPressed(sender: AnyObject?) {
         //start the tournament
         CoreDataUtil.setBracket(self.tournament.bracket!, isStarted: true)
         //check for byes, and advance the opponents.
