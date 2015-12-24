@@ -115,7 +115,36 @@ class BracketCalculator {
         }
         else {
             //3rd place teams will exist.
-            if groups.count == 5 {
+            if groups.count == 3 {
+                let match1 = BracketMatch()
+                match1.groupLetterLeftTeam = "\(groupNames[0])"
+                match1.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                match1.groupLetterRightTeam = GlobalConstants.undecided
+                match1.groupPlacingRightTeam = GlobalConstants.group3rd
+                bracketTop.append(match1)
+                
+                let match2 = BracketMatch()
+                match2.groupLetterLeftTeam = "\(groupNames[2])"
+                match2.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                match2.groupLetterRightTeam = "\(groupNames[1])"
+                match2.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
+                bracketTop.append(match2)
+                
+                let match3 = BracketMatch()
+                match3.groupLetterLeftTeam = "\(groupNames[1])"
+                match3.groupPlacingLeftTeam = GlobalConstants.groupWinner
+                match3.groupLetterRightTeam = GlobalConstants.undecided
+                match3.groupPlacingRightTeam = GlobalConstants.group3rd
+                bracketBottom.append(match3)
+                
+                let match4 = BracketMatch()
+                match4.groupLetterLeftTeam = "\(groupNames[0])"
+                match4.groupPlacingLeftTeam = GlobalConstants.groupRunnerUp
+                match4.groupLetterRightTeam = "\(groupNames[2])"
+                match4.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
+                bracketBottom.append(match4)
+            }
+            else if groups.count == 5 {
                 let match1 = BracketMatch()
                 match1.groupLetterLeftTeam = "\(groupNames[0])"
                 match1.groupPlacingLeftTeam = GlobalConstants.groupWinner
