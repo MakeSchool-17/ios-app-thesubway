@@ -18,7 +18,8 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
     @IBOutlet var stackViewStandings: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.spreadV = MDSpreadView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        let distanceFromTop = (self.navigationController?.navigationBar.frame.size.height)! + 20
+        self.spreadV = MDSpreadView(frame: CGRect(x: 0, y: distanceFromTop, width: self.view.frame.width, height: self.view.frame.height - (self.tabBarController?.tabBar.frame.size.height)! - distanceFromTop))
         self.view.addSubview(spreadV)
         spreadV.dataSource = self
     }
