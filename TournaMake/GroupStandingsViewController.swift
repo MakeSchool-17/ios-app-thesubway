@@ -8,15 +8,19 @@
 
 import UIKit
 
-class GroupStandingsViewController: UIViewController {
+class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
 
     var tournament : Tournament!
     var groupRecordsArr : [[EntrantRecord]] = []
     var thirdPlaceArr : [EntrantRecord] = []
+    var spreadV : MDSpreadView!
     @IBOutlet var lblTitle: UILabel!
     @IBOutlet var stackViewStandings: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.spreadV = MDSpreadView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        self.view.addSubview(spreadV)
+        spreadV.dataSource = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -25,6 +29,7 @@ class GroupStandingsViewController: UIViewController {
         (self.groupRecordsArr, self.thirdPlaceArr) = StandingsCalculator.getStandingsFromTournament(self.tournament)
         self.reloadStackView()
         self.lblTitle.text = "Standings (based on current match results):"
+        self.spreadV.reloadData()
     }
     
     func reloadStackView() {
@@ -56,6 +61,35 @@ class GroupStandingsViewController: UIViewController {
             self.stackViewStandings.addArrangedSubview(lbl)
         }
         
+    }
+    
+    func numberOfRowSectionsInSpreadView(aSpreadView: MDSpreadView!) -> Int {
+        return self.groupRecordsArr.count
+    }
+    
+    func spreadView(aSpreadView: MDSpreadView!, numberOfColumnsInSection section: Int) -> Int {
+        if self.groupRecordsArr.count <= 0 {
+            return 0
+        }
+        let inRecordArr = self.groupRecordsArr[section]
+        if inRecordArr.count <= 0 {
+            return 0
+        }
+        return inRecordArr[0].ownArray.count
+    }
+    
+    func spreadView(aSpreadView: MDSpreadView!, numberOfRowsInSection section: Int) -> Int {
+        return self.groupRecordsArr[section].count
+    }
+    
+    func spreadView(aSpreadView: MDSpreadView!, cellForRowAtIndexPath rowPath: MDIndexPath!, forColumnAtIndexPath columnPath: MDIndexPath!) -> MDSpreadViewCell! {
+        //        let cell = aSpreadView.dequeueReusableCellWithIdentifier("Cell") as MDSpreadViewCell
+        let cell = MDSpreadViewCell(style: MDSpreadViewCellStyle.Default, reuseIdentifier: "Cell")
+        cell?.layer.borderWidth = 1
+        let inRecordArr = self.groupRecordsArr[rowPath.section]
+        let eachRecord = inRecordArr[rowPath.row]
+        cell?.textLabel.text = eachRecord.ownArray[columnPath.column]
+        return cell
     }
 
     override func didReceiveMemoryWarning() {

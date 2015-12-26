@@ -19,6 +19,7 @@ class EntrantRecord {
     var entrant : Entrant!
     var opponentDict = Dictionary<String, Dictionary<String, Float>>()
     var headToHeadTiebreak = 0
+    var ownArray : [String]!
     
     var headToHeadTiebreakerOpponents = Dictionary<String, EntrantRecord>()
     
@@ -78,6 +79,10 @@ class EntrantRecord {
     
     func printSelf() -> String {
         return "\(self.entrant.name!) wins: \(wins), losses: \(losses), ties: \(ties), pt: \(points) PF: \(pointsFor), PA: \(pointsAgainst), Diff: \(diff)"
+    }
+    
+    func generateOwnArray() {
+        self.ownArray = [self.entrant.name!, "\(self.wins)", "\(self.losses)", "\(self.ties)", "\(self.points)", "\(self.pointsFor)", "\(self.pointsAgainst)", "\(self.diff)"]
     }
 }
 

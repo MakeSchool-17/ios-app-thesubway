@@ -44,6 +44,7 @@ class StandingsCalculator {
         var oneDimensionalArr : [EntrantRecord] = []
         for eachArr in twoDimensionalArr {
             for eachRecord in eachArr {
+                eachRecord.generateOwnArray()
                 oneDimensionalArr.append(eachRecord)
             }
         }
