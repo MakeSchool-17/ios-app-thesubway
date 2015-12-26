@@ -68,6 +68,15 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
         return self.groupRecordsArr.count
     }
     
+    func spreadView(aSpreadView: MDSpreadView!, cellForHeaderInRowSection section: Int, forColumnAtIndexPath columnPath: MDIndexPath!) -> MDSpreadViewCell! {
+        let cell = MDSpreadViewCell(style: MDSpreadViewCellStyle.Default, reuseIdentifier: "Cell")
+        if columnPath.column == 0 {
+            cell?.layer.borderWidth = 1
+            cell.textLabel.text = "Group \(GlobalConstants.groupNames[section])"
+        }
+        return cell
+    }
+    
     func spreadView(aSpreadView: MDSpreadView!, numberOfColumnsInSection section: Int) -> Int {
         if self.groupRecordsArr.count <= 0 {
             return 0
@@ -89,6 +98,7 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
         cell?.layer.borderWidth = 1
         let inRecordArr = self.groupRecordsArr[rowPath.section]
         if rowPath.row == 0 {
+            cell?.backgroundColor = UIColor.lightGrayColor()
             cell?.textLabel.text = GlobalConstants.arrHeader[columnPath.column]
         }
         else {
