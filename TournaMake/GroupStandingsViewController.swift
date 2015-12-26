@@ -80,7 +80,7 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
     }
     
     func spreadView(aSpreadView: MDSpreadView!, numberOfRowsInSection section: Int) -> Int {
-        return self.groupRecordsArr[section].count
+        return self.groupRecordsArr[section].count + 1
     }
     
     func spreadView(aSpreadView: MDSpreadView!, cellForRowAtIndexPath rowPath: MDIndexPath!, forColumnAtIndexPath columnPath: MDIndexPath!) -> MDSpreadViewCell! {
@@ -88,8 +88,13 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
         let cell = MDSpreadViewCell(style: MDSpreadViewCellStyle.Default, reuseIdentifier: "Cell")
         cell?.layer.borderWidth = 1
         let inRecordArr = self.groupRecordsArr[rowPath.section]
-        let eachRecord = inRecordArr[rowPath.row]
-        cell?.textLabel.text = eachRecord.ownArray[columnPath.column]
+        if rowPath.row == 0 {
+            cell?.textLabel.text = GlobalConstants.arrHeader[columnPath.column]
+        }
+        else {
+            let eachRecord = inRecordArr[rowPath.row - 1]
+            cell?.textLabel.text = eachRecord.ownArray[columnPath.column]
+        }
         return cell
     }
 

@@ -22,4 +22,5 @@ struct GlobalConstants {
     static let entrants = "entrants"
     static let wins = "wins"
     static let losses = "losses"
+    static let arrHeader = ["Name", "W", "L", "T", "Pt", "PF", "PA", "Diff"]
 }
