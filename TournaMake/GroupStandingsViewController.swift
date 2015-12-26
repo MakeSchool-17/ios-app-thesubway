@@ -65,14 +65,24 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
     }
     
     func numberOfRowSectionsInSpreadView(aSpreadView: MDSpreadView!) -> Int {
-        return self.groupRecordsArr.count
+        //add one, for third-place rankings
+        if self.groupRecordsArr.count == 0 {
+            //prevent it from returning (0 + 1).
+            return 0
+        }
+        return self.groupRecordsArr.count + 1
     }
     
     func spreadView(aSpreadView: MDSpreadView!, cellForHeaderInRowSection section: Int, forColumnAtIndexPath columnPath: MDIndexPath!) -> MDSpreadViewCell! {
         let cell = MDSpreadViewCell(style: MDSpreadViewCellStyle.Default, reuseIdentifier: "Cell")
         if columnPath.column == 0 {
             cell?.layer.borderWidth = 1
-            cell.textLabel.text = "Group \(GlobalConstants.groupNames[section])"
+            if section < self.groupRecordsArr.count {
+                cell.textLabel.text = "Group \(GlobalConstants.groupNames[section])"
+            }
+            else {
+                cell.textLabel.text = "Rank 3rd-Place Teams"
+            }
         }
         return cell
     }
@@ -89,20 +99,29 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
     }
     
     func spreadView(aSpreadView: MDSpreadView!, numberOfRowsInSection section: Int) -> Int {
-        return self.groupRecordsArr[section].count + 1
+        //add 1, because the win-loss row is not a header.
+        if section < self.groupRecordsArr.count {
+            return self.groupRecordsArr[section].count + 1
+        }
+        return self.thirdPlaceArr.count + 1
     }
     
     func spreadView(aSpreadView: MDSpreadView!, cellForRowAtIndexPath rowPath: MDIndexPath!, forColumnAtIndexPath columnPath: MDIndexPath!) -> MDSpreadViewCell! {
         //        let cell = aSpreadView.dequeueReusableCellWithIdentifier("Cell") as MDSpreadViewCell
         let cell = MDSpreadViewCell(style: MDSpreadViewCellStyle.Default, reuseIdentifier: "Cell")
         cell?.layer.borderWidth = 1
-        let inRecordArr = self.groupRecordsArr[rowPath.section]
         if rowPath.row == 0 {
             cell?.backgroundColor = UIColor.lightGrayColor()
             cell?.textLabel.text = GlobalConstants.arrHeader[columnPath.column]
         }
-        else {
+        //note that thirdPlaceArr.count == self.groupRecordsArr.count
+        else if rowPath.section < self.thirdPlaceArr.count {
+            let inRecordArr = self.groupRecordsArr[rowPath.section]
             let eachRecord = inRecordArr[rowPath.row - 1]
+            cell?.textLabel.text = eachRecord.ownArray[columnPath.column]
+        }
+        else {
+            let eachRecord = self.thirdPlaceArr[rowPath.row - 1]
             cell?.textLabel.text = eachRecord.ownArray[columnPath.column]
         }
         return cell
