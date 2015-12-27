@@ -23,16 +23,21 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if self.tournament.type == GlobalConstants.groupStageKnockout {
+        if self.tournament.type == GlobalConstants.groupStageKnockout && self.tournament!.bracket?.isStarted != true {
             BracketCalculator.getMatchupsFromBracket(self.tournament)
             //set tournament back again.
-            self.tournament = CoreDataUtil.getTournamentById(self.tournament.id!.integerValue)
-            self.lblTitle.text = "If the bracket stage were to begin now, based on current standings:"
         }
+        self.tournament = CoreDataUtil.getTournamentById(self.tournament.id!.integerValue)
         self.scrollViewBracket.delegate = self
         self.reloadStackViewBracket()
         if self.tournament.type == GlobalConstants.knockout && self.tournament!.bracket?.isStarted != true {
             self.btnPressed(nil)
+        }
+        if self.tournament.bracket?.isStarted != true {
+            self.lblTitle.text = "If the bracket stage were to begin now, based on current standings:"
+        }
+        else {
+            self.displayBracketStarted()
         }
     }
 
@@ -256,6 +261,12 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
             self.updateLaterMatchWithWinner(winnerId, idxOfPrevMatch: matchIdx)
         }
         self.reloadStackViewBracket()
+        self.displayBracketStarted()
+    }
+    
+    func displayBracketStarted() {
+        self.lblTitle.text = GlobalConstants.bracketStageStarted
+        self.btnBeginOrEnd.hidden = true
     }
     
     func updateLaterMatchWithWinner(winnerId: String?, idxOfPrevMatch: Int) {

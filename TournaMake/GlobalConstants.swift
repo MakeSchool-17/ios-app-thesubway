@@ -9,6 +9,7 @@
 import UIKit
 
 struct GlobalConstants {
+    
     static let groupStageKnockout = "Group Stage + Knockout"
     static let knockout = "Knockout"
     static let strEmpty = "*Empty*"
@@ -23,4 +24,7 @@ struct GlobalConstants {
     static let wins = "wins"
     static let losses = "losses"
     static let arrHeader = ["Name", "W", "L", "T", "Pt", "PF", "PA", "Diff"]
+    
+    //labels:
+    static let bracketStageStarted = "Bracket stage has started"
 }
