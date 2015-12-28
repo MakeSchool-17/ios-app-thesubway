@@ -112,6 +112,14 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
         self.scrollViewMatch.contentSize = CGSizeMake(self.view.frame.size.width, currentY + matchHeight)
     }
     
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        if self.tournament.bracket?.isStarted == true {
+            UIHelper.showAlertOnVc(self, title: "", message: "Bracket stage has already begun.")
+            return false
+        }
+        return true
+    }
+    
     func textFieldDidEndEditing(textField: UITextField) {
         //NOTE: added floatValue property in Extension String in AlgorithmUtil.swift file
         if let textScore = textField.text?.floatValue {
