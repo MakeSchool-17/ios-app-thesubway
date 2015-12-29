@@ -252,6 +252,18 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
     }
     
     @IBAction func btnPressed(sender: AnyObject?) {
+        let alert = UIAlertController(title: title, message: "Are you sure you want to start the bracket? You may not change group stage scores after bracket starts.", preferredStyle: UIAlertControllerStyle.Alert)
+        let yesAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { _ in
+            self.startBracket()
+        })
+        alert.addAction(yesAction)
+        let noAction = UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: { _ in
+        })
+        alert.addAction(noAction)
+        self.presentViewController(alert, animated: true, completion: {})
+    }
+    
+    func startBracket() {
         //start the tournament
         CoreDataUtil.setBracket(self.tournament.bracket!, isStarted: true)
         //check for byes, and advance the opponents.

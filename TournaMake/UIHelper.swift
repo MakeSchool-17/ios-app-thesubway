@@ -9,6 +9,7 @@
 import UIKit
 
 class UIHelper {
+    
     class func showAlertOnVc(viewController : UIViewController, title : String, message : String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { _ in
@@ -16,4 +17,5 @@ class UIHelper {
         alert.addAction(okAction)
         viewController.presentViewController(alert, animated: true, completion: {})
     }
+    
 }
