@@ -93,35 +93,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KKT-lf-zIq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KKT-lf-zIq">
                                 <rect key="frame" x="0.0" y="114" width="600" height="486"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tournamentCell" id="o18-6v-BT8" customClass="TournamentCell" customModule="TournaMake" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o18-6v-BT8" id="2xU-v2-NDp">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8n-aR-dBl">
-                                                    <rect key="frame" x="8" y="0.0" width="210" height="50"/>
+                                                    <rect key="frame" x="8" y="0.0" width="300" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="210" id="1Ko-C3-htn"/>
-                                                        <constraint firstAttribute="height" constant="50" id="eID-gO-NDl"/>
+                                                        <constraint firstAttribute="width" constant="300" id="1Ko-C3-htn"/>
+                                                        <constraint firstAttribute="height" constant="30" id="eID-gO-NDl"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Format:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eX5-Uq-UJP">
+                                                    <rect key="frame" x="8" y="30" width="300" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="300" id="5nJ-RS-k3h"/>
+                                                        <constraint firstAttribute="height" constant="21" id="kpK-4k-lRH"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Entrants:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h06-xd-BjB">
+                                                    <rect key="frame" x="8" y="51" width="300" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Bpv-Lo-yBi"/>
+                                                        <constraint firstAttribute="width" constant="300" id="ZJn-Br-bzG"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="b8n-aR-dBl" firstAttribute="top" secondItem="2xU-v2-NDp" secondAttribute="topMargin" constant="-8" id="B1X-UC-qvF"/>
+                                                <constraint firstItem="h06-xd-BjB" firstAttribute="leading" secondItem="2xU-v2-NDp" secondAttribute="leadingMargin" id="CGU-vz-HNc"/>
+                                                <constraint firstItem="eX5-Uq-UJP" firstAttribute="leading" secondItem="2xU-v2-NDp" secondAttribute="leadingMargin" id="CoH-lJ-Q69"/>
+                                                <constraint firstItem="h06-xd-BjB" firstAttribute="top" secondItem="eX5-Uq-UJP" secondAttribute="bottom" id="Rkj-i5-JaP"/>
                                                 <constraint firstItem="b8n-aR-dBl" firstAttribute="leading" secondItem="2xU-v2-NDp" secondAttribute="leadingMargin" id="rLa-1H-HIS"/>
+                                                <constraint firstItem="eX5-Uq-UJP" firstAttribute="top" secondItem="b8n-aR-dBl" secondAttribute="bottom" id="utA-2g-wu7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="lblName" destination="b8n-aR-dBl" id="zgE-Le-2iL"/>
+                                            <outlet property="labelEntrantNum" destination="h06-xd-BjB" id="GVn-Z1-sod"/>
+                                            <outlet property="labelFormat" destination="eX5-Uq-UJP" id="cmT-lN-WXt"/>
+                                            <outlet property="labelName" destination="b8n-aR-dBl" id="4aF-sh-iIQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

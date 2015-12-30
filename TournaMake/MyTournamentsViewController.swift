@@ -53,7 +53,9 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tournamentCell")! as! TournamentCell
         let tournament = self.tournaments[indexPath.row]
-        cell.lblName.text = tournament.name!
+        cell.labelName.text = tournament.name!
+        cell.labelFormat.text = "Format: \(tournament.type!)"
+        cell.labelEntrantNum.text = "# Entrants: \(tournament.entrants!.count)"
         return cell
     }
 

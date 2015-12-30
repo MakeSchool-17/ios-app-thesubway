@@ -10,7 +10,10 @@ import UIKit
 
 class TournamentCell: UITableViewCell {
 
-    @IBOutlet var lblName : UILabel!
+    @IBOutlet var labelName : UILabel!
+    @IBOutlet var labelFormat : UILabel!
+    @IBOutlet var labelEntrantNum : UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
