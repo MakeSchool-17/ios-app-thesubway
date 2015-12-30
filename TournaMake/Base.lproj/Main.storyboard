@@ -97,13 +97,32 @@
                                 <rect key="frame" x="0.0" y="114" width="600" height="486"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tournamentCell" id="o18-6v-BT8">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tournamentCell" id="o18-6v-BT8" customClass="TournamentCell" customModule="TournaMake" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o18-6v-BT8" id="2xU-v2-NDp">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8n-aR-dBl">
+                                                    <rect key="frame" x="8" y="0.0" width="210" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="210" id="1Ko-C3-htn"/>
+                                                        <constraint firstAttribute="height" constant="50" id="eID-gO-NDl"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="b8n-aR-dBl" firstAttribute="top" secondItem="2xU-v2-NDp" secondAttribute="topMargin" constant="-8" id="B1X-UC-qvF"/>
+                                                <constraint firstItem="b8n-aR-dBl" firstAttribute="leading" secondItem="2xU-v2-NDp" secondAttribute="leadingMargin" id="rLa-1H-HIS"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblName" destination="b8n-aR-dBl" id="zgE-Le-2iL"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

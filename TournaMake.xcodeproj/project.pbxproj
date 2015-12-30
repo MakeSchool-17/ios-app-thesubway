@@ -43,6 +43,7 @@
 		27B676411C2C9948003FDC36 /* MDSpreadViewCellCornerHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B676371C2C9948003FDC36 /* MDSpreadViewCellCornerHeaderBackground.m */; };
 		27B676421C2C9948003FDC36 /* MDSpreadViewCellRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B676391C2C9948003FDC36 /* MDSpreadViewCellRowHeaderBackground.m */; };
 		27B676431C2C9948003FDC36 /* MDSpreadViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B6763C1C2C9948003FDC36 /* MDSpreadViewHeaderCell.m */; };
+		27B676451C3370DF003FDC36 /* TournamentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B676441C3370DF003FDC36 /* TournamentCell.swift */; };
 		27E82E8A1BFFA13B00C879AF /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E891BFFA13B00C879AF /* MathHelper.swift */; };
 		27E82E8C1BFFCCC200C879AF /* BracketCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */; };
 		27E82E8E1BFFF82700C879AF /* GroupCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */; };
@@ -130,6 +131,7 @@
 		27B6763A1C2C9948003FDC36 /* MDSpreadViewClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpreadViewClasses.h; sourceTree = "<group>"; };
 		27B6763B1C2C9948003FDC36 /* MDSpreadViewHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpreadViewHeaderCell.h; sourceTree = "<group>"; };
 		27B6763C1C2C9948003FDC36 /* MDSpreadViewHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpreadViewHeaderCell.m; sourceTree = "<group>"; };
+		27B676441C3370DF003FDC36 /* TournamentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentCell.swift; sourceTree = "<group>"; };
 		27E82E891BFFA13B00C879AF /* MathHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketCalculator.swift; sourceTree = "<group>"; };
 		27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalculator.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				27A0AEF61BFD383400AA57F1 /* CreateGroupSlotCell.swift */,
+				27B676441C3370DF003FDC36 /* TournamentCell.swift */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				27A0AECF1BF846A400AA57F1 /* MyTournamentsViewController.swift in Sources */,
 				27E82E8E1BFFF82700C879AF /* GroupCalculator.swift in Sources */,
 				27A0AEF21BFC429200AA57F1 /* UIHelper.swift in Sources */,
+				27B676451C3370DF003FDC36 /* TournamentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

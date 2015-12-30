@@ -51,9 +51,9 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("tournamentCell")! as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("tournamentCell")! as! TournamentCell
         let tournament = self.tournaments[indexPath.row]
-        cell.textLabel?.text = tournament.name!
+        cell.lblName.text = tournament.name!
         return cell
     }
 
