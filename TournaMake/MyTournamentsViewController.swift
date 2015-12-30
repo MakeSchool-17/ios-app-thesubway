@@ -42,6 +42,10 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
         self.navigationController?.pushViewController(tournamentTab, animated: true)
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100.0
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tournaments.count
     }
