@@ -28,6 +28,7 @@ class CoreDataUtil {
         } while existingTournament.count != 0
         newTournament.id = tournamentId //"-\(tournamentId)"
         newTournament.name = data.name
+        newTournament.date = NSDate()
         //create dictionary for entrant id's:
         let entrantDict = NSMutableDictionary()
         var id = 0

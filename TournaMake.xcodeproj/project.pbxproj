@@ -44,6 +44,7 @@
 		27B676421C2C9948003FDC36 /* MDSpreadViewCellRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B676391C2C9948003FDC36 /* MDSpreadViewCellRowHeaderBackground.m */; };
 		27B676431C2C9948003FDC36 /* MDSpreadViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B6763C1C2C9948003FDC36 /* MDSpreadViewHeaderCell.m */; };
 		27B676451C3370DF003FDC36 /* TournamentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B676441C3370DF003FDC36 /* TournamentCell.swift */; };
+		27B676471C34DDD6003FDC36 /* Tournament+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B676461C34DDD6003FDC36 /* Tournament+CoreDataProperties.swift */; };
 		27E82E8A1BFFA13B00C879AF /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E891BFFA13B00C879AF /* MathHelper.swift */; };
 		27E82E8C1BFFCCC200C879AF /* BracketCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */; };
 		27E82E8E1BFFF82700C879AF /* GroupCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */; };
@@ -55,7 +56,6 @@
 		27E82EB41C0EC91F00C879AF /* Bracket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EB31C0EC91F00C879AF /* Bracket.swift */; };
 		27E82EB81C0F7C9900C879AF /* TournamentTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EB71C0F7C9900C879AF /* TournamentTabBarController.swift */; };
 		27E82EBA1C0F830400C879AF /* GroupStageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EB91C0F830400C879AF /* GroupStageViewController.swift */; };
-		27E82EC31C0FAD2C00C879AF /* Tournament+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EBD1C0FAD2C00C879AF /* Tournament+CoreDataProperties.swift */; };
 		27E82EC41C0FAD2C00C879AF /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EBE1C0FAD2C00C879AF /* Group+CoreDataProperties.swift */; };
 		27E82EC51C0FAD2C00C879AF /* BracketSlot+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EBF1C0FAD2C00C879AF /* BracketSlot+CoreDataProperties.swift */; };
 		27E82EC61C0FAD2C00C879AF /* Entrant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EC01C0FAD2C00C879AF /* Entrant+CoreDataProperties.swift */; };
@@ -132,6 +132,7 @@
 		27B6763B1C2C9948003FDC36 /* MDSpreadViewHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpreadViewHeaderCell.h; sourceTree = "<group>"; };
 		27B6763C1C2C9948003FDC36 /* MDSpreadViewHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpreadViewHeaderCell.m; sourceTree = "<group>"; };
 		27B676441C3370DF003FDC36 /* TournamentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentCell.swift; sourceTree = "<group>"; };
+		27B676461C34DDD6003FDC36 /* Tournament+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tournament+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27E82E891BFFA13B00C879AF /* MathHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketCalculator.swift; sourceTree = "<group>"; };
 		27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalculator.swift; sourceTree = "<group>"; };
@@ -143,7 +144,6 @@
 		27E82EB31C0EC91F00C879AF /* Bracket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bracket.swift; sourceTree = "<group>"; };
 		27E82EB71C0F7C9900C879AF /* TournamentTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentTabBarController.swift; sourceTree = "<group>"; };
 		27E82EB91C0F830400C879AF /* GroupStageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupStageViewController.swift; sourceTree = "<group>"; };
-		27E82EBD1C0FAD2C00C879AF /* Tournament+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tournament+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27E82EBE1C0FAD2C00C879AF /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27E82EBF1C0FAD2C00C879AF /* BracketSlot+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BracketSlot+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27E82EC01C0FAD2C00C879AF /* Entrant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Entrant+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -271,12 +271,12 @@
 				27E82E9C1C0E6FF700C879AF /* Group.swift */,
 				27E82EAA1C0EC72D00C879AF /* BracketSlot.swift */,
 				27E82EB31C0EC91F00C879AF /* Bracket.swift */,
-				27E82EBD1C0FAD2C00C879AF /* Tournament+CoreDataProperties.swift */,
 				27E82EBE1C0FAD2C00C879AF /* Group+CoreDataProperties.swift */,
 				27E82EBF1C0FAD2C00C879AF /* BracketSlot+CoreDataProperties.swift */,
 				27E82EC01C0FAD2C00C879AF /* Entrant+CoreDataProperties.swift */,
 				27B4F7011C17A58E00019D3B /* Match+CoreDataProperties.swift */,
 				27A4A31C1C1B99E700820FE7 /* Bracket+CoreDataProperties.swift */,
+				27B676461C34DDD6003FDC36 /* Tournament+CoreDataProperties.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -497,9 +497,9 @@
 				27A0AED81BFBF02000AA57F1 /* Entrant.swift in Sources */,
 				272E9E5B1C100E1E0043E433 /* EntrantRecord.swift in Sources */,
 				27E82E941C03EA4000C879AF /* GlobalConstants.swift in Sources */,
+				27B676471C34DDD6003FDC36 /* Tournament+CoreDataProperties.swift in Sources */,
 				27E82E961C051A5A00C879AF /* CoreDataUtil.swift in Sources */,
 				27B676431C2C9948003FDC36 /* MDSpreadViewHeaderCell.m in Sources */,
-				27E82EC31C0FAD2C00C879AF /* Tournament+CoreDataProperties.swift in Sources */,
 				27B676401C2C9948003FDC36 /* MDSpreadViewCellColumnHeaderBackground.m in Sources */,
 				27E82EA11C0E6FF700C879AF /* Group.swift in Sources */,
 				27B676421C2C9948003FDC36 /* MDSpreadViewCellRowHeaderBackground.m in Sources */,

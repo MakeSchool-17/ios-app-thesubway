@@ -99,6 +99,23 @@ class AlgorithmUtil {
         }
         return nil
     }
+    
+    class func stringToDateJSON(dateString : String) -> NSDate {
+        let dateFormatter : NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ssZZZ"
+        return dateFormatter.dateFromString(dateString)!
+    }
+    
+    class func dateToStringWithMinutes(date : NSDate) -> String {
+        let dateFormatter : NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd HH:mm"
+        return dateFormatter.stringFromDate(date)
+    }
+    
+    class func dateToStringWithTimeZone(date : NSDate) -> String {
+        return NSDateFormatter.localizedStringFromDate(date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.FullStyle)
+    }
+    
 }
 
 extension String {
