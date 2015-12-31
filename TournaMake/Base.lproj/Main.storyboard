@@ -134,17 +134,30 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBw-kl-etl">
+                                                    <rect key="frame" x="8" y="72" width="300" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="300" id="54J-US-uYk"/>
+                                                        <constraint firstAttribute="height" constant="21" id="YMh-q6-K1y"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="b8n-aR-dBl" firstAttribute="top" secondItem="2xU-v2-NDp" secondAttribute="topMargin" constant="-8" id="B1X-UC-qvF"/>
                                                 <constraint firstItem="h06-xd-BjB" firstAttribute="leading" secondItem="2xU-v2-NDp" secondAttribute="leadingMargin" id="CGU-vz-HNc"/>
                                                 <constraint firstItem="eX5-Uq-UJP" firstAttribute="leading" secondItem="2xU-v2-NDp" secondAttribute="leadingMargin" id="CoH-lJ-Q69"/>
                                                 <constraint firstItem="h06-xd-BjB" firstAttribute="top" secondItem="eX5-Uq-UJP" secondAttribute="bottom" id="Rkj-i5-JaP"/>
+                                                <constraint firstItem="LBw-kl-etl" firstAttribute="leading" secondItem="2xU-v2-NDp" secondAttribute="leadingMargin" id="Rm7-TL-5AI"/>
+                                                <constraint firstItem="LBw-kl-etl" firstAttribute="top" secondItem="h06-xd-BjB" secondAttribute="bottom" id="Vha-E6-cdD"/>
                                                 <constraint firstItem="b8n-aR-dBl" firstAttribute="leading" secondItem="2xU-v2-NDp" secondAttribute="leadingMargin" id="rLa-1H-HIS"/>
                                                 <constraint firstItem="eX5-Uq-UJP" firstAttribute="top" secondItem="b8n-aR-dBl" secondAttribute="bottom" id="utA-2g-wu7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="labelCreationDate" destination="LBw-kl-etl" id="giN-kV-Rc3"/>
                                             <outlet property="labelEntrantNum" destination="h06-xd-BjB" id="GVn-Z1-sod"/>
                                             <outlet property="labelFormat" destination="eX5-Uq-UJP" id="cmT-lN-WXt"/>
                                             <outlet property="labelName" destination="b8n-aR-dBl" id="4aF-sh-iIQ"/>

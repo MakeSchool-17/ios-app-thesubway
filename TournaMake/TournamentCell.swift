@@ -13,6 +13,7 @@ class TournamentCell: UITableViewCell {
     @IBOutlet var labelName : UILabel!
     @IBOutlet var labelFormat : UILabel!
     @IBOutlet var labelEntrantNum : UILabel!
+    @IBOutlet var labelCreationDate: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
