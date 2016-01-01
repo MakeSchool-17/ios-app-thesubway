@@ -31,7 +31,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         self.scrollViewBracket.delegate = self
         self.reloadStackViewBracket()
         if self.tournament.type == GlobalConstants.knockout && self.tournament!.bracket?.isStarted != true {
-            self.btnPressed(nil)
+            self.startBracket()
         }
         if self.tournament.bracket?.isStarted != true {
             self.lblTitle.text = "If the bracket stage were to begin now, based on current standings:"
