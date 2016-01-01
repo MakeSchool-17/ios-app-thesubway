@@ -86,7 +86,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
                     else {
                         labelName.text = entrantId
                     }
-                    labelName.tag = j
+                    labelName.tag = j + 102
                     vw.addSubview(labelName)
                     
                     var textFieldScore : UITextField!
@@ -98,7 +98,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
                         textFieldScore.textAlignment = NSTextAlignment.Center
                         textFieldScore.keyboardType = UIKeyboardType.NumbersAndPunctuation
                         textFieldScore.autocorrectionType = UITextAutocorrectionType.No
-                        textFieldScore.tag = j
+                        textFieldScore.tag = j + 100
                         textFieldScore.placeholder = "Score"
                         if scores[j] != nil {
                             textFieldScore.text = "\(scores[j]!)"
@@ -119,6 +119,21 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         return true
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        let tfSuperView = textField.superview!
+        if textField.tag == 100 {
+            (tfSuperView.viewWithTag(101) as! UITextField).becomeFirstResponder()
+            return false
+        }
+        let nextTag = tfSuperView.tag + 1
+        //scrollViewMatch.subviews.count does not properly work, so using viewWithTag instead.
+        if let boxScore = self.scrollViewMatch.viewWithTag(nextTag) {
+            (boxScore.viewWithTag(100) as! UITextField).becomeFirstResponder()
+        }
+        return false
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
