@@ -42,7 +42,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
         allGroups.sortInPlace({ $0.id?.integerValue < $1.id?.integerValue})
         
         let matchHeight : CGFloat = 100
-        let matchWidth : CGFloat = 250
+        let matchWidth : CGFloat = 300 //around 300 should be enough for 25 characters
         let paddingX : CGFloat = 20.0
         let verticalSpacing : CGFloat = 10.0
         var currentY : CGFloat = 0

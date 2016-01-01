@@ -111,6 +111,16 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
         }
     }
     
+    //function implemented with stack overflow:
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let currentCharacterCount = textField.text?.characters.count ?? 0
+        if (range.length + range.location > currentCharacterCount){
+            return false
+        }
+        let newLength = currentCharacterCount + string.characters.count - range.length
+        return newLength <= 20
+    }
+    
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         //NOTE: does not account for copy-pasting characters.
         //prevent typing after character limit
