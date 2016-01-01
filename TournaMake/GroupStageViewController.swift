@@ -99,6 +99,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
                         textFieldScore.keyboardType = UIKeyboardType.NumbersAndPunctuation
                         textFieldScore.autocorrectionType = UITextAutocorrectionType.No
                         textFieldScore.tag = j
+                        textFieldScore.placeholder = "Score"
                         if scores[j] != nil {
                             textFieldScore.text = "\(scores[j]!)"
                         }

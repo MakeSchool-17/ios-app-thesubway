@@ -23,7 +23,7 @@ struct GlobalConstants {
     static let entrants = "entrants"
     static let wins = "wins"
     static let losses = "losses"
-    static let arrHeader = ["Name", "W", "L", "T", "Pt", "For", "Against", "Diff"]
+    static let arrHeader = ["Name", "Wins", "Losses", "Ties", "Points", "For", "Against", "Differential"]
     
     //labels:
     static let bracketStageStarted = "Bracket stage has started"
