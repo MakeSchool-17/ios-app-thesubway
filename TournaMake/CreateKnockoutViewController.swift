@@ -110,10 +110,41 @@ class CreateKnockoutViewController: UIViewController {
         }
         self.reloadStackViewBracket()
     }
+    
+    func hasEmptySlots() -> Bool {
+        for var i = 0; i < self.bracketSlots.count; i++ {
+            if self.bracketSlots[i] == GlobalConstants.strEmpty {
+                return true
+            }
+        }
+        return false
+    }
 
     @IBAction func submitPressed(sender: AnyObject) {
         //save tournament to core data.
         //save tournament's matches to tournamentData object.
+        if self.slotsNotEntered.count > 0 && self.hasEmptySlots() {
+            var strMissing = "\nSlots missing:"
+            for eachMissing in self.slotsNotEntered {
+                strMissing += "\n\(eachMissing)"
+            }
+            strMissing += "\n\nWould you like to replace the empty slots with byes?"
+            let alert = UIAlertController(title: title, message: strMissing, preferredStyle: UIAlertControllerStyle.Alert)
+            let noAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { _ in
+            })
+            alert.addAction(noAction)
+            let yesAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { _ in
+                for var i = 0; i < self.bracketSlots.count; i++ {
+                    if self.bracketSlots[i] == GlobalConstants.strEmpty {
+                        self.bracketSlots[i] = GlobalConstants.bye
+                    }
+                }
+                self.reloadStackViewBracket()
+            })
+            alert.addAction(yesAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        }
         tournamentData.groups = self.groups
         tournamentData.bracketSlots = self.bracketSlots
         CoreDataUtil.addTournament(tournamentData)
