@@ -22,7 +22,8 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
         self.typePicker.addSubview(typeButton)
         typePicker.text = GlobalConstants.knockout
         typeButton.addTarget(self, action: "typePressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        
+        typeButton.imageView?.contentMode = UIViewContentMode.ScaleToFill
+        typeButton.setImage(UIImage(named: "dropDownSelectBox"), forState: UIControlState.Normal)
         self.textViewEntrants.layer.borderWidth = 1
         self.textViewEntrants.delegate = self
         self.textViewEntrants.autocorrectionType = UITextAutocorrectionType.No

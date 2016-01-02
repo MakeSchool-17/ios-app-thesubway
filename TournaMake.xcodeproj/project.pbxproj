@@ -45,6 +45,7 @@
 		27B676431C2C9948003FDC36 /* MDSpreadViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B6763C1C2C9948003FDC36 /* MDSpreadViewHeaderCell.m */; };
 		27B676451C3370DF003FDC36 /* TournamentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B676441C3370DF003FDC36 /* TournamentCell.swift */; };
 		27B676471C34DDD6003FDC36 /* Tournament+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B676461C34DDD6003FDC36 /* Tournament+CoreDataProperties.swift */; };
+		27B6764C1C379314003FDC36 /* dropDownSelectBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B6764B1C379314003FDC36 /* dropDownSelectBox.png */; };
 		27E82E8A1BFFA13B00C879AF /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E891BFFA13B00C879AF /* MathHelper.swift */; };
 		27E82E8C1BFFCCC200C879AF /* BracketCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */; };
 		27E82E8E1BFFF82700C879AF /* GroupCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */; };
@@ -133,6 +134,7 @@
 		27B6763C1C2C9948003FDC36 /* MDSpreadViewHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpreadViewHeaderCell.m; sourceTree = "<group>"; };
 		27B676441C3370DF003FDC36 /* TournamentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentCell.swift; sourceTree = "<group>"; };
 		27B676461C34DDD6003FDC36 /* Tournament+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tournament+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		27B6764B1C379314003FDC36 /* dropDownSelectBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropDownSelectBox.png; sourceTree = "<group>"; };
 		27E82E891BFFA13B00C879AF /* MathHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketCalculator.swift; sourceTree = "<group>"; };
 		27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalculator.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				27A0AEEE1BFC2A0C00AA57F1 /* Helpers */,
 				277ADAEC1BFE871A00E17F0E /* 3rdParty */,
 				27A0AEFA1BFE586100AA57F1 /* UI-Items */,
+				27B6764A1C377542003FDC36 /* Images */,
 				27A0AE9E1BF814A900AA57F1 /* Main.storyboard */,
 				27A0AEA41BF814A900AA57F1 /* Assets.xcassets */,
 				27A0AEA61BF814A900AA57F1 /* LaunchScreen.storyboard */,
@@ -336,6 +339,14 @@
 			name = MDSpreadView;
 			sourceTree = "<group>";
 		};
+		27B6764A1C377542003FDC36 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				27B6764B1C379314003FDC36 /* dropDownSelectBox.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -442,6 +453,7 @@
 			files = (
 				27A0AEA81BF814A900AA57F1 /* LaunchScreen.storyboard in Resources */,
 				27A0AEA51BF814A900AA57F1 /* Assets.xcassets in Resources */,
+				27B6764C1C379314003FDC36 /* dropDownSelectBox.png in Resources */,
 				27A0AEA01BF814A900AA57F1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
