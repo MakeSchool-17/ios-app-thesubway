@@ -128,11 +128,21 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
             (tfSuperView.viewWithTag(101) as! UITextField).becomeFirstResponder()
             return false
         }
-        let nextTag = tfSuperView.tag + 1
+        var nextTag = tfSuperView.tag + 1
         //scrollViewMatch.subviews.count does not properly work, so using viewWithTag instead.
-        if let boxScore = self.scrollViewMatch.viewWithTag(nextTag) {
-            (boxScore.viewWithTag(100) as! UITextField).becomeFirstResponder()
-        }
+        var hasBye = false //should be false if it's there are no more boxes too.
+        repeat {
+            hasBye = false
+            if let boxScore = self.scrollViewMatch.viewWithTag(nextTag) {
+                if let nextField = boxScore.viewWithTag(100) as? UITextField {
+                    nextField.becomeFirstResponder()
+                }
+                else {
+                    hasBye = true
+                    nextTag++
+                }
+            }
+        } while hasBye
         return false
     }
     
