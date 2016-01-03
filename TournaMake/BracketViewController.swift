@@ -177,7 +177,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
                         textFieldScore.textAlignment = NSTextAlignment.Center
                         textFieldScore.keyboardType = UIKeyboardType.NumbersAndPunctuation
                         textFieldScore.autocorrectionType = UITextAutocorrectionType.No
-                        textFieldScore.tag = j
+                        textFieldScore.tag = j + 100
                         if scores[j] != nil {
                             textFieldScore.text = "\(scores[j]!)"
                         }
@@ -220,8 +220,16 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        let tagSuper = textField.superview!.tag
+        let tagTf = textField.tag
+        //end editing AFTER retrieving superview's tag value
         self.view.endEditing(true)
-        return true
+        if tagTf == 100 {
+            let viewSuper : UIView = (self.scrollViewBracket.viewWithTag(tagSuper))!
+            let nextTf : UITextField = viewSuper.viewWithTag(101) as! UITextField
+            nextTf.becomeFirstResponder()
+        }
+        return false
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
@@ -230,7 +238,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
             //store to core data match:
             let matchIdx = (textField.superview?.tag)!
             let matchId = self.bracketMatches[matchIdx].id!.integerValue
-            let updatedMatch = CoreDataUtil.updateMatchScore(textScore, matchId: matchId, entrantPos: textField.tag, tournament: self.tournament)
+            let updatedMatch = CoreDataUtil.updateMatchScore(textScore, matchId: matchId, entrantPos: textField.tag - 100, tournament: self.tournament)
             //check if updatedMatch has a winner.
             let winnerId = AlgorithmUtil.winnerOfMatch(updatedMatch!)
             self.updateLaterMatchWithWinner(winnerId, idxOfPrevMatch: matchIdx)
