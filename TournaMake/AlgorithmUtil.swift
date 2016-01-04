@@ -116,6 +116,12 @@ class AlgorithmUtil {
         return NSDateFormatter.localizedStringFromDate(date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.FullStyle)
     }
     
+    //from stack overflow:
+    class func SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(version: String) -> Bool {
+        return UIDevice.currentDevice().systemVersion.compare(version,
+            options: NSStringCompareOptions.NumericSearch) != NSComparisonResult.OrderedAscending
+    }
+    
 }
 
 extension String {
