@@ -983,10 +983,10 @@
             </objects>
             <point key="canvasLocation" x="305" y="317"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Tournament Navigation Controller-->
         <scene sceneID="wSm-ne-6ZO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kWW-Wb-XIl" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="tournamentNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="kWW-Wb-XIl" customClass="TournamentNavigationController" customModule="TournaMake" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6rL-h0-UDI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

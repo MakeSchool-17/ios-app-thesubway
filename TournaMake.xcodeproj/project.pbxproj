@@ -10,6 +10,7 @@
 		272E9E571C0FDC200043E433 /* GroupStandingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272E9E561C0FDC200043E433 /* GroupStandingsViewController.swift */; };
 		272E9E591C100BFD0043E433 /* StandingsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272E9E581C100BFD0043E433 /* StandingsCalculator.swift */; };
 		272E9E5B1C100E1E0043E433 /* EntrantRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272E9E5A1C100E1E0043E433 /* EntrantRecord.swift */; };
+		2755FD4F1C3B338B00FFF82F /* TournamentNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2755FD4E1C3B338B00FFF82F /* TournamentNavigationController.swift */; };
 		277ADAF01BFE87E000E17F0E /* MMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ADAEF1BFE87E000E17F0E /* MMPickerView.m */; };
 		277ADAF21BFE942C00E17F0E /* PickerGroupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277ADAF11BFE942C00E17F0E /* PickerGroupButton.swift */; };
 		277ADAF41BFECED500E17F0E /* CreateKnockoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277ADAF31BFECED500E17F0E /* CreateKnockoutViewController.swift */; };
@@ -83,6 +84,7 @@
 		272E9E561C0FDC200043E433 /* GroupStandingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupStandingsViewController.swift; sourceTree = "<group>"; };
 		272E9E581C100BFD0043E433 /* StandingsCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingsCalculator.swift; sourceTree = "<group>"; };
 		272E9E5A1C100E1E0043E433 /* EntrantRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntrantRecord.swift; sourceTree = "<group>"; };
+		2755FD4E1C3B338B00FFF82F /* TournamentNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentNavigationController.swift; sourceTree = "<group>"; };
 		277ADAED1BFE87DF00E17F0E /* TournaMake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TournaMake-Bridging-Header.h"; sourceTree = "<group>"; };
 		277ADAEE1BFE87E000E17F0E /* MMPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPickerView.h; sourceTree = "<group>"; };
 		277ADAEF1BFE87E000E17F0E /* MMPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPickerView.m; sourceTree = "<group>"; };
@@ -176,6 +178,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2755FD4A1C3AFFD700FFF82F /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				27A0AEF51BFD37E700AA57F1 /* TableViewCells */,
+			);
+			name = Subclasses;
+			sourceTree = "<group>";
+		};
 		277ADAEC1BFE871A00E17F0E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,7 +223,7 @@
 				27A0AE9A1BF814A900AA57F1 /* AppDelegate.swift */,
 				27A0AECB1BF8411800AA57F1 /* ViewControllers */,
 				27A0AED01BFBEFF100AA57F1 /* Models */,
-				27A0AEF51BFD37E700AA57F1 /* TableViewCells */,
+				2755FD4A1C3AFFD700FFF82F /* Subclasses */,
 				27A0AEEE1BFC2A0C00AA57F1 /* Helpers */,
 				277ADAEC1BFE871A00E17F0E /* 3rdParty */,
 				27A0AEFA1BFE586100AA57F1 /* UI-Items */,
@@ -248,6 +258,7 @@
 		27A0AECB1BF8411800AA57F1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2755FD4E1C3B338B00FFF82F /* TournamentNavigationController.swift */,
 				27A0AE9C1BF814A900AA57F1 /* LoginViewController.swift */,
 				27A0AECC1BF8415500AA57F1 /* SignUpViewController.swift */,
 				27A0AECE1BF846A400AA57F1 /* MyTournamentsViewController.swift */,
@@ -495,6 +506,7 @@
 				27B4F7031C17A58E00019D3B /* Match+CoreDataProperties.swift in Sources */,
 				272E9E571C0FDC200043E433 /* GroupStandingsViewController.swift in Sources */,
 				27E82EC61C0FAD2C00C879AF /* Entrant+CoreDataProperties.swift in Sources */,
+				2755FD4F1C3B338B00FFF82F /* TournamentNavigationController.swift in Sources */,
 				27B676411C2C9948003FDC36 /* MDSpreadViewCellCornerHeaderBackground.m in Sources */,
 				27A0AEF91BFD3A7900AA57F1 /* TournamentData.swift in Sources */,
 				27E82EAF1C0EC72D00C879AF /* BracketSlot.swift in Sources */,

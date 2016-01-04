@@ -17,6 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        self.window!.rootViewController = storyboard.instantiateViewControllerWithIdentifier("tournamentNavigationController")
+        self.window?.makeKeyAndVisible()
+        
+        let view=UIView(frame: CGRectMake(0, 0,UIScreen.mainScreen().bounds.size.width, 20))
+        view.backgroundColor=UIColor(red: 31/255.0, green: 138/255.0, blue: 112/255.0, alpha: 1.0)
+        self.window!.rootViewController?.view.addSubview(view)
+        
         return true
     }
 
