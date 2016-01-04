@@ -152,9 +152,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
             if AlgorithmUtil.isInteger(textScore) {
                 //this is an integer
             }
-            //store to core data match:
-            let updatedMatch = CoreDataUtil.updateMatchScore(textScore, matchId: (textField.superview?.tag)!, entrantPos: textField.tag, tournament: self.tournament)
-            print(updatedMatch)
+            CoreDataUtil.updateMatchScore(textScore, matchId: (textField.superview?.tag)!, entrantPos: textField.tag - 100, tournament: self.tournament)
         }
     }
     
