@@ -12,6 +12,13 @@ class TournamentNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //For all nav, use: UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        self.navigationBar.barTintColor = UIColor(red: 31/255.0, green: 138/255.0, blue: 112/255.0, alpha: 1.0)
+        self.navigationBar.tintColor = UIColor.whiteColor()
+        
+        //from stack overflow, to change UINavigationBar Text color:
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
     }
 
     override func didReceiveMemoryWarning() {
