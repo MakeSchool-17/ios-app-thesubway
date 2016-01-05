@@ -17,6 +17,9 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         self.tableViewTournaments.delegate = self
         self.tableViewTournaments.dataSource = self
+        
+        //to prevent extra tableView padding at top:
+        self.automaticallyAdjustsScrollViewInsets = false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -53,6 +56,7 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tournamentCell")! as! TournamentCell
         let tournament = self.tournaments[indexPath.row]
+        cell.backgroundColor = UIColor(red: 255 / 255.0, green: 225 / 255.0, blue: 26 / 255.0, alpha: 1.0)
         cell.labelName.text = tournament.name!
         cell.labelFormat.text = "Format: \(tournament.type!)"
         cell.labelEntrantNum.text = "# Entrants: \(tournament.entrants!.count)"
