@@ -14,12 +14,12 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
     var groupRecordsArr : [[EntrantRecord]] = []
     var thirdPlaceArr : [EntrantRecord] = []
     var spreadV : MDSpreadView!
+    @IBOutlet var viewTitle: UIView!
     @IBOutlet var lblTitle: UILabel!
-    @IBOutlet var stackViewStandings: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = GlobalConstants.backgroundColorVc
-        let distanceFromTop = (self.navigationController?.navigationBar.frame.size.height)! + 20
+        let distanceFromTop = (self.navigationController?.navigationBar.frame.size.height)! + 20 + self.viewTitle.frame.size.height
         self.spreadV = MDSpreadView(frame: CGRect(x: 0, y: distanceFromTop, width: self.view.frame.width, height: self.view.frame.height - (self.tabBarController?.tabBar.frame.size.height)! - distanceFromTop))
         self.spreadV.backgroundColor = UIColor.clearColor()
         self.view.addSubview(spreadV)
@@ -30,40 +30,8 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
         super.viewWillAppear(animated)
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
         (self.groupRecordsArr, self.thirdPlaceArr) = StandingsCalculator.getStandingsFromTournament(self.tournament)
-        self.reloadStackView()
         self.lblTitle.text = "Standings (based on current match results):"
         self.spreadV.reloadData()
-    }
-    
-    func reloadStackView() {
-        for var i = 0; i < self.stackViewStandings.arrangedSubviews.count; i++ {
-            let eachSubview = self.stackViewStandings.arrangedSubviews[i]
-            eachSubview.removeFromSuperview()
-            self.stackViewStandings.removeArrangedSubview(eachSubview)
-            i--
-        }
-        for var i = 0; i < self.groupRecordsArr.count; i++ {
-            let eachGroupRecord = self.groupRecordsArr[i]
-            let lblGroup = UILabel()
-            lblGroup.numberOfLines = 0
-            lblGroup.text = "\nGroup \(GlobalConstants.groupNames[i])"
-            self.stackViewStandings.addArrangedSubview(lblGroup)
-            for eachRecord in eachGroupRecord {
-                let lbl = UILabel()
-                lbl.text = "\(eachRecord.printSelf())"
-                self.stackViewStandings.addArrangedSubview(lbl)
-            }
-        }
-        let lblThirdPlace = UILabel()
-        lblThirdPlace.text = "\nRanking of Third-Place Teams"
-        self.stackViewStandings.addArrangedSubview(lblThirdPlace)
-        for var i = 0; i < self.thirdPlaceArr.count; i++ {
-            let eachRecord = self.thirdPlaceArr[i]
-            let lbl = UILabel()
-            lbl.text = "\(eachRecord.printSelf())"
-            self.stackViewStandings.addArrangedSubview(lbl)
-        }
-        
     }
     
     func numberOfRowSectionsInSpreadView(aSpreadView: MDSpreadView!) -> Int {
