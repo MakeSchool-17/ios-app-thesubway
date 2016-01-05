@@ -30,7 +30,14 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
         super.viewWillAppear(animated)
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
         (self.groupRecordsArr, self.thirdPlaceArr) = StandingsCalculator.getStandingsFromTournament(self.tournament)
-        self.lblTitle.text = "Standings (based on current match results):"
+        var standingsText  = ""
+        if self.tournament.bracket?.isStarted == true {
+            standingsText = "Final Standings:"
+        }
+        else {
+            standingsText = "Standings (based on current match results):"
+        }
+        self.lblTitle.text = standingsText
         self.spreadV.reloadData()
     }
     
