@@ -25,6 +25,13 @@ struct GlobalConstants {
     static let losses = "losses"
     static let arrHeader = ["Name", "Wins", "Losses", "Ties", "Points", "For", "Against", "Differential"]
     
+    //colors:
+    static let orangeVitaminC = UIColor(red: 253/255.0, green: 116/255.0, blue: 0/255.0, alpha: 1.0)
+    static let tealVitaminC = UIColor(red: 31/255.0, green: 138/255.0, blue: 112/255.0, alpha: 1.0)
+    static let blueVitaminC = UIColor(red: 0/255.0, green: 67/255.0, blue: 88/255.0, alpha: 1.0)
+    static let yellowVitaminC = UIColor(red: 255 / 255.0, green: 225 / 255.0, blue: 26 / 255.0, alpha: 1.0)
+    static let greenVitaminC = UIColor(red: 190 / 255.0, green: 219 / 255.0, blue: 57 / 255.0, alpha: 1.0)
+    
     //labels:
     static let bracketStageStarted = "Bracket stage has started"
 }

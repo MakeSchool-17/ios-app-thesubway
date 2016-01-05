@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //From stack overflow
         let view=UIView(frame: CGRectMake(0, 0,UIScreen.mainScreen().bounds.size.width, 20))
-        view.backgroundColor=UIColor(red: 0/255.0, green: 67/255.0, blue: 88/255.0, alpha: 1.0)
+        view.backgroundColor=GlobalConstants.blueVitaminC
         self.window!.rootViewController?.view.addSubview(view)
         
         return true
