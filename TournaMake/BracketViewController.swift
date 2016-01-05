@@ -18,6 +18,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
     var bracketMatches : [Match] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = GlobalConstants.backgroundColorVc
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
     }
     

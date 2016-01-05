@@ -18,6 +18,8 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = GlobalConstants.backgroundColorVc
+        
         let typeButton = UIButton(frame: CGRect(x: 0, y: 0, width: typePicker.frame.width, height: typePicker.frame.height))
         self.typePicker.addSubview(typeButton)
         typePicker.text = GlobalConstants.knockout

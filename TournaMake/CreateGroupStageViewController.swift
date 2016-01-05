@@ -16,8 +16,8 @@ class CreateGroupStageViewController: UIViewController {
     @IBOutlet var stackView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.tableViewGroups.dataSource = self
-//        self.tableViewGroups.delegate = self
+        self.view.backgroundColor = GlobalConstants.backgroundColorVc
+
         self.calculateNumGroups()
         self.clearGroups()
         self.reloadStackView()

@@ -19,6 +19,8 @@ class CreateKnockoutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = GlobalConstants.backgroundColorVc
+        
         if self.tournamentData.format == GlobalConstants.groupStageKnockout {
             self.bracketSlots = BracketCalculator.calculateGroupBrackets(groups, tournamentData: self.tournamentData)
         }
