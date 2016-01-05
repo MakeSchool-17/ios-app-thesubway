@@ -55,6 +55,7 @@ class CreateKnockoutViewController: UIViewController {
             vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
             vw.layer.cornerRadius = 5.0
             vw.layer.borderWidth = 1
+            vw.backgroundColor = GlobalConstants.yellowVitaminC
             
             for var j = 0; j < 2; j++ {
                 let eachSlot = self.bracketSlots[i + j]

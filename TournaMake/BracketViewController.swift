@@ -109,7 +109,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
             vw.clipsToBounds = false
             //vw.layer.cornerRadius = 5.0
             vw.layer.borderWidth = 1
-            vw.backgroundColor = UIColor.lightGrayColor()
+            vw.backgroundColor = GlobalConstants.greenVitaminC
             vw.tag = i
             if roundNum != 1 && i >= 1 {
                 //so not the first round, and not the third place match.
