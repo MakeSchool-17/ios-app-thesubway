@@ -17,6 +17,7 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         self.tableViewTournaments.delegate = self
         self.tableViewTournaments.dataSource = self
+        self.tableViewTournaments.backgroundColor = UIColor.clearColor()
         self.view.backgroundColor = GlobalConstants.backgroundColorVc
         
         //to prevent extra tableView padding at top:

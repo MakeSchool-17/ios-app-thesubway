@@ -179,7 +179,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="OCm-qp-1M0" firstAttribute="centerX" secondItem="Sfz-4k-MI2" secondAttribute="centerX" id="1Sc-Je-u3B"/>
                                     <constraint firstItem="OCm-qp-1M0" firstAttribute="top" secondItem="Sfz-4k-MI2" secondAttribute="top" constant="8" id="H45-ve-fqH"/>
@@ -261,7 +261,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="9en-1a-Rb5" firstAttribute="centerX" secondItem="cKO-aR-eHV" secondAttribute="centerX" id="e9L-t6-Bgr"/>
                                     <constraint firstItem="lbh-OJ-FGH" firstAttribute="top" secondItem="cKO-aR-eHV" secondAttribute="top" id="mPE-iD-pAb"/>
@@ -348,7 +348,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="4Tx-OB-Ksb" firstAttribute="top" secondItem="uCc-Pd-EYW" secondAttribute="top" id="EXX-bF-Db2"/>
                                     <constraint firstItem="4Tx-OB-Ksb" firstAttribute="centerX" secondItem="uCc-Pd-EYW" secondAttribute="centerX" id="X2U-cN-ByH"/>
@@ -398,14 +398,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v4z-Wk-xsI">
-                                <rect key="frame" x="0.0" y="70" width="600" height="477"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4z-Wk-xsI">
+                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDL-bQ-K5Y">
-                                <rect key="frame" x="0.0" y="20" width="600" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="0.0"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="LEq-hI-04e"/>
+                                    <constraint firstAttribute="height" id="LEq-hI-04e"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -677,7 +677,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="mJC-33-mvd" firstAttribute="centerX" secondItem="AWr-aH-3Nr" secondAttribute="centerX" id="VpK-Zh-MfS"/>
                                     <constraint firstItem="Glu-C0-Tvp" firstAttribute="centerX" secondItem="AWr-aH-3Nr" secondAttribute="centerX" id="VyQ-Oh-IoV"/>
@@ -822,7 +822,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="a0T-Oe-FTd" firstAttribute="top" secondItem="Ym3-3l-thk" secondAttribute="bottom" id="077-mJ-fLI"/>
                                     <constraint firstAttribute="height" constant="90" id="571-UL-idw"/>
