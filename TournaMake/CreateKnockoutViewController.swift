@@ -68,6 +68,8 @@ class CreateKnockoutViewController: UIViewController {
                 buttonBracket.slotName = eachSlot
                 buttonBracket.slotIdx = i + j
                 buttonBracket.addTarget(self, action: "bracketSlotPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+                buttonBracket.imageView?.contentMode = UIViewContentMode.ScaleToFill
+                buttonBracket.setImage(UIImage(named: "dropDownSelectBox"), forState: UIControlState.Normal)
                 labelTop.addSubview(buttonBracket)
             }
             stackViewBracket.addArrangedSubview(vw)
