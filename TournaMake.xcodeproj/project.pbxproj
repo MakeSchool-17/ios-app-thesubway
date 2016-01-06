@@ -11,6 +11,8 @@
 		272E9E591C100BFD0043E433 /* StandingsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272E9E581C100BFD0043E433 /* StandingsCalculator.swift */; };
 		272E9E5B1C100E1E0043E433 /* EntrantRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272E9E5A1C100E1E0043E433 /* EntrantRecord.swift */; };
 		2755FD4F1C3B338B00FFF82F /* TournamentNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2755FD4E1C3B338B00FFF82F /* TournamentNavigationController.swift */; };
+		2755FD521C3DD38400FFF82F /* Tournament+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2755FD501C3DD38400FFF82F /* Tournament+CoreDataProperties.swift */; };
+		2755FD531C3DD38400FFF82F /* Bracket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2755FD511C3DD38400FFF82F /* Bracket+CoreDataProperties.swift */; };
 		277ADAF01BFE87E000E17F0E /* MMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ADAEF1BFE87E000E17F0E /* MMPickerView.m */; };
 		277ADAF21BFE942C00E17F0E /* PickerGroupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277ADAF11BFE942C00E17F0E /* PickerGroupButton.swift */; };
 		277ADAF41BFECED500E17F0E /* CreateKnockoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277ADAF31BFECED500E17F0E /* CreateKnockoutViewController.swift */; };
@@ -34,7 +36,6 @@
 		27A0AEF41BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */; };
 		27A0AEF71BFD383400AA57F1 /* CreateGroupSlotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF61BFD383400AA57F1 /* CreateGroupSlotCell.swift */; };
 		27A0AEF91BFD3A7900AA57F1 /* TournamentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0AEF81BFD3A7900AA57F1 /* TournamentData.swift */; };
-		27A4A31D1C1B99E700820FE7 /* Bracket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A4A31C1C1B99E700820FE7 /* Bracket+CoreDataProperties.swift */; };
 		27B4F7001C178E1300019D3B /* BracketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B4F6FF1C178E1300019D3B /* BracketViewController.swift */; };
 		27B4F7031C17A58E00019D3B /* Match+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B4F7011C17A58E00019D3B /* Match+CoreDataProperties.swift */; };
 		27B6763D1C2C9948003FDC36 /* MDSpreadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B6762F1C2C9948003FDC36 /* MDSpreadView.m */; };
@@ -45,7 +46,6 @@
 		27B676421C2C9948003FDC36 /* MDSpreadViewCellRowHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B676391C2C9948003FDC36 /* MDSpreadViewCellRowHeaderBackground.m */; };
 		27B676431C2C9948003FDC36 /* MDSpreadViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B6763C1C2C9948003FDC36 /* MDSpreadViewHeaderCell.m */; };
 		27B676451C3370DF003FDC36 /* TournamentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B676441C3370DF003FDC36 /* TournamentCell.swift */; };
-		27B676471C34DDD6003FDC36 /* Tournament+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B676461C34DDD6003FDC36 /* Tournament+CoreDataProperties.swift */; };
 		27B6764C1C379314003FDC36 /* dropDownSelectBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B6764B1C379314003FDC36 /* dropDownSelectBox.png */; };
 		27E82E8A1BFFA13B00C879AF /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E891BFFA13B00C879AF /* MathHelper.swift */; };
 		27E82E8C1BFFCCC200C879AF /* BracketCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */; };
@@ -85,6 +85,8 @@
 		272E9E581C100BFD0043E433 /* StandingsCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingsCalculator.swift; sourceTree = "<group>"; };
 		272E9E5A1C100E1E0043E433 /* EntrantRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntrantRecord.swift; sourceTree = "<group>"; };
 		2755FD4E1C3B338B00FFF82F /* TournamentNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentNavigationController.swift; sourceTree = "<group>"; };
+		2755FD501C3DD38400FFF82F /* Tournament+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tournament+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2755FD511C3DD38400FFF82F /* Bracket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bracket+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		277ADAED1BFE87DF00E17F0E /* TournaMake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TournaMake-Bridging-Header.h"; sourceTree = "<group>"; };
 		277ADAEE1BFE87E000E17F0E /* MMPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPickerView.h; sourceTree = "<group>"; };
 		277ADAEF1BFE87E000E17F0E /* MMPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPickerView.m; sourceTree = "<group>"; };
@@ -116,7 +118,6 @@
 		27A0AEF31BFD0AFE00AA57F1 /* CreateGroupStageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupStageViewController.swift; sourceTree = "<group>"; };
 		27A0AEF61BFD383400AA57F1 /* CreateGroupSlotCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupSlotCell.swift; sourceTree = "<group>"; };
 		27A0AEF81BFD3A7900AA57F1 /* TournamentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentData.swift; sourceTree = "<group>"; };
-		27A4A31C1C1B99E700820FE7 /* Bracket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bracket+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27B4F6FF1C178E1300019D3B /* BracketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketViewController.swift; sourceTree = "<group>"; };
 		27B4F7011C17A58E00019D3B /* Match+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Match+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27B6762E1C2C9948003FDC36 /* MDSpreadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpreadView.h; sourceTree = "<group>"; };
@@ -135,7 +136,6 @@
 		27B6763B1C2C9948003FDC36 /* MDSpreadViewHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpreadViewHeaderCell.h; sourceTree = "<group>"; };
 		27B6763C1C2C9948003FDC36 /* MDSpreadViewHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpreadViewHeaderCell.m; sourceTree = "<group>"; };
 		27B676441C3370DF003FDC36 /* TournamentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentCell.swift; sourceTree = "<group>"; };
-		27B676461C34DDD6003FDC36 /* Tournament+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tournament+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27B6764B1C379314003FDC36 /* dropDownSelectBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropDownSelectBox.png; sourceTree = "<group>"; };
 		27E82E891BFFA13B00C879AF /* MathHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketCalculator.swift; sourceTree = "<group>"; };
@@ -289,8 +289,8 @@
 				27E82EBF1C0FAD2C00C879AF /* BracketSlot+CoreDataProperties.swift */,
 				27E82EC01C0FAD2C00C879AF /* Entrant+CoreDataProperties.swift */,
 				27B4F7011C17A58E00019D3B /* Match+CoreDataProperties.swift */,
-				27A4A31C1C1B99E700820FE7 /* Bracket+CoreDataProperties.swift */,
-				27B676461C34DDD6003FDC36 /* Tournament+CoreDataProperties.swift */,
+				2755FD501C3DD38400FFF82F /* Tournament+CoreDataProperties.swift */,
+				2755FD511C3DD38400FFF82F /* Bracket+CoreDataProperties.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -494,6 +494,7 @@
 				277ADAF61BFEF3C600E17F0E /* BracketMatch.swift in Sources */,
 				27A0AED41BFBF00D00AA57F1 /* Tournament.swift in Sources */,
 				277ADAF41BFECED500E17F0E /* CreateKnockoutViewController.swift in Sources */,
+				2755FD531C3DD38400FFF82F /* Bracket+CoreDataProperties.swift in Sources */,
 				27B4F7001C178E1300019D3B /* BracketViewController.swift in Sources */,
 				27E82EB81C0F7C9900C879AF /* TournamentTabBarController.swift in Sources */,
 				27A0AEF01BFC2A2900AA57F1 /* AlgorithmUtil.swift in Sources */,
@@ -517,11 +518,10 @@
 				277ADAF21BFE942C00E17F0E /* PickerGroupButton.swift in Sources */,
 				27A0AECD1BF8415500AA57F1 /* SignUpViewController.swift in Sources */,
 				27E82E921C03D5BC00C879AF /* PickerBracketButton.swift in Sources */,
-				27A4A31D1C1B99E700820FE7 /* Bracket+CoreDataProperties.swift in Sources */,
 				27A0AED81BFBF02000AA57F1 /* Entrant.swift in Sources */,
 				272E9E5B1C100E1E0043E433 /* EntrantRecord.swift in Sources */,
 				27E82E941C03EA4000C879AF /* GlobalConstants.swift in Sources */,
-				27B676471C34DDD6003FDC36 /* Tournament+CoreDataProperties.swift in Sources */,
+				2755FD521C3DD38400FFF82F /* Tournament+CoreDataProperties.swift in Sources */,
 				27E82E961C051A5A00C879AF /* CoreDataUtil.swift in Sources */,
 				27B676431C2C9948003FDC36 /* MDSpreadViewHeaderCell.m in Sources */,
 				27B676401C2C9948003FDC36 /* MDSpreadViewCellColumnHeaderBackground.m in Sources */,
