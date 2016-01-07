@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
+class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource, MDSpreadViewDelegate {
 
     var tournament : Tournament!
     var groupRecordsArr : [[EntrantRecord]] = []
@@ -24,6 +24,7 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
         self.spreadV.backgroundColor = UIColor.clearColor()
         self.view.addSubview(spreadV)
         spreadV.dataSource = self
+        spreadV.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -56,7 +57,7 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
         cell.backgroundColor = GlobalConstants.grayVeryLight
         //but if it is 0, do more:
         if columnPath.column == 0 {
-            cell?.layer.borderWidth = 1
+            //cell?.layer.borderWidth = 0.5
             if section < self.groupRecordsArr.count {
                 cell.textLabel.text = "Group \(GlobalConstants.groupNames[section])"
             }
@@ -65,6 +66,13 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
             }
         }
         return cell
+    }
+    
+    func spreadView(aSpreadView: MDSpreadView!, widthForColumnAtIndexPath indexPath: MDIndexPath!) -> CGFloat {
+        if indexPath.column == 0 {
+            return 170.0
+        }
+        return 100.0
     }
     
     func spreadView(aSpreadView: MDSpreadView!, numberOfColumnsInSection section: Int) -> Int {
@@ -90,7 +98,7 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
         //        let cell = aSpreadView.dequeueReusableCellWithIdentifier("Cell") as MDSpreadViewCell
         let cell = MDSpreadViewCell(style: MDSpreadViewCellStyle.Default, reuseIdentifier: "Cell")
         //cell.backgroundColor = GlobalConstants.yellowVitaminC
-        cell?.layer.borderWidth = 1
+        //cell?.layer.borderWidth = 0.5
         if rowPath.row == 0 {
             cell?.backgroundColor = GlobalConstants.grayVeryLight
             cell?.textLabel.text = GlobalConstants.arrHeader[columnPath.column]
