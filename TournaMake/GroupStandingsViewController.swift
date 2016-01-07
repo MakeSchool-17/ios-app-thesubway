@@ -53,6 +53,7 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource, MD
     
     func spreadView(aSpreadView: MDSpreadView!, cellForHeaderInRowSection section: Int, forColumnAtIndexPath columnPath: MDIndexPath!) -> MDSpreadViewCell! {
         let cell = MDSpreadViewCell(style: MDSpreadViewCellStyle.Default, reuseIdentifier: "Cell")
+        cell.textLabel.font = UIFont(name: (cell.textLabel?.font?.fontName)!, size: 12.0)
         //even if the column is not 0, color it anyway:
         cell.backgroundColor = GlobalConstants.grayVeryLight
         //but if it is 0, do more:
@@ -70,7 +71,7 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource, MD
     
     func spreadView(aSpreadView: MDSpreadView!, widthForColumnAtIndexPath indexPath: MDIndexPath!) -> CGFloat {
         if indexPath.column == 0 {
-            return 170.0
+            return 190.0 //minimum for "Rank 3rd-Place Teams" to fit
         }
         return 100.0
     }
@@ -98,10 +99,12 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource, MD
         //        let cell = aSpreadView.dequeueReusableCellWithIdentifier("Cell") as MDSpreadViewCell
         let cell = MDSpreadViewCell(style: MDSpreadViewCellStyle.Default, reuseIdentifier: "Cell")
         //cell.backgroundColor = GlobalConstants.yellowVitaminC
-        //cell?.layer.borderWidth = 0.5
+        //default font size is 16
+        cell.textLabel.font = UIFont(name: (cell.textLabel?.font?.fontName)!, size: 18.0)
         if rowPath.row == 0 {
             cell?.backgroundColor = GlobalConstants.grayVeryLight
             cell?.textLabel.text = GlobalConstants.arrHeader[columnPath.column]
+            cell.textLabel.font = UIFont(name: (cell.textLabel?.font?.fontName)!, size: 12.0)
         }
         //note that thirdPlaceArr.count == self.groupRecordsArr.count
         else if rowPath.section < self.thirdPlaceArr.count {
