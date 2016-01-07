@@ -45,7 +45,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
         
         let matchHeight : CGFloat = 100
         let matchWidth : CGFloat = 300 //around 300 should be enough for 25 characters
-        let paddingX : CGFloat = 20.0
+        //let paddingX : CGFloat = 20.0
         let labelPadding : CGFloat = 5.0
         let verticalSpacing : CGFloat = 10.0
         var currentY : CGFloat = 0
@@ -58,13 +58,13 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
             schedule.sortInPlace({ $0.id?.integerValue < $1.id?.integerValue})
             
             let lblHeight : CGFloat = 22.0
-            let lbl = UILabel(frame: CGRect(x: paddingX, y: currentY, width: self.scrollViewMatch.frame.size.width, height: lblHeight))
+            let lbl = UILabel(frame: CGRect(x: self.view.center.x - matchWidth / 2, y: currentY, width: self.scrollViewMatch.frame.size.width, height: lblHeight))
             lbl.text = "Group \(GlobalConstants.groupNames[eachGroup.id!.integerValue])"
             self.scrollViewMatch.addSubview(lbl)
             currentY += lblHeight
             
             for eachMatch in schedule {
-                let vw = UIView(frame: CGRect(x: paddingX, y: currentY, width: matchWidth, height: matchHeight))
+                let vw = UIView(frame: CGRect(x: self.view.center.x - matchWidth / 2, y: currentY, width: matchWidth, height: matchHeight))
                 vw.tag = (eachMatch.id?.integerValue)!
                 vw.layer.cornerRadius = 5.0
                 vw.layer.borderWidth = 1
