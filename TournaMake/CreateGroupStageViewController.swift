@@ -72,7 +72,7 @@ class CreateGroupStageViewController: UIViewController {
             vw.tag = i
             vw.layer.cornerRadius = 5.0
             vw.layer.borderWidth = 1
-            vw.backgroundColor = GlobalConstants.yellowVitaminC
+            vw.backgroundColor = GlobalConstants.grayVeryLight
             
             //add group letter
             let groupTitle = UILabel(frame: CGRect(x: labelPadding, y: 0, width: entrantWidth, height: headerHeight))

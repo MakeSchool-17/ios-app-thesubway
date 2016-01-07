@@ -69,7 +69,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
                 vw.layer.cornerRadius = 5.0
                 vw.layer.borderWidth = 1
                 vw.clipsToBounds = true
-                vw.backgroundColor = GlobalConstants.greenVitaminC
+                vw.backgroundColor = GlobalConstants.grayVeryLight
                 
                 for var j = 0; j < 2; j++ {
                     var entrantId = ""

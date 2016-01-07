@@ -53,7 +53,7 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
     func spreadView(aSpreadView: MDSpreadView!, cellForHeaderInRowSection section: Int, forColumnAtIndexPath columnPath: MDIndexPath!) -> MDSpreadViewCell! {
         let cell = MDSpreadViewCell(style: MDSpreadViewCellStyle.Default, reuseIdentifier: "Cell")
         //even if the column is not 0, color it anyway:
-        cell.backgroundColor = GlobalConstants.greenVitaminC
+        cell.backgroundColor = GlobalConstants.grayVeryLight
         //but if it is 0, do more:
         if columnPath.column == 0 {
             cell?.layer.borderWidth = 1
@@ -89,10 +89,10 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource {
     func spreadView(aSpreadView: MDSpreadView!, cellForRowAtIndexPath rowPath: MDIndexPath!, forColumnAtIndexPath columnPath: MDIndexPath!) -> MDSpreadViewCell! {
         //        let cell = aSpreadView.dequeueReusableCellWithIdentifier("Cell") as MDSpreadViewCell
         let cell = MDSpreadViewCell(style: MDSpreadViewCellStyle.Default, reuseIdentifier: "Cell")
-        cell.backgroundColor = GlobalConstants.yellowVitaminC
+        //cell.backgroundColor = GlobalConstants.yellowVitaminC
         cell?.layer.borderWidth = 1
         if rowPath.row == 0 {
-            cell?.backgroundColor = UIColor.lightGrayColor()
+            cell?.backgroundColor = GlobalConstants.grayVeryLight
             cell?.textLabel.text = GlobalConstants.arrHeader[columnPath.column]
         }
         //note that thirdPlaceArr.count == self.groupRecordsArr.count
