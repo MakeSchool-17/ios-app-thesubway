@@ -46,6 +46,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
         let matchHeight : CGFloat = 100
         let matchWidth : CGFloat = 300 //around 300 should be enough for 25 characters
         let paddingX : CGFloat = 20.0
+        let labelPadding : CGFloat = 5.0
         let verticalSpacing : CGFloat = 10.0
         var currentY : CGFloat = 0
         
@@ -82,7 +83,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
                     if entrantId != GlobalConstants.bye {
                         entrant = CoreDataUtil.getEntrantById(Int(entrantId)!, tournament: self.tournament)![0]
                     }
-                    let labelName = UILabel(frame: CGRect(x: 0, y: CGFloat(j) * matchHeight / 2, width: matchWidth * 4 / 5, height: matchHeight / 2))
+                    let labelName = UILabel(frame: CGRect(x: labelPadding, y: CGFloat(j) * matchHeight / 2, width: matchWidth * 4 / 5, height: matchHeight / 2))
                     if let anEntrant = entrant {
                         labelName.text = anEntrant.name!
                     }

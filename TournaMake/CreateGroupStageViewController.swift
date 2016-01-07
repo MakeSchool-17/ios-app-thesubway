@@ -57,6 +57,7 @@ class CreateGroupStageViewController: UIViewController {
         stackView.spacing = 10
         stackView.alignment = UIStackViewAlignment.Center
         let headerHeight = CGFloat(25.0)
+        let labelPadding : CGFloat = 5.0
         
         //set up groupView settings:
         let entrantHeight = 50
@@ -74,7 +75,7 @@ class CreateGroupStageViewController: UIViewController {
             vw.backgroundColor = GlobalConstants.yellowVitaminC
             
             //add group letter
-            let groupTitle = UILabel(frame: CGRect(x: 0, y: 0, width: entrantWidth, height: headerHeight))
+            let groupTitle = UILabel(frame: CGRect(x: labelPadding, y: 0, width: entrantWidth, height: headerHeight))
             groupTitle.text = "Group \(groupNames[i])"
             vw.addSubview(groupTitle)
             
@@ -83,7 +84,7 @@ class CreateGroupStageViewController: UIViewController {
                 let eachEntrant = eachGroup[j]
                 let lblY = CGFloat(entrantHeight) * CGFloat(j) + headerHeight
                 let lblWidth : CGFloat = 90
-                let entrantLabel = UILabel(frame: CGRect(x: 0.0, y: lblY, width: lblWidth, height: CGFloat(entrantHeight)))
+                let entrantLabel = UILabel(frame: CGRect(x: labelPadding, y: lblY, width: lblWidth, height: CGFloat(entrantHeight)))
                 entrantLabel.text = "Entrant \(j+1):"
                 vw.addSubview(entrantLabel)
                 

@@ -66,6 +66,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         let verticalSpacing : CGFloat = 10
         let horizontalSpacing : CGFloat = 15
         let paddingX : CGFloat = 20.0
+        let labelPadding : CGFloat = 5.0
         var currentY : CGFloat = 0.0
         //stackViewBracket.spacing = spacing
         //stackViewBracket.alignment = UIStackViewAlignment.Center
@@ -149,7 +150,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
             
             for j in 0...1 {
                 let eachId = ids[j]
-                let labelTop = UILabel(frame: CGRect(x: 0, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
+                let labelTop = UILabel(frame: CGRect(x: labelPadding, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
                 if self.tournament.type == GlobalConstants.knockout && AlgorithmUtil.isPlayerId(eachId) {
                     labelTop.text = eachId!
                 }
