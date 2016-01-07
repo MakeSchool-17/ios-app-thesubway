@@ -15,9 +15,9 @@ class TournamentTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.viewControllers![0].title = "Group Stage"
-        self.viewControllers![1].title = "Standings"
-        self.viewControllers![2].title = "Bracket"
+        self.viewControllers![0].tabBarItem = UITabBarItem(title: "Group Stage", image: UIImage(named: "groupStage"), tag: 0)
+        self.viewControllers![1].tabBarItem = UITabBarItem(title: "Standings", image: UIImage(named: "standings"), tag: 0)
+        self.viewControllers![2].tabBarItem = UITabBarItem(title: "Bracket", image: UIImage(named: "bracket"), tag: 0)
         if self.tournament.type == GlobalConstants.knockout {
             self.viewControllers?.removeAtIndex(0)
             self.viewControllers?.removeAtIndex(0)
