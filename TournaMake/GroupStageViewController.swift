@@ -58,10 +58,11 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
             schedule.sortInPlace({ $0.id?.integerValue < $1.id?.integerValue})
             
             let lblHeight : CGFloat = 22.0
-            let lbl = UILabel(frame: CGRect(x: self.view.center.x - matchWidth / 2, y: currentY, width: self.scrollViewMatch.frame.size.width, height: lblHeight))
+            let lbl = UILabel(frame: CGRect(x: self.view.center.x - matchWidth / 2, y: currentY + lblHeight, width: self.scrollViewMatch.frame.size.width, height: lblHeight))
             lbl.text = "Group \(GlobalConstants.groupNames[eachGroup.id!.integerValue])"
+            
             self.scrollViewMatch.addSubview(lbl)
-            currentY += lblHeight
+            currentY += lblHeight * 2 //multiply by 2 for spacing
             
             for eachMatch in schedule {
                 let vw = UIView(frame: CGRect(x: self.view.center.x - matchWidth / 2, y: currentY, width: matchWidth, height: matchHeight))
