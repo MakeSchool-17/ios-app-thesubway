@@ -16,6 +16,7 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource, MD
     var spreadV : MDSpreadView!
     @IBOutlet var viewTitle: UIView!
     @IBOutlet var lblTitle: UILabel!
+    @IBOutlet var lblCaption: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = GlobalConstants.backgroundColorVc
@@ -34,9 +35,12 @@ class GroupStandingsViewController: UIViewController, MDSpreadViewDataSource, MD
         var standingsText  = ""
         if self.tournament.bracket?.isStarted == true {
             standingsText = "Final Standings:"
+            self.lblCaption.hidden = true
         }
         else {
-            standingsText = "Standings (based on current match results):"
+            standingsText = "Standings:"
+            self.lblCaption.text = "(based on current match results):"
+            self.lblCaption.hidden = false
         }
         self.lblTitle.text = standingsText
         self.spreadV.reloadData()
