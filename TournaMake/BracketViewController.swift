@@ -84,7 +84,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         
         let numFirstRoundMatches = CGFloat(bracketMatches.count) / 2 //for height
         let numRounds = MathHelper.numRoundsForEntrantCount(bracketMatches.count / 2) //for width
-        self.scrollViewBracket.contentSize = CGSizeMake((matchWidth + horizontalSpacing) * CGFloat(numRounds), numFirstRoundMatches * (matchHeight + 10))
+        self.scrollViewBracket.contentSize = CGSizeMake((matchWidth + horizontalSpacing) * CGFloat(numRounds) + paddingX, numFirstRoundMatches * (matchHeight + 10))
         self.scrollViewBracket.minimumZoomScale = 0.35
         self.scrollViewBracket.maximumZoomScale = 2.0
         if numRounds <= 2 {
