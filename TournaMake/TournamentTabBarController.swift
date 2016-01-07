@@ -21,6 +21,7 @@ class TournamentTabBarController: UITabBarController {
         if self.tournament.type == GlobalConstants.knockout {
             self.viewControllers?.removeAtIndex(0)
             self.viewControllers?.removeAtIndex(0)
+            self.tabBar.hidden = true
         }
     }
 
