@@ -65,9 +65,6 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
             currentY += lblHeight * 2 //multiply by 2 for spacing
             
             for eachMatch in schedule {
-                if eachMatch.leftId == GlobalConstants.bye || eachMatch.rightId == GlobalConstants.bye {
-                    continue
-                }
                 let vw = UIView(frame: CGRect(x: self.view.center.x - matchWidth / 2, y: currentY, width: matchWidth, height: matchHeight))
                 vw.tag = (eachMatch.id?.integerValue)!
                 vw.layer.cornerRadius = 5.0

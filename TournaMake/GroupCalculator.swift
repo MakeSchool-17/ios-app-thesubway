@@ -115,7 +115,11 @@ class GroupCalculator {
         while numRounds < group.count - 1 {
             //beginning of array faces last in array
             for var i = 0; i < group.count / 2; i++ {
-                schedule.append([group[i], group[group.count - i - 1]])
+                let player1 = group[i]
+                let player2 = group[group.count - i - 1]
+                if player1 != GlobalConstants.bye && player2 != GlobalConstants.bye {
+                    schedule.append([group[i], group[group.count - i - 1]])
+                }
             }
             //rotate everything to the right except first element.
             var newRound = [group[0], group[group.count - 1]]
