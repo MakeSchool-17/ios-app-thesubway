@@ -61,6 +61,7 @@
 		27E82EC41C0FAD2C00C879AF /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EBE1C0FAD2C00C879AF /* Group+CoreDataProperties.swift */; };
 		27E82EC51C0FAD2C00C879AF /* BracketSlot+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EBF1C0FAD2C00C879AF /* BracketSlot+CoreDataProperties.swift */; };
 		27E82EC61C0FAD2C00C879AF /* Entrant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EC01C0FAD2C00C879AF /* Entrant+CoreDataProperties.swift */; };
+		D4DBC17C9AC109A93517C432 /* libPods-TournaMake.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD00475E5B69E4725D05E95 /* libPods-TournaMake.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27212F0B93DD983C010933D0 /* Pods-TournaMake.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TournaMake.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TournaMake/Pods-TournaMake.debug.xcconfig"; sourceTree = "<group>"; };
 		272E9E561C0FDC200043E433 /* GroupStandingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupStandingsViewController.swift; sourceTree = "<group>"; };
 		272E9E581C100BFD0043E433 /* StandingsCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingsCalculator.swift; sourceTree = "<group>"; };
 		272E9E5A1C100E1E0043E433 /* EntrantRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntrantRecord.swift; sourceTree = "<group>"; };
@@ -151,6 +153,8 @@
 		27E82EBE1C0FAD2C00C879AF /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27E82EBF1C0FAD2C00C879AF /* BracketSlot+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BracketSlot+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27E82EC01C0FAD2C00C879AF /* Entrant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Entrant+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3DD00475E5B69E4725D05E95 /* libPods-TournaMake.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TournaMake.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF6AD432873447A9F6E730B8 /* Pods-TournaMake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TournaMake.release.xcconfig"; path = "Pods/Target Support Files/Pods-TournaMake/Pods-TournaMake.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4DBC17C9AC109A93517C432 /* libPods-TournaMake.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +209,8 @@
 				27A0AEB11BF814A900AA57F1 /* TournaMakeTests */,
 				27A0AEBC1BF814A900AA57F1 /* TournaMakeUITests */,
 				27A0AE981BF814A900AA57F1 /* Products */,
+				BF0C32A83365C9471BA7C672 /* Pods */,
+				55B861969672340656780363 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -358,6 +365,23 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		55B861969672340656780363 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DD00475E5B69E4725D05E95 /* libPods-TournaMake.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF0C32A83365C9471BA7C672 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				27212F0B93DD983C010933D0 /* Pods-TournaMake.debug.xcconfig */,
+				FF6AD432873447A9F6E730B8 /* Pods-TournaMake.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -365,9 +389,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27A0AEC21BF814A900AA57F1 /* Build configuration list for PBXNativeTarget "TournaMake" */;
 			buildPhases = (
+				CAA03C870BBC84F07B1DE69F /* Check Pods Manifest.lock */,
 				27A0AE931BF814A900AA57F1 /* Sources */,
 				27A0AE941BF814A900AA57F1 /* Frameworks */,
 				27A0AE951BF814A900AA57F1 /* Resources */,
+				47D0FB5998622118EDA8D977 /* Embed Pods Frameworks */,
+				6A3506E9F31F57A86334EEBF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -484,6 +511,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		47D0FB5998622118EDA8D977 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TournaMake/Pods-TournaMake-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A3506E9F31F57A86334EEBF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TournaMake/Pods-TournaMake-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CAA03C870BBC84F07B1DE69F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		27A0AE931BF814A900AA57F1 /* Sources */ = {
@@ -677,6 +752,7 @@
 		};
 		27A0AEC31BF814A900AA57F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27212F0B93DD983C010933D0 /* Pods-TournaMake.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -692,6 +768,7 @@
 		};
 		27A0AEC41BF814A900AA57F1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF6AD432873447A9F6E730B8 /* Pods-TournaMake.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

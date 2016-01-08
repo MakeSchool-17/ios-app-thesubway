@@ -62,7 +62,7 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
         cell.labelName.text = tournament.name!
         cell.labelFormat.text = "Format: \(tournament.type!)"
         cell.labelEntrantNum.text = "# Entrants: \(tournament.entrants!.count)"
-        cell.labelCreationDate.text = "Created: \(AlgorithmUtil.dateToStringWithMinutes(tournament.date!))"
+        cell.labelCreationDate.text = tournament.date?.timeAgoSinceDate(NSDate())
         return cell
     }
 
