@@ -14,6 +14,7 @@ class CreateKnockoutViewController: UIViewController {
     var tournamentData : TournamentData!
     @IBOutlet var stackViewBracket: UIStackView!
     @IBOutlet var defaultButton: UIButton!
+    @IBOutlet var submitButton: UIButton!
     var bracketSlots : [String]!
     var slotsNotEntered : [String] = []
     
@@ -74,6 +75,18 @@ class CreateKnockoutViewController: UIViewController {
             }
             stackViewBracket.addArrangedSubview(vw)
         }
+        self.updateButton()
+    }
+    
+    func updateButton() {
+        if self.slotsNotEntered.count > 0 && self.hasEmptySlots() {
+            self.submitButton.backgroundColor = UIColor.redColor()
+            self.submitButton.tintColor = UIColor.whiteColor()
+        }
+        else {
+            self.submitButton.backgroundColor = UIColor.greenColor()
+            self.submitButton.tintColor = UIColor.blackColor()
+        }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -129,11 +142,11 @@ class CreateKnockoutViewController: UIViewController {
         //save tournament to core data.
         //save tournament's matches to tournamentData object.
         if self.slotsNotEntered.count > 0 && self.hasEmptySlots() {
-            var strMissing = "\nSlots missing:"
+            var strMissing = "\nEntrants missing:"
             for eachMissing in self.slotsNotEntered {
                 strMissing += "\n\(eachMissing)"
             }
-            strMissing += "\n\nWould you like to replace the empty slots with byes?"
+            /*strMissing += "\n\nWould you like to replace the missing entrants with byes (this will remove the missing entrants)?"
             let alert = UIAlertController(title: title, message: strMissing, preferredStyle: UIAlertControllerStyle.Alert)
             let noAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { _ in
             })
@@ -146,8 +159,9 @@ class CreateKnockoutViewController: UIViewController {
                 }
                 self.reloadStackViewBracket()
             })
-            alert.addAction(yesAction)
-            self.presentViewController(alert, animated: true, completion: nil)
+            alert.addAction(yesAction)*/
+            UIHelper.showAlertOnVc(self, title: "", message: strMissing)
+            //self.presentViewController(alert, animated: true, completion: nil)
             return
         }
         tournamentData.groups = self.groups

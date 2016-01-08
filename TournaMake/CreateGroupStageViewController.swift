@@ -14,6 +14,7 @@ class CreateGroupStageViewController: UIViewController {
     var groups : [[String]]!
     var entrantsNotEntered : [String] = []
     @IBOutlet var stackView: UIStackView!
+    @IBOutlet var submitButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = GlobalConstants.backgroundColorVc
@@ -106,7 +107,20 @@ class CreateGroupStageViewController: UIViewController {
             }
             self.stackView.addArrangedSubview(vw)
         }
+        self.updateButton()
     }
+    
+    func updateButton() {
+        if self.entrantsNotEntered.count > 0 {
+            self.submitButton.backgroundColor = UIColor.redColor()
+            self.submitButton.tintColor = UIColor.whiteColor()
+        }
+        else {
+            self.submitButton.backgroundColor = UIColor.greenColor()
+            self.submitButton.tintColor = UIColor.blackColor()
+        }
+    }
+    
     func entrantPressed(sender: PickerGroupButton) {
         var entrantArr : [String] = self.entrantsNotEntered
         entrantArr.append(GlobalConstants.strEmpty)
