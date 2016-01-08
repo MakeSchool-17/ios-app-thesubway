@@ -145,11 +145,15 @@ class CreateGroupStageViewController: UIViewController {
             UIHelper.showAlertOnVc(self, title: "", message: strMissing)
             return
         }
+        self.tournamentData.groups = self.groups
+        self.tournamentData.bracketSlots = BracketCalculator.calculateGroupBrackets(groups, tournamentData: self.tournamentData)
+        CoreDataUtil.addTournament(tournamentData)
+        self.navigationController?.popToRootViewControllerAnimated(true)
         //go to knockout stage:
-        let createKnockout = self.storyboard?.instantiateViewControllerWithIdentifier("createKnockout") as! CreateKnockoutViewController
+        /*let createKnockout = self.storyboard?.instantiateViewControllerWithIdentifier("createKnockout") as! CreateKnockoutViewController
         createKnockout.groups = self.groups
         createKnockout.tournamentData = self.tournamentData
-        self.navigationController?.pushViewController(createKnockout, animated: true)
+        self.navigationController?.pushViewController(createKnockout, animated: true)*/
     }
     
     @IBAction func randomizePressed(sender: AnyObject) {
