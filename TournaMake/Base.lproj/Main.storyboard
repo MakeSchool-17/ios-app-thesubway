@@ -287,6 +287,8 @@
                         <outlet property="btnBeginOrEnd" destination="9en-1a-Rb5" id="F1g-Hv-LE2"/>
                         <outlet property="lblTitle" destination="lbh-OJ-FGH" id="X0i-u6-a9p"/>
                         <outlet property="scrollViewBracket" destination="2BF-Ch-R0l" id="yT5-RW-1S7"/>
+                        <outlet property="scrollViewDistanceContraint" destination="8sI-b1-QaS" id="rgL-bJ-Xzr"/>
+                        <outlet property="topView" destination="cKO-aR-eHV" id="fjW-Af-ITt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hd7-Fg-XcG" userLabel="First Responder" sceneMemberID="firstResponder"/>

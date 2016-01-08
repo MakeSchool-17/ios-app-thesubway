@@ -15,10 +15,15 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
     @IBOutlet var scrollViewBracket: UIScrollView!
     var largeSubView : UIView!
     @IBOutlet var btnBeginOrEnd: UIButton!
+    @IBOutlet var topView: UIView!
     var bracketMatches : [Match] = []
+    var keyboardSize : CGSize!
+    var originalFrame : CGRect!
+    @IBOutlet var scrollViewDistanceContraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = GlobalConstants.backgroundColorVc
+        self.addKeyboardNotifications()
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
     }
     
@@ -224,12 +229,17 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let tagSuper = textField.superview!.tag
         let tagTf = textField.tag
-        //end editing AFTER retrieving superview's tag value
+        if tagTf == 100 {
+            NSNotificationCenter.defaultCenter().removeObserver(self)
+        }
+        //end editing AFTER retrieving superview's tag value, and after removing notifications
         self.view.endEditing(true)
         if tagTf == 100 {
             let viewSuper : UIView = (self.scrollViewBracket.viewWithTag(tagSuper))!
             let nextTf : UITextField = viewSuper.viewWithTag(101) as! UITextField
             nextTf.becomeFirstResponder()
+            //re-add notifications after temporarily turning them off:
+            self.addKeyboardNotifications()
         }
         return false
     }
@@ -317,6 +327,31 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
                 CoreDataUtil.updateEntrantsInMatch(bronzeMatch, leftId: bronzeMatch.leftId, rightId: "\(loserId!)")
             }
         }
+    }
+    
+    func keyboardDidShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            var newFrame = self.view.frame
+            self.keyboardSize = CGSize(width: keyboardSize.width, height: keyboardSize.height)
+            if self.originalFrame == nil {
+                self.originalFrame = self.view.frame
+            }
+            if self.view.frame == self.originalFrame {
+                newFrame.origin.y -= keyboardSize.height
+            }
+            self.view.frame = newFrame
+            self.scrollViewDistanceContraint.constant = keyboardSize.height - self.topView.frame.size.height
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        self.view.frame = self.originalFrame
+        self.scrollViewDistanceContraint.constant = 0
+    }
+    
+    func addKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
 
 }
