@@ -14,11 +14,14 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
     @IBOutlet var textFieldTournamentName: UITextField!
     @IBOutlet var textViewEntrants: UITextView!
     @IBOutlet var labelTotalTeams: UILabel!
+    @IBOutlet var btnNext: UIButton!
     let entrants : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = GlobalConstants.backgroundColorVc
+        self.btnNext.backgroundColor = UIColor.lightGrayColor()
+        self.btnNext.titleLabel!.font = UIFont.systemFontOfSize(40)
         
         let typeButton = UIButton(frame: CGRect(x: 0, y: 0, width: typePicker.frame.width, height: typePicker.frame.height))
         self.typePicker.addSubview(typeButton)
@@ -77,7 +80,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
         return nil
     }
     
-    @IBAction func submitPressed(sender: AnyObject) {
+    @IBAction func nextPressed(sender: AnyObject) {
         if self.textFieldTournamentName.text == "" {
             UIHelper.showAlertOnVc(self, title: "", message: "Please enter tournament name")
             return

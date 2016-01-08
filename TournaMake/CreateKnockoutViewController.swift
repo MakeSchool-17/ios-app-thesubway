@@ -14,6 +14,7 @@ class CreateKnockoutViewController: UIViewController {
     var tournamentData : TournamentData!
     @IBOutlet var stackViewBracket: UIStackView!
     @IBOutlet var defaultButton: UIButton!
+    @IBOutlet var clearButton: UIButton!
     @IBOutlet var submitButton: UIButton!
     var bracketSlots : [String]!
     var slotsNotEntered : [String] = []
@@ -21,6 +22,10 @@ class CreateKnockoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = GlobalConstants.backgroundColorVc
+        self.defaultButton.backgroundColor = UIColor.lightGrayColor()
+        self.defaultButton.titleLabel?.font = UIFont.systemFontOfSize(40.0)
+        self.clearButton.backgroundColor = UIColor.lightGrayColor()
+        self.clearButton.titleLabel?.font = UIFont.systemFontOfSize(40.0)
         
         if self.tournamentData.format == GlobalConstants.groupStageKnockout {
             self.bracketSlots = BracketCalculator.calculateGroupBrackets(groups, tournamentData: self.tournamentData)

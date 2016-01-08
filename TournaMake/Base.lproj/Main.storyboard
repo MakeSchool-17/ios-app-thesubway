@@ -539,14 +539,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Cr-bJ-XAR">
-                                <rect key="frame" x="262" y="467" width="77" height="30"/>
+                                <rect key="frame" x="60" y="457" width="480" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="W1F-9K-X6p"/>
+                                    <constraint firstAttribute="height" constant="40" id="W1F-9K-X6p"/>
                                     <constraint firstAttribute="width" constant="77" id="zaF-82-7nU"/>
                                 </constraints>
-                                <state key="normal" title="Submit"/>
+                                <state key="normal" title="Next"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="zaF-82-7nU"/>
+                                    </mask>
+                                </variation>
                                 <connections>
-                                    <action selector="submitPressed:" destination="dDR-hM-bz5" eventType="touchUpInside" id="9H3-eU-V2E"/>
+                                    <action selector="nextPressed:" destination="dDR-hM-bz5" eventType="touchUpInside" id="t6V-mm-gJD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -554,17 +559,25 @@
                         <constraints>
                             <constraint firstItem="utO-np-0zm" firstAttribute="centerX" secondItem="KBI-j8-I86" secondAttribute="centerX" id="4UX-cb-RmN"/>
                             <constraint firstItem="utO-np-0zm" firstAttribute="top" secondItem="ieE-ju-OrW" secondAttribute="bottom" constant="28" id="Eli-ze-jGn"/>
+                            <constraint firstItem="3Cr-bJ-XAR" firstAttribute="leading" secondItem="KBI-j8-I86" secondAttribute="leadingMargin" constant="40" id="HHP-0B-Gma"/>
                             <constraint firstItem="wSZ-AB-SfD" firstAttribute="top" secondItem="utO-np-0zm" secondAttribute="bottom" constant="15" id="P9z-1G-w5W"/>
                             <constraint firstItem="KMa-Yg-wRW" firstAttribute="centerX" secondItem="KBI-j8-I86" secondAttribute="centerX" id="Peg-cm-cVd"/>
                             <constraint firstItem="3Cr-bJ-XAR" firstAttribute="centerX" secondItem="KBI-j8-I86" secondAttribute="centerX" id="Yhm-cW-BTs"/>
                             <constraint firstItem="KMa-Yg-wRW" firstAttribute="top" secondItem="wSZ-AB-SfD" secondAttribute="bottom" constant="14" id="ZAt-KV-eJ7"/>
                             <constraint firstItem="wSZ-AB-SfD" firstAttribute="centerX" secondItem="KBI-j8-I86" secondAttribute="centerX" id="gMs-nj-CKV"/>
-                            <constraint firstItem="3Cr-bJ-XAR" firstAttribute="top" secondItem="KMa-Yg-wRW" secondAttribute="bottom" constant="35" id="wWF-oX-oe2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3Cr-bJ-XAR" secondAttribute="trailing" constant="40" id="tGR-9m-Agd"/>
+                            <constraint firstItem="3Cr-bJ-XAR" firstAttribute="top" secondItem="KMa-Yg-wRW" secondAttribute="bottom" constant="25" id="wWF-oX-oe2"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Yhm-cW-BTs"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Create Tournament" id="E7w-fE-6rI"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="btnNext" destination="3Cr-bJ-XAR" id="7L4-Fb-oF7"/>
                         <outlet property="labelTotalTeams" destination="OpQ-2U-9RB" id="ryG-Z9-0lQ"/>
                         <outlet property="textFieldTournamentName" destination="wSZ-AB-SfD" id="9Zt-q7-wg1"/>
                         <outlet property="textViewEntrants" destination="a8M-aS-6OV" id="N4I-No-Ucp"/>
@@ -625,11 +638,11 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TGC-Zq-HA8">
-                                <rect key="frame" x="0.0" y="114" width="600" height="447"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TGC-Zq-HA8">
+                                <rect key="frame" x="0.0" y="144" width="600" height="417"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Dbd-rV-dPb">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="497"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="417"/>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -648,26 +661,36 @@
                                 </variation>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AWr-aH-3Nr">
-                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJC-33-mvd">
-                                        <rect key="frame" x="277" y="30" width="46" height="30"/>
+                                        <rect key="frame" x="40" y="40" width="520" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="46" id="NaE-j3-ptJ"/>
-                                            <constraint firstAttribute="height" constant="30" id="YGt-n9-g4l"/>
+                                            <constraint firstAttribute="height" constant="40" id="YGt-n9-g4l"/>
                                         </constraints>
                                         <state key="normal" title="Clear"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="NaE-j3-ptJ"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="clearPressed:" destination="HcX-qE-2Cf" eventType="touchUpInside" id="lj2-UW-ic2"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Glu-C0-Tvp">
-                                        <rect key="frame" x="249" y="0.0" width="102" height="30"/>
+                                        <rect key="frame" x="40" y="0.0" width="520" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="EGd-Lj-Oqx"/>
+                                            <constraint firstAttribute="height" constant="40" id="EGd-Lj-Oqx"/>
                                             <constraint firstAttribute="width" constant="102" id="sbC-3J-L2s"/>
                                         </constraints>
                                         <state key="normal" title="Randomize"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="sbC-3J-L2s"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="randomizePressed:" destination="HcX-qE-2Cf" eventType="touchUpInside" id="YrT-Wc-lv3"/>
                                         </connections>
@@ -675,12 +698,22 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Glu-C0-Tvp" secondAttribute="trailing" constant="40" id="2uT-Ef-ZcN"/>
+                                    <constraint firstItem="mJC-33-mvd" firstAttribute="leading" secondItem="AWr-aH-3Nr" secondAttribute="leading" constant="40" id="7kQ-lG-ugV"/>
+                                    <constraint firstItem="Glu-C0-Tvp" firstAttribute="leading" secondItem="AWr-aH-3Nr" secondAttribute="leading" constant="40" id="8sx-Mx-fAY"/>
                                     <constraint firstItem="mJC-33-mvd" firstAttribute="centerX" secondItem="AWr-aH-3Nr" secondAttribute="centerX" id="VpK-Zh-MfS"/>
                                     <constraint firstItem="Glu-C0-Tvp" firstAttribute="centerX" secondItem="AWr-aH-3Nr" secondAttribute="centerX" id="VyQ-Oh-IoV"/>
                                     <constraint firstItem="Glu-C0-Tvp" firstAttribute="top" secondItem="AWr-aH-3Nr" secondAttribute="top" id="Wgy-lc-UlD"/>
+                                    <constraint firstAttribute="trailing" secondItem="mJC-33-mvd" secondAttribute="trailing" constant="40" id="g5S-1b-xhM"/>
                                     <constraint firstItem="mJC-33-mvd" firstAttribute="top" secondItem="Glu-C0-Tvp" secondAttribute="bottom" id="gyu-hU-4cG"/>
-                                    <constraint firstAttribute="height" constant="60" id="qaF-H8-7ss"/>
+                                    <constraint firstAttribute="height" constant="80" id="qaF-H8-7ss"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="VyQ-Oh-IoV"/>
+                                        <exclude reference="VpK-Zh-MfS"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -707,6 +740,8 @@
                     <navigationItem key="navigationItem" title="Create Group Stage" id="H6m-Fm-Wjv"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="clearButton" destination="mJC-33-mvd" id="VsH-D5-0le"/>
+                        <outlet property="randomizeButton" destination="Glu-C0-Tvp" id="iMC-ng-Zfk"/>
                         <outlet property="stackView" destination="Dbd-rV-dPb" id="DsZ-Oj-oQ2"/>
                         <outlet property="submitButton" destination="29k-xe-53J" id="orp-OG-8cr"/>
                     </connections>
@@ -791,23 +826,33 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0T-Oe-FTd">
-                                        <rect key="frame" x="255" y="29" width="91" height="30"/>
+                                        <rect key="frame" x="40" y="29" width="520" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="91" id="LA2-Uu-lOi"/>
                                             <constraint firstAttribute="height" constant="30" id="RuI-Ij-zee"/>
                                         </constraints>
                                         <state key="normal" title="Default"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="LA2-Uu-lOi"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="defaultPressed:" destination="bJ5-RI-VKW" eventType="touchUpInside" id="JJj-V9-R76"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIz-zU-fKe">
-                                        <rect key="frame" x="260" y="59" width="81" height="30"/>
+                                        <rect key="frame" x="40" y="59" width="520" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="81" id="g1X-QK-4QB"/>
                                             <constraint firstAttribute="height" constant="30" id="hYe-fZ-mOF"/>
                                         </constraints>
                                         <state key="normal" title="Clear"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="g1X-QK-4QB"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="clearPressed:" destination="bJ5-RI-VKW" eventType="touchUpInside" id="ulF-IP-Vi2"/>
                                         </connections>
@@ -832,19 +877,25 @@
                                     <constraint firstItem="sIz-zU-fKe" firstAttribute="top" secondItem="a0T-Oe-FTd" secondAttribute="bottom" id="Iow-va-ska"/>
                                     <constraint firstItem="Ym3-3l-thk" firstAttribute="centerX" secondItem="CUM-Tx-WK1" secondAttribute="centerX" id="Lm5-1k-QP4"/>
                                     <constraint firstItem="sIz-zU-fKe" firstAttribute="top" secondItem="a0T-Oe-FTd" secondAttribute="bottom" id="M3g-Hp-bZd"/>
+                                    <constraint firstAttribute="trailing" secondItem="a0T-Oe-FTd" secondAttribute="trailing" constant="40" id="M7Y-a5-VCW"/>
                                     <constraint firstItem="Ym3-3l-thk" firstAttribute="top" secondItem="CUM-Tx-WK1" secondAttribute="top" id="Moh-ee-SRd"/>
                                     <constraint firstItem="a0T-Oe-FTd" firstAttribute="centerX" secondItem="CUM-Tx-WK1" secondAttribute="centerX" id="Nmg-wM-N86"/>
+                                    <constraint firstItem="sIz-zU-fKe" firstAttribute="leading" secondItem="CUM-Tx-WK1" secondAttribute="leading" constant="40" id="VuV-dS-BZy"/>
                                     <constraint firstAttribute="bottom" secondItem="sIz-zU-fKe" secondAttribute="bottom" id="aEk-JA-uyX"/>
+                                    <constraint firstAttribute="trailing" secondItem="sIz-zU-fKe" secondAttribute="trailing" constant="40" id="iIx-0f-vng"/>
+                                    <constraint firstItem="a0T-Oe-FTd" firstAttribute="leading" secondItem="CUM-Tx-WK1" secondAttribute="leading" constant="40" id="lfT-jS-6fc"/>
                                     <constraint firstItem="sIz-zU-fKe" firstAttribute="centerX" secondItem="CUM-Tx-WK1" secondAttribute="centerX" id="nq9-ha-Hpb"/>
                                     <constraint firstAttribute="trailing" secondItem="a0T-Oe-FTd" secondAttribute="trailing" constant="254" id="rbj-UB-GMy"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="6WB-vB-vNe"/>
+                                        <exclude reference="Nmg-wM-N86"/>
                                         <exclude reference="rbj-UB-GMy"/>
                                         <exclude reference="FtM-Na-OEQ"/>
                                         <exclude reference="M3g-Hp-bZd"/>
                                         <exclude reference="aEk-JA-uyX"/>
+                                        <exclude reference="nq9-ha-Hpb"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -873,6 +924,7 @@
                     <navigationItem key="navigationItem" title="Create Knockout Stage" id="KSD-j1-DEH"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="clearButton" destination="sIz-zU-fKe" id="PNe-Jf-r2L"/>
                         <outlet property="defaultButton" destination="a0T-Oe-FTd" id="3fv-1v-Fdd"/>
                         <outlet property="stackViewBracket" destination="KaO-UZ-jzj" id="GbU-cR-0Gf"/>
                         <outlet property="submitButton" destination="0DR-7r-hgE" id="QxB-dL-4VX"/>

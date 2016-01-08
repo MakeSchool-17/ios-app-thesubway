@@ -14,11 +14,17 @@ class CreateGroupStageViewController: UIViewController {
     var groups : [[String]]!
     var entrantsNotEntered : [String] = []
     @IBOutlet var stackView: UIStackView!
+    @IBOutlet var randomizeButton: UIButton!
+    @IBOutlet var clearButton: UIButton!
     @IBOutlet var submitButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = GlobalConstants.backgroundColorVc
-
+        self.clearButton.backgroundColor = UIColor.lightGrayColor()
+        self.randomizeButton.backgroundColor = UIColor.lightGrayColor()
+        self.clearButton.titleLabel!.font = UIFont.systemFontOfSize(40)
+        self.randomizeButton.titleLabel!.font = UIFont.systemFontOfSize(40)
+        
         self.calculateNumGroups()
         self.clearGroups()
         self.reloadStackView()
