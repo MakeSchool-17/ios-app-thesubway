@@ -48,7 +48,7 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100.0
+        return 120.0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,6 +69,9 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
             }
             entrantsList += eachEntrant.name!
         }
+        cell.labelEntrantNames.textColor = GlobalConstants.mediumGray
+        cell.labelEntrantNum.textColor = GlobalConstants.mediumGray
+        cell.labelCreationDate.textColor = GlobalConstants.mediumGray
         cell.labelEntrantNames.text = entrantsList
         cell.labelEntrantNum.text = "\(tournament.entrants!.count) Entrants"
         cell.labelCreationDate.text = tournament.date?.timeAgoSinceDate(NSDate())

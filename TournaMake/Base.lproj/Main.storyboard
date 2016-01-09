@@ -93,15 +93,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KKT-lf-zIq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="124" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KKT-lf-zIq">
                                 <rect key="frame" x="0.0" y="114" width="600" height="486"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tournamentCell" id="o18-6v-BT8" customClass="TournamentCell" customModule="TournaMake" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="92"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o18-6v-BT8" id="2xU-v2-NDp">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="91"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="123"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tournament Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8n-aR-dBl">
@@ -130,7 +130,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Entrants:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h06-xd-BjB">
-                                                    <rect key="frame" x="8" y="72" width="300" height="21"/>
+                                                    <rect key="frame" x="8" y="93" width="300" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Bpv-Lo-yBi"/>
                                                         <constraint firstAttribute="width" constant="300" id="ZJn-Br-bzG"/>
@@ -150,7 +150,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Entrant names" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlR-zV-sIC">
-                                                    <rect key="frame" x="8" y="51" width="584" height="21"/>
+                                                    <rect key="frame" x="8" y="72" width="584" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="6gb-fb-ucq"/>
                                                         <constraint firstAttribute="width" constant="300" id="Uxo-S7-jte"/>
@@ -176,7 +176,7 @@
                                                 <constraint firstItem="LBw-kl-etl" firstAttribute="leading" secondItem="2xU-v2-NDp" secondAttribute="leadingMargin" id="Rm7-TL-5AI"/>
                                                 <constraint firstItem="LBw-kl-etl" firstAttribute="top" secondItem="h06-xd-BjB" secondAttribute="bottom" id="Vha-E6-cdD"/>
                                                 <constraint firstItem="h06-xd-BjB" firstAttribute="top" secondItem="qlR-zV-sIC" secondAttribute="bottom" id="Zcy-vC-e4a"/>
-                                                <constraint firstItem="qlR-zV-sIC" firstAttribute="top" secondItem="eX5-Uq-UJP" secondAttribute="bottom" id="kkG-Ss-sii"/>
+                                                <constraint firstItem="qlR-zV-sIC" firstAttribute="top" secondItem="eX5-Uq-UJP" secondAttribute="bottom" constant="21" id="kkG-Ss-sii"/>
                                                 <constraint firstItem="b8n-aR-dBl" firstAttribute="leading" secondItem="2xU-v2-NDp" secondAttribute="leadingMargin" id="rLa-1H-HIS"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="LBw-kl-etl" secondAttribute="trailing" id="sA4-Ln-phv"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="qlR-zV-sIC" secondAttribute="trailing" id="t79-kV-7zq"/>
