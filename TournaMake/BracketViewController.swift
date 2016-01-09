@@ -122,7 +122,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
             //vw.layer.cornerRadius = 5.0
             vw.layer.borderWidth = 1
             vw.backgroundColor = GlobalConstants.grayVeryLight
-            vw.tag = i
+            vw.tag = i + 200
             if roundNum != 1 && i >= 1 {
                 //so not the first round, and not the third place match.
                 //for middle rounds, get the previous round's match, which is i * 2 + 1.
@@ -253,7 +253,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         //NOTE: added floatValue property in Extension String in AlgorithmUtil.swift file
         if let textScore = textField.text?.floatValue {
             //store to core data match:
-            let matchIdx = (textField.superview?.tag)!
+            let matchIdx = (textField.superview?.tag)! - 200
             let matchId = self.bracketMatches[matchIdx].id!.integerValue
             let updatedMatch = CoreDataUtil.updateMatchScore(textScore, matchId: matchId, entrantPos: textField.tag - 100, tournament: self.tournament)
             //check if updatedMatch has a winner.
