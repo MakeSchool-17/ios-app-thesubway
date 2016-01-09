@@ -22,10 +22,14 @@ class CreateKnockoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = GlobalConstants.backgroundColorVc
-        self.defaultButton.backgroundColor = UIColor.lightGrayColor()
-        self.defaultButton.titleLabel?.font = UIFont.systemFontOfSize(40.0)
-        self.clearButton.backgroundColor = UIColor.lightGrayColor()
-        self.clearButton.titleLabel?.font = UIFont.systemFontOfSize(40.0)
+        self.defaultButton.backgroundColor = GlobalConstants.buttonGreenColor
+        self.defaultButton.tintColor = UIColor.whiteColor()
+        self.defaultButton.titleLabel?.font = UIFont.systemFontOfSize(40)
+        self.defaultButton.layer.cornerRadius = 5.0
+        self.clearButton.backgroundColor = GlobalConstants.buttonRedColor
+        self.clearButton.tintColor = UIColor.whiteColor()
+        self.clearButton.titleLabel!.font = UIFont.systemFontOfSize(40)
+        self.clearButton.layer.cornerRadius = 5.0
         
         if self.tournamentData.format == GlobalConstants.groupStageKnockout {
             self.bracketSlots = BracketCalculator.calculateGroupBrackets(groups, tournamentData: self.tournamentData)

@@ -20,10 +20,14 @@ class CreateGroupStageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = GlobalConstants.backgroundColorVc
-        self.clearButton.backgroundColor = UIColor.lightGrayColor()
-        self.randomizeButton.backgroundColor = UIColor.lightGrayColor()
+        self.clearButton.backgroundColor = GlobalConstants.buttonRedColor
+        self.clearButton.tintColor = UIColor.whiteColor()
         self.clearButton.titleLabel!.font = UIFont.systemFontOfSize(40)
+        self.clearButton.layer.cornerRadius = 5.0
+        self.randomizeButton.backgroundColor = GlobalConstants.buttonGreenColor
+        self.randomizeButton.tintColor = UIColor.whiteColor()
         self.randomizeButton.titleLabel!.font = UIFont.systemFontOfSize(40)
+        self.randomizeButton.layer.cornerRadius = 5.0
         
         self.calculateNumGroups()
         self.clearGroups()

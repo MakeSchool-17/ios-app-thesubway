@@ -33,6 +33,8 @@ struct GlobalConstants {
     static let greenVitaminC = UIColor(red: 190 / 255.0, green: 219 / 255.0, blue: 57 / 255.0, alpha: 1.0)
     static let grayVeryLight = UIColor(red: 235 / 255.0, green: 235 / 255.0, blue: 235 / 255.0, alpha: 1.0)
     static let mediumGray = UIColor(red: 128 / 255.0, green: 128 / 255.0, blue: 128 / 255.0, alpha: 1.0)
+    static let buttonGreenColor = UIColor(red: 43 / 255.0, green: 195 / 255.0, blue: 158 / 255.0, alpha: 1.0)
+    static let buttonRedColor = UIColor(red: 225 / 255.0, green: 49 / 255.0, blue: 79 / 255.0, alpha: 1.0)
     //change backgroundColor used for custom vc's here:
     static let backgroundColorVc = UIColor.whiteColor()
     

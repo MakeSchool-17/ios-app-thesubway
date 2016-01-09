@@ -24,6 +24,11 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         super.viewDidLoad()
         self.view.backgroundColor = GlobalConstants.backgroundColorVc
         self.addKeyboardNotifications()
+        self.btnBeginOrEnd.backgroundColor = GlobalConstants.buttonGreenColor
+        self.btnBeginOrEnd.titleLabel?.font = UIFont.systemFontOfSize(40)
+        self.btnBeginOrEnd.tintColor = UIColor.whiteColor()
+        self.btnBeginOrEnd.layer.cornerRadius = 5.0
+        
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
     }
     
@@ -273,13 +278,13 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
     
     @IBAction func btnPressed(sender: AnyObject?) {
         let alert = UIAlertController(title: title, message: "Are you sure you want to start the bracket? You may not change group stage scores after bracket starts.", preferredStyle: UIAlertControllerStyle.Alert)
+        let noAction = UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: { _ in
+        })
+        alert.addAction(noAction)
         let yesAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { _ in
             self.startBracket()
         })
         alert.addAction(yesAction)
-        let noAction = UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: { _ in
-        })
-        alert.addAction(noAction)
         self.presentViewController(alert, animated: true, completion: {})
     }
     

@@ -20,8 +20,10 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = GlobalConstants.backgroundColorVc
-        self.btnNext.backgroundColor = UIColor.lightGrayColor()
+        self.btnNext.backgroundColor = GlobalConstants.buttonGreenColor
         self.btnNext.titleLabel!.font = UIFont.systemFontOfSize(40)
+        self.btnNext.tintColor = UIColor.whiteColor()
+        self.btnNext.layer.cornerRadius = 5.0
         
         let typeButton = UIButton(frame: CGRect(x: 0, y: 0, width: typePicker.frame.width, height: typePicker.frame.height))
         self.typePicker.addSubview(typeButton)
