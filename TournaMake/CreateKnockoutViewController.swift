@@ -88,7 +88,8 @@ class CreateKnockoutViewController: UIViewController {
     }
     
     func updateButton() {
-        if self.slotsNotEntered.count > 0 && self.hasEmptySlots() {
+        //if self.slotsNotEntered.count > 0 && self.hasEmptySlots() {
+        if self.hasEmptySlots() || self.duplicateByes() {
             self.submitButton.backgroundColor = UIColor.redColor()
             self.submitButton.tintColor = UIColor.whiteColor()
         }
@@ -146,6 +147,16 @@ class CreateKnockoutViewController: UIViewController {
         }
         return false
     }
+    
+    func duplicateByes() -> Bool {
+        //if two byes face each other
+        for var i = 0; i < self.bracketSlots.count; i += 2 {
+            if self.bracketSlots[i] == GlobalConstants.bye && self.bracketSlots[i+1] == GlobalConstants.bye {
+                return true
+            }
+        }
+        return false
+    }
 
     @IBAction func submitPressed(sender: AnyObject) {
         //save tournament to core data.
@@ -173,6 +184,11 @@ class CreateKnockoutViewController: UIViewController {
             //self.presentViewController(alert, animated: true, completion: nil)
             return
         }
+        if self.duplicateByes() {
+            UIHelper.showAlertOnVc(self, title: "", message: "Each match can only have 1 \(GlobalConstants.bye)")
+            return
+        }
+        
         tournamentData.groups = self.groups
         tournamentData.bracketSlots = self.bracketSlots
         CoreDataUtil.addTournament(tournamentData)
