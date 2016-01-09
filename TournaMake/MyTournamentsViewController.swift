@@ -61,7 +61,16 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
         cell.backgroundColor = GlobalConstants.grayVeryLight
         cell.labelName.text = tournament.name!
         cell.labelFormat.text = "Format: \(tournament.type!)"
-        cell.labelEntrantNum.text = "# Entrants: \(tournament.entrants!.count)"
+        var entrantsList = ""
+        for var i = 0; i < tournament.entrants!.count; i++ {
+            let eachEntrant = tournament.entrants!.allObjects[i]
+            if i != 0 {
+                entrantsList += ", "
+            }
+            entrantsList += eachEntrant.name!
+        }
+        cell.labelEntrantNames.text = entrantsList
+        cell.labelEntrantNum.text = "\(tournament.entrants!.count) Entrants"
         cell.labelCreationDate.text = tournament.date?.timeAgoSinceDate(NSDate())
         return cell
     }
