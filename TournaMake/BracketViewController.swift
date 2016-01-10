@@ -126,8 +126,8 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
             if roundNum != 1 && i >= 1 {
                 //so not the first round, and not the third place match.
                 //for middle rounds, get the previous round's match, which is i * 2 + 1.
-                let previousVwTop : UIView? = self.largeSubView.viewWithTag(i * 2 + 1)
-                let previousVwBottom : UIView? = self.largeSubView.viewWithTag(i * 2)
+                let previousVwTop : UIView? = self.largeSubView.viewWithTag(i * 2 + 201)
+                let previousVwBottom : UIView? = self.largeSubView.viewWithTag(i * 2 + 200)
                 //this is set to the center of the previous 2 views
                 if previousVwTop != nil && previousVwBottom != nil {
                     vw.frame.origin.y = (previousVwTop!.center.y + previousVwBottom!.center.y) / 2 - (matchHeight / 2)
@@ -200,7 +200,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
             }
             //if i is even, add a vertical line that extends to previous box.
             if i % 2 == 0 && (roundNum != numRounds) {
-                let previousVw : UIView? = self.largeSubView.viewWithTag(i + 1)
+                let previousVw : UIView? = self.largeSubView.viewWithTag(i + 200 + 1)
                 if let prevVw = previousVw {
                     let distanceToPrevious = vw.center.y - prevVw.center.y
                     //this is a negative-y position:
