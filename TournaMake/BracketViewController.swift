@@ -350,8 +350,10 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        self.view.frame = self.originalFrame
-        self.scrollViewDistanceContraint.constant = 0
+        if self.originalFrame != nil {
+            self.view.frame = self.originalFrame
+            self.scrollViewDistanceContraint.constant = 0
+        }
     }
     
     func addKeyboardNotifications() {
