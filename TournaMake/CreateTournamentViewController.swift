@@ -17,6 +17,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
     @IBOutlet var btnNext: UIButton!
     let typeArr : [String] = [GlobalConstants.groupStageKnockout, GlobalConstants.knockout]
     let entrants : [String] = []
+    var pickerInfo : UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
     
     func typePressed(sender: UIButton) {
         self.view.endEditing(true)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pickerDidScroll:", name: GlobalConstants.pickerDidScroll, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pickerDidScroll:", name: "pickerDidScroll", object: nil)
         MMPickerView.showPickerViewInView(self.view, withObjects: self.typeArr, withOptions: nil, objectToStringConverter: nil) { (selectedString : AnyObject!) -> Void in
             self.typePicker.text = selectedString as? String
             NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -58,7 +59,27 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
     
     func pickerDidScroll(notification: NSNotification) {
         let i = notification.object as! Int
-        print(self.typeArr[i])
+        let formatType = self.typeArr[i]
+        if let picker : UIView = self.view.viewWithTag(300) {
+            if self.pickerInfo != nil {
+                self.pickerInfo.removeFromSuperview()
+                self.pickerInfo = nil
+            }
+            self.pickerInfo = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height / 2))
+            pickerInfo.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            let labelInfo = UILabel(frame: CGRect(x: 10, y: (self.navigationController?.navigationBar.frame.size.height)!, width: pickerInfo.frame.size.width - 20, height: pickerInfo.frame.size.height))
+            labelInfo.numberOfLines = 0
+            labelInfo.font = UIFont(name: (labelInfo.font?.fontName)!, size: 16.0)
+            if formatType == GlobalConstants.knockout {
+                labelInfo.text = "Winners advance, loser is out. Semi-final losers play for 3rd-place."
+            }
+            else if formatType == GlobalConstants.groupStageKnockout {
+                labelInfo.text = "Group stage is where entrants are divided into groups, where all entrants will face each group member once. Best members from each group advance to knockout stage."
+            }
+            pickerInfo.addSubview(labelInfo)
+            
+            picker.addSubview(self.pickerInfo)
+        }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
