@@ -326,6 +326,8 @@ NSString * const MMshowsSelectionIndicator = @"showsSelectionIndicator";
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     /* Dan Hoang modified */
+    //this only gets called if user scrolls to row, not if user presses done button.
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"pickerDidScroll" object:[NSNumber numberWithInteger:row]];
     self.currentlySelectedRow = row;
 }
 

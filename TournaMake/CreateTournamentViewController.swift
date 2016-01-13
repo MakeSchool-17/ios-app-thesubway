@@ -15,6 +15,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
     @IBOutlet var textViewEntrants: UITextView!
     @IBOutlet var labelTotalTeams: UILabel!
     @IBOutlet var btnNext: UIButton!
+    let typeArr : [String] = [GlobalConstants.groupStageKnockout, GlobalConstants.knockout]
     let entrants : [String] = []
     
     override func viewDidLoad() {
@@ -45,12 +46,19 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func typePressed(sender: UIButton) {
         self.view.endEditing(true)
-        let typeArr : [String] = [GlobalConstants.groupStageKnockout, GlobalConstants.knockout]
-        MMPickerView.showPickerViewInView(self.view, withObjects: typeArr, withOptions: nil, objectToStringConverter: nil) { (selectedString : AnyObject!) -> Void in
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pickerDidScroll:", name: GlobalConstants.pickerDidScroll, object: nil)
+        MMPickerView.showPickerViewInView(self.view, withObjects: self.typeArr, withOptions: nil, objectToStringConverter: nil) { (selectedString : AnyObject!) -> Void in
             self.typePicker.text = selectedString as? String
+            NSNotificationCenter.defaultCenter().removeObserver(self)
         }
+    }
+    
+    func pickerDidScroll(notification: NSNotification) {
+        let i = notification.object as! Int
+        print(self.typeArr[i])
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

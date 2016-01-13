@@ -40,4 +40,7 @@ struct GlobalConstants {
     
     //labels:
     static let bracketStageStarted = "Bracket stage has started"
+    
+    //notifications:
+    static let pickerDidScroll = "pickerDidScroll"
 }
