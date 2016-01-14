@@ -39,8 +39,13 @@ class CreateGroupStageViewController: UIViewController {
     }
     func calculateNumGroups() {
         var finalGroups : [[String]] = []
-        
-        if self.tournamentData.entrants.count <= 32 {
+        if self.tournamentData.entrants.count == 4 {
+            finalGroups = GroupCalculator.getGroupsOf4Or3(self.tournamentData.entrants)
+        }
+        if self.tournamentData.entrants.count == 5 {
+            finalGroups = GroupCalculator.getGroupsOf5Or6(self.tournamentData.entrants)
+        }
+        else if self.tournamentData.entrants.count <= 32 {
             finalGroups = GroupCalculator.getGroupsOf4Or3(self.tournamentData.entrants)
         }
         else if self.tournamentData.entrants.count <= 42 {

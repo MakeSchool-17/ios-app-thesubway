@@ -111,7 +111,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         var endIdx = bracketMatches.count / 2
         var startIdx = bracketMatches.count
         var highestViewInRound : UIView!
-        var championshipFrame : CGRect!
+        var championshipFrame = CGRectMake(paddingX + horizontalSpacing, currentY, matchWidth, matchHeight)
         for var i = startIdx - 1; i >= endIdx; i-- {
             let eachMatch = bracketMatches[i]
             
@@ -123,7 +123,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
             vw.layer.borderWidth = 1
             vw.backgroundColor = GlobalConstants.grayVeryLight
             vw.tag = i + 200
-            if roundNum != 1 && i >= 1 {
+            if (roundNum != 1 || self.bracketMatches.count == 2) && i >= 1 {
                 //so not the first round, and not the third place match.
                 //for middle rounds, get the previous round's match, which is i * 2 + 1.
                 let previousVwTop : UIView? = self.largeSubView.viewWithTag(i * 2 + 201)
@@ -143,6 +143,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
             //third-place match will be index 0, and championship is index 1, for math purposes
             else if i == 0 {
                 vw.frame.origin.y = championshipFrame.origin.y + 3 / 2 * matchHeight + verticalSpacing
+                vw.frame.origin.x = championshipFrame.origin.x
                 //add label indicating 3rd-place match:
                 let heightOfLabel : CGFloat = 21
                 let lbl3rdPlace = UILabel(frame: CGRect(x: 0, y: 0 - heightOfLabel, width: matchWidth, height: heightOfLabel))
@@ -199,7 +200,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
                 vw.addSubview(labelTop)
             }
             //if i is even, add a vertical line that extends to previous box.
-            if i % 2 == 0 && (roundNum != numRounds) {
+            if i % 2 == 0 && (roundNum != numRounds) && self.bracketMatches.count != 2 {
                 let previousVw : UIView? = self.largeSubView.viewWithTag(i + 200 + 1)
                 if let prevVw = previousVw {
                     let distanceToPrevious = vw.center.y - prevVw.center.y

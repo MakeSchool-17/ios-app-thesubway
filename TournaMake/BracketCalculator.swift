@@ -39,7 +39,6 @@ class BracketCalculator {
     }
     
     class func calculateGroupBrackets(groups : [[String]]!, tournamentData : TournamentData!) -> [String] {
-        //assuming 6-16 teams in tournament:
         let numTeamsAdvance = self.getNumTeamsAdvancing(tournamentData)
         var numRounds = 1.0
         while true {
@@ -59,9 +58,22 @@ class BracketCalculator {
         (whether it's championship match, or 3rd-place match)*/
         var bracketTop : [BracketMatch] = []
         var bracketBottom : [BracketMatch] = []
-        
-
-        if num3rdPlace == 0 {
+        if groups.count == 1 {
+            let match1 = BracketMatch()
+            match1.groupLetterLeftTeam = "\(groupNames[0])"
+            match1.groupPlacingLeftTeam = GlobalConstants.groupWinner
+            match1.groupLetterRightTeam = "\(groupNames[0])"
+            match1.groupPlacingRightTeam = GlobalConstants.groupRunnerUp
+            bracketTop.append(match1)
+            
+            let match2 = BracketMatch()
+            match2.groupLetterLeftTeam = GlobalConstants.undecided
+            match2.groupPlacingLeftTeam = GlobalConstants.group3rd
+            match2.groupLetterRightTeam = GlobalConstants.undecided
+            match2.groupPlacingRightTeam = GlobalConstants.group4th
+            bracketTop.append(match2)
+        }
+        else if num3rdPlace == 0 {
             //since num3rdPlace == 0, we know numTeamsAdvance == numTopTwo,
             //but in tournaments of 9, we get numTeamsAdvance == 6.
             //which means num groups always divisible by 2.
@@ -333,7 +345,10 @@ class BracketCalculator {
     }
     
     class func getNumTeamsAdvancing(tournamentData : TournamentData) -> Double {
-        if tournamentData.entrants.count <= 8 {
+        if tournamentData.entrants.count <= 5 {
+            return 2
+        }
+        else if tournamentData.entrants.count <= 8 {
             return 4
         }
         else if tournamentData.entrants.count <= 11 {
@@ -400,7 +415,7 @@ class BracketCalculator {
                 if seedPlace == nil {
                     //bye, so leave as nil
                 }
-                else if seedPlace <= 1 {
+                else if seedPlace <= 1 || seedPlace == 3 {
                     //this means seedPlace represents group-winner or group-runner-up
                     let letterUnichar = seedLetterObjC.characterAtIndex(0)
                     //A becomes 0, B becomes 1.. to get the index
@@ -428,6 +443,9 @@ class BracketCalculator {
         if bracketSeed == GlobalConstants.group3rd {
             //3rd-place means index 2 in array.
             return (2, nil)
+        }
+        if bracketSeed == GlobalConstants.group4th {
+            return (3, "A")
         }
         if bracketSeed == GlobalConstants.bye {
             return (nil, nil)

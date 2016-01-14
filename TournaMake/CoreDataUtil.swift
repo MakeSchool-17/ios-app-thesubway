@@ -67,7 +67,10 @@ class CoreDataUtil {
         }
         self.addBracket(newTournament, data: data)
         //add bracketMatches to tournament, based off Bracket data.
-        let numBracketMatches = (newTournament.bracket?.slots?.count)! * 2 //because third-place match is included
+        var numBracketMatches = (newTournament.bracket?.slots?.count)! * 2 //because third-place match is included
+        if newTournament.groupStage?.count == 1 {
+            numBracketMatches /= 2
+        }
         for var i = 0; i < numBracketMatches; i++ {
             self.addMatchToBracket(newTournament.bracket!, matchId: matchId)
             matchId++
