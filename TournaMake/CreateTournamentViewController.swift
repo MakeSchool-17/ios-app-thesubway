@@ -39,7 +39,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
         
         self.textFieldTournamentName.autocapitalizationType = UITextAutocapitalizationType.Words
         self.textFieldTournamentName.delegate = self
-        self.labelTotalTeams.text = "Total entrants: 0\n(Must be between 6-64 entrants)"
+        self.labelTotalTeams.text = "Total entrants: 0\n(Must be between 4-64 entrants)"
         //self.textFieldTournamentName.text = "Tournament 1"
     }
 
@@ -121,8 +121,8 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
             return
         }
         let fullNameArr = self.getEntrants()
-        if fullNameArr.count < 6 {
-            UIHelper.showAlertOnVc(self, title: "", message: "Please include at least 6 entrants")
+        if fullNameArr.count < 4 {
+            UIHelper.showAlertOnVc(self, title: "", message: "Please include at least 4 entrants")
             return
         }
         if fullNameArr.count > 64 {
@@ -187,7 +187,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
     
     func textViewDidChange(textView: UITextView) {
         let teams = self.getEntrants()
-        self.labelTotalTeams.text = "Total entrants: \(teams.count)\n(Must be between 6-64 entrants)"
+        self.labelTotalTeams.text = "Total entrants: \(teams.count)\n(Must be between 4-64 entrants)"
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
