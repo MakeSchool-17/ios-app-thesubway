@@ -15,7 +15,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
     @IBOutlet var textViewEntrants: UITextView!
     @IBOutlet var labelTotalTeams: UILabel!
     @IBOutlet var btnNext: UIButton!
-    let typeArr : [String] = [GlobalConstants.groupStageKnockout, GlobalConstants.knockout]
+    let typeArr : [String] = [GlobalConstants.knockout, GlobalConstants.groupStageKnockout]
     let entrants : [String] = []
     var pickerInfo : UIView!
     
@@ -55,11 +55,15 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
             self.typePicker.text = selectedString as? String
             NSNotificationCenter.defaultCenter().removeObserver(self)
         }
+        self.displayInfoForType(self.typeArr[0])
     }
     
     func pickerDidScroll(notification: NSNotification) {
         let i = notification.object as! Int
-        let formatType = self.typeArr[i]
+        self.displayInfoForType(self.typeArr[i])
+    }
+    
+    func displayInfoForType(formatType : String) {
         if let picker : UIView = self.view.viewWithTag(300) {
             if self.pickerInfo != nil {
                 self.pickerInfo.removeFromSuperview()
@@ -71,10 +75,11 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
             labelInfo.numberOfLines = 0
             labelInfo.font = UIFont(name: (labelInfo.font?.fontName)!, size: 16.0)
             if formatType == GlobalConstants.knockout {
-                labelInfo.text = "Winners advance, loser is out. Semi-final losers play for 3rd-place."
+                labelInfo.text = "Each competitor in the knockout stage is paired against another competitor. Winner of each match advances, and loser is eliminated. Semi-final losers get a chance to play each other for 3rd place. If a competitor is paired against a *Bye*, that competitor automatically advances to the next round."
             }
             else if formatType == GlobalConstants.groupStageKnockout {
-                labelInfo.text = "Group stage is where entrants are divided into groups, where all entrants will face each group member once. Best members from each group advance to knockout stage."
+                labelInfo.font = UIFont(name: (labelInfo.font?.fontName)!, size: 15.0)
+                labelInfo.text = "Competitors are divided into groups. Each group has its own inner round-robin tournament, where every competitor faces its other group members one time each. Standings are calculated based on each match result. Top 2 competitors from each group advance to the knockout stage. In some cases, depending on how many competitors are in the tournament, the best 3rd-place wild cards may also advance to the knockout stage."
             }
             pickerInfo.addSubview(labelInfo)
             
