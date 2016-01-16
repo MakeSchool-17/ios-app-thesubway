@@ -17,6 +17,10 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
     var originalFrame : CGRect!
     var tfPoint : CGPoint = CGPointZero
     
+    //note: matchList is unknown until views already start to display:
+    var matchList : [Match] = []
+    var labelCompletedMatches : UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +57,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
         let tap = UITapGestureRecognizer(target: self, action: "stackViewTapped")
         scrollViewMatch.addGestureRecognizer(tap)
         
+        self.matchList = []
         for eachGroup in allGroups {
             var schedule = eachGroup.schedule?.allObjects as! [Match]
             schedule.sortInPlace({ $0.id?.integerValue < $1.id?.integerValue})
@@ -65,6 +70,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
             currentY += lblHeight * 2 //multiply by 2 for spacing
             
             for eachMatch in schedule {
+                self.matchList.append(eachMatch)
                 let vw = UIView(frame: CGRect(x: self.view.center.x - matchWidth / 2, y: currentY, width: matchWidth, height: matchHeight))
                 vw.tag = (eachMatch.id?.integerValue)!
                 vw.layer.cornerRadius = 5.0
@@ -115,7 +121,23 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
                 currentY += matchHeight + verticalSpacing
             }
         }
+        if self.labelCompletedMatches != nil {
+            self.labelCompletedMatches.removeFromSuperview()
+        }
+        self.labelCompletedMatches = UILabel(frame: CGRect(x: self.view.center.x - matchWidth / 2, y: currentY, width: matchWidth, height: 44))
+        self.updateCompletedMatches()
+        self.scrollViewMatch.addSubview(self.labelCompletedMatches)
         self.scrollViewMatch.contentSize = CGSizeMake(self.view.frame.size.width, currentY + matchHeight)
+    }
+    
+    func updateCompletedMatches() {
+        var numCompleted = 0
+        for eachMatch in self.matchList {
+            if eachMatch.isFinished?.boolValue == true {
+                numCompleted++
+            }
+        }
+        self.labelCompletedMatches.text = "Completed group matches: \(numCompleted)/\(self.matchList.count)"
     }
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
@@ -158,6 +180,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
                 //this is an integer
             }
             CoreDataUtil.updateMatchScore(textScore, matchId: (textField.superview?.tag)!, entrantPos: textField.tag - 100, tournament: self.tournament)
+            self.updateCompletedMatches()
         }
     }
     
