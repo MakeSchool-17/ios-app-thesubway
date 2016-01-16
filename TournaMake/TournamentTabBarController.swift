@@ -24,6 +24,11 @@ class TournamentTabBarController: UITabBarController {
             self.viewControllers?.removeAtIndex(0)
             self.tabBar.hidden = true
         }
+        else if self.tournament.type == GlobalConstants.groupStageKnockout {
+            if self.tournament.bracket?.isStarted == true {
+                self.selectedViewController = self.viewControllers![2]
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
