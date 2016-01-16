@@ -175,13 +175,18 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         //NOTE: added floatValue property in Extension String in AlgorithmUtil.swift file
-        if let textScore = textField.text?.floatValue {
+        let matchId = (textField.superview?.tag)!
+        let entrantPos = textField.tag - 100
+        if textField.text == "" {
+            CoreDataUtil.resetMatchScore(forMatchId: matchId, entrantPos: entrantPos, tournament: self.tournament)
+        }
+        else if let textScore = textField.text?.floatValue {
             if AlgorithmUtil.isInteger(textScore) {
                 //this is an integer
             }
-            CoreDataUtil.updateMatchScore(textScore, matchId: (textField.superview?.tag)!, entrantPos: textField.tag - 100, tournament: self.tournament)
-            self.updateCompletedMatches()
+            CoreDataUtil.updateMatchScore(textScore, matchId: matchId, entrantPos: entrantPos, tournament: self.tournament)
         }
+        self.updateCompletedMatches()
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
