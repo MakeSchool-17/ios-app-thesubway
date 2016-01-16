@@ -21,6 +21,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.tag = 350 //to distinguish from CreateGroup, or CreateKnockout.
         self.view.backgroundColor = GlobalConstants.backgroundColorVc
         self.btnNext.backgroundColor = GlobalConstants.buttonGreenColor
         self.btnNext.titleLabel!.font = UIFont.systemFontOfSize(40)
@@ -70,6 +71,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
                 self.pickerInfo = nil
             }
             self.pickerInfo = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height / 2))
+            self.pickerInfo.tag = 301
             pickerInfo.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             let labelInfo = UILabel(frame: CGRect(x: 10, y: (self.navigationController?.navigationBar.frame.size.height)!, width: pickerInfo.frame.size.width - 20, height: pickerInfo.frame.size.height))
             labelInfo.numberOfLines = 0

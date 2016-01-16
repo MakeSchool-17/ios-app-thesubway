@@ -54,6 +54,7 @@ NSString * const MMshowsSelectionIndicator = @"showsSelectionIndicator";
   static MMPickerView *sharedView;
   dispatch_once(&once, ^ { sharedView = [[self alloc] init]; });
     sharedView.tag = 300;
+    [[sharedView viewWithTag:301] removeFromSuperview];
   return sharedView;
 }
 
