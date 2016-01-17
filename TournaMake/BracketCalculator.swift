@@ -39,7 +39,7 @@ class BracketCalculator {
     }
     
     class func calculateGroupBrackets(groups : [[String]]!, tournamentData : TournamentData!) -> [String] {
-        let numTeamsAdvance = self.getNumTeamsAdvancing(tournamentData)
+        let numTeamsAdvance = self.getNumTeamsAdvancing(tournamentData.entrants)
         var numRounds = 1.0
         while true {
             if pow(2.0, numRounds) >= numTeamsAdvance {
@@ -344,29 +344,29 @@ class BracketCalculator {
         return finalStr
     }
     
-    class func getNumTeamsAdvancing(tournamentData : TournamentData) -> Double {
-        if tournamentData.entrants.count <= 5 {
+    class func getNumTeamsAdvancing(tournamentDataEntrants : [String]) -> Double {
+        if tournamentDataEntrants.count <= 5 {
             return 2
         }
-        else if tournamentData.entrants.count <= 8 {
+        else if tournamentDataEntrants.count <= 8 {
             return 4
         }
-        else if tournamentData.entrants.count <= 11 {
+        else if tournamentDataEntrants.count <= 11 {
             return 6
         }
-        else if tournamentData.entrants.count <= 16 {
+        else if tournamentDataEntrants.count <= 16 {
             return 8
         }
-        else if tournamentData.entrants.count <= 20 {
+        else if tournamentDataEntrants.count <= 20 {
             return 12
         }
-        else if tournamentData.entrants.count <= 32 {
+        else if tournamentDataEntrants.count <= 32 {
             return 16
         }
-        else if tournamentData.entrants.count <= 40 {
+        else if tournamentDataEntrants.count <= 40 {
             return 24
         }
-        else if tournamentData.entrants.count <= 64 {
+        else if tournamentDataEntrants.count <= 64 {
             return 32
         }
         return 0
