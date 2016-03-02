@@ -114,6 +114,50 @@ class CoreDataUtil {
         //get existing tournament counts.
     }
     
+    class func deleteTournament(tournament: Tournament) {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        //delete group-stage group:
+        if let gs = tournament.groupStage {
+            let groups = gs.allObjects as! [Group]
+            for eachGroup in groups {
+                context.deleteObject(eachGroup)
+            }
+        }
+        //delete all matches:
+        if let matchArr = tournament.matches {
+            let matches = matchArr.allObjects as! [Match]
+            for eachMatch in matches {
+                context.deleteObject(eachMatch)
+            }
+        }
+        //delete all entrants:
+        if let entrantArr = tournament.entrants {
+            let entrants = entrantArr.allObjects as! [Entrant]
+            for eachEntrant in entrants {
+                context.deleteObject(eachEntrant)
+            }
+        }
+        //delete all brackets and their slots:
+        if let bracket = tournament.bracket {
+            if let bracketSlotArr = bracket.slots {
+                let slots = bracketSlotArr.allObjects as! [BracketSlot]
+                for eachSlot in slots {
+                    context.deleteObject(eachSlot)
+                }
+            }
+            context.deleteObject(bracket)
+        }
+        
+        context.deleteObject(tournament)
+        do {
+            try context.save()
+        } catch {
+            print("could not save")
+            return
+        }
+    }
+    
     class func getTournaments() -> [Tournament]! {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext

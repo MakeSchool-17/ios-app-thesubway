@@ -26,7 +26,7 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(animated: Bool) {
         self.tournaments = CoreDataUtil.getTournaments()
-        self.lblTournamentNum.text = "Number of tournaments: \(self.tournaments.count)"
+        self.getTournamentCount()
         self.tableViewTournaments.reloadData()
     }
 
@@ -34,9 +34,31 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func getTournamentCount() {
+        self.lblTournamentNum.text = "Number of tournaments: \(self.tournaments.count)"
+    }
+    
     @IBAction func addPressed(sender: AnyObject) {
         let createTournamentVc = self.storyboard?.instantiateViewControllerWithIdentifier("createtournament") as! CreateTournamentViewController
         self.navigationController?.pushViewController(createTournamentVc, animated: true)
+    }
+    
+    func deleteTournamentAtIndexPath(indexPath: NSIndexPath) {
+        CoreDataUtil.deleteTournament(self.tournaments[indexPath.row])
+        self.tournaments.removeAtIndex(indexPath.row)
+        self.tableViewTournaments.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        self.getTournamentCount()
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            self.deleteTournamentAtIndexPath(indexPath)
+        }
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
