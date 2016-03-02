@@ -11,6 +11,31 @@ import CoreData
 
 class CoreDataUtil {
     
+    class func getAllExisting() {
+        self.printEntity("Tournament")
+        self.printEntity("Entrant")
+        self.printEntity("Group")
+        self.printEntity("Match")
+        self.printEntity("Bracket")
+        self.printEntity("BracketSlot")
+    }
+    
+    private class func printEntity(entityName: String) {
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: entityName)
+        request.returnsObjectsAsFaults = false
+        //var results : [Tournament]?
+        do {
+            let instances = try context.executeFetchRequest(request)
+            print("\(entityName)s: \(instances)")
+        }
+        catch {
+            print("could not fetch")
+            return
+        }
+    }
+    
     //assumes group stage + knockout format:
     class func addTournament(data: TournamentData) -> Tournament! {
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
