@@ -12,6 +12,7 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
 
     @IBOutlet var tableViewTournaments: UITableView!
     @IBOutlet var lblTournamentNum: UILabel!
+    @IBOutlet var btnEdit: UIBarButtonItem!
     var tournaments : [Tournament] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,10 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.tournaments = CoreDataUtil.getTournaments()
         self.getTournamentCount()
+        self.setTournamentEdit(false)
         self.tableViewTournaments.reloadData()
     }
 
@@ -37,11 +40,46 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
     
     func getTournamentCount() {
         self.lblTournamentNum.text = "Number of tournaments: \(self.tournaments.count)"
+        if self.tournaments.count <= 0 {
+            self.setTournamentEdit(false)
+            self.hideEditButton(true)
+        }
+        else {
+            self.hideEditButton(false)
+        }
     }
     
     @IBAction func addPressed(sender: AnyObject) {
         let createTournamentVc = self.storyboard?.instantiateViewControllerWithIdentifier("createtournament") as! CreateTournamentViewController
         self.navigationController?.pushViewController(createTournamentVc, animated: true)
+    }
+    
+    @IBAction func editPressed(sender: UIBarButtonItem) {
+        setTournamentEdit(!self.tableViewTournaments.editing)
+    }
+    
+    func setTournamentEdit(shouldEdit : Bool) {
+        self.tableViewTournaments.setEditing(shouldEdit, animated: true)
+        if shouldEdit == true {
+            self.btnEdit.title = "Done"
+        }
+        else {
+            self.btnEdit.title = "Edit"
+        }
+        if self.btnEdit.enabled == false {
+            self.btnEdit.title = ""
+        }
+    }
+    
+    func hideEditButton(shouldHide: Bool) {
+        if shouldHide == true {
+            self.btnEdit.title = ""
+            self.btnEdit.enabled = false
+        }
+        else {
+            self.btnEdit.enabled = true
+            setTournamentEdit(false)
+        }
     }
     
     func deleteTournamentAtIndexPath(indexPath: NSIndexPath) {
