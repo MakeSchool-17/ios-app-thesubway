@@ -5,6 +5,7 @@
 
 target 'TournaMake' do
 	pod 'DateTools'
+    pod 'Mixpanel'
 end
 
 target 'TournaMakeTests' do
