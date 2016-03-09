@@ -62,7 +62,7 @@
 		27E82EC41C0FAD2C00C879AF /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EBE1C0FAD2C00C879AF /* Group+CoreDataProperties.swift */; };
 		27E82EC51C0FAD2C00C879AF /* BracketSlot+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EBF1C0FAD2C00C879AF /* BracketSlot+CoreDataProperties.swift */; };
 		27E82EC61C0FAD2C00C879AF /* Entrant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82EC01C0FAD2C00C879AF /* Entrant+CoreDataProperties.swift */; };
-		D4DBC17C9AC109A93517C432 /* libPods-TournaMake.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD00475E5B69E4725D05E95 /* libPods-TournaMake.a */; };
+		B16D66575700728934A25A57 /* Pods_TournaMake.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FA69C928BF38552E586AA0 /* Pods_TournaMake.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,7 +155,7 @@
 		27E82EBE1C0FAD2C00C879AF /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27E82EBF1C0FAD2C00C879AF /* BracketSlot+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BracketSlot+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27E82EC01C0FAD2C00C879AF /* Entrant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Entrant+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		3DD00475E5B69E4725D05E95 /* libPods-TournaMake.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TournaMake.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		69FA69C928BF38552E586AA0 /* Pods_TournaMake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TournaMake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF6AD432873447A9F6E730B8 /* Pods-TournaMake.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TournaMake.release.xcconfig"; path = "Pods/Target Support Files/Pods-TournaMake/Pods-TournaMake.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,7 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4DBC17C9AC109A93517C432 /* libPods-TournaMake.a in Frameworks */,
+				B16D66575700728934A25A57 /* Pods_TournaMake.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +371,7 @@
 		55B861969672340656780363 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3DD00475E5B69E4725D05E95 /* libPods-TournaMake.a */,
+				69FA69C928BF38552E586AA0 /* Pods_TournaMake.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
