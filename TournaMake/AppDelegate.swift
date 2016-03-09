@@ -8,15 +8,21 @@
 
 import UIKit
 import CoreData
+import Mixpanel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if let path = NSBundle.mainBundle().pathForResource("Secrets", ofType: "plist"), dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
+            // use swift dictionary as normal
+            dict["mixPanelToken"]
+        }
         
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         self.window!.rootViewController = storyboard.instantiateViewControllerWithIdentifier("tournamentNavigationController")

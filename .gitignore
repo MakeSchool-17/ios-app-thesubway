@@ -52,8 +52,8 @@ xcuserdata
 
 ## Obj-C/Swift specific
 *.hmap
-*.ipa
-
+Secrets.plist
+ipa
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However
