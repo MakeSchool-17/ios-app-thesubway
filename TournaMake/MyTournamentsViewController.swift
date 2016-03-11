@@ -16,6 +16,13 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
     var tournaments : [Tournament] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        if NSUserDefaults.standardUserDefaults().objectForKey(GlobalConstants.firstTime) == nil {
+            NSUserDefaults.standardUserDefaults().setObject(false, forKey: GlobalConstants.firstTime)
+            DataAnalytics.sharedInstance.trackEvent(GlobalConstants.firstTime, properties: [GlobalConstants.isFirst: true])
+        }
+        else {
+            DataAnalytics.sharedInstance.trackEvent(GlobalConstants.firstTime, properties: [GlobalConstants.isFirst: false])
+        }
         self.tableViewTournaments.delegate = self
         self.tableViewTournaments.dataSource = self
         self.tableViewTournaments.backgroundColor = UIColor.clearColor()

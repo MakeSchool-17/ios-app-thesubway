@@ -38,6 +38,7 @@ class CoreDataUtil {
     
     //assumes group stage + knockout format:
     class func addTournament(data: TournamentData) -> Tournament! {
+        DataAnalytics.sharedInstance.trackEvent(GlobalConstants.tournamentCreated, properties: [GlobalConstants.format: data.format, GlobalConstants.numEntrants: data.entrants.count])
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext
         let newTournament : Tournament = NSEntityDescription.insertNewObjectForEntityForName("Tournament", inManagedObjectContext: context) as! Tournament
@@ -115,6 +116,12 @@ class CoreDataUtil {
     }
     
     class func deleteTournament(tournament: Tournament) {
+        if let entrants = tournament.entrants, type = tournament.type {
+            DataAnalytics.sharedInstance.trackEvent(GlobalConstants.tournamentDeleted, properties: [GlobalConstants.numEntrants: entrants.count, GlobalConstants.format: type])
+        }
+        else {
+            DataAnalytics.sharedInstance.trackEvent(GlobalConstants.tournamentDeleted, properties: [GlobalConstants.numEntrants: 0, GlobalConstants.format: "none"])
+        }
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.managedObjectContext
         //delete group-stage group:
