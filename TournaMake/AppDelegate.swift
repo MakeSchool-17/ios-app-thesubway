@@ -18,11 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        if let path = NSBundle.mainBundle().pathForResource("Secrets", ofType: "plist"), dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
-            // use swift dictionary as normal
-            let mixPanelToken = dict["mixPanelToken"] as! String
-            Mixpanel.sharedInstanceWithToken(mixPanelToken)
-        }
+        DataAnalytics.sharedInstance
         
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         self.window!.rootViewController = storyboard.instantiateViewControllerWithIdentifier("tournamentNavigationController")

@@ -142,6 +142,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
             return
         }
         let tournamentData = TournamentData(entrants: fullNameArr, name: self.textFieldTournamentName!.text!, format: self.typePicker.text!)
+        DataAnalytics.sharedInstance.trackEvent("Format Selected", properties: ["Format":tournamentData.format])
         if self.typePicker.text == GlobalConstants.groupStageKnockout {
             let createGroupStage = self.storyboard?.instantiateViewControllerWithIdentifier("createGroupStage") as! CreateGroupStageViewController
             createGroupStage.tournamentData = tournamentData
