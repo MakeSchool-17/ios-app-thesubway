@@ -44,4 +44,20 @@ struct GlobalConstants {
     
     //notifications:
     static let pickerDidScroll = "pickerDidScroll"
+    
+    //data analytics:
+    static let firstTime = "firstTime"
+    static let isFirst = "isFirst"
+    static let tournamentCreated = "tournamentCreated"
+    static let tournamentDeleted = "tournamentDeleted"
+    static let numEntrants = "numEntrants"
+    static let format = "format"
+    static let formatSelected = "Format Selected"
+    static let buttonPressed = "Button Pressed"
+    static let buttonName = "Button Name"
+    static let randomize = "randomize"
+    static let clear = "clear"
+    static let defaultStr = "default"
+    static let startBracket = "Start Bracket"
+    
 }

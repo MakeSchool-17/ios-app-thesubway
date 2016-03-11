@@ -207,10 +207,12 @@ class CreateKnockoutViewController: UIViewController {
             self.bracketSlots = BracketCalculator.calculatePureBrackets(self.tournamentData)
         }
         self.reloadStackViewBracket()
+        DataAnalytics.sharedInstance.trackEvent(GlobalConstants.buttonPressed, properties: [GlobalConstants.buttonName: GlobalConstants.defaultStr])
     }
     
     @IBAction func clearPressed(sender: AnyObject) {
         self.clearGroups()
+        DataAnalytics.sharedInstance.trackEvent(GlobalConstants.buttonPressed, properties: [GlobalConstants.buttonName: GlobalConstants.clear])
     }
     
 }

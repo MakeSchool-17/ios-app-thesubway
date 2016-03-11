@@ -284,6 +284,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         alert.addAction(noAction)
         let yesAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { _ in
             self.startBracket()
+            DataAnalytics.sharedInstance.trackEvent(GlobalConstants.buttonPressed, properties: [GlobalConstants.buttonName: GlobalConstants.startBracket])
         })
         alert.addAction(yesAction)
         self.presentViewController(alert, animated: true, completion: {})

@@ -188,10 +188,12 @@ class CreateGroupStageViewController: UIViewController {
     @IBAction func randomizePressed(sender: AnyObject) {
         self.calculateNumGroups()
         self.reloadStackView()
+        DataAnalytics.sharedInstance.trackEvent(GlobalConstants.buttonPressed, properties: [GlobalConstants.buttonName: GlobalConstants.randomize])
     }
     
     @IBAction func clearPressed(sender: AnyObject) {
         self.clearGroups()
+        DataAnalytics.sharedInstance.trackEvent(GlobalConstants.buttonPressed, properties: [GlobalConstants.buttonName: GlobalConstants.clear])
     }
     
     func clearGroups() {
