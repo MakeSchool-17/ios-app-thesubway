@@ -46,12 +46,12 @@ struct GlobalConstants {
     static let pickerDidScroll = "pickerDidScroll"
     
     //data analytics:
-    static let firstTime = "firstTime"
-    static let isFirst = "isFirst"
-    static let tournamentCreated = "tournamentCreated"
-    static let tournamentDeleted = "tournamentDeleted"
-    static let numEntrants = "numEntrants"
-    static let format = "format"
+    static let firstTime = "First Time"
+    static let isFirst = "Is First"
+    static let tournamentCreated = "Tournament Created"
+    static let tournamentDeleted = "Tournament Deleted"
+    static let numEntrants = "Num Entrants"
+    static let format = "Format"
     static let formatSelected = "Format Selected"
     static let buttonPressed = "Button Pressed"
     static let buttonName = "Button Name"
@@ -59,5 +59,9 @@ struct GlobalConstants {
     static let clear = "clear"
     static let defaultStr = "default"
     static let startBracket = "Start Bracket"
+    static let matchUpdated = "Match Updated"
+    static let matchType = "Match Type"
+    static let groupMatch = "Group Match"
+    static let knockoutMatch = "Knockout Match"
     
 }

@@ -185,6 +185,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
                 //this is an integer
             }
             CoreDataUtil.updateMatchScore(textScore, matchId: matchId, entrantPos: entrantPos, tournament: self.tournament)
+            DataAnalytics.sharedInstance.trackEventInTournament(self.tournament, event: GlobalConstants.matchUpdated, matchType: GlobalConstants.groupMatch)
         }
         self.updateCompletedMatches()
     }

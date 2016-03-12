@@ -257,6 +257,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
             let matchIdx = (textField.superview?.tag)! - 200
             let matchId = self.bracketMatches[matchIdx].id!.integerValue
             let updatedMatch = CoreDataUtil.updateMatchScore(textScore, matchId: matchId, entrantPos: textField.tag - 100, tournament: self.tournament)
+            DataAnalytics.sharedInstance.trackEventInTournament(self.tournament, event: GlobalConstants.matchUpdated, matchType: GlobalConstants.knockoutMatch)
             //check if updatedMatch has a winner.
             let winnerId = AlgorithmUtil.winnerOfMatch(updatedMatch!)
             self.updateLaterMatchWithWinner(winnerId, idxOfPrevMatch: matchIdx)

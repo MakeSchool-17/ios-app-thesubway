@@ -29,4 +29,16 @@ class DataAnalytics {
     func trackEvent(event: String, properties: [NSObject : AnyObject]) {
         self.mixPanel.track(event, properties: properties)
     }
+    
+    func trackEventInTournament(tournament: Tournament, event: String, matchType: String?) {
+        var properties = [GlobalConstants.numEntrants: 0, GlobalConstants.format: ""]
+        if let type = tournament.type, entrants = tournament.entrants {
+            properties[GlobalConstants.numEntrants] = entrants.count
+            properties[GlobalConstants.format] = type
+        }
+        if let matchType = matchType {
+            properties[GlobalConstants.matchType] = matchType
+        }
+        DataAnalytics.sharedInstance.trackEvent(event, properties: properties)
+    }
 }
