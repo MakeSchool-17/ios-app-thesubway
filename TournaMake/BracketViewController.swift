@@ -65,13 +65,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
     }
     
     func reloadStackViewBracket() {
-        if self.largeSubView != nil {
-            for var i = 0; i < self.largeSubView.subviews.count; i++ {
-                let eachSubview = self.largeSubView.subviews[i]
-                eachSubview.removeFromSuperview()
-                i--
-            }
-        }
+        UIHelper.removeSubviewsFrom(self.largeSubView)
         
         let verticalSpacing : CGFloat = 10
         let horizontalSpacing : CGFloat = 15

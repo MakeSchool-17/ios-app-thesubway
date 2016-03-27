@@ -38,11 +38,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
     }
     
     func reloadStackView() {
-        for var i = 0; i < self.scrollViewMatch.subviews.count; i++ {
-            let eachSubview = self.scrollViewMatch.subviews[i]
-            eachSubview.removeFromSuperview()
-            i--
-        }
+        UIHelper.removeSubviewsFrom(self.scrollViewMatch)
         
         var allGroups = self.tournament.groupStage?.allObjects as! [Group]
         allGroups.sortInPlace({ $0.id?.integerValue < $1.id?.integerValue})

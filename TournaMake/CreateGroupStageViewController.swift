@@ -62,13 +62,7 @@ class CreateGroupStageViewController: UIViewController {
         self.groups = finalGroups
     }
     func reloadStackView() {
-        //clear previous data
-        for var i = 0; i < self.stackView.arrangedSubviews.count; i++ {
-            let eachSubview = self.stackView.arrangedSubviews[i]
-            eachSubview.removeFromSuperview()
-            self.stackView.removeArrangedSubview(eachSubview)
-            i--
-        }
+        UIHelper.removeSubviewsFrom(self.stackView)
         //set up stackView settings:
         stackView.spacing = 10
         stackView.alignment = UIStackViewAlignment.Center

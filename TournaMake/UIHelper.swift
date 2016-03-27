@@ -18,4 +18,20 @@ class UIHelper {
         viewController.presentViewController(alert, animated: true, completion: {})
     }
     
+    class func removeSubviewsFrom(view : UIView?) {
+        if let stackView = view as? UIStackView {
+            while stackView.arrangedSubviews.count > 0 {
+                let eachSubview = stackView.arrangedSubviews[0]
+                eachSubview.removeFromSuperview()
+                stackView.removeArrangedSubview(eachSubview)
+            }
+        }
+        else if let view = view {
+            while view.subviews.count > 0 {
+                let eachSubview = view.subviews[0]
+                eachSubview.removeFromSuperview()
+            }
+        }
+    }
+    
 }

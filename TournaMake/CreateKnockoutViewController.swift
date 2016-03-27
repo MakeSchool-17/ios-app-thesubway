@@ -47,13 +47,7 @@ class CreateKnockoutViewController: UIViewController {
     }
     
     func reloadStackViewBracket() {
-        //clear previous data
-        for var i = 0; i < self.stackViewBracket.arrangedSubviews.count; i++ {
-            let eachSubview = self.stackViewBracket.arrangedSubviews[i]
-            eachSubview.removeFromSuperview()
-            self.stackViewBracket.removeArrangedSubview(eachSubview)
-            i--
-        }
+        UIHelper.removeSubviewsFrom(self.stackViewBracket)
         
         stackViewBracket.spacing = 10
         stackViewBracket.alignment = UIStackViewAlignment.Center
