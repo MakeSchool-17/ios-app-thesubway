@@ -129,7 +129,7 @@ class MyTournamentsViewController: UIViewController, UITableViewDelegate, UITabl
         cell.labelName.text = tournament.name!
         cell.labelFormat.text = "Format: \(tournament.type!)"
         var entrantsList = ""
-        for var i = 0; i < tournament.entrants!.count; i++ {
+        for i in 0.stride(to: tournament.entrants!.count, by: 1) {
             let eachEntrant = tournament.entrants!.allObjects[i]
             if i != 0 {
                 entrantsList += ", "

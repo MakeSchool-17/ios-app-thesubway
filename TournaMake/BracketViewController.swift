@@ -106,7 +106,8 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         var startIdx = bracketMatches.count
         var highestViewInRound : UIView!
         var championshipFrame = CGRectMake(paddingX + horizontalSpacing, currentY, matchWidth, matchHeight)
-        for var i = startIdx - 1; i >= endIdx; i-- {
+        var i = startIdx - 1
+        while i >= endIdx {
             let eachMatch = bracketMatches[i]
             
             let vw = UIView(frame: CGRect(x: paddingX + CGFloat(roundNum - 1) * (matchWidth + horizontalSpacing), y: currentY, width: matchWidth, height: matchHeight))
@@ -223,6 +224,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
                     endIdx = 0
                 }
             }
+            i--
         }
     }
     
@@ -289,7 +291,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         //start the tournament
         CoreDataUtil.setBracket(self.tournament.bracket!, isStarted: true)
         //check for byes, and advance the opponents.
-        for var matchIdx = self.bracketMatches.count - 1; matchIdx >= 0; matchIdx-- {
+        for matchIdx in (self.bracketMatches.count - 1).stride(through: 0, by: -1) {
             let eachMatch = self.bracketMatches[matchIdx]
             let winnerId = AlgorithmUtil.winnerOfMatch(eachMatch)
             self.updateLaterMatchWithWinner(winnerId, idxOfPrevMatch: matchIdx)
