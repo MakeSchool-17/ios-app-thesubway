@@ -55,7 +55,7 @@ class CreateKnockoutViewController: UIViewController {
         let matchHeight : CGFloat = 100
         let matchWidth : CGFloat = 250
         
-        for var i = 0; i < self.bracketSlots.count; i += 2 {
+        for i in 0.stride(to: self.bracketSlots.count, by: 2) {
             let vw = UIView()
             vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true
             vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
@@ -63,7 +63,7 @@ class CreateKnockoutViewController: UIViewController {
             vw.layer.borderWidth = 1
             vw.backgroundColor = GlobalConstants.grayVeryLight
             
-            for var j = 0; j < 2; j++ {
+            for j in 0 ..< 2 {
                 let eachSlot = self.bracketSlots[i + j]
                 let labelTop = UITextField(frame: CGRect(x: 0, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
                 labelTop.text = eachSlot
@@ -124,7 +124,7 @@ class CreateKnockoutViewController: UIViewController {
     }
     
     func clearGroups() {
-        for var i = 0; i < self.bracketSlots.count; i++ {
+        for i in 0 ..< self.bracketSlots.count {
             if self.bracketSlots[i] != GlobalConstants.strEmpty {
                 self.slotsNotEntered.append(self.bracketSlots[i])
             }
@@ -134,7 +134,7 @@ class CreateKnockoutViewController: UIViewController {
     }
     
     func hasEmptySlots() -> Bool {
-        for var i = 0; i < self.bracketSlots.count; i++ {
+        for i in 0 ..< self.bracketSlots.count {
             if self.bracketSlots[i] == GlobalConstants.strEmpty {
                 return true
             }
@@ -144,7 +144,7 @@ class CreateKnockoutViewController: UIViewController {
     
     func duplicateByes() -> Bool {
         //if two byes face each other
-        for var i = 0; i < self.bracketSlots.count; i += 2 {
+        for i in 0.stride(to: self.bracketSlots.count, by: 2) {
             if self.bracketSlots[i] == GlobalConstants.bye && self.bracketSlots[i+1] == GlobalConstants.bye {
                 return true
             }

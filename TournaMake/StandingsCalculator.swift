@@ -25,9 +25,9 @@ class StandingsCalculator {
         //compare array
         let tiebreakArr = [TieBreakerType.Points, TieBreakerType.ScoringDifferential, TieBreakerType.HeadToHead]
         var twoDimensionalArr = [entrantRecords]
-        for var i = 0; i < tiebreakArr.count; i++ {
+        for i in 0 ..< tiebreakArr.count {
             var new2DArr : [[EntrantRecord]] = []
-            for var j = 0; j < twoDimensionalArr.count; j++ {
+            for j in 0 ..< twoDimensionalArr.count {
                 var eachGroup = twoDimensionalArr[j]
                 if tiebreakArr[i] == TieBreakerType.HeadToHead {
                     eachGroup = StandingsCalculator.sortHeadToHead(eachGroup)
@@ -60,7 +60,7 @@ class StandingsCalculator {
         var pointsAgainst: Float = 0
         var diff : Float = 0
         var opponentDict = Dictionary<String, Dictionary<String, Float>>()
-        for var i = 0; i < matches.count; i++ {
+        for i in 0 ..< matches.count {
             let groupMatch = matches[i]
             if groupMatch.isFinished != true {
                 continue
@@ -116,11 +116,13 @@ class StandingsCalculator {
         var ownProperty : AnyObject!
         var otherProperty : AnyObject!
         var tiedArr : [EntrantRecord] = []
-        for var i = 0; i < inputArr.count; i++ {
+        var i = 0
+        while i < inputArr.count {
             let eachRecord = inputArr[i]
             if tiedArr.count <= 0 {
                 //then there is nothing to compare to. Add to new arr.
                 tiedArr.append(eachRecord)
+                i += 1
                 continue
             }
             switch tiebreakerType {
@@ -143,8 +145,9 @@ class StandingsCalculator {
                 resultArrs.append(tiedArr)
                 //reset tiedArr
                 tiedArr = []
-                i--
+                i -= 1
             }
+            i += 1
         }
         //if for-loop is finished, append final array.
         resultArrs.append(tiedArr)
@@ -155,9 +158,9 @@ class StandingsCalculator {
         //make sure this ideally does not get called if wins = 0 and losses = 0
         var records = inputRecords
         //create 2 dictionaries to retrieve eachRecord, by id or name
-        for var i = 0; i < records.count; i++ {
+        for i in 0 ..< records.count {
             let eachRecord = records[i]
-            for var j = 0; j < records.count; j++ {
+            for j in 0 ..< records.count {
                 if i == j {
                     continue
                 }

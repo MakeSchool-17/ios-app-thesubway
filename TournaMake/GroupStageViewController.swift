@@ -74,7 +74,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
                 vw.clipsToBounds = true
                 vw.backgroundColor = GlobalConstants.grayVeryLight
                 
-                for var j = 0; j < 2; j++ {
+                for j in 0 ..< 2 {
                     var entrantId = ""
                     var entrant : Entrant!
                     if j == 0 {
