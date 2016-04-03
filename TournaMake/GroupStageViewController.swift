@@ -130,7 +130,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
         var numCompleted = 0
         for eachMatch in self.matchList {
             if eachMatch.isFinished?.boolValue == true {
-                numCompleted++
+                numCompleted += 1
             }
         }
         self.labelCompletedMatches.text = "Completed group matches: \(numCompleted)/\(self.matchList.count)"
@@ -162,7 +162,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
                 }
                 else {
                     hasBye = true
-                    nextTag++
+                    nextTag += 1
                 }
             }
         } while hasBye

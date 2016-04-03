@@ -61,7 +61,7 @@ class MathHelper {
                 return numIterations + 1
             }
             i *= 2
-            numIterations++
+            numIterations += 1
         }
         return -1
     }

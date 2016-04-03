@@ -49,7 +49,7 @@ class CoreDataUtil {
             existingTournament = CoreDataUtil.searchTournament("id", value: "\(tournamentId)")
             //repetition of same condition:
             if existingTournament.count != 0 {
-                tournamentId++
+                tournamentId += 1
             }
         } while existingTournament.count != 0
         newTournament.id = tournamentId //"-\(tournamentId)"
@@ -61,7 +61,7 @@ class CoreDataUtil {
         var matchId = 0
         if data.format == GlobalConstants.groupStageKnockout {
             newTournament.type = GlobalConstants.groupStageKnockout
-            for var i = 0; i < data.groups.count; i++ {
+            for i in 0 ..< data.groups.count {
                 let eachGroup = data.groups[i]
                 //add group to core data:
                 let coreDataGroup = self.addGroup(newTournament, idx: i)
@@ -70,17 +70,17 @@ class CoreDataUtil {
                     //save all entrant to core data:
                     let newEntrant = self.addEntrantToTournament(newTournament, name: eachEntrant, id: id)
                     self.addEntrantExistingToGroup(newEntrant!, group: coreDataGroup!)
-                    id++
+                    id += 1
                 }
                 //create round robin within each group, and associate using player id's:
                 let eachIdGroup = self.entrantNamesToIds(eachGroup, tournament: newTournament)
                 let roundRobin = GroupCalculator.getRoundRobinSchedule(eachIdGroup)
-                for var j = 0; j < roundRobin.count; j++ {
+                for j in 0 ..< roundRobin.count {
                     let eachMatch = roundRobin[j]
                     //create a core data match, save its 2 players' id's.
                     self.addMatch(id: matchId, leftId: eachMatch[0], rightId: eachMatch[1], group: coreDataGroup!)
                     //my template has it set so that
-                    matchId++
+                    matchId += 1
                 }
             }
         }
@@ -99,7 +99,7 @@ class CoreDataUtil {
         }
         for var i = 0; i < numBracketMatches; i++ {
             self.addMatchToBracket(newTournament.bracket!, matchId: matchId)
-            matchId++
+            matchId += 1
         }
         do {
             try context.save()

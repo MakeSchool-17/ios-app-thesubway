@@ -19,7 +19,7 @@ class BracketCalculator {
         var entrantNum = 0
         while entrantNum < numSlots / 2 {
             bracketTop.append(entrantsCopy[entrantNum])
-            entrantNum++
+            entrantNum += 1
         }
         if numByes > 0 {
             for _ in 0 ... numByes - 1 {
@@ -28,7 +28,7 @@ class BracketCalculator {
         }
         while bracketBottom.count < bracketTop.count {
             bracketBottom.append(entrantsCopy[entrantNum])
-            entrantNum++
+            entrantNum += 1
         }
         var finalArr : [String] = []
         for var i = 0; i < bracketTop.count; i++ {
@@ -45,7 +45,7 @@ class BracketCalculator {
             if pow(2.0, numRounds) >= numTeamsAdvance {
                 break
             }
-            numRounds++
+            numRounds += 1
         }
         let numTopTwo : Double = Double(groups.count) * 2
         //top two always advance. Question is how many 3rd-place will advance.
@@ -425,7 +425,7 @@ class BracketCalculator {
                 else if seedPlace == 2 {
                     //third place, so take the highest third-place, then increment thirdIdx.
                     currentRecord = thirdPlaceArr[thirdIdx]
-                    thirdIdx++
+                    thirdIdx += 1
                 }
                 if currentRecord != nil {
                     entrantIds.append(String(currentRecord!.entrant!.id!))

@@ -216,7 +216,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
             currentY += matchHeight + verticalSpacing
             if i == endIdx {
                 currentY = highestViewInRound.frame.origin.y + (matchHeight + verticalSpacing) / 2
-                roundNum++
+                roundNum += 1
                 startIdx = endIdx
                 endIdx = startIdx / 2
                 if endIdx <= 1 {
@@ -224,7 +224,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
                     endIdx = 0
                 }
             }
-            i--
+            i -= 1
         }
     }
     

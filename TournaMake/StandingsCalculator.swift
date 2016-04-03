@@ -93,15 +93,15 @@ class StandingsCalculator {
             pointsAgainst += opponentScore
             diff = pointsFor - pointsAgainst
             if ownScore > opponentScore {
-                wins++
-                headToHeadDict[GlobalConstants.wins]!++
+                wins += 1
+                headToHeadDict[GlobalConstants.wins]! += 1
             }
             else if ownScore < opponentScore {
-                losses++
-                headToHeadDict[GlobalConstants.losses]!++
+                losses += 1
+                headToHeadDict[GlobalConstants.losses]! += 1
             }
             else if ownScore == opponentScore {
-                ties++
+                ties += 1
             }
             points = ties + 3 * wins
             opponentDict[opponentId!] = headToHeadDict
