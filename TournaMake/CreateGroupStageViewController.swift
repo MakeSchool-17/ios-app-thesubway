@@ -74,7 +74,7 @@ class CreateGroupStageViewController: UIViewController {
         let entrantWidth : CGFloat = 250
         let groupNames = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ123456".characters)
         //add groupViews:
-        for var i = 0; i < self.groups.count; i++ {
+        for i in 0 ..< self.groups.count {
             let eachGroup = self.groups[i]
             let vw = UIView()
             vw.heightAnchor.constraintEqualToConstant(headerHeight + CGFloat(entrantHeight * eachGroup.count)).active = true
@@ -90,7 +90,7 @@ class CreateGroupStageViewController: UIViewController {
             vw.addSubview(groupTitle)
             
             //add group entrants:
-            for var j = 0; j < eachGroup.count; j++ {
+            for j in 0 ..< eachGroup.count {
                 let eachEntrant = eachGroup[j]
                 let lblY = CGFloat(entrantHeight) * CGFloat(j) + headerHeight
                 let lblWidth : CGFloat = 90
@@ -191,9 +191,9 @@ class CreateGroupStageViewController: UIViewController {
     }
     
     func clearGroups() {
-        for var i = 0; i < self.groups.count; i++ {
+        for i in 0 ..< self.groups.count {
             let eachGroup = self.groups[i]
-            for var j = 0; j < eachGroup.count; j++ {
+            for j in 0 ..< eachGroup.count {
                 if self.groups[i][j] != GlobalConstants.strEmpty {
                     self.entrantsNotEntered.append(self.groups[i][j])
                     self.groups[i][j] = GlobalConstants.strEmpty

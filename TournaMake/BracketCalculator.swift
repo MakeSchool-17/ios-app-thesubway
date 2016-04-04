@@ -31,7 +31,7 @@ class BracketCalculator {
             entrantNum += 1
         }
         var finalArr : [String] = []
-        for var i = 0; i < bracketTop.count; i++ {
+        for i in 0 ..< bracketTop.count {
             finalArr.append(bracketTop[i])
             finalArr.append(bracketBottom[i])
         }
@@ -78,7 +78,7 @@ class BracketCalculator {
             //but in tournaments of 9, we get numTeamsAdvance == 6.
             //which means num groups always divisible by 2.
             if MathHelper.isPowerOfTwo(Int(numTeamsAdvance)) {
-                for var i = 0; i < groups.count; i += 2 {
+                for i in 0.stride(to: groups.count, by: 2) {
                     let match1 = BracketMatch()
                     match1.groupLetterLeftTeam = "\(groupNames[i])"
                     match1.groupPlacingLeftTeam = GlobalConstants.groupWinner
@@ -215,7 +215,7 @@ class BracketCalculator {
             }
             else if groups.count == 6 || groups.count == 12 {
                 //A1 vs. 3rd place
-                for var i = 0; i < groups.count; i += 6 {
+                for i in 0.stride(to: groups.count, by: 6) {
                     let match1 = BracketMatch()
                     match1.groupLetterLeftTeam = "\(groupNames[0+i])"
                     match1.groupPlacingLeftTeam = GlobalConstants.groupWinner
@@ -377,7 +377,7 @@ class BracketCalculator {
         var bracketSlots = tournament.bracket?.slots?.allObjects as! [BracketSlot]
         bracketMatches.sortInPlace({$0.id?.integerValue < $1.id?.integerValue})
         bracketSlots.sortInPlace({$0.slotNum?.integerValue < $1.slotNum?.integerValue})
-        for var i = 0; i < bracketSlots.count; i++ {
+        for i in 0 ..< bracketSlots.count {
             let eachSlot = bracketSlots[i]
             let eachMatch = bracketMatches[i]
             CoreDataUtil.updateEntrantsInMatch(eachMatch, leftId: eachSlot.seedLeft, rightId: eachSlot.seedRight)
@@ -398,12 +398,12 @@ class BracketCalculator {
         bracketMatches.sortInPlace({$0.id?.integerValue < $1.id?.integerValue})
         bracketSlots.sortInPlace({$0.slotNum?.integerValue < $1.slotNum?.integerValue})
         var thirdIdx = 0
-        for var i = 0; i < bracketSlots.count; i++ {
+        for i in 0 ..< bracketSlots.count {
             let eachSlot = bracketSlots[i]
             let eachMatch = bracketMatches[i]
             let slotSeeds = [eachSlot.seedLeft!, eachSlot.seedRight!]
             var entrantIds : [String] = []
-            for var j = 0; j < slotSeeds.count; j++ {
+            for j in 0 ..< slotSeeds.count {
                 let eachSeed = slotSeeds[j]
                 //decode the string
                 var seedPlace : Int!
