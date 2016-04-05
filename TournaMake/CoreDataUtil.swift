@@ -86,7 +86,7 @@ class CoreDataUtil {
         }
         else if data.format == GlobalConstants.knockout {
             newTournament.type = GlobalConstants.knockout
-            for var i = 0; i < data.entrants.count; i++ {
+            for i in 0 ..< data.entrants.count {
                 let eachEntrant = data.entrants[i]
                 self.addEntrantToTournament(newTournament, name: eachEntrant, id: i)
             }
@@ -97,7 +97,7 @@ class CoreDataUtil {
         if newTournament.groupStage?.count == 1 {
             numBracketMatches /= 2
         }
-        for var i = 0; i < numBracketMatches; i++ {
+        for i in 0 ..< numBracketMatches {
             self.addMatchToBracket(newTournament.bracket!, matchId: matchId)
             matchId += 1
         }
@@ -255,7 +255,7 @@ class CoreDataUtil {
         newBracket.tournamentId = tournament.id
         newBracket.reseed = NSNumber(bool: false)
         newBracket.isStarted = NSNumber(bool: false)
-        for var i = 0; i < data.bracketSlots.count; i += 2 {
+        for i in 0.stride(to: data.bracketSlots.count, by: 2) {
             let slotTeams = [data.bracketSlots[i], data.bracketSlots[i + 1]]
             self.addSlotToBracket(newBracket, slotTeams: slotTeams, idx: i / 2)
         }
