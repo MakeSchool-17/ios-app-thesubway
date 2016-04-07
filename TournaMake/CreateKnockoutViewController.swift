@@ -71,7 +71,7 @@ class CreateKnockoutViewController: UIViewController {
                 let buttonBracket = PickerBracketButton(frame: CGRect(x: 0, y: 0, width: labelTop.frame.size.width, height: labelTop.frame.size.height))
                 buttonBracket.slotName = eachSlot
                 buttonBracket.slotIdx = i + j
-                buttonBracket.addTarget(self, action: "bracketSlotPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+                buttonBracket.addTarget(self, action: #selector(CreateKnockoutViewController.bracketSlotPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 buttonBracket.imageView?.contentMode = UIViewContentMode.ScaleToFill
                 buttonBracket.setImage(UIImage(named: "dropDownSelectBox"), forState: UIControlState.Normal)
                 labelTop.addSubview(buttonBracket)

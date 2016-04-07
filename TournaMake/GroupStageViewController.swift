@@ -25,8 +25,8 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         self.view.backgroundColor = GlobalConstants.backgroundColorVc
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GroupStageViewController.keyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GroupStageViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
         self.reloadStackView()
@@ -50,7 +50,7 @@ class GroupStageViewController: UIViewController, UITextFieldDelegate {
         let verticalSpacing : CGFloat = 10.0
         var currentY : CGFloat = 0
         
-        let tap = UITapGestureRecognizer(target: self, action: "stackViewTapped")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(GroupStageViewController.stackViewTapped))
         scrollViewMatch.addGestureRecognizer(tap)
         
         self.matchList = []

@@ -78,7 +78,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         let matchHeight : CGFloat = 100
         let matchWidth : CGFloat = 250
         
-        let tap = UITapGestureRecognizer(target: self, action: "scrollViewTapped")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(BracketViewController.scrollViewTapped))
         scrollViewBracket.addGestureRecognizer(tap)
         
         //get matches directly from tournament.
@@ -356,8 +356,8 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
     }
     
     func addKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BracketViewController.keyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BracketViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
 
 }

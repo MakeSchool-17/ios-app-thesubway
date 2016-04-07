@@ -106,7 +106,7 @@ class CreateGroupStageViewController: UIViewController {
                 //add button on top of textField:
                 let buttonEntrant = PickerGroupButton(frame: CGRect(x: 0, y: 0, width: textFieldEntrant.frame.width, height: textFieldEntrant.frame.height))
                 textFieldEntrant.addSubview(buttonEntrant)
-                buttonEntrant.addTarget(self, action: "entrantPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+                buttonEntrant.addTarget(self, action: #selector(CreateGroupStageViewController.entrantPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 buttonEntrant.imageView?.contentMode = UIViewContentMode.ScaleToFill
                 buttonEntrant.setImage(UIImage(named: "dropDownSelectBox"), forState: UIControlState.Normal)
                 buttonEntrant.entrantName = eachEntrant

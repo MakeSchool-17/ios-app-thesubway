@@ -97,7 +97,7 @@ class CoreDataUtil {
         if newTournament.groupStage?.count == 1 {
             numBracketMatches /= 2
         }
-        for i in 0 ..< numBracketMatches {
+        for _ in 0 ..< numBracketMatches {
             self.addMatchToBracket(newTournament.bracket!, matchId: matchId)
             matchId += 1
         }

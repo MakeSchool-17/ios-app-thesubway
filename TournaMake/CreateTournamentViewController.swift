@@ -31,7 +31,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
         let typeButton = UIButton(frame: CGRect(x: 0, y: 0, width: typePicker.frame.width, height: typePicker.frame.height))
         self.typePicker.addSubview(typeButton)
         typePicker.text = GlobalConstants.knockout
-        typeButton.addTarget(self, action: "typePressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        typeButton.addTarget(self, action: #selector(CreateTournamentViewController.typePressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         typeButton.imageView?.contentMode = UIViewContentMode.ScaleToFill
         typeButton.setImage(UIImage(named: "dropDownSelectBox"), forState: UIControlState.Normal)
         self.textViewEntrants.layer.borderWidth = 1
@@ -51,7 +51,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
     
     func typePressed(sender: UIButton) {
         self.view.endEditing(true)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pickerDidScroll:", name: "pickerDidScroll", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CreateTournamentViewController.pickerDidScroll(_:)), name: "pickerDidScroll", object: nil)
         MMPickerView.showPickerViewInView(self.view, withObjects: self.typeArr, withOptions: nil, objectToStringConverter: nil) { (selectedString : AnyObject!) -> Void in
             self.typePicker.text = selectedString as? String
             NSNotificationCenter.defaultCenter().removeObserver(self)
