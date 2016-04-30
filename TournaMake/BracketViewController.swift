@@ -133,6 +133,8 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
                     let lblChampionship = UILabel(frame: CGRect(x: 0, y: 0 - heightOfLabel, width: matchWidth, height: heightOfLabel))
                     lblChampionship.text = "Championship"
                     vw.addSubview(lblChampionship)
+                    //check if championship is completed
+                    vw.backgroundColor = UIColor(red: 1.0, green: 215.0 / 255.0, blue: 0.0, alpha: 1.0)
                 }
             }
             //third-place match will be index 0, and championship is index 1, for math purposes
