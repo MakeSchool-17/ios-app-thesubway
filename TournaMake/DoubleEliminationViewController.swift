@@ -87,7 +87,8 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         
         let numFirstRoundMatches = CGFloat(bracketMatches.count / 2) / 2 //for height
         let numRounds = MathHelper.numRoundsForEntrantCount(bracketMatches.count / 4) //for width
-        self.scrollViewBracket.contentSize = CGSizeMake((matchWidth + horizontalSpacing) * CGFloat(numRounds+1) + paddingX, (numFirstRoundMatches + 1) * (matchHeight + 10))
+        let winnerBracketHeight = (numFirstRoundMatches + 1) * (matchHeight + 10)
+        self.scrollViewBracket.contentSize = CGSizeMake((matchWidth + horizontalSpacing) * CGFloat(numRounds+3) + paddingX, winnerBracketHeight * 2 + matchHeight)
         self.scrollViewBracket.minimumZoomScale = 0.35
         self.scrollViewBracket.maximumZoomScale = 2.0
         if numRounds <= 2 {
@@ -182,6 +183,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                     labelTop.text = GlobalConstants.bye
                     //if i is < (3 * k / 2 - 1), don't add a bye, because later winner-bracket-rounds don't have byes.
                 }
+                labelTop.text = "\(labelTop.text) \(i)"
                 labelTop.tag = j
                 
                 //if tournament has started, add appropriate score boxes too.
@@ -243,6 +245,93 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             }
             i -= 1
         }
+        //now to loser's bracket:
+        currentY = winnerBracketHeight
+        roundNum = 1
+        startIdx = k
+        endIdx = startIdx - k / (MathHelper.powerOf(2, power: 2))
+        i = startIdx - 1
+        while (i >= endIdx) {
+            let eachMatch = bracketMatches[i]
+            //link to roundNum:
+            let vw = UIView(frame: CGRect(x: paddingX + CGFloat(roundNum - 1) * (matchWidth + horizontalSpacing), y: currentY, width: matchWidth, height: matchHeight))
+            vw.clipsToBounds = false
+            //vw.layer.cornerRadius = 5.0
+            vw.layer.borderWidth = 1
+            vw.backgroundColor = GlobalConstants.grayVeryLight
+            vw.tag = i + 200
+            if (roundNum != 1 || self.bracketMatches.count == 2) && i >= 1 {
+                var temp = 0
+                var bottomIdx : Int! = 0
+                //so not the first round, and not the if-necessary match.
+                //formulas for these depend if even or odd rounds.
+                //use helper. get roundNum, and previousBottomIdx. pass in k, i.
+                //even roundNumbers will have null top. odd will have both fine.
+                (temp, bottomIdx) = DoubleEliminationCalculator.loserGetPrevious(k, i: i)
+                let previousVwTop : UIView? = self.largeSubView.viewWithTag(bottomIdx + 201)
+                let previousVwBottom : UIView? = self.largeSubView.viewWithTag(bottomIdx + 200)
+            }
+            if i == (startIdx - 1) {
+                highestViewInRound = vw
+            }
+            
+            let idLeft : String? = eachMatch.leftId
+            let idRight : String? = eachMatch.rightId
+            let ids : [String?] = [idLeft, idRight]
+            
+            for j in 0...1 {
+                let eachId = ids[j]
+                let labelTop = UILabel(frame: CGRect(x: labelPadding, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
+                if AlgorithmUtil.isPlayerId(eachId) {
+                    labelTop.text = eachId!
+                }
+                else if AlgorithmUtil.isPlayerId(eachId) {
+                    let eachEntrant = CoreDataUtil.getEntrantById(Int(eachId!)!, tournament: eachMatch.tournament!)![0]
+                    labelTop.text = eachEntrant.name!
+                }
+                else if i >= (3 * k / 2 - 1) {
+                    //else, that means there is no first-round player in that slot.
+                    labelTop.text = GlobalConstants.bye
+                    //if i is < (3 * k / 2 - 1), don't add a bye, because later winner-bracket-rounds don't have byes.
+                }
+                labelTop.text = "\(labelTop.text) \(i)"
+                labelTop.tag = j
+                
+                //if tournament has started, add appropriate score boxes too.
+                if self.tournament.bracket?.isStarted == true {
+                    //TO-DO?
+                    //this entire if-statement is solely for the purpose of adding a score box.
+                    
+                    var textFieldScore : UITextField!
+                    let scores = [eachMatch.leftScore, eachMatch.rightScore]
+                    if AlgorithmUtil.isPlayerId(eachMatch.leftId) && AlgorithmUtil.isPlayerId(eachMatch.rightId) {
+                        textFieldScore = UITextField(frame: CGRect(x: matchWidth * 4 / 5, y: CGFloat(j) * matchHeight / 2 - CGFloat(j), width: matchWidth * 1 / 5, height: matchHeight / 2 + CGFloat(j)))
+                        textFieldScore.delegate = self
+                        textFieldScore.layer.borderWidth = 1
+                        textFieldScore.textAlignment = NSTextAlignment.Center
+                        textFieldScore.keyboardType = UIKeyboardType.NumbersAndPunctuation
+                        textFieldScore.autocorrectionType = UITextAutocorrectionType.No
+                        textFieldScore.tag = j + 100
+                        if scores[j] != nil {
+                            textFieldScore.text = "\(scores[j]!)"
+                        }
+                        vw.addSubview(textFieldScore)
+                    }
+                }
+                vw.addSubview(labelTop)
+            }
+            self.largeSubView.addSubview(vw)
+            currentY += matchHeight + verticalSpacing
+            
+            if i == endIdx {
+                currentY = highestViewInRound.frame.origin.y + (matchHeight + verticalSpacing) / 2
+                roundNum += 1
+                startIdx = endIdx
+                endIdx -= k / (MathHelper.powerOf(2, power: (roundNum + 1) / 2 + 1))
+            }
+            i -= 1
+        }
+        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -325,7 +414,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
     }
     
     func updateLaterMatchWithWinner(winnerId: String?, idxOfPrevMatch: Int) {
-        if winnerId != nil && idxOfPrevMatch > 1 {
+        if winnerId != nil && idxOfPrevMatch >= k {
             let nextId = (idxOfPrevMatch - k + 1) / 2 - 1 + k //(n - k) / 2 - 1 + k = a
             let nextMatch = self.bracketMatches[nextId]
             print("\(idxOfPrevMatch) will update \(nextId)")
@@ -343,7 +432,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
     
     func updateMatchWithLoser(loserId: String?, idxOfPrevMatch: Int) {
         //even if it's a bye:
-        if loserId != nil {
+        if loserId != nil && idxOfPrevMatch >= k {
             var nextId : Int?
             var isLeft = true
             (nextId, isLeft) = DoubleEliminationCalculator.getLoserMatchId(k, idxOfPrevMatch: idxOfPrevMatch)

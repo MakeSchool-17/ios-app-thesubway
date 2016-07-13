@@ -60,4 +60,47 @@ class DoubleEliminationCalculator {
         return total
     }
     
+    class func loserGetPrevious(k : Int, i: Int) -> (Int, Int!) {
+        //assumed, i < k
+        //first, get the roundNum.
+        var roundNum = 0
+        let round1Cutoff = k - k / (MathHelper.powerOf(2, power: 2))
+        if i >= k {
+            roundNum = -1
+            return (roundNum, nil)
+        }
+        else if i >= round1Cutoff {
+            roundNum = 1
+            //get previousBottomIdx, nil
+            return (roundNum, nil)
+        }
+        roundNum = 2
+        var interval = k / (MathHelper.powerOf(2, power: 2))
+        var previous = round1Cutoff //is now 12
+        while true {
+            previous -= interval
+            if i >= previous {
+                break
+            }
+            if roundNum % 2 == 1 {
+                interval /= 2
+            }
+            if interval <= 0 {
+                break
+            }
+            roundNum += 1
+        }
+        //at this point we know the right roundNum
+        //if roundNum is even, subtract interval.
+        // 11 and 10 become 7? makes it 7 and 6 become 3.
+        // want 7 to be 10
+        // so (n - 4) / 2 + 4
+        if roundNum % 2 == 0 {
+            return (roundNum, i + interval)
+        }
+        else {
+            return (roundNum, (i - interval) * 2 + interval)
+        }
+    }
+    
 }
