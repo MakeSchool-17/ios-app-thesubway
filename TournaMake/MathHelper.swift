@@ -9,6 +9,17 @@
 import UIKit
 
 class MathHelper {
+    
+    class func powerOf(num: Int, power: Int) -> Int {
+        var i = 0
+        var result = 1
+        while i < power {
+            result *= num
+            i += 1
+        }
+        return result
+    }
+    
     class func isPowerOfTwo(num : Int) -> Bool {
         var i = 1
         while i <= num {

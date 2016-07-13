@@ -86,7 +86,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         
         let numFirstRoundMatches = CGFloat(bracketMatches.count / 2) / 2 //for height
         let numRounds = MathHelper.numRoundsForEntrantCount(bracketMatches.count / 4) //for width
-        self.scrollViewBracket.contentSize = CGSizeMake((matchWidth + horizontalSpacing) * CGFloat(numRounds) + paddingX, numFirstRoundMatches * (matchHeight + 10))
+        self.scrollViewBracket.contentSize = CGSizeMake((matchWidth + horizontalSpacing) * CGFloat(numRounds+1) + paddingX, (numFirstRoundMatches + 1) * (matchHeight + 10))
         self.scrollViewBracket.minimumZoomScale = 0.35
         self.scrollViewBracket.maximumZoomScale = 2.0
         if numRounds <= 2 {
@@ -230,12 +230,14 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             //TO-DO above?
             if i == endIdx {
                 currentY = highestViewInRound.frame.origin.y + (matchHeight + verticalSpacing) / 2
-                startIdx = endIdx
-                endIdx = startIdx - k / (2 * roundNum)
                 roundNum += 1
-                if endIdx <= 1 {
-                    //because final round has 2 matches, including the if-necessary match.
-                    endIdx = 0
+                startIdx = endIdx
+                endIdx = startIdx - k / MathHelper.powerOf(2, power: roundNum)
+                //when endIdx is 16, I still want to keep going
+                if endIdx <= (k - 1) {
+                    
+                    //because this section is only for winners bracket.
+                    i = 0
                 }
             }
             i -= 1
