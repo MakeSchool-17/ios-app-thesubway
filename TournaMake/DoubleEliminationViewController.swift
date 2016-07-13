@@ -21,6 +21,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
     var bracketMatches : [Match] = []
     var keyboardSize : CGSize!
     var originalFrame : CGRect!
+    var k = 0
     @IBOutlet var scrollViewDistanceContraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,7 +102,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         
         var roundNum = 1
         //bracketMatches.count i.e. is 31, or n * 2 - 1.
-        let k = (bracketMatches.count + 1) / 2
+        k = (bracketMatches.count + 1) / 2
         var startIdx = bracketMatches.count / 1 //because double-elimination
         var endIdx = startIdx - k / 2
         var highestViewInRound : UIView!
@@ -233,7 +234,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                 roundNum += 1
                 startIdx = endIdx
                 endIdx = startIdx - k / MathHelper.powerOf(2, power: roundNum)
-                //when endIdx is 16, I still want to keep going
+                //when endIdx is exactly 16, I still want to keep going
                 if endIdx <= (k - 1) {
                     
                     //because this section is only for winners bracket.
@@ -323,10 +324,10 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
     
     func updateLaterMatchWithWinner(winnerId: String?, idxOfPrevMatch: Int) {
         if winnerId != nil && idxOfPrevMatch > 1 {
-            let nextId = idxOfPrevMatch / 2
+            let nextId = (idxOfPrevMatch - k + 1) / 2 - 1 + k //(n - k) / 2 - 1 + k = a
             let nextMatch = self.bracketMatches[nextId]
             //remember, matchId is the correct variable here.
-            if idxOfPrevMatch % 2 != 0 {
+            if idxOfPrevMatch % 2 == 0 {
                 //it is the top match. update leftId
                 CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: "\(winnerId!)", rightId: nextMatch.rightId)
             }
