@@ -50,6 +50,7 @@
 		27BCFFB91C90B41600B6135C /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27BCFFB81C90B41500B6135C /* Secrets.plist */; };
 		27BCFFBB1C90DA4100B6135C /* DataAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BCFFBA1C90DA4100B6135C /* DataAnalytics.swift */; };
 		27DB9E0E1D35F291006BD3A2 /* DoubleEliminationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DB9E0D1D35F291006BD3A2 /* DoubleEliminationViewController.swift */; };
+		27DB9E101D3635CA006BD3A2 /* DoubleEliminationCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DB9E0F1D3635CA006BD3A2 /* DoubleEliminationCalculator.swift */; };
 		27E82E8A1BFFA13B00C879AF /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E891BFFA13B00C879AF /* MathHelper.swift */; };
 		27E82E8C1BFFCCC200C879AF /* BracketCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */; };
 		27E82E8E1BFFF82700C879AF /* GroupCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */; };
@@ -145,6 +146,7 @@
 		27BCFFB81C90B41500B6135C /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		27BCFFBA1C90DA4100B6135C /* DataAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAnalytics.swift; sourceTree = "<group>"; };
 		27DB9E0D1D35F291006BD3A2 /* DoubleEliminationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleEliminationViewController.swift; sourceTree = "<group>"; };
+		27DB9E0F1D3635CA006BD3A2 /* DoubleEliminationCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleEliminationCalculator.swift; sourceTree = "<group>"; };
 		27E82E891BFFA13B00C879AF /* MathHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketCalculator.swift; sourceTree = "<group>"; };
 		27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalculator.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				27E82E951C051A5A00C879AF /* CoreDataUtil.swift */,
 				272E9E581C100BFD0043E433 /* StandingsCalculator.swift */,
 				27BCFFBA1C90DA4100B6135C /* DataAnalytics.swift */,
+				27DB9E0F1D3635CA006BD3A2 /* DoubleEliminationCalculator.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27E82E8C1BFFCCC200C879AF /* BracketCalculator.swift in Sources */,
+				27DB9E101D3635CA006BD3A2 /* DoubleEliminationCalculator.swift in Sources */,
 				277ADAF61BFEF3C600E17F0E /* BracketMatch.swift in Sources */,
 				27A0AED41BFBF00D00AA57F1 /* Tournament.swift in Sources */,
 				277ADAF41BFECED500E17F0E /* CreateKnockoutViewController.swift in Sources */,

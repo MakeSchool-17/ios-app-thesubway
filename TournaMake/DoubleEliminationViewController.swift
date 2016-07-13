@@ -274,10 +274,10 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             //check if updatedMatch has a winner.
             let winnerId = AlgorithmUtil.winnerOfMatch(updatedMatch!)
             self.updateLaterMatchWithWinner(winnerId, idxOfPrevMatch: matchIdx)
-            if matchIdx == 2 || matchIdx == 3 {
-                //semi-final losers must be added to 3rd-place match.
+            if matchIdx >= k {
+                //losers from winner's bracket must be added to losers bracket.
                 let loserId = AlgorithmUtil.loserOfMatch(updatedMatch!)
-                self.updateBronzeMatchWithLoser(loserId, idxOfPrevMatch: matchIdx)
+                self.updateMatchWithLoser(loserId, idxOfPrevMatch: matchIdx)
             }
             self.reloadStackViewBracket()
         }
@@ -311,7 +311,9 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         for matchIdx in (self.bracketMatches.count - 1).stride(through: 0, by: -1) {
             let eachMatch = self.bracketMatches[matchIdx]
             let winnerId = AlgorithmUtil.winnerOfMatch(eachMatch)
+            let loserId = AlgorithmUtil.loserOfMatch(eachMatch)
             self.updateLaterMatchWithWinner(winnerId, idxOfPrevMatch: matchIdx)
+            self.updateMatchWithLoser(loserId, idxOfPrevMatch: matchIdx)
         }
         self.reloadStackViewBracket()
         self.displayBracketStarted()
@@ -326,6 +328,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         if winnerId != nil && idxOfPrevMatch > 1 {
             let nextId = (idxOfPrevMatch - k + 1) / 2 - 1 + k //(n - k) / 2 - 1 + k = a
             let nextMatch = self.bracketMatches[nextId]
+            print("\(idxOfPrevMatch) will update \(nextId)")
             //remember, matchId is the correct variable here.
             if idxOfPrevMatch % 2 == 0 {
                 //it is the top match. update leftId
@@ -338,15 +341,25 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         }
     }
     
-    func updateBronzeMatchWithLoser(loserId: String?, idxOfPrevMatch: Int) {
+    func updateMatchWithLoser(loserId: String?, idxOfPrevMatch: Int) {
+        //even if it's a bye:
         if loserId != nil {
-            let bronzeMatch = self.bracketMatches[0]
-            if idxOfPrevMatch % 2 != 0 {
-                CoreDataUtil.updateEntrantsInMatch(bronzeMatch, leftId: "\(loserId!)", rightId: bronzeMatch.rightId)
+            var nextId : Int?
+            var isLeft = true
+            (nextId, isLeft) = DoubleEliminationCalculator.getLoserMatchId(k, idxOfPrevMatch: idxOfPrevMatch)
+            //figure out what round the loss was from.
+            //also figure out whether belong top or bottom.
+            if nextId == nil {
+                return
+            }
+            let loserMatch = self.bracketMatches[nextId!]
+            if isLeft == true {
+                CoreDataUtil.updateEntrantsInMatch(loserMatch, leftId: "\(loserId!)", rightId: loserMatch.rightId)
             }
             else {
-                CoreDataUtil.updateEntrantsInMatch(bronzeMatch, leftId: bronzeMatch.leftId, rightId: "\(loserId!)")
+                CoreDataUtil.updateEntrantsInMatch(loserMatch, leftId: loserMatch.leftId, rightId: "\(loserId!)")
             }
+            print("loser \(idxOfPrevMatch) will update \(nextId) isLeft: \(isLeft)")
         }
     }
     
