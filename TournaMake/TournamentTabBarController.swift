@@ -22,9 +22,17 @@ class TournamentTabBarController: UITabBarController {
         if self.tournament.type == GlobalConstants.knockout {
             self.viewControllers?.removeAtIndex(0)
             self.viewControllers?.removeAtIndex(0)
+            self.viewControllers?.removeAtIndex(1)
+            self.tabBar.hidden = true
+        }
+        else if self.tournament.type == GlobalConstants.doubleElimination {
+            self.viewControllers?.removeAtIndex(0)
+            self.viewControllers?.removeAtIndex(0)
+            self.viewControllers?.removeAtIndex(0)
             self.tabBar.hidden = true
         }
         else if self.tournament.type == GlobalConstants.groupStageKnockout {
+            self.viewControllers?.removeAtIndex(3)
             if self.tournament.bracket?.isStarted == true {
                 self.selectedViewController = self.viewControllers![2]
             }

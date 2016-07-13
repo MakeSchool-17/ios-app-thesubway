@@ -12,6 +12,7 @@ struct GlobalConstants {
     
     static let groupStageKnockout = "Group Stage + Knockout"
     static let knockout = "Knockout"
+    static let doubleElimination = "Double Elimination"
     static let strEmpty = "*Select Entrant*"
     static let groupWinner = "Winner"
     static let groupRunnerUp = "Runner-up"

@@ -49,6 +49,7 @@
 		27B6764C1C379314003FDC36 /* dropDownSelectBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B6764B1C379314003FDC36 /* dropDownSelectBox.png */; };
 		27BCFFB91C90B41600B6135C /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27BCFFB81C90B41500B6135C /* Secrets.plist */; };
 		27BCFFBB1C90DA4100B6135C /* DataAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BCFFBA1C90DA4100B6135C /* DataAnalytics.swift */; };
+		27DB9E0E1D35F291006BD3A2 /* DoubleEliminationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DB9E0D1D35F291006BD3A2 /* DoubleEliminationViewController.swift */; };
 		27E82E8A1BFFA13B00C879AF /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E891BFFA13B00C879AF /* MathHelper.swift */; };
 		27E82E8C1BFFCCC200C879AF /* BracketCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */; };
 		27E82E8E1BFFF82700C879AF /* GroupCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */; };
@@ -143,6 +144,7 @@
 		27B6764B1C379314003FDC36 /* dropDownSelectBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropDownSelectBox.png; sourceTree = "<group>"; };
 		27BCFFB81C90B41500B6135C /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		27BCFFBA1C90DA4100B6135C /* DataAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAnalytics.swift; sourceTree = "<group>"; };
+		27DB9E0D1D35F291006BD3A2 /* DoubleEliminationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleEliminationViewController.swift; sourceTree = "<group>"; };
 		27E82E891BFFA13B00C879AF /* MathHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		27E82E8B1BFFCCC200C879AF /* BracketCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketCalculator.swift; sourceTree = "<group>"; };
 		27E82E8D1BFFF82700C879AF /* GroupCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCalculator.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				27E82EB91C0F830400C879AF /* GroupStageViewController.swift */,
 				272E9E561C0FDC200043E433 /* GroupStandingsViewController.swift */,
 				27B4F6FF1C178E1300019D3B /* BracketViewController.swift */,
+				27DB9E0D1D35F291006BD3A2 /* DoubleEliminationViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				272E9E5B1C100E1E0043E433 /* EntrantRecord.swift in Sources */,
 				27E82E941C03EA4000C879AF /* GlobalConstants.swift in Sources */,
 				2755FD521C3DD38400FFF82F /* Tournament+CoreDataProperties.swift in Sources */,
+				27DB9E0E1D35F291006BD3A2 /* DoubleEliminationViewController.swift in Sources */,
 				27E82E961C051A5A00C879AF /* CoreDataUtil.swift in Sources */,
 				27B676431C2C9948003FDC36 /* MDSpreadViewHeaderCell.m in Sources */,
 				27B676401C2C9948003FDC36 /* MDSpreadViewCellColumnHeaderBackground.m in Sources */,

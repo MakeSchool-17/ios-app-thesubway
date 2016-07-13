@@ -84,8 +84,8 @@ class CoreDataUtil {
                 }
             }
         }
-        else if data.format == GlobalConstants.knockout {
-            newTournament.type = GlobalConstants.knockout
+        else if data.format == GlobalConstants.knockout || data.format == GlobalConstants.doubleElimination {
+            newTournament.type = data.format
             for i in 0 ..< data.entrants.count {
                 let eachEntrant = data.entrants[i]
                 self.addEntrantToTournament(newTournament, name: eachEntrant, id: i)
@@ -107,7 +107,7 @@ class CoreDataUtil {
             print("could not save")
             return nil
         }
-        if data.format == GlobalConstants.knockout {
+        if data.format == GlobalConstants.knockout || data.format == GlobalConstants.doubleElimination {
             //this should be done after the save
             BracketCalculator.getMatchupsFromPureBracket(newTournament)
         }

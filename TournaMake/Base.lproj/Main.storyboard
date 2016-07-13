@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kWW-Wb-XIl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kWW-Wb-XIl">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -349,6 +349,77 @@
             </objects>
             <point key="canvasLocation" x="1565" y="2029"/>
         </scene>
+        <!--Double Elimination-->
+        <scene sceneID="Eza-3P-jTx">
+            <objects>
+                <viewController title="Double Elimination" id="Gu4-9V-ZFM" customClass="DoubleEliminationViewController" customModule="TournaMake" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZzN-ym-dZJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="sUp-uX-cXa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jzx-V7-Wgl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Par-Ej-jL2">
+                                <rect key="frame" x="0.0" y="106" width="600" height="494"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdS-Yv-ALS">
+                                <rect key="frame" x="0.0" y="20" width="600" height="86"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bracket match-ups:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQR-27-83b">
+                                        <rect key="frame" x="172" y="0.0" width="256" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="256" id="9ZW-rJ-cCs"/>
+                                            <constraint firstAttribute="height" constant="42" id="Scv-iy-Rop"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1V-eB-xGL">
+                                        <rect key="frame" x="40" y="42" width="520" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="VnF-lc-kCf"/>
+                                        </constraints>
+                                        <state key="normal" title="Start"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="hQR-27-83b" firstAttribute="centerX" secondItem="hdS-Yv-ALS" secondAttribute="centerX" id="23T-ww-o9d"/>
+                                    <constraint firstAttribute="height" constant="86" id="4fL-WG-FcA"/>
+                                    <constraint firstItem="v1V-eB-xGL" firstAttribute="top" secondItem="hQR-27-83b" secondAttribute="bottom" id="d7u-dN-GSi"/>
+                                    <constraint firstItem="v1V-eB-xGL" firstAttribute="leading" secondItem="hdS-Yv-ALS" secondAttribute="leading" constant="40" id="ehJ-7P-2TM"/>
+                                    <constraint firstItem="hQR-27-83b" firstAttribute="top" secondItem="hdS-Yv-ALS" secondAttribute="top" id="f9j-hh-URE"/>
+                                    <constraint firstAttribute="trailing" secondItem="v1V-eB-xGL" secondAttribute="trailing" constant="40" id="lfR-Ir-QRo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hdS-Yv-ALS" firstAttribute="leading" secondItem="jzx-V7-Wgl" secondAttribute="leadingMargin" constant="-20" id="QI6-co-h5A"/>
+                            <constraint firstItem="Par-Ej-jL2" firstAttribute="leading" secondItem="jzx-V7-Wgl" secondAttribute="leadingMargin" constant="-20" id="Sht-gs-P4i"/>
+                            <constraint firstItem="hdS-Yv-ALS" firstAttribute="top" secondItem="ZzN-ym-dZJ" secondAttribute="bottom" id="Vd9-Mr-iyK"/>
+                            <constraint firstItem="Par-Ej-jL2" firstAttribute="top" secondItem="hdS-Yv-ALS" secondAttribute="bottom" id="YFb-wV-gVG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Par-Ej-jL2" secondAttribute="trailing" constant="-20" id="hCv-te-Qj7"/>
+                            <constraint firstItem="sUp-uX-cXa" firstAttribute="top" secondItem="Par-Ej-jL2" secondAttribute="bottom" id="wjG-dN-fQl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hdS-Yv-ALS" secondAttribute="trailing" constant="-20" id="z2h-cv-sho"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="qwx-M3-tXm"/>
+                    <connections>
+                        <outlet property="btnBeginOrEnd" destination="v1V-eB-xGL" id="81z-hC-dbl"/>
+                        <outlet property="lblTitle" destination="hQR-27-83b" id="JQ4-vX-5iD"/>
+                        <outlet property="scrollViewBracket" destination="Par-Ej-jL2" id="W4w-eV-eMc"/>
+                        <outlet property="scrollViewDistanceContraint" destination="YFb-wV-gVG" id="WmH-OZ-9OC"/>
+                        <outlet property="topView" destination="hdS-Yv-ALS" id="cul-Ru-48o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FcJ-Ap-4Ip" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="939" y="2029"/>
+        </scene>
         <!--Item 2-->
         <scene sceneID="kaG-DV-cTx">
             <objects>
@@ -496,6 +567,7 @@
                         <segue destination="Ip8-ds-64d" kind="relationship" relationship="viewControllers" id="jCR-ZC-NOR"/>
                         <segue destination="EMS-Yo-Rha" kind="relationship" relationship="viewControllers" id="PPX-0o-az8"/>
                         <segue destination="7c8-xV-GNj" kind="relationship" relationship="viewControllers" id="4GE-rU-YAf"/>
+                        <segue destination="Gu4-9V-ZFM" kind="relationship" relationship="viewControllers" id="VXc-19-ndO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fVI-fO-2pl" userLabel="First Responder" sceneMemberID="firstResponder"/>

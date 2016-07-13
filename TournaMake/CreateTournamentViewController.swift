@@ -15,7 +15,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
     @IBOutlet var textViewEntrants: UITextView!
     @IBOutlet var labelTotalTeams: UILabel!
     @IBOutlet var btnNext: UIButton!
-    let typeArr : [String] = [GlobalConstants.knockout, GlobalConstants.groupStageKnockout]
+    let typeArr : [String] = [GlobalConstants.knockout, GlobalConstants.doubleElimination, GlobalConstants.groupStageKnockout]
     let entrants : [String] = []
     var pickerInfo : UIView!
     
@@ -83,6 +83,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
                 labelInfo.font = UIFont(name: (labelInfo.font?.fontName)!, size: 15.0)
                 labelInfo.text = "Competitors are divided into groups. Each group has its own inner round-robin tournament, where every competitor faces its other group members one time each. Standings are calculated based on each match result. Top 2 competitors from each group advance to the knockout stage. In some cases, depending on how many competitors are in the tournament, the best 3rd-place wild cards may also advance to the knockout stage."
             }
+            //TODO: else-if for doubleElimination
             pickerInfo.addSubview(labelInfo)
             
             picker.addSubview(self.pickerInfo)
@@ -148,7 +149,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
             createGroupStage.tournamentData = tournamentData
             self.navigationController?.pushViewController(createGroupStage, animated: true)
         }
-        else if self.typePicker.text == GlobalConstants.knockout {
+        else if self.typePicker.text == GlobalConstants.knockout || self.typePicker.text == GlobalConstants.doubleElimination {
             let createKnockout = self.storyboard?.instantiateViewControllerWithIdentifier("createKnockout") as! CreateKnockoutViewController
             createKnockout.groups = nil
             createKnockout.tournamentData = tournamentData
