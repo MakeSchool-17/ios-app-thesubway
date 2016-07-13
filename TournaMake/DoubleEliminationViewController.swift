@@ -127,8 +127,8 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                 //(n) = (a - k + 1) * 2 + k;
                 //for middle rounds, get the previous round's match, which is i * 2 + 1.
                 //22 must find 29 and 30. (n - k + 1) +
-                let previousVwTop : UIView? = self.largeSubView.viewWithTag((i - k + 1) * 2 + k + 201)
-                let previousVwBottom : UIView? = self.largeSubView.viewWithTag((i - k + 1) * 2 + k + 200)
+                let previousVwTop : UIView? = self.largeSubView.viewWithTag((i - k + 1) * 2 + k + 200)
+                let previousVwBottom : UIView? = self.largeSubView.viewWithTag((i - k + 1) * 2 + k + 199)
                 //this is set to the center of the previous 2 views
                 if previousVwTop != nil && previousVwBottom != nil {
                     vw.frame.origin.y = (previousVwTop!.center.y + previousVwBottom!.center.y) / 2 - (matchHeight / 2)
