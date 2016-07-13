@@ -97,6 +97,10 @@ class CoreDataUtil {
         if newTournament.groupStage?.count == 1 {
             numBracketMatches /= 2
         }
+        if data.format == GlobalConstants.doubleElimination {
+            numBracketMatches = numBracketMatches * 2 - 1
+            print("numBracketMatches \(numBracketMatches)")
+        }
         for _ in 0 ..< numBracketMatches {
             self.addMatchToBracket(newTournament.bracket!, matchId: matchId)
             matchId += 1

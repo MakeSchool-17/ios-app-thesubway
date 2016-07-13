@@ -10,6 +10,8 @@ import UIKit
 
 class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
     
+    //TO-DO: double-elimination for 4 or 5 entrants.
+    
     var tournament : Tournament!
     @IBOutlet var lblTitle: UILabel!
     @IBOutlet var scrollViewBracket: UIScrollView!
@@ -82,8 +84,8 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         //sort BACKWARDS, to simplify math calculations.
         bracketMatches.sortInPlace({$0.id?.integerValue > $1.id?.integerValue})
         
-        let numFirstRoundMatches = CGFloat(bracketMatches.count) / 2 //for height
-        let numRounds = MathHelper.numRoundsForEntrantCount(bracketMatches.count / 2) //for width
+        let numFirstRoundMatches = CGFloat(bracketMatches.count / 2) / 2 //for height
+        let numRounds = MathHelper.numRoundsForEntrantCount(bracketMatches.count / 4) //for width
         self.scrollViewBracket.contentSize = CGSizeMake((matchWidth + horizontalSpacing) * CGFloat(numRounds) + paddingX, numFirstRoundMatches * (matchHeight + 10))
         self.scrollViewBracket.minimumZoomScale = 0.35
         self.scrollViewBracket.maximumZoomScale = 2.0
@@ -98,14 +100,17 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         }
         
         var roundNum = 1
-        var endIdx = bracketMatches.count / 2
-        var startIdx = bracketMatches.count
+        //bracketMatches.count i.e. is 31, or n * 2 - 1.
+        let k = (bracketMatches.count + 1) / 2
+        var startIdx = bracketMatches.count / 1 //because double-elimination
+        var endIdx = startIdx - k / 2
         var highestViewInRound : UIView!
         var championshipFrame = CGRectMake(paddingX + horizontalSpacing, currentY, matchWidth, matchHeight)
         var i = startIdx - 1
+        //starting with winner's bracket:
         while i >= endIdx {
             let eachMatch = bracketMatches[i]
-            
+            //link to roundNum:
             let vw = UIView(frame: CGRect(x: paddingX + CGFloat(roundNum - 1) * (matchWidth + horizontalSpacing), y: currentY, width: matchWidth, height: matchHeight))
             //vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true
             //vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
@@ -115,36 +120,44 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             vw.backgroundColor = GlobalConstants.grayVeryLight
             vw.tag = i + 200
             if (roundNum != 1 || self.bracketMatches.count == 2) && i >= 1 {
-                //so not the first round, and not the third place match.
+                //so not the first round, and not the if-necessary match.
+                //30 and 29 want to go to 22. (n - k) / 2 - 1 + k = a;
+                //(n - k) / 2 = a - k + 1;
+                //(n - k) = (a - k + 1) * 2;
+                //(n) = (a - k + 1) * 2 + k;
                 //for middle rounds, get the previous round's match, which is i * 2 + 1.
-                let previousVwTop : UIView? = self.largeSubView.viewWithTag(i * 2 + 201)
-                let previousVwBottom : UIView? = self.largeSubView.viewWithTag(i * 2 + 200)
+                //22 must find 29 and 30. (n - k + 1) +
+                let previousVwTop : UIView? = self.largeSubView.viewWithTag((i - k + 1) * 2 + k + 201)
+                let previousVwBottom : UIView? = self.largeSubView.viewWithTag((i - k + 1) * 2 + k + 200)
                 //this is set to the center of the previous 2 views
                 if previousVwTop != nil && previousVwBottom != nil {
                     vw.frame.origin.y = (previousVwTop!.center.y + previousVwBottom!.center.y) / 2 - (matchHeight / 2)
                 }
-                if i == 1 {
+                if i == k {
                     championshipFrame = vw.frame
                     let heightOfLabel : CGFloat = 40
                     let lblChampionship = UILabel(frame: CGRect(x: 0, y: 0 - heightOfLabel, width: matchWidth, height: heightOfLabel))
-                    lblChampionship.text = "Championship"
+                    lblChampionship.text = "Single-elimination Championship"
                     vw.addSubview(lblChampionship)
                     //check if championship is completed
                     vw.backgroundColor = UIColor(red: 1.0, green: 215.0 / 255.0, blue: 0.0, alpha: 1.0)
                 }
             }
-                //third-place match will be index 0, and championship is index 1, for math purposes
+                //if-necessary match will be index 0, and championship is index 1, for math purposes
             else if i == 0 {
+                //this area of code should never be executed
+                assert(2 == 1)
                 vw.frame.origin.y = championshipFrame.origin.y + 3 / 2 * matchHeight + verticalSpacing
                 vw.frame.origin.x = championshipFrame.origin.x
                 //add label indicating 3rd-place match:
                 let heightOfLabel : CGFloat = 21
                 let lbl3rdPlace = UILabel(frame: CGRect(x: 0, y: 0 - heightOfLabel, width: matchWidth, height: heightOfLabel))
                 vw.addSubview(lbl3rdPlace)
-                lbl3rdPlace.text = "3rd-place Match"
+                lbl3rdPlace.text = "If-necessary Match"
             }
             
             if i == (startIdx - 1) {
+                //TO-DO?
                 highestViewInRound = vw
             }
             
@@ -155,6 +168,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             for j in 0...1 {
                 let eachId = ids[j]
                 let labelTop = UILabel(frame: CGRect(x: labelPadding, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
+                print("current \(i) end \(endIdx) j: \(j), id: \(eachId)")
                 if AlgorithmUtil.isPlayerId(eachId) {
                     labelTop.text = eachId!
                 }
@@ -162,16 +176,16 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                     let eachEntrant = CoreDataUtil.getEntrantById(Int(eachId!)!, tournament: eachMatch.tournament!)![0]
                     labelTop.text = eachEntrant.name!
                 }
-                else if i >= bracketMatches.count / 2 {
+                else if i >= (3 * k / 2 - 1) {
                     //else, that means there is no first-round player in that slot.
                     labelTop.text = GlobalConstants.bye
-                    //if i is < half, don't add a bye, because later rounds don't have byes.
+                    //if i is < (3 * k / 2 - 1), don't add a bye, because later winner-bracket-rounds don't have byes.
                 }
                 labelTop.tag = j
                 
                 //if tournament has started, add appropriate score boxes too.
                 if self.tournament.bracket?.isStarted == true {
-                    
+                    //TO-DO?
                     //this entire if-statement is solely for the purpose of adding a score box.
                     
                     var textFieldScore : UITextField!
@@ -192,8 +206,9 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                 }
                 vw.addSubview(labelTop)
             }
-            //if i is even, add a vertical line that extends to previous box.
-            if i % 2 == 0 && (roundNum != numRounds) && self.bracketMatches.count != 2 {
+            //if i is odd, add a vertical line that extends to previous box.
+            if i % 2 == 1 && (roundNum != numRounds) && self.bracketMatches.count != 2 {
+                //TO-DO?
                 let previousVw : UIView? = self.largeSubView.viewWithTag(i + 200 + 1)
                 if let prevVw = previousVw {
                     let distanceToPrevious = vw.center.y - prevVw.center.y
@@ -212,13 +227,14 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             //what I want is a subview
             self.largeSubView.addSubview(vw)
             currentY += matchHeight + verticalSpacing
+            //TO-DO above?
             if i == endIdx {
                 currentY = highestViewInRound.frame.origin.y + (matchHeight + verticalSpacing) / 2
-                roundNum += 1
                 startIdx = endIdx
-                endIdx = startIdx / 2
+                endIdx = startIdx - k / (2 * roundNum)
+                roundNum += 1
                 if endIdx <= 1 {
-                    //because final round has 2 matches, including the 3rd-place match.
+                    //because final round has 2 matches, including the if-necessary match.
                     endIdx = 0
                 }
             }
