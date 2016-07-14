@@ -88,7 +88,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         let numFirstRoundMatches = CGFloat(bracketMatches.count / 2) / 2 //for height
         let numRounds = MathHelper.numRoundsForEntrantCount(bracketMatches.count / 4) //for width
         let winnerBracketHeight = (numFirstRoundMatches + 1) * (matchHeight + 10)
-        self.scrollViewBracket.contentSize = CGSizeMake((matchWidth + horizontalSpacing) * CGFloat(numRounds+3) + paddingX, winnerBracketHeight * 2 + matchHeight)
+        self.scrollViewBracket.contentSize = CGSizeMake((matchWidth + horizontalSpacing) * CGFloat(numRounds+5) + paddingX, winnerBracketHeight * 2 + matchHeight)
         self.scrollViewBracket.minimumZoomScale = 0.35
         self.scrollViewBracket.maximumZoomScale = 2.0
         if numRounds <= 2 {
@@ -425,6 +425,22 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             }
             else {
                 //it is the bottom match. update rightId
+                CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: nextMatch.leftId, rightId: "\(winnerId!)")
+            }
+        }
+        else if winnerId != nil && idxOfPrevMatch < k {
+            
+            let (roundNum, nextId) = DoubleEliminationCalculator.loserGetNext(k, i: idxOfPrevMatch)
+            let nextMatch = self.bracketMatches[nextId]
+            if roundNum % 2 == 0 {
+                if idxOfPrevMatch % 2 == 1 {
+                    CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: "\(winnerId!)", rightId: nextMatch.rightId)
+                }
+                else {
+                    CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: nextMatch.leftId, rightId: "\(winnerId!)")
+                }
+            }
+            else {
                 CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: nextMatch.leftId, rightId: "\(winnerId!)")
             }
         }

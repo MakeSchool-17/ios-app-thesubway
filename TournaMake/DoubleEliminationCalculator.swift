@@ -103,4 +103,42 @@ class DoubleEliminationCalculator {
         }
     }
     
+    class func loserGetNext(k: Int, i: Int) -> (Int, Int!) {
+        var roundNum = 0
+        let round1Cutoff = k - k / (MathHelper.powerOf(2, power: 2)) //cutoff conveniently 3/4 of k
+        var interval = k / (MathHelper.powerOf(2, power: 2)) //interval is k / 4
+        if i >= k {
+            roundNum = -1
+            return (roundNum, nil)
+        }
+        else if i >= round1Cutoff {
+            roundNum = 1
+            //first round, and odd rounds, simply subtract by interval
+            //and then face dropdown from winner's bracket
+            return (roundNum, i - interval)
+        }
+        roundNum = 2
+        var previous = round1Cutoff
+        while true {
+            previous -= interval
+            if i >= previous {
+                break
+            }
+            if roundNum % 2 == 0 {
+                //because in loser-bracket, number of matches only changes every 2 rounds.
+                interval /= 2
+            }
+            if interval <= 0 {
+                break
+            }
+            roundNum += 1
+        }
+        if roundNum % 2 == 1 {
+            return (roundNum, i - interval)
+        }
+        else {
+            return (roundNum, interval + (i - interval) / 2)
+        }
+    }
+    
 }
