@@ -433,8 +433,11 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
     }
     
     func updateLaterMatchWithWinner(winnerId: String?, idxOfPrevMatch: Int) {
-        if idxOfPrevMatch == 1 {
-            
+        if winnerId == nil {
+            return
+        }
+        else if idxOfPrevMatch == 1 {
+            return
         }
         else if idxOfPrevMatch == k {
             var nextMatch = self.bracketMatches[1]
@@ -449,7 +452,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             nextMatch = self.bracketMatches[0]
             CoreDataUtil.updateEntrantsInMatch(self.bracketMatches[0], leftId: nextMatch.leftId, rightId: "\(winnerId!)")
         }
-        else if winnerId != nil && idxOfPrevMatch >= k {
+        else if idxOfPrevMatch >= k {
             let nextId = (idxOfPrevMatch - k + 1) / 2 - 1 + k //(n - k) / 2 - 1 + k = a
             let nextMatch = self.bracketMatches[nextId]
             print("\(idxOfPrevMatch) will update \(nextId)")
@@ -463,7 +466,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                 CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: nextMatch.leftId, rightId: "\(winnerId!)")
             }
         }
-        else if winnerId != nil && idxOfPrevMatch < k {
+        else if idxOfPrevMatch < k {
             
             let (roundNum, nextId) = DoubleEliminationCalculator.loserGetNext(k, i: idxOfPrevMatch)
             let nextMatch = self.bracketMatches[nextId]

@@ -36,6 +36,29 @@ class DoubleEliminationCalculator {
             print("\(round1Cutoff) - \(idxOfPrevMatch) <= \(k) / \(MathHelper.powerOf(2, power: n))")
             // want a function where round2 returns 4, round3 returns 6, round4 returns 7.
             if (round1Cutoff - idxOfPrevMatch) <= previous {
+                //if roundNum is 2
+                if (n == 2) {
+                    let fallAmount = getFallAmount(k, roundNum: n)
+                    let newIdx = idxOfPrevMatch - fallAmount
+                    //after I have already found the index I need.
+                    var lowerIdx = idxOfPrevMatch
+                    var upperIdx = idxOfPrevMatch
+                    while upperIdx < round1Cutoff - 1 {
+                        upperIdx += 1
+                    }
+                    while (round1Cutoff - lowerIdx) <= previous - 1 {
+                        lowerIdx -= 1
+                    }
+                    let changeAmount = (upperIdx - lowerIdx + 1) / 2
+                    if newIdx - changeAmount < (lowerIdx - fallAmount) {
+                        //my adjusted result is newIdx + changeAmount
+                        return (newIdx + changeAmount, true)
+                    }
+                    else if newIdx + changeAmount > (upperIdx - fallAmount) {
+                        return (newIdx - changeAmount, true)
+                    }
+                    //got the range. Figured out if this new index was in bottom/top of range.
+                }
                 return (idxOfPrevMatch - getFallAmount(k, roundNum: n), true)
             }
             if k / (MathHelper.powerOf(2, power: n)) < 1 {
@@ -58,6 +81,44 @@ class DoubleEliminationCalculator {
         }
         total -= 1
         return total
+    }
+    
+    class func getFallAmount2(k: Int, roundNum: Int) -> Int {
+        var n = k / 2
+        var total = 0
+        var idx = 0
+        while idx < roundNum {
+            total += n
+            n /= 2
+            idx += 1
+        }
+        total -= 1
+        return total
+    }
+    
+    class func getRangesIdxInclusive(k: Int, roundNum: Int, newIdx: Int?) -> (Int, Int) {
+        var i = 0
+        var startIdx = 0
+        var endIdx = 0
+        let fallAmount = self.getFallAmount2(k, roundNum: roundNum)
+        while i < 100 {
+            //when is it, that getFallAmount will start returning the right amount? Start range here
+            //fallAmount is not doing the right thing here.
+            if i == fallAmount {
+                startIdx = i
+                break
+            }
+            i += 1
+        }
+        while true {
+            //when is it, that getFallAmount will STOP returning the right amount? Start range here
+            if i > fallAmount {
+                endIdx = i - 1
+                break
+            }
+            i += 1
+        }
+        return (startIdx, endIdx)
     }
     
     class func loserGetPrevious(k : Int, i: Int) -> (Int, Int!) {
