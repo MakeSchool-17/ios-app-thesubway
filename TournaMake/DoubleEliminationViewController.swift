@@ -259,7 +259,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         startIdx = k
         endIdx = startIdx - k / (MathHelper.powerOf(2, power: 2))
         i = startIdx - 1
-        while (i >= endIdx) {
+        while (i >= 0) {
             let eachMatch = bracketMatches[i]
             //link to roundNum:
             let vw = UIView(frame: CGRect(x: paddingX + CGFloat(roundNum - 1) * (matchWidth + horizontalSpacing), y: currentY, width: matchWidth, height: matchHeight))
@@ -328,6 +328,9 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                 }
                 vw.addSubview(labelTop)
             }
+            if i == 0 && !self.isAdditionalMatchNecessary() {
+                vw.hidden = true
+            }
             self.largeSubView.addSubview(vw)
             currentY += matchHeight + verticalSpacing
             
@@ -337,9 +340,17 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                 startIdx = endIdx
                 endIdx -= k / (MathHelper.powerOf(2, power: (roundNum + 1) / 2 + 1))
             }
-            i -= 1
+            i -= 1 //check what i and endIdx are, when i = 1.
         }
         
+    }
+    
+    func isAdditionalMatchNecessary() -> Bool {
+        let match1 = self.bracketMatches[1]
+        if AlgorithmUtil.winnerOfMatch(match1) == match1.rightId {
+            return true //TODO: make sure never reaches nil == nil
+        }
+        return false
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -422,7 +433,23 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
     }
     
     func updateLaterMatchWithWinner(winnerId: String?, idxOfPrevMatch: Int) {
-        if winnerId != nil && idxOfPrevMatch >= k {
+        if idxOfPrevMatch == 1 {
+            
+        }
+        else if idxOfPrevMatch == k {
+            var nextMatch = self.bracketMatches[1]
+            CoreDataUtil.updateEntrantsInMatch(self.bracketMatches[1], leftId: "\(winnerId!)", rightId: nextMatch.rightId)
+            //because match 0 and 1 would feature same entrants:
+            nextMatch = self.bracketMatches[0]
+            CoreDataUtil.updateEntrantsInMatch(self.bracketMatches[0], leftId: "\(winnerId!)", rightId: nextMatch.rightId)
+        }
+        else if idxOfPrevMatch == 2 {
+            var nextMatch = self.bracketMatches[1]
+            CoreDataUtil.updateEntrantsInMatch(self.bracketMatches[1], leftId: nextMatch.leftId, rightId: "\(winnerId!)")
+            nextMatch = self.bracketMatches[0]
+            CoreDataUtil.updateEntrantsInMatch(self.bracketMatches[0], leftId: nextMatch.leftId, rightId: "\(winnerId!)")
+        }
+        else if winnerId != nil && idxOfPrevMatch >= k {
             let nextId = (idxOfPrevMatch - k + 1) / 2 - 1 + k //(n - k) / 2 - 1 + k = a
             let nextMatch = self.bracketMatches[nextId]
             print("\(idxOfPrevMatch) will update \(nextId)")
