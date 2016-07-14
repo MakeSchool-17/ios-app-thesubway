@@ -303,7 +303,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             for j in 0...1 {
                 let eachId = ids[j]
                 let labelTop = UILabel(frame: CGRect(x: labelPadding, y: CGFloat(j) * matchHeight / 2, width: matchWidth, height: matchHeight / 2))
-                if AlgorithmUtil.isPlayerId(eachId) {
+                if AlgorithmUtil.isPlayerId(eachId) || eachId == GlobalConstants.bye {
                     labelTop.text = eachId!
                 }
                 else if AlgorithmUtil.isPlayerId(eachId) {
@@ -465,7 +465,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         if winnerId == nil {
             return
         }
-        else if idxOfPrevMatch == 1 {
+        else if idxOfPrevMatch <= 1 {
             return
         }
         else if idxOfPrevMatch == k {
@@ -527,9 +527,17 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             let loserMatch = self.bracketMatches[nextId!]
             if isLeft == true {
                 CoreDataUtil.updateEntrantsInMatch(loserMatch, leftId: "\(loserId!)", rightId: loserMatch.rightId)
+                //check if this next match has an opponent bye
+                if let laterWinner = AlgorithmUtil.winnerOfMatch(loserMatch) {
+                    self.updateLaterMatchWithWinner("\(laterWinner)", idxOfPrevMatch: nextId!)
+                }
             }
             else {
                 CoreDataUtil.updateEntrantsInMatch(loserMatch, leftId: loserMatch.leftId, rightId: "\(loserId!)")
+                //check if this next match has an opponent bye
+                if let laterWinner = AlgorithmUtil.winnerOfMatch(loserMatch) {
+                    self.updateLaterMatchWithWinner("\(laterWinner)", idxOfPrevMatch: nextId!)
+                }
             }
             print("loser \(idxOfPrevMatch) will update \(nextId) isLeft: \(isLeft)")
         }
