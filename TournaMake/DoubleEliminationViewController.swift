@@ -112,8 +112,12 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         //starting with winner's bracket:
         while i >= endIdx {
             let eachMatch = bracketMatches[i]
-            //link to roundNum:
-            let vw = UIView(frame: CGRect(x: paddingX + CGFloat(roundNum - 1) * (matchWidth + horizontalSpacing), y: currentY, width: matchWidth, height: matchHeight))
+            var horizontalSpaceMultiplier = roundNum - 1
+            if roundNum > 2 {
+                horizontalSpaceMultiplier += roundNum - 2
+            }
+            let spacePerBoxHorizontal = matchWidth + horizontalSpacing
+            let vw = UIView(frame: CGRect(x: paddingX + CGFloat(horizontalSpaceMultiplier) * (spacePerBoxHorizontal), y: currentY, width: matchWidth, height: matchHeight))
             //vw.heightAnchor.constraintEqualToConstant(matchHeight).active = true
             //vw.widthAnchor.constraintEqualToConstant(matchWidth).active = true
             vw.clipsToBounds = false
@@ -210,7 +214,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                 vw.addSubview(labelTop)
             }
             //if i is odd, add a vertical line that extends to previous box.
-            if i % 2 == 1 && (roundNum != numRounds) && self.bracketMatches.count != 2 {
+            if i % 2 == 1 /*&& (roundNum != numRounds)*/ && self.bracketMatches.count != 2 {
                 //TO-DO?
                 let previousVw : UIView? = self.largeSubView.viewWithTag(i + 200 + 1)
                 if let prevVw = previousVw {
@@ -219,7 +223,11 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                     let verticalLine = UILabel(frame: CGRect(x: matchWidth - 1, y: matchHeight / 2 - distanceToPrevious, width: 1, height: distanceToPrevious))
                     verticalLine.backgroundColor = UIColor.blackColor()
                     
-                    let horizontalLine = UILabel(frame: CGRect(x: 0, y: verticalLine.frame.size.height / 2, width: horizontalSpacing + 1, height: 1))
+                    var horizontalLineWidth = horizontalSpacing + 1
+                    if roundNum >= 2 {
+                        horizontalLineWidth += spacePerBoxHorizontal
+                    }
+                    let horizontalLine = UILabel(frame: CGRect(x: 0, y: verticalLine.frame.size.height / 2, width: horizontalLineWidth, height: 1))
                     horizontalLine.backgroundColor = UIColor.blackColor()
                     verticalLine.addSubview(horizontalLine)
                     
