@@ -143,10 +143,9 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                     championshipFrame = vw.frame
                     let heightOfLabel : CGFloat = 40
                     let lblChampionship = UILabel(frame: CGRect(x: 0, y: 0 - heightOfLabel, width: matchWidth, height: heightOfLabel))
-                    lblChampionship.text = "Single-elimination Championship"
+                    lblChampionship.text = "UpperBracket Final"
                     vw.addSubview(lblChampionship)
                     //check if championship is completed
-                    vw.backgroundColor = UIColor(red: 1.0, green: 215.0 / 255.0, blue: 0.0, alpha: 1.0)
                 }
             }
                 //if-necessary match will be index 0, and championship is index 1, for math purposes
@@ -187,7 +186,6 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                     labelTop.text = GlobalConstants.bye
                     //if i is < (3 * k / 2 - 1), don't add a bye, because later winner-bracket-rounds don't have byes.
                 }
-                labelTop.text = "\(labelTop.text) \(i)"
                 labelTop.tag = j
                 
                 //if tournament has started, add appropriate score boxes too.
@@ -254,6 +252,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             i -= 1
         }
         //now to loser's bracket:
+        var finals1Frame = CGRect()
         currentY = winnerBracketHeight
         roundNum = 1
         startIdx = k
@@ -282,6 +281,20 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             if i == (startIdx - 1) {
                 highestViewInRound = vw
             }
+            if i == 1 {
+                var frame = vw.frame
+                let lowerChampionshipFrame = self.largeSubView.viewWithTag(200 + 2)!.frame
+                frame.origin.y = (championshipFrame.origin.y + lowerChampionshipFrame.origin.y) / 2
+                vw.frame = frame
+                finals1Frame = vw.frame
+                vw.backgroundColor = UIColor(red: 1.0, green: 215.0 / 255.0, blue: 0.0, alpha: 1.0)
+            }
+            else if i == 0 {
+                var frame = vw.frame
+                frame.origin.y = finals1Frame.origin.y + verticalSpacing + matchHeight
+                vw.frame = frame
+                vw.backgroundColor = UIColor(red: 1.0, green: 215.0 / 255.0, blue: 0.0, alpha: 1.0)
+            }
             
             let idLeft : String? = eachMatch.leftId
             let idRight : String? = eachMatch.rightId
@@ -302,7 +315,6 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                     labelTop.text = GlobalConstants.bye
                     //if i is < (3 * k / 2 - 1), don't add a bye, because later winner-bracket-rounds don't have byes.
                 }
-                labelTop.text = "\(labelTop.text) \(i)"
                 labelTop.tag = j
                 
                 //if tournament has started, add appropriate score boxes too.
@@ -330,6 +342,23 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             }
             if i == 0 && !self.isAdditionalMatchNecessary() {
                 vw.hidden = true
+            }
+            
+            if i == 2 {
+                let previousVw : UIView? = self.largeSubView.viewWithTag(200 + k)
+                if let prevVw = previousVw {
+                    let distanceToPrevious = vw.center.y - prevVw.center.y
+                    //this is a negative-y position:
+                    let verticalLine = UILabel(frame: CGRect(x: matchWidth - 1, y: matchHeight / 2 - distanceToPrevious, width: 1, height: distanceToPrevious))
+                    verticalLine.backgroundColor = UIColor.blackColor()
+                    
+                    let horizontalLineWidth = horizontalSpacing + 1
+                    let horizontalLine = UILabel(frame: CGRect(x: 0, y: verticalLine.frame.size.height / 2, width: horizontalLineWidth, height: 1))
+                    horizontalLine.backgroundColor = UIColor.blackColor()
+                    verticalLine.addSubview(horizontalLine)
+                    
+                    vw.addSubview(verticalLine)
+                }
             }
             self.largeSubView.addSubview(vw)
             currentY += matchHeight + verticalSpacing
