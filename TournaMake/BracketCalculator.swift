@@ -21,14 +21,35 @@ class BracketCalculator {
             bracketTop.append(entrantsCopy[entrantNum])
             entrantNum += 1
         }
-        if numByes > 0 {
-            for _ in 0 ... numByes - 1 {
-                bracketBottom.append(GlobalConstants.bye)
+        if tournamentData.entrants.count >= 9 && tournamentData.entrants.count <= 32 {
+            var byePriorities = [1, 9, 13, 5, 8, 16, 12, 4, 3, 11, 15, 7, 6, 14, 10, 2]
+            if tournamentData.entrants.count >= 9 && tournamentData.entrants.count <= 16 {
+                byePriorities = [1, 5, 7, 3, 4, 8, 6, 2]
+            }
+            let usedPriorities = byePriorities[0..<numByes]
+            //TODO: temp hard-fix
+            var idx = 1
+            while bracketBottom.count < bracketTop.count {
+                if usedPriorities.contains(idx) {
+                    bracketBottom.append(GlobalConstants.bye)
+                }
+                else {
+                    bracketBottom.append(entrantsCopy[entrantNum])
+                    entrantNum += 1
+                }
+                idx += 1
             }
         }
-        while bracketBottom.count < bracketTop.count {
-            bracketBottom.append(entrantsCopy[entrantNum])
-            entrantNum += 1
+        else {
+            if numByes > 0 {
+                for _ in 0 ... numByes - 1 {
+                    bracketBottom.append(GlobalConstants.bye)
+                }
+            }
+            while bracketBottom.count < bracketTop.count {
+                bracketBottom.append(entrantsCopy[entrantNum])
+                entrantNum += 1
+            }
         }
         var finalArr : [String] = []
         for i in 0 ..< bracketTop.count {
