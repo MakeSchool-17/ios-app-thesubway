@@ -143,7 +143,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                     championshipFrame = vw.frame
                     let heightOfLabel : CGFloat = 40
                     let lblChampionship = UILabel(frame: CGRect(x: 0, y: 0 - heightOfLabel, width: matchWidth, height: heightOfLabel))
-                    lblChampionship.text = "UpperBracket Final"
+                    lblChampionship.text = "Upper-Bracket Final"
                     vw.addSubview(lblChampionship)
                     //check if championship is completed
                 }
@@ -267,6 +267,18 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             vw.layer.borderWidth = 1
             vw.backgroundColor = GlobalConstants.grayVeryLight
             vw.tag = i + 200
+            if i == 1 {
+                let heightOfLabel : CGFloat = 40
+                let lblChampionship = UILabel(frame: CGRect(x: 0, y: 0 - heightOfLabel, width: matchWidth, height: heightOfLabel))
+                lblChampionship.text = "Championship"
+                vw.addSubview(lblChampionship)
+            }
+            else if i == 2 {
+                let heightOfLabel : CGFloat = 40
+                let lblChampionship = UILabel(frame: CGRect(x: 0, y: 0 - heightOfLabel, width: matchWidth, height: heightOfLabel))
+                lblChampionship.text = "Lower-Bracket Final"
+                vw.addSubview(lblChampionship)
+            }
             if (roundNum != 1 || self.bracketMatches.count == 2) && i >= 1 {
                 var temp = 0
                 var bottomIdx : Int! = 0
