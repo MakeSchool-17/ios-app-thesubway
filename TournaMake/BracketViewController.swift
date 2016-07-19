@@ -307,6 +307,11 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         self.btnBeginOrEnd.hidden = true
     }
     
+    func clearMatch(idx: Int) {
+        let match = self.bracketMatches[idx]
+        CoreDataUtil.updateEntrantsInMatch(match, leftId: nil, rightId: nil)
+    }
+    
     func updateLaterMatchWithWinner(winnerId: String?, idxOfPrevMatch: Int) {
         if winnerId != nil && idxOfPrevMatch > 1 {
             let nextId = idxOfPrevMatch / 2
