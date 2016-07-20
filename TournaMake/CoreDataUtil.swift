@@ -182,6 +182,9 @@ class CoreDataUtil {
             print("could not fetch")
             return nil
         }
+        if results != nil {
+            results = results!.reverse()
+        }
         return results
     }
     
