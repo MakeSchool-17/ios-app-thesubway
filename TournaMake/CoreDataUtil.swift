@@ -572,4 +572,8 @@ class CoreDataUtil {
         }
         return match
     }
+    
+    class func clearMatch(match: Match) {
+        CoreDataUtil.updateEntrantsInMatch(match, leftId: nil, rightId: nil)
+    }
 }
