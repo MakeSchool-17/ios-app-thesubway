@@ -317,7 +317,10 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
             let nextId = idxOfPrevMatch / 2
             let nextMatch = self.bracketMatches[nextId]
             //remember, matchId is the correct variable here.
-            if idxOfPrevMatch % 2 != 0 {
+            if winnerId == GlobalConstants.tie {
+                CoreDataUtil.clearMatch(nextMatch)
+            }
+            else if idxOfPrevMatch % 2 != 0 {
                 //it is the top match. update leftId
                 CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: "\(winnerId!)", rightId: nextMatch.rightId)
             }
@@ -331,7 +334,10 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
     func updateBronzeMatchWithLoser(loserId: String?, idxOfPrevMatch: Int) {
         if loserId != nil {
             let bronzeMatch = self.bracketMatches[0]
-            if idxOfPrevMatch % 2 != 0 {
+            if loserId == GlobalConstants.tie {
+                CoreDataUtil.clearMatch(bronzeMatch)
+            }
+            else if idxOfPrevMatch % 2 != 0 {
                 CoreDataUtil.updateEntrantsInMatch(bronzeMatch, leftId: "\(loserId!)", rightId: bronzeMatch.rightId)
             }
             else {

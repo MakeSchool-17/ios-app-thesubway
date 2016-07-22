@@ -84,6 +84,9 @@ class AlgorithmUtil {
         else if match.leftScore?.floatValue < match.rightScore?.floatValue {
             return match.rightId
         }
+        else if match.leftScore?.floatValue == match.rightScore?.floatValue {
+            return GlobalConstants.tie
+        }
         return nil
     }
     
@@ -96,6 +99,9 @@ class AlgorithmUtil {
         }
         if self.winnerOfMatch(match) == match.rightId {
             return match.leftId
+        }
+        if self.winnerOfMatch(match) == GlobalConstants.tie {
+            return GlobalConstants.tie
         }
         return nil
     }

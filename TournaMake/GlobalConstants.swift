@@ -26,6 +26,7 @@ struct GlobalConstants {
     static let wins = "wins"
     static let losses = "losses"
     static let arrHeader = ["Name", "Wins", "Losses", "Ties", "Points", "For", "Against", "Differential"]
+    static let tie = "*TIE*"
     
     //colors:
     static let orangeVitaminC = UIColor(red: 253/255.0, green: 116/255.0, blue: 0/255.0, alpha: 1.0)
