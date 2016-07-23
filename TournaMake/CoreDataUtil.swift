@@ -573,7 +573,33 @@ class CoreDataUtil {
         return match
     }
     
-    class func clearMatch(match: Match) {
-        CoreDataUtil.updateEntrantsInMatch(match, leftId: nil, rightId: nil)
+    class func clearMatch(match: Match, clearLeft: Bool, clearRight: Bool) {
+        //new functionality, in case a bye previously existed here.
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.managedObjectContext
+        let request = NSFetchRequest(entityName: "Match")
+        request.predicate = NSPredicate(format: "id = \(match.id!) AND tournamentId = \(match.tournament!.id!)")
+        var results : [Match]?
+        do {
+            results = try context.executeFetchRequest(request) as? [Match]
+        }
+        catch {
+            print("could not fetch")
+            return
+        }
+        let match = results![0]
+        if clearLeft == true && match.leftId != GlobalConstants.bye {
+            match.leftId = nil
+        }
+        if clearRight == true && match.rightId != GlobalConstants.bye {
+            match.rightId = nil
+        }
+        do {
+            try context.save()
+        }
+        catch {
+            print("Could not save")
+            return
+        }
     }
 }
