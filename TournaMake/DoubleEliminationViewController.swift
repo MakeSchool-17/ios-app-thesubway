@@ -487,6 +487,10 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         }
         else if idxOfPrevMatch == k {
             var nextMatch = self.bracketMatches[1]
+            if winnerId == GlobalConstants.tie {
+                CoreDataUtil.clearMatch(nextMatch, clearLeft: true, clearRight: false)
+                return
+            }
             CoreDataUtil.updateEntrantsInMatch(self.bracketMatches[1], leftId: "\(winnerId!)", rightId: nextMatch.rightId)
             //because match 0 and 1 would feature same entrants:
             nextMatch = self.bracketMatches[0]
