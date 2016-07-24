@@ -209,6 +209,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                         vw.addSubview(textFieldScore)
                     }
                 }
+                //labelTop.text = "\(labelTop.text) \(i)"
                 vw.addSubview(labelTop)
             }
             //if i is odd, add a vertical line that extends to previous box.
@@ -350,6 +351,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                         vw.addSubview(textFieldScore)
                     }
                 }
+                //labelTop.text = "\(labelTop.text) \(i)"
                 vw.addSubview(labelTop)
             }
             if i == 0 && !self.isAdditionalMatchNecessary() {
