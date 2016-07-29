@@ -516,6 +516,9 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             print("\(idxOfPrevMatch) will update \(nextId)")
             //remember, matchId is the correct variable here.
             if idxOfPrevMatch % 2 == 0 {
+                if winnerId == GlobalConstants.tie {
+                    CoreDataUtil.clearMatch(nextMatch, clearLeft: true, clearRight: false)
+                }
                 //it is the top match. update leftId
                 CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: "\(winnerId!)", rightId: nextMatch.rightId)
             }
