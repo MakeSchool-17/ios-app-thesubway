@@ -501,8 +501,8 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         }
         else if idxOfPrevMatch == 2 {
             if winnerId == GlobalConstants.tie {
-                CoreDataUtil.clearMatch(self.bracketMatches[1], clearLeft: true, clearRight: false)
-                CoreDataUtil.clearMatch(self.bracketMatches[0], clearLeft: true, clearRight: false)
+                CoreDataUtil.clearMatch(self.bracketMatches[1], clearLeft: false, clearRight: true)
+                CoreDataUtil.clearMatch(self.bracketMatches[0], clearLeft: false, clearRight: true)
                 return
             }
             var nextMatch = self.bracketMatches[1]
