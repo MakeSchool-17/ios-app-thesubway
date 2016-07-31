@@ -280,17 +280,6 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                 lblChampionship.text = "Lower-Bracket Final"
                 vw.addSubview(lblChampionship)
             }
-            if (roundNum != 1 || self.bracketMatches.count == 2) && i >= 1 {
-                var temp = 0
-                var bottomIdx : Int! = 0
-                //so not the first round, and not the if-necessary match.
-                //formulas for these depend if even or odd rounds.
-                //use helper. get roundNum, and previousBottomIdx. pass in k, i.
-                //even roundNumbers will have null top. odd will have both fine.
-                (temp, bottomIdx) = DoubleEliminationCalculator.loserGetPrevious(k, i: i)
-                let previousVwTop : UIView? = self.largeSubView.viewWithTag(bottomIdx + 201)
-                let previousVwBottom : UIView? = self.largeSubView.viewWithTag(bottomIdx + 200)
-            }
             if i == (startIdx - 1) {
                 highestViewInRound = vw
             }
