@@ -363,6 +363,16 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                     vw.addSubview(verticalLine)
                 }
             }
+            /*var yVal : CGFloat = 882.5
+            if i == 15 {
+                // add arrow
+                let upperView = self.largeSubView.viewWithTag(223)!
+                let xVal = upperView.center.x - 20
+                //yVal = (upperView.center.y + vw.center.y) / 2 - 20
+                let imgVw = UIImageView(frame: CGRect(x: xVal, y: yVal, width: 40, height: 40))
+                imgVw.image = UIImage(named: "downArrow.png")
+                self.largeSubView.addSubview(imgVw)
+            }*/
             self.largeSubView.addSubview(vw)
             currentY += matchHeight + verticalSpacing
             
