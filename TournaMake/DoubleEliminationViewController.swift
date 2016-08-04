@@ -386,6 +386,13 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                 let imgVw = UIImageView(frame: CGRect(x: xVal, y: yVal, width: 40, height: 40))
                 imgVw.image = UIImage(named: "downArrow.png")
                 self.largeSubView.addSubview(imgVw)
+            }
+            else if i == 2 {
+                let upperView = self.largeSubView.viewWithTag(216)!
+                let xVal = upperView.center.x - 20
+                let imgVw = UIImageView(frame: CGRect(x: xVal, y: yVal, width: 40, height: 40))
+                imgVw.image = UIImage(named: "downArrow.png")
+                self.largeSubView.addSubview(imgVw)
             }*/
             self.largeSubView.addSubview(vw)
             currentY += matchHeight + verticalSpacing
