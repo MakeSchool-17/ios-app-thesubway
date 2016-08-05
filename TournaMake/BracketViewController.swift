@@ -23,7 +23,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = GlobalConstants.backgroundColorVc
-        self.addKeyboardNotifications()
+        UIHelper.addKeyboardNotifications(self)
         self.btnBeginOrEnd.backgroundColor = GlobalConstants.buttonGreenColor
         self.btnBeginOrEnd.titleLabel?.font = UIFont.systemFontOfSize(40)
         self.btnBeginOrEnd.tintColor = UIColor.whiteColor()
@@ -243,7 +243,7 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
             let nextTf : UITextField = viewSuper.viewWithTag(101) as! UITextField
             nextTf.becomeFirstResponder()
             //re-add notifications after temporarily turning them off:
-            self.addKeyboardNotifications()
+            UIHelper.addKeyboardNotifications(self)
         }
         return false
     }
@@ -372,11 +372,6 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
             self.view.frame = self.originalFrame
             self.scrollViewDistanceContraint.constant = 0
         }
-    }
-    
-    func addKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BracketViewController.keyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BracketViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
 
 }
