@@ -34,4 +34,9 @@ class UIHelper {
         }
     }
     
+    class func addKeyboardNotifications(vc: UIViewController) {
+        NSNotificationCenter.defaultCenter().addObserver(vc, selector: #selector(BracketViewController.keyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(vc, selector: #selector(BracketViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
 }
