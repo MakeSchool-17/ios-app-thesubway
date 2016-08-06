@@ -19,6 +19,10 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
     let entrants : [String] = []
     var pickerInfo : UIView!
     
+    //for keyboard notifications:
+    var keyboardSize : CGSize!
+    var originalFrame : CGRect!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.tag = 350 //to distinguish from CreateGroup, or CreateKnockout.
@@ -42,6 +46,7 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
         self.textFieldTournamentName.delegate = self
         self.labelTotalTeams.text = "Total entrants: 0\n(Must be between 4-64 entrants)"
         //self.textFieldTournamentName.text = "Tournament 1"
+        UIHelper.addKeyboardNotifications(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -205,6 +210,26 @@ class CreateTournamentViewController: UIViewController, UITextViewDelegate, UITe
             self.textViewEntrants.becomeFirstResponder()
         }
         return false
+    }
+    
+    func keyboardDidShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            var newFrame = self.view.frame
+            self.keyboardSize = CGSize(width: keyboardSize.width, height: keyboardSize.height)
+            if self.originalFrame == nil {
+                self.originalFrame = self.view.frame
+            }
+            if self.view.frame == self.originalFrame {
+                newFrame.origin.y -= 37 + 181 - 64
+            }
+            self.view.frame = newFrame
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if self.originalFrame != nil {
+            self.view.frame = self.originalFrame
+        }
     }
     
 }
