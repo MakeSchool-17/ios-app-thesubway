@@ -31,7 +31,8 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         self.btnBeginOrEnd.titleLabel?.font = UIFont.systemFontOfSize(40)
         self.btnBeginOrEnd.tintColor = UIColor.whiteColor()
         self.btnBeginOrEnd.layer.cornerRadius = 5.0
-        
+        self.scrollViewDistanceContraint.constant = -86
+        self.topView.hidden = true
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
     }
     
@@ -606,14 +607,13 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                 newFrame.origin.y -= keyboardSize.height
             }
             self.view.frame = newFrame
-            self.scrollViewDistanceContraint.constant = keyboardSize.height - self.topView.frame.size.height
+            //if i'm trying to edit scores at all, the view at top should already be hidden by now:
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if self.originalFrame != nil {
             self.view.frame = self.originalFrame
-            self.scrollViewDistanceContraint.constant = 0
         }
     }
     
