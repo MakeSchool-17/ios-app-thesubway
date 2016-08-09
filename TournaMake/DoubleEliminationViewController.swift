@@ -539,11 +539,16 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             if idxOfPrevMatch % 2 == 0 {
                 if winnerId == GlobalConstants.tie {
                     CoreDataUtil.clearMatch(nextMatch, clearLeft: true, clearRight: false)
+                    return
                 }
                 //it is the top match. update leftId
                 CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: "\(winnerId!)", rightId: nextMatch.rightId)
             }
             else {
+                if winnerId == GlobalConstants.tie {
+                    CoreDataUtil.clearMatch(nextMatch, clearLeft: false, clearRight: true)
+                    return
+                }
                 //it is the bottom match. update rightId
                 CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: nextMatch.leftId, rightId: "\(winnerId!)")
             }
