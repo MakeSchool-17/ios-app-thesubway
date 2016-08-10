@@ -566,6 +566,10 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                 }
             }
             else {
+                if winnerId == GlobalConstants.tie {
+                    CoreDataUtil.clearMatch(nextMatch, clearLeft: false, clearRight: true)
+                    return
+                }
                 CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: nextMatch.leftId, rightId: "\(winnerId!)")
             }
         }
@@ -587,6 +591,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                 CoreDataUtil.updateEntrantsInMatch(loserMatch, leftId: "\(loserId!)", rightId: loserMatch.rightId)
                 //check if this next match has an opponent bye
                 if let laterWinner = AlgorithmUtil.winnerOfMatch(loserMatch) {
+                    //note: this next function already handle the ties
                     self.updateLaterMatchWithWinner("\(laterWinner)", idxOfPrevMatch: nextId!)
                 }
             }
@@ -594,6 +599,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                 CoreDataUtil.updateEntrantsInMatch(loserMatch, leftId: loserMatch.leftId, rightId: "\(loserId!)")
                 //check if this next match has an opponent bye
                 if let laterWinner = AlgorithmUtil.winnerOfMatch(loserMatch) {
+                    //note: this next function already handle the ties
                     self.updateLaterMatchWithWinner("\(laterWinner)", idxOfPrevMatch: nextId!)
                 }
             }
