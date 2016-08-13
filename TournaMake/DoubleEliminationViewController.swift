@@ -559,6 +559,10 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             let nextMatch = self.bracketMatches[nextId]
             if roundNum % 2 == 0 {
                 if idxOfPrevMatch % 2 == 1 {
+                    if winnerId == GlobalConstants.tie {
+                        CoreDataUtil.clearMatch(nextMatch, clearLeft: true, clearRight: false)
+                        return
+                    }
                     CoreDataUtil.updateEntrantsInMatch(nextMatch, leftId: "\(winnerId!)", rightId: nextMatch.rightId)
                 }
                 else {
