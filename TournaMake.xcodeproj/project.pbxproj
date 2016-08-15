@@ -13,6 +13,7 @@
 		2755FD4F1C3B338B00FFF82F /* TournamentNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2755FD4E1C3B338B00FFF82F /* TournamentNavigationController.swift */; };
 		2755FD521C3DD38400FFF82F /* Tournament+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2755FD501C3DD38400FFF82F /* Tournament+CoreDataProperties.swift */; };
 		2755FD531C3DD38400FFF82F /* Bracket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2755FD511C3DD38400FFF82F /* Bracket+CoreDataProperties.swift */; };
+		276A26C91D38524E006F46EA /* downArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 276A26C81D38524E006F46EA /* downArrow.png */; };
 		277ADAF01BFE87E000E17F0E /* MMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277ADAEF1BFE87E000E17F0E /* MMPickerView.m */; };
 		277ADAF21BFE942C00E17F0E /* PickerGroupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277ADAF11BFE942C00E17F0E /* PickerGroupButton.swift */; };
 		277ADAF41BFECED500E17F0E /* CreateKnockoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277ADAF31BFECED500E17F0E /* CreateKnockoutViewController.swift */; };
@@ -93,6 +94,7 @@
 		2755FD4E1C3B338B00FFF82F /* TournamentNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentNavigationController.swift; sourceTree = "<group>"; };
 		2755FD501C3DD38400FFF82F /* Tournament+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tournament+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2755FD511C3DD38400FFF82F /* Bracket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bracket+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		276A26C81D38524E006F46EA /* downArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downArrow.png; sourceTree = "<group>"; };
 		277ADAED1BFE87DF00E17F0E /* TournaMake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TournaMake-Bridging-Header.h"; sourceTree = "<group>"; };
 		277ADAEE1BFE87E000E17F0E /* MMPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPickerView.h; sourceTree = "<group>"; };
 		277ADAEF1BFE87E000E17F0E /* MMPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPickerView.m; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				27B6764B1C379314003FDC36 /* dropDownSelectBox.png */,
+				276A26C81D38524E006F46EA /* downArrow.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				27A0AEA81BF814A900AA57F1 /* LaunchScreen.storyboard in Resources */,
 				27BCFFB91C90B41600B6135C /* Secrets.plist in Resources */,
 				27A0AEA51BF814A900AA57F1 /* Assets.xcassets in Resources */,
+				276A26C91D38524E006F46EA /* downArrow.png in Resources */,
 				27B6764C1C379314003FDC36 /* dropDownSelectBox.png in Resources */,
 				27A0AEA01BF814A900AA57F1 /* Main.storyboard in Resources */,
 			);
