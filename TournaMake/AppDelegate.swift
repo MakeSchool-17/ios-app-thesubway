@@ -25,9 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         //From stack overflow
-        let view=UIView(frame: CGRectMake(0, 0,UIScreen.mainScreen().bounds.size.width, 20))
-        view.backgroundColor=GlobalConstants.blueVitaminC
-        self.window!.rootViewController?.view.addSubview(view)
         
         return true
     }

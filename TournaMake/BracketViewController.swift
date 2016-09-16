@@ -296,6 +296,9 @@ class BracketViewController: UIViewController, UITextFieldDelegate, UIScrollView
         for matchIdx in (self.bracketMatches.count - 1).stride(through: 0, by: -1) {
             let eachMatch = self.bracketMatches[matchIdx]
             let winnerId = AlgorithmUtil.winnerOfMatch(eachMatch)
+            if winnerId == GlobalConstants.tie {
+                continue
+            }
             self.updateLaterMatchWithWinner(winnerId, idxOfPrevMatch: matchIdx)
         }
         self.reloadStackViewBracket()

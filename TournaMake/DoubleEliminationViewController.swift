@@ -34,6 +34,8 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         self.scrollViewDistanceContraint.constant = -86
         self.topView.hidden = true
         self.tournament = (self.tabBarController as! TournamentTabBarController).tournament
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        UIApplication.sharedApplication().statusBarHidden = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -55,6 +57,10 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
@@ -101,6 +107,8 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
             self.largeSubView = UIView(frame: CGRect(x: 0, y: 0, width: self.scrollViewBracket.contentSize.width, height: self.scrollViewBracket.contentSize.height))
             self.scrollViewBracket.addSubview(self.largeSubView)
         }
+        //HARD-FIX:
+//        self.clearMatch(12)
         
         var roundNum = 1
         //bracketMatches.count i.e. is 31, or n * 2 - 1.
@@ -110,6 +118,7 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
         var highestViewInRound : UIView!
         var championshipFrame = CGRectMake(paddingX + horizontalSpacing, currentY, matchWidth, matchHeight)
         var i = startIdx - 1
+        var seedArr = [1, 8, 4, 5, 2, 7, 3, 6]
         //starting with winner's bracket:
         while i >= endIdx {
             let eachMatch = bracketMatches[i]
@@ -274,12 +283,14 @@ class DoubleEliminationViewController: UIViewController, UITextFieldDelegate, UI
                 let lblChampionship = UILabel(frame: CGRect(x: 0, y: 0 - heightOfLabel, width: matchWidth, height: heightOfLabel))
                 lblChampionship.text = "Championship"
                 vw.addSubview(lblChampionship)
+                //check if championship is completed
             }
             else if i == 2 {
                 let heightOfLabel : CGFloat = 40
                 let lblChampionship = UILabel(frame: CGRect(x: 0, y: 0 - heightOfLabel, width: matchWidth, height: heightOfLabel))
                 lblChampionship.text = "Lower-Bracket Final"
                 vw.addSubview(lblChampionship)
+                //check if championship is completed
             }
             if i == (startIdx - 1) {
                 highestViewInRound = vw

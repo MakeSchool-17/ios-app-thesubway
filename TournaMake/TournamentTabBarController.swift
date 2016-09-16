@@ -37,6 +37,11 @@ class TournamentTabBarController: UITabBarController {
                 self.selectedViewController = self.viewControllers![2]
             }
         }
+        UIApplication.sharedApplication().statusBarHidden = true
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
     override func didReceiveMemoryWarning() {
